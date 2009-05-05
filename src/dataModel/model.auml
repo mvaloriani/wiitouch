@@ -4,11 +4,6 @@
     <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="7b4fff24-7548-493f-8cec-b1616072e276" key="parentResourceUri" value="platform:/resource/WiiTouchProject/src/model.auml"/>
     <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="bb1c6618-9741-4281-aff0-6a82f37cf1f6" key="parentId" value="a0309624-dc5f-41be-ac70-7cbc83b7abd5"/>
   </eAnnotations>
-  <packagedElement xmi:type="uml:Class" xmi:id="0df2ba98-9ce3-4673-9afc-e7344b019cc6" name="Element"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="88c9695e-e5fd-4ef6-a1ec-26cfd806edbf" name="Area"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="1e910087-adb0-4c22-a439-3d125d265620" name="Poster"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="5e17a7d7-e7b4-4edb-8035-61e695e50503" name="Control"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="c93cea53-28f6-4135-a0fd-a07ee6c7a4f7" name="Paper"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="96770b43-6eb4-481a-80aa-20619391360a">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="27b01254-eaed-4478-b3ee-839fc3068b76" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://GW_JAVA_PROFILES/Java.profile.uml#_H_ZGcB5CEduWqeK3CXfnzA"/>
