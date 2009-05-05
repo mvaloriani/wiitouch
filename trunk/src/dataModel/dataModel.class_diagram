@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<uml2.notation.style:ClassDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmlns:uml2.notation.style="http://www.gentleware.com/uml2.notation.style" xmi:id="_slLmYDleEd6tguoV01ev0A" type="UML" measurementUnit="Pixel">
-  <styles xmi:type="notation:DiagramStyle" xmi:id="_slLmYTleEd6tguoV01ev0A"/>
-  <styles xmi:type="uml2.notation.style:ParameterStyle" xmi:id="_slLmYjleEd6tguoV01ev0A"/>
-  <styles xmi:type="uml2.notation.style:AssociationStyle" xmi:id="_slLmYzleEd6tguoV01ev0A"/>
-  <element xmi:type="uml:Package" href="model.auml#63d78921-13ba-42fc-858a-a39a0d4b4dc8"/>
-  <attributeFilteringStyle xmi:type="notation:FilteringStyle" xmi:id="_slLmZDleEd6tguoV01ev0A" filtering="Automatic"/>
-  <operationFilteringStyle xmi:type="notation:FilteringStyle" xmi:id="_slLmZTleEd6tguoV01ev0A" filtering="Automatic" filteringKeys="package,private,protected"/>
-</uml2.notation.style:ClassDiagram>
