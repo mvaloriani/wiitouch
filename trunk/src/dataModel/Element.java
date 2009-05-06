@@ -28,4 +28,10 @@ public class Element {
 		this.area = area;
 	}
 
+		
+		/**
+		 */
+		public void exec(){
+		}
+
 }
