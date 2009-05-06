@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="63d78921-13ba-42fc-858a-a39a0d4b4dc8" name="dataModel">
+  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="5077030c-9da9-4b73-a338-effa95bee272" source="crossContainmentOwner">
+    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="4095c02b-0c18-4747-bc32-f5c617b0700c" key="parentResourceUri" value="platform:/resource/WiiTouchProject/src/model.auml"/>
+    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="1665a867-6381-42bb-8c0c-8c1ebddd6f84" key="parentId" value="a0309624-dc5f-41be-ac70-7cbc83b7abd5"/>
+  </eAnnotations>
+  <packagedElement xmi:type="uml:Class" xmi:id="48ae5945-4c7f-4b9c-a4f7-eec536e8af52" name="Area"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="cbd24e54-7bdf-4f40-a88f-f23394f8b371" name="Element">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="c6d1fb6f-ea7f-42cf-a833-3ce40d86a245" name="area" visibility="private" type="48ae5945-4c7f-4b9c-a4f7-eec536e8af52" association="094b83d7-f663-424d-bc47-098a618cd60e"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="31eb4a76-9281-4b78-ab77-11f0690e39c8" name="getArea" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="24bf8fa4-074c-403e-9ae0-ede60e381b11" name="return" type="48ae5945-4c7f-4b9c-a4f7-eec536e8af52" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="b905db17-a7b9-452f-b3b3-dc659aa1abb6" name="setArea" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="67bed79f-3018-400b-8d5e-141786bebf56" name="area" type="48ae5945-4c7f-4b9c-a4f7-eec536e8af52"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="80f98f0b-f3c8-4e4b-89cb-8c5eba4b1893" name="Poster">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="525cbc5d-db74-4e3f-b004-910ce1e23379" name="area" visibility="private" type="48ae5945-4c7f-4b9c-a4f7-eec536e8af52" association="41d3fe07-9020-46c0-b39e-8398de4ba26d"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="6fd6090e-ea27-4824-947f-0ab1c39fd57b" name="getArea" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="79df204a-c065-4c92-b0c6-7b826d05931d" name="return" type="48ae5945-4c7f-4b9c-a4f7-eec536e8af52" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="961a30c3-17f3-45cb-9fb5-229de13e1648" name="setArea" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="fc1f2b48-9afa-49a0-bd97-d4f2a08b8b86" name="area" type="48ae5945-4c7f-4b9c-a4f7-eec536e8af52"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="41d3fe07-9020-46c0-b39e-8398de4ba26d" name="Poster.area_Ass" memberEnd="d5458a8b-d880-4173-b120-536226a7f299 525cbc5d-db74-4e3f-b004-910ce1e23379">
+    <ownedEnd xmi:type="uml:Property" xmi:id="d5458a8b-d880-4173-b120-536226a7f299" name="area;default" type="80f98f0b-f3c8-4e4b-89cb-8c5eba4b1893" association="41d3fe07-9020-46c0-b39e-8398de4ba26d"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="094b83d7-f663-424d-bc47-098a618cd60e" name="Element.area_Ass" memberEnd="d455bb66-6097-455b-abea-56ff649a0b55 c6d1fb6f-ea7f-42cf-a833-3ce40d86a245">
+    <ownedEnd xmi:type="uml:Property" xmi:id="d455bb66-6097-455b-abea-56ff649a0b55" name="area;default" type="cbd24e54-7bdf-4f40-a88f-f23394f8b371" association="094b83d7-f663-424d-bc47-098a618cd60e"/>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="5e708638-9c44-4228-84a3-f814c9890b30">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="46d77809-6e56-4cb1-b41b-59e8aee0a775" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://GW_JAVA_PROFILES/Java.profile.uml#_H_ZGcB5CEduWqeK3CXfnzA"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://GW_JAVA_PROFILES/Java.profile.uml#_3xRZYR4-EduWqeK3CXfnzA"/>
+  </profileApplication>
+</uml:Package>
