@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="bf41481a-ffc5-44e6-bfa2-2ef2acb4ee3d" name="manager">
+  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="fc608a04-9423-413a-9a9a-41d99e5796b8" source="crossContainmentOwner">
+    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="582afa8a-7aa4-45b6-856d-a9c44126e9df" key="parentResourceUri" value="platform:/resource/WiiTouchProject/src/model.auml"/>
+    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="7c131685-fc14-48d2-af5b-e6bfefd4c6af" key="parentId" value="a0309624-dc5f-41be-ac70-7cbc83b7abd5"/>
+  </eAnnotations>
+  <packagedElement xmi:type="uml:Class" xmi:id="fdb92ded-f140-4d9b-bde7-2d741582b9f8" name="Manager">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="641c8887-cae0-4e63-a30d-2a4c160d1561" name="poster" visibility="private" association="cfa62c7b-2707-4cb6-b659-f95c90c63931">
+      <type xmi:type="uml:Class" href="../dataModel/model.auml#80f98f0b-f3c8-4e4b-89cb-8c5eba4b1893"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="a7947222-52c0-4a9d-a148-f588fe6d5b32" name="paper" visibility="private" association="f7a209d9-7d71-48ed-a7be-d495b7b3364c">
+      <type xmi:type="uml:Class" href="../dataModel/model.auml#fa964788-5d12-4ea8-ab90-7c566b625cfe"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="a03af569-c61c-4aa0-8796-a9915db27f83" name="managerDati" visibility="private" type="ff1708c0-61d3-4ee7-9da5-d47f9c5e0df9" association="a34f25a6-d004-40a1-9eda-8d59fac0abb4"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="9414118c-4d05-46cc-9c12-e7ee064486c0" name="managerCreazione" visibility="private" type="7855ad72-95fb-49d2-b9be-1757c547156f" association="b236f6b0-ca0f-4ab6-96f9-d4cba484f352"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="c9599f88-fcb9-4f7b-a0f0-291ef7cd6733" name="getPoster" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="15eedda5-6b70-4f98-bea3-45011f9da83c" name="return" direction="return">
+        <type xmi:type="uml:Class" href="../dataModel/model.auml#80f98f0b-f3c8-4e4b-89cb-8c5eba4b1893"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="6e04a8cc-0ac3-4c6c-a93b-9c4448248078" name="setPoster" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="c07fb1bd-5ba4-409d-87bc-6cc6585c28a8" name="poster">
+        <type xmi:type="uml:Class" href="../dataModel/model.auml#80f98f0b-f3c8-4e4b-89cb-8c5eba4b1893"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="bbfc3857-cfb4-4943-9a74-f665db7b0882" name="getPaper" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="4376509a-55bb-4214-a9da-a79bdc6cb601" name="return" direction="return">
+        <type xmi:type="uml:Class" href="../dataModel/model.auml#fa964788-5d12-4ea8-ab90-7c566b625cfe"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="0d28d49b-4e0a-42ce-8dd9-a21e236b6034" name="setPaper" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="0fef78c8-a881-44d6-8908-13cba458788f" name="paper">
+        <type xmi:type="uml:Class" href="../dataModel/model.auml#fa964788-5d12-4ea8-ab90-7c566b625cfe"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="ae1835c9-fbe8-4e5d-8643-57c907b12492" name="getManagerDati" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="ac28304e-8a7a-42df-b96a-25370a0ab92a" name="return" type="ff1708c0-61d3-4ee7-9da5-d47f9c5e0df9" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="af04a42b-a880-4bff-a868-ed47fe193142" name="setManagerDati" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="0e2c2dc6-14d4-4aba-952d-4f8060a985f6" name="managerDati" type="ff1708c0-61d3-4ee7-9da5-d47f9c5e0df9"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="04e4651f-0484-41f7-b99f-d917bba94ca9" name="getManagerCreazione" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="344cd93a-4436-40f8-8975-7bdac46d9d4a" name="return" type="7855ad72-95fb-49d2-b9be-1757c547156f" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="e419727c-a654-4653-8a5b-2bc148d1129d" name="setManagerCreazione" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="91e06995-f9c7-49f7-933c-d9f685ae6f58" name="managerCreazione" type="7855ad72-95fb-49d2-b9be-1757c547156f"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="cfa62c7b-2707-4cb6-b659-f95c90c63931" name="Manager.poster_Ass" memberEnd="ec1e0544-29a5-425b-9fb7-3735ded7b3d1 641c8887-cae0-4e63-a30d-2a4c160d1561">
+    <ownedEnd xmi:type="uml:Property" xmi:id="ec1e0544-29a5-425b-9fb7-3735ded7b3d1" name="poster;default" type="fdb92ded-f140-4d9b-bde7-2d741582b9f8" association="cfa62c7b-2707-4cb6-b659-f95c90c63931"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="ff1708c0-61d3-4ee7-9da5-d47f9c5e0df9" name="ManagerDati">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="8f01d87c-e694-4b8b-9145-21235adc21fe" name="manager" visibility="private" type="fdb92ded-f140-4d9b-bde7-2d741582b9f8" association="e91a62e0-c6a5-45ea-b455-17253ca9f131"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="3b76978a-b1d8-4ea3-9737-afaa661a568d" name="getManager" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="a11dafb8-a288-46ec-a6b2-c1622ba36c5f" name="return" type="fdb92ded-f140-4d9b-bde7-2d741582b9f8" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="995e7f8f-5595-4158-b12b-ce7dd73ccb4c" name="setManager" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="96131ed4-22b2-427d-a8bc-ce55aea7e4ca" name="manager" type="fdb92ded-f140-4d9b-bde7-2d741582b9f8"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="7855ad72-95fb-49d2-b9be-1757c547156f" name="ManagerCreazione">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="efc702be-7505-448e-9a5b-01cef40fdef2" name="manager" visibility="private" type="fdb92ded-f140-4d9b-bde7-2d741582b9f8" association="1098ca6b-60d3-4c69-b360-fb53ba3dba20"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="12bdc7f9-46de-49d1-9ea0-d1328fc5fcab" name="getManager" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="f556bdb6-9e7e-4053-a01c-90dd5702a022" name="return" type="fdb92ded-f140-4d9b-bde7-2d741582b9f8" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="9d632ca1-ed95-4479-9a4b-25ea5400dd6f" name="setManager" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="6a9837d5-8ea9-4ad3-bf44-d3ddb96a2707" name="manager" type="fdb92ded-f140-4d9b-bde7-2d741582b9f8"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="1cec1ff3-2f1f-47a8-a7e0-d7625df637a7" name="ManagerFreePoster">
+    <generalization xmi:type="uml:Generalization" xmi:id="52cbf45e-dc79-4d78-9fce-9ccfbba2ac5c" general="7855ad72-95fb-49d2-b9be-1757c547156f"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="ea69883a-f5cf-4653-89c9-6dcedf564301" name="ManagerGridPoster">
+    <generalization xmi:type="uml:Generalization" xmi:id="1da32ab1-e02c-45f1-8d86-32d883c6374a" general="7855ad72-95fb-49d2-b9be-1757c547156f"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="02551228-eb8d-4dfa-9d1a-ba307e271549" name="IManager"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="f7a209d9-7d71-48ed-a7be-d495b7b3364c" name="Manager.paper_Ass" memberEnd="29afb9c7-6fdb-4455-9290-f574ad1de5dc a7947222-52c0-4a9d-a148-f588fe6d5b32">
+    <ownedEnd xmi:type="uml:Property" xmi:id="29afb9c7-6fdb-4455-9290-f574ad1de5dc" name="paper;default" type="fdb92ded-f140-4d9b-bde7-2d741582b9f8" association="f7a209d9-7d71-48ed-a7be-d495b7b3364c"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="a34f25a6-d004-40a1-9eda-8d59fac0abb4" name="Manager.managerDati_Ass" memberEnd="6b0b7bec-58c6-431c-a415-645692a5acd9 a03af569-c61c-4aa0-8796-a9915db27f83">
+    <ownedEnd xmi:type="uml:Property" xmi:id="6b0b7bec-58c6-431c-a415-645692a5acd9" name="managerDati;default" type="fdb92ded-f140-4d9b-bde7-2d741582b9f8" association="a34f25a6-d004-40a1-9eda-8d59fac0abb4"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="e91a62e0-c6a5-45ea-b455-17253ca9f131" name="ManagerDati.manager_Ass" memberEnd="acf93fb8-2338-462e-8551-dc6f121d3ac8 8f01d87c-e694-4b8b-9145-21235adc21fe">
+    <ownedEnd xmi:type="uml:Property" xmi:id="acf93fb8-2338-462e-8551-dc6f121d3ac8" name="manager;default" type="ff1708c0-61d3-4ee7-9da5-d47f9c5e0df9" association="e91a62e0-c6a5-45ea-b455-17253ca9f131"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="b236f6b0-ca0f-4ab6-96f9-d4cba484f352" name="Manager.managerCreazione_Ass" memberEnd="3fe16339-5213-42fe-814f-a315a4246ba8 9414118c-4d05-46cc-9c12-e7ee064486c0">
+    <ownedEnd xmi:type="uml:Property" xmi:id="3fe16339-5213-42fe-814f-a315a4246ba8" name="managerCreazione;default" type="fdb92ded-f140-4d9b-bde7-2d741582b9f8" association="b236f6b0-ca0f-4ab6-96f9-d4cba484f352"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="1098ca6b-60d3-4c69-b360-fb53ba3dba20" name="ManagerCreazione.manager_Ass" memberEnd="1dd6ce9a-3949-44e5-8e19-8b0196ba1e3f efc702be-7505-448e-9a5b-01cef40fdef2">
+    <ownedEnd xmi:type="uml:Property" xmi:id="1dd6ce9a-3949-44e5-8e19-8b0196ba1e3f" name="manager;default" type="7855ad72-95fb-49d2-b9be-1757c547156f" association="1098ca6b-60d3-4c69-b360-fb53ba3dba20"/>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="037088ec-f7fd-4749-b169-67c12e7aa64e">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="dd56d73d-095a-41af-814c-0116a4844bcd" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://GW_JAVA_PROFILES/Java.profile.uml#_H_ZGcB5CEduWqeK3CXfnzA"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://GW_JAVA_PROFILES/Java.profile.uml#_3xRZYR4-EduWqeK3CXfnzA"/>
+  </profileApplication>
+</uml:Package>
