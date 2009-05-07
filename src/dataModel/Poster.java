@@ -7,15 +7,10 @@ import java.util.ArrayList;
 
 public class Poster {
 
-
 	private Polygon area;
-
-
 	private String name = "";
 
-
-	private String description = "";
-	
+	private String description = "";	
 	private String studentClassroom = "";
 	
 	private ArrayList<Element> elementsList;
