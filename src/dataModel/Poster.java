@@ -1,6 +1,8 @@
 package dataModel;
 
 import java.awt.Polygon;
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
 
 
 public class Poster {
@@ -16,8 +18,7 @@ public class Poster {
 	
 	private String studentClassroom = "";
 	
-	private Integer numberOfElements=0;
-
+	private ArrayList<Element> elementsList;
 		
 	/**
 	 * @return the area
@@ -87,29 +88,43 @@ public class Poster {
 	 * @return the numberOfElements
 	 */
 	public Integer getNumberOfElements() {
-		return numberOfElements;
+		return elementsList.size();
 	}
 
 
-	/**
-	 * @param numberOfElements the numberOfElements to set
-	 */
-	public void setNumberOfElements(Integer numberOfElements) {
-		this.numberOfElements = numberOfElements;
-	}
-
-
+	
 	/**
 	 * @param name
 	 * @param studentClass
 	 * @param description
 	 */
-	public Poster(String name, String studentClass, String description) {
+	public Poster(String name, String studentClassroom, String description) {
 		this.name = name;
 		this.studentClassroom = studentClassroom;
 		this.description = description;
+		this.elementsList = new ArrayList<Element>();
 	}
 
+	public void addElement(Element e){
+		this.elementsList.add(e);
+	}
 	
+	public void removeElement(int id){
+		this.elementsList.remove(id);
+	}
 	
+	public Element getElement(int id){
+		for(Element e :elementsList){
+			if (e.getId()==id)
+				return e;
+		}
+		return null;
+	}
+	public Element getElement(Point2D point){
+		for(Element e :elementsList){
+			if (e.getArea().contains(point))
+				return e;
+		}
+		return null;
+	}
 }
