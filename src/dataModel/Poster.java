@@ -2,18 +2,16 @@ package dataModel;
 
 import java.awt.Polygon;
 import java.awt.geom.Point2D;
-import java.util.ArrayList;
 
 
-public class Poster {
+public abstract class Poster {
 
 	private Polygon area;
 	private String name = "";
 
 	private String description = "";	
 	private String studentClassroom = "";
-	
-	private ArrayList<Element> elementsList;
+
 		
 	/**
 	 * @return the area
@@ -22,14 +20,12 @@ public class Poster {
 		return area;
 	}
 
-
 	/**
 	 * @param area the area to set
 	 */
 	public void setArea(Polygon area) {
 		this.area = area;
 	}
-
 
 	/**
 	 * @return the name
@@ -38,14 +34,12 @@ public class Poster {
 		return name;
 	}
 
-
 	/**
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	/**
 	 * @return the description
@@ -54,14 +48,12 @@ public class Poster {
 		return description;
 	}
 
-
 	/**
 	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 
 	/**
 	 * @return the studentClassroom
@@ -70,23 +62,12 @@ public class Poster {
 		return studentClassroom;
 	}
 
-
 	/**
 	 * @param studentClassroom the studentClassroom to set
 	 */
 	public void setStudentClassroom(String studentClassroom) {
 		this.studentClassroom = studentClassroom;
 	}
-
-
-	/**
-	 * @return the numberOfElements
-	 */
-	public Integer getNumberOfElements() {
-		return elementsList.size();
-	}
-
-
 	
 	/**
 	 * @param name
@@ -97,29 +78,12 @@ public class Poster {
 		this.name = name;
 		this.studentClassroom = studentClassroom;
 		this.description = description;
-		this.elementsList = new ArrayList<Element>();
 	}
 
-	public void addElement(Element e){
-		this.elementsList.add(e);
-	}
+
+	public abstract void removeElement(int id);
+	public abstract Integer getNumberOfElements();
+	public abstract Element getElement(int id);
+	public abstract Element getElement(Point2D point);
 	
-	public void removeElement(int id){
-		this.elementsList.remove(id);
-	}
-	
-	public Element getElement(int id){
-		for(Element e :elementsList){
-			if (e.getId()==id)
-				return e;
-		}
-		return null;
-	}
-	public Element getElement(Point2D point){
-		for(Element e :elementsList){
-			if (e.getArea().contains(point))
-				return e;
-		}
-		return null;
-	}
 }

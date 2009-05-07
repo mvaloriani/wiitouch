@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import com.thoughtworks.xstream.XStream;
 
 import dataModel.Element;
+import dataModel.FreePoster;
 import dataModel.Paper;
 import dataModel.Poster;
 
@@ -26,7 +27,7 @@ public class TestXml {
 			Paper e1=new Paper(1,files);
 			Element e2=new Element(2);
 			
-			Poster p = new Poster("a","b","c");
+			FreePoster p = new FreePoster("a","b","c");
 			
 			
 			
