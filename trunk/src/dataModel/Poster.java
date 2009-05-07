@@ -1,100 +1,115 @@
 package dataModel;
 
+import java.awt.Polygon;
+
 
 public class Poster {
 
-	/**
-	 * @uml.property  name="area"
-	 * @uml.associationEnd  inverse="poster:dataModel.Area"
-	 * @uml.association  name="isLocated"
-	 */
-	private Area area;
 
+	private Polygon area;
+
+
+	private String name = "";
+
+
+	private String description = "";
+	
+	private String studentClassroom = "";
+	
+	private Integer numberOfElements=0;
+
+		
 	/**
-	 * Getter of the property <tt>area</tt>
-	 * @return  Returns the area.
-	 * @uml.property  name="area"
+	 * @return the area
 	 */
-	public Area getArea() {
+	public Polygon getArea() {
 		return area;
 	}
 
+
 	/**
-	 * Setter of the property <tt>area</tt>
-	 * @param area  The area to set.
-	 * @uml.property  name="area"
+	 * @param area the area to set
 	 */
-	public void setArea(Area area) {
+	public void setArea(Polygon area) {
 		this.area = area;
 	}
 
-	/**
-	 * @uml.property  name="name"
-	 */
-	private String name = "";
 
 	/**
-	 * Getter of the property <tt>name</tt>
-	 * @return  Returns the name.
-	 * @uml.property  name="name"
+	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
 
+
 	/**
-	 * Setter of the property <tt>name</tt>
-	 * @param name  The name to set.
-	 * @uml.property  name="name"
+	 * @param name the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	/**
-	 * @uml.property  name="description"
-	 */
-	private String description = "";
 
 	/**
-	 * Getter of the property <tt>description</tt>
-	 * @return  Returns the description.
-	 * @uml.property  name="description"
+	 * @return the description
 	 */
 	public String getDescription() {
 		return description;
 	}
 
+
 	/**
-	 * Setter of the property <tt>description</tt>
-	 * @param description  The description to set.
-	 * @uml.property  name="description"
+	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	/**
-	 * @uml.property  name="studentClass"
-	 */
-	private String studentClass = "";
 
 	/**
-	 * Getter of the property <tt>studentClass</tt>
-	 * @return  Returns the studentClass.
-	 * @uml.property  name="studentClass"
+	 * @return the studentClassroom
 	 */
-	public String getStudentClass() {
-		return studentClass;
+	public String getStudentClassroom() {
+		return studentClassroom;
 	}
 
+
 	/**
-	 * Setter of the property <tt>studentClass</tt>
-	 * @param studentClass  The studentClass to set.
-	 * @uml.property  name="studentClass"
+	 * @param studentClassroom the studentClassroom to set
 	 */
-	public void setStudentClass(String studentClass) {
-		this.studentClass = studentClass;
+	public void setStudentClassroom(String studentClassroom) {
+		this.studentClassroom = studentClassroom;
 	}
 
+
+	/**
+	 * @return the numberOfElements
+	 */
+	public Integer getNumberOfElements() {
+		return numberOfElements;
+	}
+
+
+	/**
+	 * @param numberOfElements the numberOfElements to set
+	 */
+	public void setNumberOfElements(Integer numberOfElements) {
+		this.numberOfElements = numberOfElements;
+	}
+
+
+	/**
+	 * @param name
+	 * @param studentClass
+	 * @param description
+	 */
+	public Poster(String name, String studentClass, String description) {
+		this.name = name;
+		this.studentClassroom = studentClassroom;
+		this.description = description;
+	}
+
+	
+	
 }

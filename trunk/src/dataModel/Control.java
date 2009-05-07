@@ -1,5 +1,9 @@
 package dataModel;
 
+import java.awt.Polygon;
+
+import manager.Manager;
+
 
 public class Control extends Element {
 
@@ -7,24 +11,30 @@ public class Control extends Element {
 	 * @uml.property  name="manager"
 	 * @uml.associationEnd  multiplicity="(0 -1)" dimension="1" ordering="true" inverse="control:dataModel.Manager"
 	 */
-	private Manager[] managers = new dataModel.Manager[0];
+	private Manager manager;
 
+	public Control(String id, Manager manager) {
+		super(id);
+		this.manager=manager;
+	}
+	
 	/**
-	 * Getter of the property <tt>manager</tt>
-	 * @return  Returns the managers.
-	 * @uml.property  name="manager"
+	 * @param id
+	 * @param area
 	 */
-	public Manager[] getManager() {
-		return managers;
+	public Control(String id, Polygon area, Manager manager) {
+		super(id, area);
+		this.manager=manager;
+		
 	}
 
-	/**
-	 * Setter of the property <tt>manager</tt>
-	 * @param manager  The managers to set.
-	 * @uml.property  name="manager"
-	 */
-	public void setManager(Manager[] manager) {
-		managers = manager;
+
+
+
+	@Override
+	public void exec() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
