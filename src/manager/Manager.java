@@ -9,12 +9,31 @@ import dataModel.Paper;
  */
 public class Manager {
 
+	/** 
+	 * @uml.property name="managerDati"
+	 * @uml.associationEnd multiplicity="(1 1)" inverse="manager:manager.ManagerDati"
+	 */
+	private ManagerDati managerDati;
+
+	/** 
+	 * @uml.property name="managerCreazione"
+	 * @uml.associationEnd multiplicity="(1 1)" inverse="manager:manager.ManagerCreazione"
+	 */
+	private ManagerCreazione managerCreazione;
+
 	/**
 	 * @uml.property  name="poster"
 	 * @uml.associationEnd  inverse="manager:dataModel.Poster"
 	 * @uml.association  name="lastPaper"
 	 */
 	private Poster poster;
+
+	/**
+	 * @uml.property  name="lastPaper"
+	 * @uml.associationEnd  inverse="manager:dataModel.Paper"
+	 * @uml.association  name="currentPoster"
+	 */
+	private Paper lastPaper;
 
 	/**
 	 * Getter of the property <tt>poster</tt>
@@ -35,19 +54,12 @@ public class Manager {
 	}
 
 	/**
-	 * @uml.property  name="paper"
-	 * @uml.associationEnd  inverse="manager:dataModel.Paper"
-	 * @uml.association  name="currentPoster"
-	 */
-	private Paper paper;
-
-	/**
-	 * Getter of the property <tt>paper</tt>
-	 * @return  Returns the paper.
-	 * @uml.property  name="paper"
+	 * Getter of the property <tt>lastPaper</tt>
+	 * @return  Returns the last paper used.
+	 * @uml.property  name="lastPaper"
 	 */
 	public Paper getPaper() {
-		return paper;
+		return lastPaper;
 	}
 
 	/**
@@ -56,55 +68,10 @@ public class Manager {
 	 * @uml.property  name="paper"
 	 */
 	public void setPaper(Paper paper) {
-		this.paper = paper;
+		this.lastPaper = paper;
 	}
 
-	/** 
-	 * @uml.property name="managerDati"
-	 * @uml.associationEnd multiplicity="(1 1)" inverse="manager:manager.ManagerDati"
-	 */
-	private ManagerDati managerDati = new manager.ManagerDati();
 
-	/** 
-	 * Getter of the property <tt>managerDati</tt>
-	 * @return  Returns the managerDati.
-	 * @uml.property  name="managerDati"
-	 */
-	public ManagerDati getManagerDati() {
-		return managerDati;
-	}
 
-	/** 
-	 * Setter of the property <tt>managerDati</tt>
-	 * @param managerDati  The managerDati to set.
-	 * @uml.property  name="managerDati"
-	 */
-	public void setManagerDati(ManagerDati managerDati) {
-		this.managerDati = managerDati;
-	}
-
-	/** 
-	 * @uml.property name="managerCreazione"
-	 * @uml.associationEnd multiplicity="(1 1)" inverse="manager:manager.ManagerCreazione"
-	 */
-	private ManagerCreazione managerCreazione = new manager.ManagerCreazione();
-
-	/** 
-	 * Getter of the property <tt>managerCreazione</tt>
-	 * @return  Returns the managerCreazione.
-	 * @uml.property  name="managerCreazione"
-	 */
-	public ManagerCreazione getManagerCreazione() {
-		return managerCreazione;
-	}
-
-	/** 
-	 * Setter of the property <tt>managerCreazione</tt>
-	 * @param managerCreazione  The managerCreazione to set.
-	 * @uml.property  name="managerCreazione"
-	 */
-	public void setManagerCreazione(ManagerCreazione managerCreazione) {
-		this.managerCreazione = managerCreazione;
-	}
 
 }
