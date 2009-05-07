@@ -14,12 +14,9 @@ import dataModel.Poster;
 /**
  * @uml.dependency   supplier="manager.IManager"
  */
-public class ManagerCreazione {
+public abstract class ManagerCreazione {
 
-	/** 
-	 * @uml.property name="manager"
-	 * @uml.associationEnd multiplicity="(1 1)" inverse="managerCreazione:manager.Manager"
-	 */
+
 	private Manager manager;
 
 	public ManagerCreazione(Manager manager){
