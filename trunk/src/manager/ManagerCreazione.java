@@ -3,9 +3,6 @@ package manager;
 import java.awt.Polygon;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
-
 import dataModel.Element;
 import dataModel.Paper;
 import dataModel.Poster;
@@ -14,28 +11,15 @@ import dataModel.Poster;
 /**
  * @uml.dependency   supplier="manager.IManager"
  */
-public abstract class ManagerCreazione {
+public abstract class ManagerCreazione implements IManager{
 
 
-	private Manager manager;
+	protected Manager manager;
 
 	public ManagerCreazione(Manager manager){
 		this.manager=manager;
 	}
 	
-	public Poster createPoster(String name, String classe, String description){
-		return new Poster(name, classe, description);
-	}
-	
-	int addElemen(ArrayList<Point2D> points){
-		Polygon area = Utills.PolygonFromPoints(points);
-		Poster poster = manager.getPoster();
-		int id = poster.getNumberOfElements()+1;
-		Element element = new Element(id, area);
-		poster.addElement(element);
-		return id;
-
-	}
 	
 	void setElementArea(int id, ArrayList<Point2D> points){
 		Poster poster = manager.getPoster();
