@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="poster">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Name"></xs:element>
+				<xs:element name="Description"></xs:element>
+				<xs:element name="Classroom"></xs:element>
+				<xs:element name="Paper" type="paperType"></xs:element>
+				<xs:element name="Control"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+<xs:complexType name="paperType">
+		<xs:sequence>
+			<xs:element name="Files">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="FileURL" maxOccurs="10" minOccurs="0"></xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="Area" type="typeArea"></xs:element>
+			</xs:choice>
+			
+		</xs:sequence>
+	</xs:complexType>
+	
+<xs:complexType name="typeArea">
+	<xs:choice>
+		<xs:element name="Point" minOccurs="4" maxOccurs="10">
+			<xs:complexType>
+				<xs:attribute name="x"></xs:attribute>
+				<xs:attribute name="y"></xs:attribute>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="Grid">
+			<xs:complexType>
+				<xs:attribute name="row"></xs:attribute>
+				<xs:attribute name="coloumn"></xs:attribute>
+			</xs:complexType>
+		</xs:element>
+	</xs:choice>
+</xs:complexType>
+			
+	
+	
+</xs:schema>
