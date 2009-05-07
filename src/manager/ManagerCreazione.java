@@ -27,7 +27,7 @@ public class ManagerCreazione {
 		return new Poster(name, classe, description);
 	}
 	public void addElemen(ArrayList<Point2D> points){
-		Polygon area = utill.PolygonFromPoints(points);
+		Polygon area = Utills.PolygonFromPoints(points);
 		Poster poster = manager.getPoster();
 		Element element = new Element(((Integer)(poster.getNumberOfElements()+1)).toString(), area);
 	}
