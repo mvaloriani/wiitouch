@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>WiiTouchProject</name>
-	<comment></comment>
+	<comment>@key 32303038303431342D3130303020576969546F75636850726F6A6563742F6769756C696F70726573617A7A69 </comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -20,10 +20,16 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>com.soyatec.additional.Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>com.gentleware.uml2.reveng.RoundtripProject</nature>
 		<nature>com.gentleware.uml2.resource.xmi.indexedXmiNature</nature>
+		<nature>com.soyatec.additional.Nature</nature>
 	</natures>
 </projectDescription>
