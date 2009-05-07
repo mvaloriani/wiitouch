@@ -13,7 +13,7 @@ public class Control extends Element {
 	 */
 	private Manager manager;
 
-	public Control(String id, Manager manager) {
+	public Control(int id, Manager manager) {
 		super(id);
 		this.manager=manager;
 	}
@@ -22,7 +22,7 @@ public class Control extends Element {
 	 * @param id
 	 * @param area
 	 */
-	public Control(String id, Polygon area, Manager manager) {
+	public Control(int id, Polygon area, Manager manager) {
 		super(id, area);
 		this.manager=manager;
 		

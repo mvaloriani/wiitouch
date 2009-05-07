@@ -11,7 +11,7 @@ public class Element {
 	 * @uml.association  name="hasPoint"
 	 */
 	private Polygon area;
-	private String id;
+	private int id;
 
 	/**
 	 * Getter of the property <tt>area</tt>
@@ -31,17 +31,25 @@ public class Element {
 		this.area = area;
 	}
 
-		
+	
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+
 	/**
 	 * Constructor of the object
 	 * @param area  The area of element.
 	 */
-	public Element(String id, Polygon area){
+	public Element(int id, Polygon area){
 		this.id=id;
 		this.area=area;
 	}
 	
-	public Element(String id){
+	public Element(int id){
 		this.id=id;
 		area=null;
 	}

@@ -12,6 +12,7 @@ public class Paper extends Element {
 	 * @uml.property  name="pathsFiles"
 	 */
 	private ArrayList<String> pathsFiles;
+	
 	private int actualFile;
 	/**
 	 * Getter of the property <tt>pathsFiles</tt>
@@ -31,16 +32,20 @@ public class Paper extends Element {
 		this.pathsFiles = pathsFiles;
 	}
 	
-	public Paper(String id, ArrayList<String> filesList) {
+	public void removeAllPathFiles(){
+		pathsFiles.clear();
+	}
+	
+	public Paper(int id, ArrayList<String> filesList) {
 		super(id);
 		this.pathsFiles=filesList;	
 	}
 
-	public Paper(String id, Polygon area) {
+	public Paper(int id, Polygon area) {
 		super(id, area);
 	}
 	
-	public Paper(String id, Polygon area, ArrayList<String> filesList) {
+	public Paper(int id, Polygon area, ArrayList<String> filesList) {
 		super(id, area);
 		pathsFiles=filesList;
 	}
