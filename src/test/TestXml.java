@@ -26,12 +26,12 @@ public class TestXml {
 			Paper e1=new Paper(1,files);
 			Element e2=new Element(2);
 			
-			GridPoster p = new GridPoster("a","b","c",1,1);
+			GridPoster p = new GridPoster("a","b","c",2,2);
 			
 			
 			
-			p.addElement(e1,1,1);
-			p.addElement(e2,1,2);
+			p.addElement(e1,0,0);
+			p.addElement(e2,1,0);
 			
 			XStream xstream=new XStream();
 			xstream.processAnnotations(GridPoster.class);
