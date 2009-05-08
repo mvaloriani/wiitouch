@@ -174,15 +174,6 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="0e76debe-8779-4a1f-9d3f-15fc9d083d1d" name="Testcostruttore">
-      <ownedOperation xmi:type="uml:Operation" xmi:id="4d42911e-134d-4bd1-9f29-d81704be6c32" name="main" visibility="public" isStatic="true">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="a14a96b9-40c8-4893-a597-4867dd8f052b" name="args">
-          <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/lang/model.auml#lang.[C]String"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*"/>
-          <lowerValue xmi:type="uml:LiteralInteger"/>
-        </ownedParameter>
-      </ownedOperation>
-    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="037088ec-f7fd-4749-b169-67c12e7aa64e">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="dd56d73d-095a-41af-814c-0116a4844bcd" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://GW_JAVA_PROFILES/Java.profile.uml#_H_ZGcB5CEduWqeK3CXfnzA"/>
