@@ -9,7 +9,6 @@ import com.thoughtworks.xstream.XStream;
 import dataModel.Element;
 import dataModel.GridPoster;
 import dataModel.Paper;
-import dataModel.Poster;
 
 public class TestXml {
 

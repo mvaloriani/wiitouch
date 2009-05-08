@@ -3,7 +3,7 @@ package test;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-public class Testcostruttore {
+public class TestManagerCostruttore {
 
 	/**
 	 * @param args
