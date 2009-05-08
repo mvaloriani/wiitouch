@@ -2,6 +2,7 @@ package dataModel;
 
 import java.awt.Polygon;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
@@ -95,5 +96,6 @@ public abstract class Poster {
 	public abstract Integer getNumberOfElements();
 	public abstract Element getElement(int id);
 	public abstract Element getElement(Point2D point);
+	public abstract ArrayList<Integer> getIdList();
 	
 }
