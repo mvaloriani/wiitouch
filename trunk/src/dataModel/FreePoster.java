@@ -58,4 +58,12 @@ public class FreePoster extends Poster {
 	public Integer getNumberOfElements() {
 		return elementsList.size();
 	}
+	
+	public  ArrayList<Integer> getIdList(){
+		ArrayList<Integer> idList = new ArrayList<Integer>();
+		for(Element e:elementsList){
+			idList.add(e.getId());
+		}
+		return idList;
+	}
 }

@@ -5,6 +5,7 @@ package dataModel;
 
 import java.awt.Point;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -88,24 +89,18 @@ public class GridPoster extends Poster {
 
 	@Override
 	public Element getElement(int id) {
-		for(int i=0;i<row;i++){
-			for(int j=0;j<col;j++){
-				Element tempE = elementMap.get(new Point(i,j));
-				if (tempE!=null)
-					return tempE;
-			}
+		for(Element e: elementMap.values()){
+			if (e.getId()==id)
+				return e;
 		}
 		return null;
 	}
 
 	@Override
 	public Element getElement(Point2D point) {
-		for(int i=0;i<row;i++){
-			for(int j=0;j<col;j++){
-				Element tempE = elementMap.get(new Point(i,j));
-				if ((tempE!=null)&&(tempE.getArea().contains(point)))
-					return tempE;
-			}
+		for(Element e: elementMap.values()){
+				if (e.getArea().contains(point))
+					return e;
 		}
 		return null;
 	}
@@ -117,8 +112,8 @@ public class GridPoster extends Poster {
 	
 	@Override
 	public void removeElement(int id) {
-		// TODO Auto-generated method stub
-		
+		Point p =getPointFromId(id);
+		elementMap.remove(p);
 	}
 
 	public void removeElement(int row, int col){
@@ -131,4 +126,27 @@ public class GridPoster extends Poster {
 		return elementMap.size();
 	}
 
+	public  ArrayList<Integer> getIdList(){
+		ArrayList<Integer> idList = new ArrayList<Integer>();
+		for(Element e:elementMap.values()){
+			idList.add(e.getId());
+		}
+		return idList;
+		
+	}
+
+	public Integer getIdFromPoint(int x, int y){
+		return elementMap.get(new Point(row,col)).getId();
+	}
+
+	public Point getPointFromId(int id){
+		for(int r=0;r<this.col; r++){
+			for(int c=0;c<this.col;c++){
+				Point p=new Point(r,c);
+				if((elementMap.get(p)!=null)&&(elementMap.get(p).getId()==id))
+					return p;
+			}
+		}
+		return null;
+	}
 }
