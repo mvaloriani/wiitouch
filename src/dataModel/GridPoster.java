@@ -9,19 +9,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 /**
  * @author Matteo,Giulio
  *
  */
-@XStreamAlias("Poster")
+@XStreamAlias("PosterAGriglia")
 public class GridPoster extends Poster {
 	@XStreamAlias("Row")
 	private int row;
 	@XStreamAlias("Coloumn")
 	private int col;
 	
+	//@XStreamImplicit(itemFieldName="part")
+	@XStreamAlias("Elementi")
 	private HashMap<Point, Element> elementMap;
+	@XStreamOmitField
 	private HashMap<Integer, Point> idMap;
 	
 		/**
@@ -134,4 +138,5 @@ public class GridPoster extends Poster {
 	public void removeElement(int row, int col){
 		removeElement(getElement(row, col).getId());
 	}
+
 }

@@ -7,17 +7,14 @@ import java.util.ArrayList;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 
-@XStreamAlias("Poster")
 
-public abstract class Poster {
-
+public abstract class Poster{
 	
 	private Polygon area;
 	@XStreamAlias("Name")
 	private String name = "";
 	@XStreamAlias("Description")
 	private String description = "";	
-
 	@XStreamAlias("Classroom")
 	private String studentClassroom = "";
 
@@ -90,7 +87,7 @@ public abstract class Poster {
 		this.description = description;
 	}
 
-
+	
 	public abstract void removeElement(int id);
 	public abstract Integer getNumberOfElements();
 	public abstract Element getElement(int id);
