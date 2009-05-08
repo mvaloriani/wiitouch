@@ -8,6 +8,7 @@ import java.awt.geom.Area;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
+import dataModel.Element;
 import dataModel.GridPoster;
 import dataModel.Poster;
 
@@ -24,6 +25,12 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		GridPoster poster = (GridPoster)manager.getPoster();
 		poster.setCol(col);
 		poster.setRow(row);
+		for(int i=0;i<row;i++){
+			for(int j=0;j<col;j++){
+				if(poster.getElement(i, j)!=null)
+					setElementArea(i, j);
+			}
+		}
 		
 	}
 	
@@ -45,6 +52,10 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		pointList.add(new Point2D.Double(col*widthCell,(row+1)*heightCell));
 		Polygon area = Utills.PolygonFromPoints(pointList);
 		
-		poster.getElement(row, col).setArea(area);
+		Element e = poster.getElement(row, col);
+		if (e==null)
+			e=new Element(poster.getNumberOfElements()+1,area);
+		else
+			e.setArea(area);
 	}
 }
