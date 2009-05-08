@@ -20,7 +20,6 @@ public abstract class ManagerCreazione implements IManager{
 		this.manager=manager;
 	}
 	
-	
 	void setElementArea(int id, ArrayList<Point2D> points){
 		Poster poster = manager.getPoster();
 		Element e = poster.getElement(id);
