@@ -1,6 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" id="dataModel" metadata="uml2-1.0" tag="1000" key="32303038303431342D3130303020576969546F75636850726F6A6563742F6769756C696F70726573617A7A69">
-  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=7;Product=eUML2" autoName="false"/>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="884,866" id="dataModel" metadata="uml2-1.0" initialized="true" scrolledX="7" scrolledY="120" tag="1000" key="32303037303533312D3130303020576969546F75636850726F6A6563742F4D617474656F">
+  <children xsi:type="editmodel:ClassEditModel" name="Paper" location="633,239" size="181,175" id="dataModel/Paper" runTimeClassModel="exec(),Paper(ILjava.awt.Polygon;Ljava.util.ArrayList;),actualFile,pathsFiles,Paper(ILjava.util.ArrayList;),Paper(ILjava.awt.Polygon;),removeAllPathFiles()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="158,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="actualFile" id="dataModel/Paper#actualFile"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="pathsFiles" id="dataModel/Paper#pathsFiles"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="121,90">
+      <children xsi:type="editmodel:MethodEditModel" name="Paper" id="dataModel/Paper#Paper(ILjava.util.ArrayList;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Paper" id="dataModel/Paper#Paper(ILjava.awt.Polygon;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Paper" id="dataModel/Paper#Paper(ILjava.awt.Polygon;Ljava.util.ArrayList;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="exec" id="dataModel/Paper#exec()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeAllPathFiles" id="dataModel/Paper#removeAllPathFiles()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="dataModel/Element&lt;-dataModel/Paper" source="//@children.0" target="//@children.2/@sourceConnections.0" targetEnd="//@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.0/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="90,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.0" name="Element" location="615,30" size="108,157" id="dataModel/Element" runTimeClassModel="exec(),id,area,getId(),Element(ILjava.awt.Polygon;),Element(I)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="85,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="area" id="dataModel/Element#area"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="id" id="dataModel/Element#id"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="67,72">
+      <children xsi:type="editmodel:MethodEditModel" name="Element" id="dataModel/Element#Element(ILjava.awt.Polygon;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Element" id="dataModel/Element#Element(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="exec" id="dataModel/Element#exec()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getId" id="dataModel/Element#getId()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Control" location="515,239" size="163,121" id="dataModel/Control" runTimeClassModel="exec(),manager,Control(ILjava.awt.Polygon;Lmanager.Manager;),Control(ILmanager.Manager;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="140,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="manager" id="dataModel/Control#manager"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="64,54">
+      <children xsi:type="editmodel:MethodEditModel" name="Control" id="dataModel/Control#Control(ILmanager.Manager;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Control" id="dataModel/Control#Control(ILjava.awt.Polygon;Lmanager.Manager;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="exec" id="dataModel/Control#exec()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.0/@sourceConnections.0" autoLocated="true" id="dataModel/Element&lt;-dataModel/Control" source="//@children.2" target="//@children.1" targetEnd="//@children.2/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="81,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="53,157" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.0" name="Poster" location="159,50" size="163,373" id="dataModel/Poster">
+    <children xsi:type="editmodel:CompartmentEditModel" size="140,72">
+      <children xsi:type="editmodel:AttributeEditModel" name="area" id="dataModel/Poster#area"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="description" id="dataModel/Poster#description"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="name" id="dataModel/Poster#name"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="studentClassroom" id="dataModel/Poster#studentClassroom"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="137,252">
+      <children xsi:type="editmodel:MethodEditModel" name="Poster" id="dataModel/Poster#Poster(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getArea" id="dataModel/Poster#getArea()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDescription" id="dataModel/Poster#getDescription()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getElement" id="dataModel/Poster#getElement(Ljava.awt.geom.Point2D;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getElement" id="dataModel/Poster#getElement(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getIdList" id="dataModel/Poster#getIdList()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getName" id="dataModel/Poster#getName()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNumberOfElements" id="dataModel/Poster#getNumberOfElements()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getStudentClassroom" id="dataModel/Poster#getStudentClassroom()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeElement" id="dataModel/Poster#removeElement(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setArea" id="dataModel/Poster#setArea(Ljava.awt.Polygon;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setDescription" id="dataModel/Poster#setDescription(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setName" id="dataModel/Poster#setName(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setStudentClassroom" id="dataModel/Poster#setStudentClassroom(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="GridPoster" location="240,473" size="225,373" id="dataModel/GridPoster">
+    <children xsi:type="editmodel:CompartmentEditModel" size="202,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="col" id="dataModel/GridPoster#col"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="element" id="dataModel/GridPoster#element"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="row" id="dataModel/GridPoster#row"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="137,270">
+      <children xsi:type="editmodel:MethodEditModel" name="GridPoster" id="dataModel/GridPoster#GridPoster(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addElement" id="dataModel/GridPoster#addElement(LdataModel.Element;II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getCol" id="dataModel/GridPoster#getCol()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getElement" id="dataModel/GridPoster#getElement(Ljava.awt.geom.Point2D;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getElement" id="dataModel/GridPoster#getElement(II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getElement" id="dataModel/GridPoster#getElement(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getIdFromPoint" id="dataModel/GridPoster#getIdFromPoint(II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getIdList" id="dataModel/GridPoster#getIdList()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNumberOfElements" id="dataModel/GridPoster#getNumberOfElements()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPointFromId" id="dataModel/GridPoster#getPointFromId(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getRow" id="dataModel/GridPoster#getRow()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeElement" id="dataModel/GridPoster#removeElement(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeElement" id="dataModel/GridPoster#removeElement(II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setCol" id="dataModel/GridPoster#setCol(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setRow" id="dataModel/GridPoster#setRow(I)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="dataModel/Poster&lt;-dataModel/GridPoster" source="//@children.4" target="//@children.5/@sourceConnections.0" targetEnd="//@children.4/@sourceConnections.0/@children.1" sourceEnd="//@children.4/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="112,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="FreePoster" location="50,473" size="201,193" id="dataModel/FreePoster" runTimeClassModel="getNumberOfElements(),FreePoster(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;),elementsList,removeElement(I),getElement(I),getElement(Ljava.awt.geom.Point2D;),addElement(LdataModel.Element;),getIdList()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="178,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="elementsList" id="dataModel/FreePoster#elementsList"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="137,126">
+      <children xsi:type="editmodel:MethodEditModel" name="FreePoster" id="dataModel/FreePoster#FreePoster(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addElement" id="dataModel/FreePoster#addElement(LdataModel.Element;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getElement" id="dataModel/FreePoster#getElement(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getElement" id="dataModel/FreePoster#getElement(Ljava.awt.geom.Point2D;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getIdList" id="dataModel/FreePoster#getIdList()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNumberOfElements" id="dataModel/FreePoster#getNumberOfElements()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeElement" id="dataModel/FreePoster#removeElement(I)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.4/@sourceConnections.0" autoLocated="true" id="dataModel/Poster&lt;-dataModel/FreePoster" source="//@children.5" target="//@children.3" targetEnd="//@children.5/@sourceConnections.0/@children.1" sourceEnd="//@children.5/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="100,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="81,373" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showPublicAttributes="true" showPublicMethods="true" showPrivateMethods="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" level="-1" showScope="InPackage" properties="wireOptions=1;Product=eUML2"/>
   <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
     <leftRuler/>
     <topRuler/>
