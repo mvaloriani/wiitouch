@@ -11,9 +11,6 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 @XStreamAlias("Paper")
 public class Paper extends Element {
 
-	/**
-	 * @uml.property  name="pathsFiles"
-	 */
 	@XStreamImplicit(itemFieldName="URL")
 	private ArrayList<String> pathsFiles;
 	
