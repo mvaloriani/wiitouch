@@ -68,23 +68,21 @@ public class GridPoster extends Poster {
 			this.col=col;
 	}
 
-	/**
-	 * @param name
-	 * @param studentClassroom
-	 * @param description
-	 */
-	public GridPoster(String name, String studentClassroom, String description,
-			int row, int col) {
-		super(name, studentClassroom, description);
-		this.row=row;
-		this.col=col;
-		elementMap=new HashMap<Point, Element>();
+	@Override
+	public Integer getNumberOfElements() {
+		return elementMap.size();
 	}
 
-	public void addElement(Element element, int row, int col) {
-		if((row<this.row)&&(row>=0)&&(col<this.col)&&(col>=0)){
-			elementMap.put(new Point(row,col), element);
-		}
+	public  ArrayList<Integer> getIdList(){
+		return new ArrayList<Integer>(idMap.keySet());		
+	}
+
+	public Integer getIdFromPoint(int x, int y){
+		return elementMap.get(new Point(row,col)).getId();
+	}
+
+	public Point getPointFromId(int id){
+		return idMap.get(id);
 	}
 
 	@Override
@@ -104,33 +102,36 @@ public class GridPoster extends Poster {
 	public Element getElement(int row, int col){
 		return elementMap.get(new Point(row,col));
 	}
-	
-	
+
+	/**
+	 * @param name
+	 * @param studentClassroom
+	 * @param description
+	 */
+	public GridPoster(String name, String studentClassroom, String description,
+			int row, int col) {
+		super(name, studentClassroom, description);
+		this.row=row;
+		this.col=col;
+		elementMap=new HashMap<Point, Element>();
+		idMap=new HashMap<Integer, Point>();
+	}
+
+	public void addElement(Element element, int row, int col) {
+		if((row<this.row)&&(row>=0)&&(col<this.col)&&(col>=0)){
+			elementMap.put(new Point(row,col), element);
+			idMap.put(element.getId(), new Point(row,col));
+		}
+	}
+
 	@Override
 	public void removeElement(int id) {
 		Point p =getPointFromId(id);
 		elementMap.remove(p);
+		idMap.remove(id);
 	}
 
 	public void removeElement(int row, int col){
-		elementMap.remove(new Point(row,col));
-	}	
-	
-	
-	@Override
-	public Integer getNumberOfElements() {
-		return elementMap.size();
-	}
-
-	public  ArrayList<Integer> getIdList(){
-		return new ArrayList<Integer>(idMap.keySet());		
-	}
-
-	public Integer getIdFromPoint(int x, int y){
-		return elementMap.get(new Point(row,col)).getId();
-	}
-
-	public Point getPointFromId(int id){
-		return idMap.get(id);
+		removeElement(getElement(row, col).getId());
 	}
 }

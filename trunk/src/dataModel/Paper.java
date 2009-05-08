@@ -2,8 +2,6 @@ package dataModel;
 
 import java.awt.Polygon;
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
