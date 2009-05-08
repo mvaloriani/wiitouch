@@ -22,6 +22,7 @@ public class GridPoster extends Poster {
 	private int col;
 	
 	private HashMap<Point, Element> elementMap;
+	private HashMap<Integer, Point> idMap;
 	
 		/**
 	 * @return the row
@@ -80,7 +81,6 @@ public class GridPoster extends Poster {
 		elementMap=new HashMap<Point, Element>();
 	}
 
-
 	public void addElement(Element element, int row, int col) {
 		if((row<this.row)&&(row>=0)&&(col<this.col)&&(col>=0)){
 			elementMap.put(new Point(row,col), element);
@@ -89,11 +89,7 @@ public class GridPoster extends Poster {
 
 	@Override
 	public Element getElement(int id) {
-		for(Element e: elementMap.values()){
-			if (e.getId()==id)
-				return e;
-		}
-		return null;
+		return elementMap.get(idMap.get(id));
 	}
 
 	@Override
@@ -127,12 +123,7 @@ public class GridPoster extends Poster {
 	}
 
 	public  ArrayList<Integer> getIdList(){
-		ArrayList<Integer> idList = new ArrayList<Integer>();
-		for(Element e:elementMap.values()){
-			idList.add(e.getId());
-		}
-		return idList;
-		
+		return new ArrayList<Integer>(idMap.keySet());		
 	}
 
 	public Integer getIdFromPoint(int x, int y){
@@ -140,13 +131,6 @@ public class GridPoster extends Poster {
 	}
 
 	public Point getPointFromId(int id){
-		for(int r=0;r<this.col; r++){
-			for(int c=0;c<this.col;c++){
-				Point p=new Point(r,c);
-				if((elementMap.get(p)!=null)&&(elementMap.get(p).getId()==id))
-					return p;
-			}
-		}
-		return null;
+		return idMap.get(id);
 	}
 }

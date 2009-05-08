@@ -45,6 +45,7 @@ public class FreePoster extends Poster {
 		}
 		return null;
 	}
+	
 	public Element getElement(Point2D point){
 		for(Element e :elementsList){
 			if (e.getArea().contains(point))
@@ -52,6 +53,7 @@ public class FreePoster extends Poster {
 		}
 		return null;
 	}
+	
 	/**
 	 * @return the numberOfElements
 	 */
@@ -66,4 +68,5 @@ public class FreePoster extends Poster {
 		}
 		return idList;
 	}
+
 }
