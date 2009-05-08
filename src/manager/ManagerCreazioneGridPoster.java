@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import dataModel.Element;
 import dataModel.GridPoster;
+import dataModel.Paper;
 import dataModel.Poster;
 
 
@@ -57,16 +58,14 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 			e.setArea(area);
 	}
 
-
-
-	public void setPaperFiles(int row, int col, ArrayList<String> Files) {
+	public void setPaperFiles(int row, int col, ArrayList<String> files) {
 		GridPoster poster = (GridPoster) manager.getPoster();
 		Element e = poster.getElement(row,col);
 		if(e==null){
 			setElementArea(row, col);
 			e = poster.getElement(row, col);
 		}
-		
+		((Paper)e).setPathsFiles(files);
 	}
 
 	
