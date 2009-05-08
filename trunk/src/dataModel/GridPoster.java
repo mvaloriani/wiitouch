@@ -7,14 +7,19 @@ import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.util.HashMap;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 /**
- * @author Matteo
+ * @author Matteo,Giulio
  *
  */
+@XStreamAlias("Poster")
 public class GridPoster extends Poster {
-
+	@XStreamAlias("Row")
 	private int row;
+	@XStreamAlias("Coloumn")
 	private int col;
+	
 	private HashMap<Point, Element> elementMap;
 	
 		/**
