@@ -1,10 +1,8 @@
 package manager;
 
 import java.awt.Dimension;
-import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.Toolkit;
-import java.awt.geom.Area;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
@@ -58,4 +56,18 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		else
 			e.setArea(area);
 	}
+
+
+
+	public void setPaperFiles(int row, int col, ArrayList<String> Files) {
+		GridPoster poster = (GridPoster) manager.getPoster();
+		Element e = poster.getElement(row,col);
+		if(e==null){
+			setElementArea(row, col);
+			e = poster.getElement(row, col);
+		}
+		
+	}
+
+	
 }

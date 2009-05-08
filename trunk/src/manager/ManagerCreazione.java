@@ -36,7 +36,7 @@ public abstract class ManagerCreazione implements IManager{
 	public void setPaperFiles(int id, ArrayList<String> Files){
 		Poster poster = manager.getPoster();
 		Element e = poster.getElement(id);
-		if (e instanceof Paper){
+		if (e!=null){
 			((Paper) e).setPathsFiles(Files);
 		}
 	}
