@@ -2,8 +2,10 @@ package dataModel;
 
 import java.awt.Polygon;
 import java.util.ArrayList;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 
 @XStreamAlias("Paper")
@@ -11,7 +13,7 @@ public class Paper extends Element {
 
 	@XStreamImplicit(itemFieldName="URL")
 	private ArrayList<String> pathsFiles;
-	
+	@XStreamOmitField
 	private int actualFile;
 	/**
 	 * Getter of the property <tt>pathsFiles</tt>

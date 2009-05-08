@@ -7,6 +7,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 
 /**
@@ -16,7 +17,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("FreePoster")
 public class FreePoster extends Poster {
 
-	
+	@XStreamOmitField
 	private ArrayList<Element> elementsList;
 	
 	/**
@@ -65,6 +66,11 @@ public class FreePoster extends Poster {
 	public Integer getNumberOfElements() {
 		return elementsList.size();
 	}
+
+
+
+
+
 	
 	public  ArrayList<Integer> getIdList(){
 		ArrayList<Integer> idList = new ArrayList<Integer>();
@@ -73,5 +79,6 @@ public class FreePoster extends Poster {
 		}
 		return idList;
 	}
+
 
 }
