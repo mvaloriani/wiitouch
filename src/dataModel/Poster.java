@@ -3,14 +3,24 @@ package dataModel;
 import java.awt.Polygon;
 import java.awt.geom.Point2D;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
+
+@XStreamAlias("Poster")
 
 public abstract class Poster {
 
+	
 	private Polygon area;
+	@XStreamAlias("Name")
 	private String name = "";
-
+	@XStreamAlias("Description")
 	private String description = "";	
+
+	@XStreamAlias("Classroom")
 	private String studentClassroom = "";
+
 
 		
 	/**

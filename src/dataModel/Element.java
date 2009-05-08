@@ -2,7 +2,9 @@ package dataModel;
 
 import java.awt.Polygon;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 
+@XStreamAlias("Element")
 public class Element {
 
 	/**
@@ -10,6 +12,7 @@ public class Element {
 	 * @uml.associationEnd  inverse="element:dataModel.Area"
 	 * @uml.association  name="hasPoint"
 	 */
+	@XStreamAlias("Area")
 	private Polygon area;
 	private int id;
 

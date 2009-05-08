@@ -4,13 +4,17 @@ import java.awt.Polygon;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 
+@XStreamAlias("Paper")
 public class Paper extends Element {
 
 	/**
 	 * @uml.property  name="pathsFiles"
 	 */
+	@XStreamImplicit(itemFieldName="URL")
 	private ArrayList<String> pathsFiles;
 	
 	private int actualFile;

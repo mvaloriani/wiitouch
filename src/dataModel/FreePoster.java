@@ -6,11 +6,14 @@ package dataModel;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 
 /**
- * @author Matteo
+ * @author Matteo,Giulio
  *
  */
+@XStreamAlias("FreePoster")
 public class FreePoster extends Poster {
 
 	
