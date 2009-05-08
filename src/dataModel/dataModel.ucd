@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="884,866" id="dataModel" metadata="uml2-1.0" initialized="true" scrolledY="63" tag="1000" key="32303037303533312D3130303020576969546F75636850726F6A6563742F4D617474656F">
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="884,866" id="dataModel" metadata="uml2-1.0" initialized="true" scrolledY="78" tag="1000" key="32303037303533312D3130303020576969546F75636850726F6A6563742F4D617474656F">
   <children xsi:type="editmodel:ClassEditModel" name="Paper" location="633,239" size="181,175" id="dataModel/Paper" runTimeClassModel="exec(),Paper(ILjava.awt.Polygon;Ljava.util.ArrayList;),actualFile,pathsFiles,Paper(ILjava.util.ArrayList;),Paper(ILjava.awt.Polygon;),removeAllPathFiles()">
     <children xsi:type="editmodel:CompartmentEditModel" size="158,36">
       <children xsi:type="editmodel:AttributeEditModel" name="actualFile" id="dataModel/Paper#actualFile"/>
@@ -59,7 +59,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="137,252">
       <children xsi:type="editmodel:MethodEditModel" name="Poster" id="dataModel/Poster#Poster(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="getArea" id="dataModel/Poster#getArea()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="getDescription" id="dataModel/Poster#getDescription()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDescription" location="15,190" id="dataModel/Poster#getDescription()"/>
       <children xsi:type="editmodel:MethodEditModel" name="getElement" id="dataModel/Poster#getElement(Ljava.awt.geom.Point2D;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="getElement" id="dataModel/Poster#getElement(I)"/>
       <children xsi:type="editmodel:MethodEditModel" name="getIdList" id="dataModel/Poster#getIdList()"/>

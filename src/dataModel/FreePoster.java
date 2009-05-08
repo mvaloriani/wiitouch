@@ -35,7 +35,12 @@ public class FreePoster extends Poster {
 	}
 	
 	public void removeElement(int id){
-		this.elementsList.remove(id);
+		for(Element e :elementsList){
+			if (e.getId()==id){
+				elementsList.remove(e);
+				break;
+			}
+		}
 	}
 	
 	public Element getElement(int id){
