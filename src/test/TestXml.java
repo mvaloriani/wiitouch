@@ -1,13 +1,13 @@
 package test;
 
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import com.thoughtworks.xstream.XStream;
 
 import dataModel.Element;
+import dataModel.GridPoster;
 import dataModel.Paper;
 import dataModel.Poster;
 
@@ -26,15 +26,15 @@ public class TestXml {
 			Paper e1=new Paper(1,files);
 			Element e2=new Element(2);
 			
-			Poster p = new Poster("a","b","c");
+			GridPoster p = new GridPoster("a","b","c",1,1);
 			
 			
 			
-			p.addElement(e1);
-			p.addElement(e2);
+			p.addElement(e1,1,1);
+			p.addElement(e2,1,2);
 			
 			XStream xstream=new XStream();
-			xstream.processAnnotations(Poster.class);
+			xstream.processAnnotations(GridPoster.class);
 			xstream.processAnnotations(Element.class);
 			xstream.processAnnotations(Paper.class);
 			xstream.aliasField("FilesURI", Paper.class, "pathsFiles");
