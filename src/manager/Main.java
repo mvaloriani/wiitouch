@@ -10,6 +10,8 @@ public class Main {
 	public static void main(String[] args) {
 		Manager manager = new Manager();
 		ManagerDati managerDati=new ManagerDati();
+		manager.setManagerDati(managerDati);
+		
 		IManager iManager;
 		
 		

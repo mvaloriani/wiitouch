@@ -50,13 +50,13 @@ public class TestXml {
 			xstream.aliasField("FilesURI", Paper.class, "pathsFiles");
 			
 			//SALVATAGGIO DEL OGGETTO p SU UN FILE XML
-			PrintStream MyOutput = new PrintStream(new FileOutputStream(System.getProperty("user.dir")+"/bin/xmlSample/original.xml"));
+			PrintStream MyOutput = new PrintStream(new FileOutputStream("./original.xml"));
 			MyOutput.print(xstream.toXML(p));
 			System.out.println("File Salvato Correnttamente");
 			
 			//PROVO AD APRIRE IL FILE E LO LEGGO
-			System.out.println("Apertura :"+System.getProperty("user.dir")+"/bin/xmlSample/original.xml");
-			FileInputStream fis = new FileInputStream(System.getProperty("user.dir").toString()+"/bin/xmlSample/original.xml"); 
+			System.out.println("Apertura :./original.xml");
+			FileInputStream fis = new FileInputStream("./original.xml"); 
 			//CONVERSIONE DEL FILE IN OGGETTO
 			GridPoster newJoe = (GridPoster)xstream.fromXML(fis);
 			System.out.println("//////////////////////");
