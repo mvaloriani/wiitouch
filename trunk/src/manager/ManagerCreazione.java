@@ -11,8 +11,16 @@ public abstract class ManagerCreazione implements IManager{
 
 	protected Manager manager;
 
-	public ManagerCreazione(Manager manager){
-		this.manager=manager;
+	public ManagerCreazione(){
+		this.manager=null;
+	}
+	
+	public ManagerCreazione(Manager m) {
+		this.manager=m;
+	}
+
+	public void setManager(Manager m){
+		this.manager=m;
 	}
 	
 

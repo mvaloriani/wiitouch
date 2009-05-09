@@ -34,6 +34,34 @@ public class Manager {
 	}
 
 	/**
+	 * @return the managerDati
+	 */
+	public ManagerDati getManagerDati() {
+		return managerDati;
+	}
+
+	/**
+	 * @param managerDati the managerDati to set
+	 */
+	public void setManagerDati(ManagerDati managerDati) {
+		this.managerDati = managerDati;
+	}
+
+	/**
+	 * @return the managerCreazione
+	 */
+	public ManagerCreazione getManagerCreazione() {
+		return managerCreazione;
+	}
+
+	/**
+	 * @param managerCreazione the managerCreazione to set
+	 */
+	public void setManagerCreazione(ManagerCreazione managerCreazione) {
+		this.managerCreazione = managerCreazione;
+	}
+
+	/**
 	 * @param managerDati
 	 * @param managerCreazione
 	 * @param poster
