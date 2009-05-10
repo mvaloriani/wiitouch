@@ -64,8 +64,7 @@ public class Manager implements IManager {
 		poster = ((ManagerCreazioneFreePoster)managerCreazione).createFreePoster(name, classe,
 				description);
 	}
-	
-	
+		
 	@Override
 	public Integer addControllFP(ArrayList<Point2D> points) throws PosterTypeEx {
 		if(poster instanceof FreePoster)
@@ -93,7 +92,7 @@ public class Manager implements IManager {
 	}
 	
 	@Override
-	public Integer addControlGP(int row, int col) throws PosterTypeEx{
+	public Integer addControlGP(int row, int col) throws PosterTypeEx, PositionEX{
 		if(poster instanceof GridPoster)
 			return ((ManagerCreazioneGridPoster)managerCreazione).addControl((GridPoster)poster, row, col);
 		else
@@ -101,7 +100,7 @@ public class Manager implements IManager {
 	}
 
 	@Override
-	public Integer addPaperGP(int row, int col, ArrayList<String> files) throws PosterTypeEx{
+	public Integer addPaperGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX{
 		if(poster instanceof GridPoster)
 			return ((ManagerCreazioneGridPoster)managerCreazione).addPaper((GridPoster)poster,
 					row, col, files);
@@ -110,7 +109,7 @@ public class Manager implements IManager {
 	}
 
 	@Override
-	public void setPaperFilesGP(int row, int col, ArrayList<String> files) throws PosterTypeEx{
+	public void setPaperFilesGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX{
 		if(poster instanceof GridPoster)
 			((ManagerCreazioneGridPoster)managerCreazione).setPaperFiles((GridPoster)poster, row, col, files);
 		else
@@ -118,7 +117,7 @@ public class Manager implements IManager {
 	}
 
 	@Override
-	public void changeCellsNumerdGP(int row, int col) throws PosterTypeEx {
+	public void changeCellsNumerdGP(int row, int col) throws PosterTypeEx, PositionEX {
 		if(poster instanceof GridPoster)
 			((ManagerCreazioneGridPoster)managerCreazione).changeCellsNumerd((GridPoster)poster, row, col);
 		else
@@ -128,12 +127,12 @@ public class Manager implements IManager {
 	// Common methods
 	
 	@Override
-	public void setPaperFiles(int id, ArrayList<String> Files) {
+	public void setPaperFiles(int id, ArrayList<String> Files) throws PositionEX {
 		managerCreazione.setPaperFiles(poster, id, Files);
 	}
 
 	@Override
-	public void removeElement(int id) {
+	public void removeElement(int id) throws PositionEX {
 		managerCreazione.removeElement(poster, id);		
 	}
 	

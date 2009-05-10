@@ -16,7 +16,7 @@ import dataModel.Poster;
 
 public class ManagerCreazioneGridPoster extends ManagerCreazione {
 	
-	private void setElementArea(GridPoster poster, int row, int col){
+	private void setElementArea(GridPoster poster, int row, int col) throws PositionEX{
 	
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		
@@ -35,7 +35,7 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 			e.setArea(area);
 	}
 
-	private Integer addElement(GridPoster poster,int row, int col, String type){
+	private Integer addElement(GridPoster poster,int row, int col, String type) throws PositionEX{
 		Element element;
 		if (type.equalsIgnoreCase("PAPER"))
 			element=new Paper(poster.getNumberOfElements()+1, new ArrayList<String>());
@@ -54,7 +54,7 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		return new GridPoster(name, classe, description, row, col);
 	}
 
-	public void changeCellsNumerd(GridPoster poster, int row, int col){
+	public void changeCellsNumerd(GridPoster poster, int row, int col) throws PositionEX{
 		poster.setCol(col);
 		poster.setRow(row);
 		for(int i=0;i<row;i++){
@@ -66,19 +66,19 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		
 	}
 	
-	public Integer addPaper(GridPoster poster, int row, int col, ArrayList<String> files){
+	public Integer addPaper(GridPoster poster, int row, int col, ArrayList<String> files) throws PositionEX{
 		int id= addElement(poster, row, col, "PAPER");
 		setPaperFiles(poster, id, files);
 		setElementArea(poster, row, col);
 		return id;
 	}
 
-	public void setPaperFiles(GridPoster poster, int row, int col, ArrayList<String> files) {
+	public void setPaperFiles(GridPoster poster, int row, int col, ArrayList<String> files) throws PositionEX {
 		setPaperFiles(poster, poster.getIdFromPoint(row, col),files);
 	}
 		
 	@Override
-	public void setPaperFiles(Poster poster,int id, ArrayList<String> files) {
+	public void setPaperFiles(Poster poster,int id, ArrayList<String> files) throws PositionEX {
 		Element e = poster.getElement(id);
 		if(e instanceof Paper){
 			((Paper) e).setPathsFiles(files);
@@ -86,7 +86,7 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		
 	}
 	
-	public Integer addControl(GridPoster poster,int row, int col){
+	public Integer addControl(GridPoster poster,int row, int col) throws PositionEX{
 		int id= addElement(poster, row, col, "CONTROL");
 		setElementArea(poster, row, col);
 		return id;

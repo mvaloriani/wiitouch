@@ -17,14 +17,14 @@ public interface IManager {
 	// GridPoster methods
 	public void createGridPoster(String name, String classe, String description,
 			int row, int col);
-	public Integer addControlGP(int row, int col) throws PosterTypeEx;
-	public Integer addPaperGP(int row, int col, ArrayList<String> files) throws PosterTypeEx;
-	public void changeCellsNumerdGP(int row, int col) throws PosterTypeEx;
-	public void setPaperFilesGP(int row, int col, ArrayList<String> files) throws PosterTypeEx;
+	public Integer addControlGP(int row, int col) throws PosterTypeEx, PositionEX;
+	public Integer addPaperGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX;
+	public void changeCellsNumerdGP(int row, int col) throws PosterTypeEx, PositionEX;
+	public void setPaperFilesGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX;
 	
 	// Common methods
-	public void setPaperFiles(int id, ArrayList<String> Files);
-	public void removeElement(int id);
+	public void setPaperFiles(int id, ArrayList<String> Files) throws PositionEX;
+	public void removeElement(int id) throws PositionEX;
 	
 	//Store&Load methods
 	

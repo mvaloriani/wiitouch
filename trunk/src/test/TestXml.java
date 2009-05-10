@@ -9,6 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+import manager.PositionEX;
+
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
@@ -23,8 +25,9 @@ public class TestXml {
 	 * @throws MalformedURLException 
 	 * @throws URISyntaxException 
 	 * @throws FileNotFoundException 
+	 * @throws PositionEX 
 	 */
-	public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
+	public static void main(String[] args) throws URISyntaxException, FileNotFoundException, PositionEX {
 		// TODO Auto-generated method stub
 			ArrayList<String> files = new ArrayList<String>(); 
 			files.add("/path1/path2/a.jpg");
