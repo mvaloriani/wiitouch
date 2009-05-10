@@ -12,9 +12,8 @@ import dataModel.Poster;
 
 public class ManagerCreazioneFreePoster extends ManagerCreazione {
 
-	private int addElemen(ArrayList<Point2D> points, String type){
+	private Integer addElemen(FreePoster poster, ArrayList<Point2D> points, String type){
 		Polygon area = Utills.PolygonFromPoints(points);
-		FreePoster poster = (FreePoster) manager.getPoster();
 		int id = poster.getNumberOfElements()+1;
 		Element element;
 		if(type.equalsIgnoreCase("PAPER")){
@@ -27,6 +26,14 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 		return id;
 	}
 
+	private void setElementArea(Poster poster, int id, ArrayList<Point2D> points){
+		Element e = poster.getElement(id);
+		if (e!=null){
+			Polygon area = Utills.PolygonFromPoints(points);
+			e.setArea(area);
+		}
+	}
+
 	public ManagerCreazioneFreePoster(Manager manager) {
 		super(manager);
 	}
@@ -35,30 +42,20 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 		return new FreePoster(name, classe, description);
 	}
 
-	public int addPaper(ArrayList<Point2D> points, ArrayList<String> files){
-		int id=addElemen(points, "PAPER");
-		setPaperFiles(id, files);
+	public Integer addPaper(FreePoster poster, ArrayList<Point2D> points, ArrayList<String> files){
+		int id=addElemen(poster, points, "PAPER");
+		setPaperFiles(poster, id, files);
 		return id;
 	}
 	
-	public void setPaperFiles(int id, ArrayList<String> files){
-		Poster poster = manager.getPoster();
+	public void setPaperFiles(Poster poster,int id, ArrayList<String> files){
 		Element e = poster.getElement(id);
 		if (e instanceof Paper){
 			((Paper) e).setPathsFiles(files);
 		}
 	}
 
-	public int addControll(ArrayList<Point2D> points){
-		return addElemen(points, "CONTROL");
-	}
-
-	void setElementArea(int id, ArrayList<Point2D> points){
-		Poster poster = manager.getPoster();
-		Element e = poster.getElement(id);
-		if (e!=null){
-			Polygon area = Utills.PolygonFromPoints(points);
-			e.setArea(area);
-		}
+	public Integer addControll(FreePoster poster, ArrayList<Point2D> points){
+		return addElemen(poster, points, "CONTROL");
 	}
 }

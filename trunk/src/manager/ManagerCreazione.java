@@ -2,34 +2,27 @@ package manager;
 
 import java.util.ArrayList;
 
+import dataModel.Poster;
+
 
 
 /**
  * @uml.dependency   supplier="manager.IManager"
  */
-public abstract class ManagerCreazione implements IManager{
+public abstract class ManagerCreazione{
 
 	protected Manager manager;
 
-	public ManagerCreazione(){
-		this.manager=null;
-	}
-	
 	public ManagerCreazione(Manager m) {
 		this.manager=m;
 	}
 
-	public void setManager(Manager m){
-		this.manager=m;
-	}
-	
-
-	void removeElement(int id){
-		if (manager.getPoster().getElement(id)!=null){
-			manager.getPoster().removeElement(id);
+	public void removeElement(Poster poster, int id){
+		if (poster.getElement(id)!=null){
+			poster.removeElement(id);
 		}
 	}
 		
-	public abstract void setPaperFiles(int id, ArrayList<String> Files);
+	public abstract void setPaperFiles(Poster poster, int id, ArrayList<String> Files);
 
 }

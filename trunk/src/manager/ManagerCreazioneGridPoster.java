@@ -10,13 +10,14 @@ import dataModel.Control;
 import dataModel.Element;
 import dataModel.GridPoster;
 import dataModel.Paper;
+import dataModel.Poster;
 
 
 
 public class ManagerCreazioneGridPoster extends ManagerCreazione {
 	
-	private void setElementArea(int row, int col){
-		GridPoster poster = (GridPoster)manager.getPoster();
+	private void setElementArea(GridPoster poster, int row, int col){
+	
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		
 		double heightCell = dim.getHeight()/poster.getRow();
@@ -34,55 +35,50 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 			e.setArea(area);
 	}
 
-	private int addElement(int row, int col, String type){
-		GridPoster poster = (GridPoster) manager.getPoster();
+	private Integer addElement(GridPoster poster,int row, int col, String type){
 		Element element;
 		if (type.equalsIgnoreCase("PAPER"))
 			element=new Paper(poster.getNumberOfElements()+1, new ArrayList<String>());
 		else
 			element=new Control(poster.getNumberOfElements()+1, manager);
-		setElementArea(row, col);
+		setElementArea(poster, row, col);
 		poster.addElement(element, row, col);
 		return element.getId();
 	}
 
 	public ManagerCreazioneGridPoster(Manager manager) {
 		super(manager);
-		// TODO Auto-generated constructor stub
 	}
 
 	public GridPoster createGridPoster(String name, String classe, String description, int row, int col){
 		return new GridPoster(name, classe, description, row, col);
 	}
 
-	public void changeCellsNumerd(int row, int col){
-		GridPoster poster = (GridPoster)manager.getPoster();
+	public void changeCellsNumerd(GridPoster poster, int row, int col){
 		poster.setCol(col);
 		poster.setRow(row);
 		for(int i=0;i<row;i++){
 			for(int j=0;j<col;j++){
 				if(poster.getElement(i, j)!=null)
-					setElementArea(i, j);
+					setElementArea(poster, i, j);
 			}
 		}
 		
 	}
 	
-	public int addPaper(int row, int col, ArrayList<String> files){
-		int id= addElement(row, col, "PAPER");
-		setPaperFiles(id, files);
-		setElementArea(row, col);
+	public Integer addPaper(GridPoster poster, int row, int col, ArrayList<String> files){
+		int id= addElement(poster, row, col, "PAPER");
+		setPaperFiles(poster, id, files);
+		setElementArea(poster, row, col);
 		return id;
 	}
 
-	public void setPaperFiles(int row, int col, ArrayList<String> files) {
-		GridPoster poster = (GridPoster) manager.getPoster();
-		setPaperFiles(poster.getIdFromPoint(row, col),files);
+	public void setPaperFiles(GridPoster poster, int row, int col, ArrayList<String> files) {
+		setPaperFiles(poster, poster.getIdFromPoint(row, col),files);
 	}
 		
 	@Override
-	public void setPaperFiles(int id, ArrayList<String> files) {
-		GridPoster poster = (GridPoster) manager.getPoster();
+	public void setPaperFiles(Poster poster,int id, ArrayList<String> files) {
 		Element e = poster.getElement(id);
 		if(e instanceof Paper){
 			((Paper) e).setPathsFiles(files);
@@ -90,9 +86,9 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		
 	}
 	
-	public int addControl(int row, int col){
-		int id= addElement(row, col, "CONTROL");
-		setElementArea(row, col);
+	public Integer addControl(GridPoster poster,int row, int col){
+		int id= addElement(poster, row, col, "CONTROL");
+		setElementArea(poster, row, col);
 		return id;
 	}
 	
