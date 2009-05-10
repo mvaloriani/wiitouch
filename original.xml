@@ -1,0 +1,29 @@
+<PosterAGriglia>
+  <Name>aaaa</Name>
+  <Description>cccccc</Description>
+  <Classroom>bvbbbb</Classroom>
+  <Row>2</Row>
+  <Coloumn>1</Coloumn>
+  <Elementi>
+    <entry>
+      <Point>
+        <x>0</x>
+        <y>0</y>
+      </Point>
+      <Paper>
+        <id>1</id>
+        <URL>/path1/path2/a.jpg</URL>
+        <URL>/path1/path2/a.txt</URL>
+      </Paper>
+    </entry>
+    <entry>
+      <Point>
+        <x>1</x>
+        <y>0</y>
+      </Point>
+      <Element>
+        <id>2</id>
+      </Element>
+    </entry>
+  </Elementi>
+</PosterAGriglia>

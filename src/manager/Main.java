@@ -8,13 +8,8 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Manager manager = new Manager();
-		ManagerDati managerDati=new ManagerDati();
-		manager.setManagerDati(managerDati);
-		
-		IManager iManager;
-		
-		
+		IManager system = new Manager();
+		CmdUI commandLineInterface 	= new CmdUI(system);
 
 	}
 
