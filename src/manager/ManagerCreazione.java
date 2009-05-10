@@ -17,12 +17,11 @@ public abstract class ManagerCreazione{
 		this.manager=m;
 	}
 
-	public void removeElement(Poster poster, int id){
-		if (poster.getElement(id)!=null){
-			poster.removeElement(id);
-		}
+	public void removeElement(Poster poster, int id) throws PositionEX{
+		poster.removeElement(id);
+
 	}
 		
-	public abstract void setPaperFiles(Poster poster, int id, ArrayList<String> Files);
+	public abstract void setPaperFiles(Poster poster, int id, ArrayList<String> Files) throws PositionEX;
 
 }

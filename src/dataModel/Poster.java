@@ -4,6 +4,8 @@ import java.awt.Polygon;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
+import manager.PositionEX;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 
@@ -88,10 +90,10 @@ public abstract class Poster{
 	}
 
 	
-	public abstract void removeElement(int id);
+	public abstract void removeElement(int id) throws PositionEX;
 	public abstract Integer getNumberOfElements();
-	public abstract Element getElement(int id);
-	public abstract Element getElement(Point2D point);
+	public abstract Element getElement(int id) throws PositionEX;
+	public abstract Element getElement(Point2D point) throws PositionEX;
 	public abstract ArrayList<Integer> getIdList();
 	
 }

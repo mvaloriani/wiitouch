@@ -6,6 +6,8 @@ package dataModel;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
+import manager.PositionEX;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -27,7 +29,6 @@ public class FreePoster extends Poster {
 	 */
 	public FreePoster(String name, String studentClassroom, String description) {
 		super(name, studentClassroom, description);
-		// TODO Auto-generated constructor stub
 	}
 
 	
@@ -35,29 +36,30 @@ public class FreePoster extends Poster {
 		this.elementsList.add(e);
 	}
 	
-	public void removeElement(int id){
+	public void removeElement(int id) throws PositionEX{
 		for(Element e :elementsList){
 			if (e.getId()==id){
 				elementsList.remove(e);
 				break;
 			}
 		}
+		throw new PositionEX("Not element associated to id:"+id);
 	}
 	
-	public Element getElement(int id){
+	public Element getElement(int id) throws PositionEX{
 		for(Element e :elementsList){
 			if (e.getId()==id)
 				return e;
 		}
-		return null;
+		throw new PositionEX("Not element associated to id:"+id);
 	}
 	
-	public Element getElement(Point2D point){
+	public Element getElement(Point2D point) throws PositionEX{
 		for(Element e :elementsList){
 			if (e.getArea().contains(point))
 				return e;
 		}
-		return null;
+		throw new PositionEX("Any element contain:"+point.toString());
 	}
 	
 	/**
@@ -66,10 +68,6 @@ public class FreePoster extends Poster {
 	public Integer getNumberOfElements() {
 		return elementsList.size();
 	}
-
-
-
-
 
 	
 	public  ArrayList<Integer> getIdList(){

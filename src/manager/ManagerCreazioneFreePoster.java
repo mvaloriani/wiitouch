@@ -26,7 +26,7 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 		return id;
 	}
 
-	private void setElementArea(Poster poster, int id, ArrayList<Point2D> points){
+	private void setElementArea(Poster poster, int id, ArrayList<Point2D> points) throws PositionEX{
 		Element e = poster.getElement(id);
 		if (e!=null){
 			Polygon area = Utills.PolygonFromPoints(points);
@@ -44,11 +44,13 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 
 	public Integer addPaper(FreePoster poster, ArrayList<Point2D> points, ArrayList<String> files){
 		int id=addElemen(poster, points, "PAPER");
-		setPaperFiles(poster, id, files);
+		try {
+			setPaperFiles(poster, id, files);
+		} catch (PositionEX e) {}
 		return id;
 	}
 	
-	public void setPaperFiles(Poster poster,int id, ArrayList<String> files){
+	public void setPaperFiles(Poster poster,int id, ArrayList<String> files) throws PositionEX{
 		Element e = poster.getElement(id);
 		if (e instanceof Paper){
 			((Paper) e).setPathsFiles(files);

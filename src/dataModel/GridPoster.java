@@ -8,6 +8,8 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import manager.PositionEX;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -81,30 +83,42 @@ public class GridPoster extends Poster {
 		return new ArrayList<Integer>(idMap.keySet());		
 	}
 
-	public Integer getIdFromPoint(int x, int y){
-		return elementMap.get(new Point(row,col)).getId();
+	public Integer getIdFromPoint(int row, int col) throws PositionEX{
+		Integer id = elementMap.get(new Point(row,col)).getId();
+		if (id==null)
+			throw new PositionEX("Not element in Row:"+row+"Col:"+col);
+		return id;
 	}
 
-	public Point getPointFromId(int id){
-		return idMap.get(id);
+	public Point getPointFromId(int id) throws PositionEX{
+		Point p = idMap.get(id);
+		if (p==null)
+			throw new PositionEX("Not element associated to id:"+id);
+		return p;
 	}
 
 	@Override
-	public Element getElement(int id) {
-		return elementMap.get(idMap.get(id));
+	public Element getElement(int id) throws PositionEX {
+		Element e = elementMap.get(idMap.get(id));
+		if (e==null)
+			throw new PositionEX("Not element associated to id:"+id);
+		return e;
 	}
 
 	@Override
-	public Element getElement(Point2D point) {
+	public Element getElement(Point2D point) throws PositionEX {
 		for(Element e: elementMap.values()){
 				if (e.getArea().contains(point))
 					return e;
 		}
-		return null;
+		throw new PositionEX("Any element contain:"+point.toString());
 	}
 
-	public Element getElement(int row, int col){
-		return elementMap.get(new Point(row,col));
+	public Element getElement(int row, int col) throws PositionEX{
+		Element e = elementMap.get(new Point(row,col));
+		if (e==null)
+			throw new PositionEX("Not element in Row:"+row+"Col:"+col);
+		return e;
 	}
 
 	/**
@@ -121,21 +135,23 @@ public class GridPoster extends Poster {
 		idMap=new HashMap<Integer, Point>();
 	}
 
-	public void addElement(Element element, int row, int col) {
+	public void addElement(Element element, int row, int col) throws PositionEX {
 		if((row<this.row)&&(row>=0)&&(col<this.col)&&(col>=0)){
 			elementMap.put(new Point(row,col), element);
 			idMap.put(element.getId(), new Point(row,col));
 		}
+		else
+			throw new PositionEX("Coordinate out of grid");
 	}
 
 	@Override
-	public void removeElement(int id) {
+	public void removeElement(int id) throws PositionEX {
 		Point p =getPointFromId(id);
 		elementMap.remove(p);
 		idMap.remove(id);
 	}
 
-	public void removeElement(int row, int col){
+	public void removeElement(int row, int col) throws PositionEX{
 		removeElement(getElement(row, col).getId());
 	}
 
