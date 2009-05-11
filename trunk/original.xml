@@ -2,6 +2,7 @@
   <Name>aaaa</Name>
   <Description>cccccc</Description>
   <Classroom>bvbbbb</Classroom>
+  <isCalibated>false</isCalibated>
   <Row>2</Row>
   <Coloumn>1</Coloumn>
   <Elementi>

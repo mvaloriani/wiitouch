@@ -7,7 +7,10 @@ import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.Map.Entry;
 
+import manager.Manager;
 import manager.PositionEX;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -30,6 +33,16 @@ public class GridPoster extends Poster {
 	@XStreamOmitField
 	private HashMap<Integer, Point> idMap;
 	
+	
+	public void check(Manager manager){
+		idMap=new HashMap<Integer, Point>();
+		for (Point p : elementMap.keySet()){
+			Element e = elementMap.get(p);
+			idMap.put(e.getId(), p);
+			if (e instanceof Control)
+				((Control) e).setManager(manager);
+		}			
+	}
 		/**
 	 * @return the row
 	 */
@@ -74,10 +87,6 @@ public class GridPoster extends Poster {
 			this.col=col;
 	}
 
-	@Override
-	public Integer getNumberOfElements() {
-		return elementMap.size();
-	}
 
 	public  ArrayList<Integer> getIdList(){
 		return new ArrayList<Integer>(idMap.keySet());		
@@ -95,6 +104,11 @@ public class GridPoster extends Poster {
 		if (p==null)
 			throw new PositionEX("Not element associated to id:"+id);
 		return p;
+	}
+
+	@Override
+	public Integer getNumberOfElements() {
+		return elementMap.size();
 	}
 
 	@Override
@@ -121,11 +135,6 @@ public class GridPoster extends Poster {
 		return e;
 	}
 
-	/**
-	 * @param name
-	 * @param studentClassroom
-	 * @param description
-	 */
 	public GridPoster(String name, String studentClassroom, String description,
 			int row, int col) {
 		super(name, studentClassroom, description);
