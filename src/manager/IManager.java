@@ -23,11 +23,11 @@ public interface IManager {
 	public void setPaperFilesGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX;
 	
 	// Common methods
-	public void setPaperFiles(int id, ArrayList<String> Files) throws PositionEX;
-	public void removeElement(int id) throws PositionEX;
+	public void setPaperFiles(Integer id, ArrayList<String> Files) throws PositionEX;
+	public void removeElement(Integer id) throws PositionEX;
 	
 	//Store&Load methods
 	
-	//Play methods
-	
+	//Play method
+	public void play(Point2D point);
 }

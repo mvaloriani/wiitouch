@@ -127,16 +127,23 @@ public class Manager implements IManager {
 	// Common methods
 	
 	@Override
-	public void setPaperFiles(int id, ArrayList<String> Files) throws PositionEX {
+	public void setPaperFiles(Integer id, ArrayList<String> Files) throws PositionEX {
 		managerCreazione.setPaperFiles(poster, id, Files);
 	}
 
 	@Override
-	public void removeElement(int id) throws PositionEX {
+	public void removeElement(Integer id) throws PositionEX {
 		managerCreazione.removeElement(poster, id);		
 	}
 	
-	
+	public void play(Point2D point){
+		try {
+			if (poster!=null)
+				poster.getElement(point).exec();		
+		} catch (PositionEX e) {
+			// not element associated to this point
+		}
+	}
 	
 	
 

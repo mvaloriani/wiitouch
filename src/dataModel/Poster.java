@@ -19,7 +19,7 @@ public abstract class Poster{
 	private String description = "";	
 	@XStreamAlias("Classroom")
 	private String studentClassroom = "";
-
+	private Boolean isCalibated;
 
 		
 	/**
@@ -79,6 +79,20 @@ public abstract class Poster{
 	}
 	
 	/**
+	 * @return the isCalibated
+	 */
+	public Boolean isCalibated() {
+		return isCalibated;
+	}
+
+	/**
+	 * @param isCalibated the isCalibated to set
+	 */
+	public void setIsCalibated(Boolean isCalibated) {
+		this.isCalibated = isCalibated;
+	}
+
+	/**
 	 * @param name
 	 * @param studentClass
 	 * @param description
@@ -87,6 +101,7 @@ public abstract class Poster{
 		this.name = name;
 		this.studentClassroom = studentClassroom;
 		this.description = description;
+		this.isCalibated=false;
 	}
 
 	
