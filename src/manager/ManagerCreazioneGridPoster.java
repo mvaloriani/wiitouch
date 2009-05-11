@@ -91,5 +91,10 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		setElementArea(poster, row, col);
 		return id;
 	}
+
+	public void removeElement(GridPoster poster, int row, int col) throws PositionEX {
+		poster.removeElement(row, col);
+		
+	}
 	
 }

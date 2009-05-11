@@ -15,7 +15,7 @@ public interface IManager {
 			int row, int col);
 	public Integer addControlGP(int row, int col) throws PosterTypeEx, PositionEX;
 	public Integer addPaperGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX;
-	public void removeElementGP(int row, int col) throws PositionEX;
+	public void removeElementGP(int row, int col) throws PositionEX, PosterTypeEx;
 	public void setPaperFilesGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX;
 	
 	public void changeCellsNumerdGP(int row, int col) throws PosterTypeEx, PositionEX;
