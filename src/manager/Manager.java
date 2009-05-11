@@ -1,6 +1,7 @@
 package manager;
 
 import java.awt.geom.Point2D;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import dataModel.FreePoster;
@@ -151,6 +152,20 @@ public class Manager implements IManager {
 		} catch (PositionEX e) {
 			// not element associated to this point
 		}
+	}
+
+
+	@Override
+	public void loadPoster(String urlFile) throws FileNotFoundException {
+		poster = managerDati.loadPoster(urlFile);
+		poster.check(this);
+		
+	}
+
+	@Override
+	public void storePoster(String urlFile) throws FileNotFoundException {
+		managerDati.storePoster(poster, urlFile);
+		
 	}
 	
 	

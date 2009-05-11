@@ -16,6 +16,9 @@ public class Element {
 	private Polygon area;
 	private int id;
 
+	public String toString(){
+		return("ID:"+id+";");
+	}
 	/**
 	 * Getter of the property <tt>area</tt>
 	 * @return  Returns the area.

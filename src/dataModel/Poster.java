@@ -1,9 +1,11 @@
 package dataModel;
 
+import java.awt.Checkbox;
 import java.awt.Polygon;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
+import manager.Manager;
 import manager.PositionEX;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -110,5 +112,6 @@ public abstract class Poster{
 	public abstract Element getElement(int id) throws PositionEX;
 	public abstract Element getElement(Point2D point) throws PositionEX;
 	public abstract ArrayList<Integer> getIdList();
+	public abstract void check(Manager manager);
 	
 }

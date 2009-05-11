@@ -5,7 +5,9 @@ package dataModel;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import manager.Manager;
 import manager.PositionEX;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -20,7 +22,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class FreePoster extends Poster {
 
 	@XStreamOmitField
-	private ArrayList<Element> elementsList;
+	private HashMap<Integer,Element> elementsList;
 	
 	/**
 	 * @param name
@@ -33,29 +35,24 @@ public class FreePoster extends Poster {
 
 	
 	public void addElement(Element e){
-		this.elementsList.add(e);
+		this.elementsList.put(e.getId(), e);
 	}
 	
 	public void removeElement(int id) throws PositionEX{
-		for(Element e :elementsList){
-			if (e.getId()==id){
-				elementsList.remove(e);
-				break;
-			}
-		}
-		throw new PositionEX("Not element associated to id:"+id);
+		if (elementsList.containsKey(id)==false)
+			throw new PositionEX("Not element associated to id:"+id);
+		elementsList.remove(id);
 	}
 	
 	public Element getElement(int id) throws PositionEX{
-		for(Element e :elementsList){
-			if (e.getId()==id)
-				return e;
-		}
-		throw new PositionEX("Not element associated to id:"+id);
+		if (elementsList.containsKey(id)==false)
+			throw new PositionEX("Not element associated to id:"+id);
+		return elementsList.get(id);
+					
 	}
 	
 	public Element getElement(Point2D point) throws PositionEX{
-		for(Element e :elementsList){
+		for(Element e :elementsList.values()){
 			if (e.getArea().contains(point))
 				return e;
 		}
@@ -72,10 +69,18 @@ public class FreePoster extends Poster {
 	
 	public  ArrayList<Integer> getIdList(){
 		ArrayList<Integer> idList = new ArrayList<Integer>();
-		for(Element e:elementsList){
+		for(Element e:elementsList.values()){
 			idList.add(e.getId());
 		}
 		return idList;
+	}
+
+
+	@Override
+	public void check(Manager manager) {
+		for(Element e : elementsList.values())
+			if(e instanceof Control)
+				((Control) e).setManager(manager);
 	}
 
 

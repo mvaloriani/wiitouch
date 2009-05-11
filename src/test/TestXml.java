@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+import manager.Manager;
 import manager.PositionEX;
 
 import com.thoughtworks.xstream.XStream;
@@ -56,15 +57,17 @@ public class TestXml {
 			PrintStream MyOutput = new PrintStream(new FileOutputStream("./original.xml"));
 			MyOutput.print(xstream.toXML(p));
 			System.out.println("File Salvato Correnttamente");
+			System.out.println(xstream.toXML(p));
 			
 			//PROVO AD APRIRE IL FILE E LO LEGGO
 			System.out.println("Apertura :./original.xml");
 			FileInputStream fis = new FileInputStream("./original.xml"); 
 			//CONVERSIONE DEL FILE IN OGGETTO
 			GridPoster newJoe = (GridPoster)xstream.fromXML(fis);
-			System.out.println("//////////////////////");
+			newJoe.check(new Manager());
+			System.out.println("File Salvato Correnttamente");
 			//STAMPA DELL'OGGETTO
-			System.out.println(xstream.toXML(newJoe));
+			System.out.print(newJoe.getElement(1));
 	}
 
 }

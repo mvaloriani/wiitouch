@@ -2,15 +2,13 @@ package dataModel;
 
 import java.awt.Polygon;
 
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import manager.Manager;
 
 
 public class Control extends Element {
-
-	/**
-	 * @uml.property  name="manager"
-	 * @uml.associationEnd  multiplicity="(0 -1)" dimension="1" ordering="true" inverse="control:dataModel.Manager"
-	 */
+	@XStreamOmitField
 	private Manager manager;
 
 	public Control(int id, Manager manager) {
@@ -18,18 +16,21 @@ public class Control extends Element {
 		this.manager=manager;
 	}
 	
+	
+	
 	/**
-	 * @param id
-	 * @param area
+	 * @param manager the manager to set
 	 */
-	public Control(int id, Polygon area, Manager manager) {
-		super(id, area);
-		this.manager=manager;
-		
+	public void setManager(Manager manager) {
+		this.manager = manager;
 	}
 
 
 
+	public Control(int id, Polygon area, Manager manager) {
+		super(id, area);
+		this.manager=manager;	
+	}
 
 	@Override
 	public void exec() {

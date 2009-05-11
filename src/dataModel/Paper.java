@@ -15,6 +15,14 @@ public class Paper extends Element {
 	private ArrayList<String> pathsFiles;
 	@XStreamOmitField
 	private int actualFile;
+	
+	public String toString() {
+		String result = super.toString()+"\n Files:\n";
+		for(String s : pathsFiles)
+			result=result+s+";\n";
+		return result;
+	}
+	
 	/**
 	 * Getter of the property <tt>pathsFiles</tt>
 	 * @return  Returns the pathsFiles.
