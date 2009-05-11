@@ -3,10 +3,6 @@ package manager;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
-import dataModel.GridPoster;
-import dataModel.Poster;
-
-
 public interface IManager {
 	
 	// FreePoster methods
@@ -19,9 +15,10 @@ public interface IManager {
 			int row, int col);
 	public Integer addControlGP(int row, int col) throws PosterTypeEx, PositionEX;
 	public Integer addPaperGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX;
-	public void changeCellsNumerdGP(int row, int col) throws PosterTypeEx, PositionEX;
+	public void removeElementGP(int row, int col) throws PositionEX;
 	public void setPaperFilesGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX;
 	
+	public void changeCellsNumerdGP(int row, int col) throws PosterTypeEx, PositionEX;
 	// Common methods
 	public void setPaperFiles(Integer id, ArrayList<String> Files) throws PositionEX;
 	public void removeElement(Integer id) throws PositionEX;

@@ -3,7 +3,6 @@ package manager;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
-import ui.CmdUI;
 import dataModel.FreePoster;
 import dataModel.GridPoster;
 import dataModel.Poster;
@@ -115,6 +114,13 @@ public class Manager implements IManager {
 		else
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
+
+	@Override
+	public void removeElementGP(int row, int col) throws PositionEX {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	@Override
 	public void changeCellsNumerdGP(int row, int col) throws PosterTypeEx, PositionEX {
