@@ -116,11 +116,13 @@ public class Manager implements IManager {
 	}
 
 	@Override
-	public void removeElementGP(int row, int col) throws PositionEX {
-		// TODO Auto-generated method stub
+	public void removeElementGP(int row, int col) throws PositionEX, PosterTypeEx {
+		if(poster instanceof GridPoster)
+			((ManagerCreazioneGridPoster)managerCreazione).removeElement((GridPoster)poster, row, col);
+		else
+			throw new PosterTypeEx("Current poster isn't GridPoster");
 		
 	}
-
 
 	@Override
 	public void changeCellsNumerdGP(int row, int col) throws PosterTypeEx, PositionEX {
