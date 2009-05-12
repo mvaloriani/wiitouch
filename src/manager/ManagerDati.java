@@ -10,6 +10,7 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import dataModel.Element;
+import dataModel.FreePoster;
 import dataModel.GridPoster;
 import dataModel.Paper;
 import dataModel.Poster;
@@ -36,9 +37,13 @@ public class ManagerDati {
 
 	public Poster loadPoster(String urlFile) throws FileNotFoundException {
 		System.out.println(urlFile);
-		FileInputStream fis = new FileInputStream(urlFile); 
+		FileInputStream fis = new FileInputStream(urlFile);
+		Poster poster;
 		//CONVERSIONE DEL FILE IN OGGETTO
-		GridPoster poster = (GridPoster)xstream.fromXML(fis);
+		if(fis.toString().contains("GridPoster"))
+			poster = (GridPoster)xstream.fromXML(fis);
+		else
+			poster = (FreePoster)xstream.fromXML(fis);
 		poster.check(manager);
 		return poster;
 	}

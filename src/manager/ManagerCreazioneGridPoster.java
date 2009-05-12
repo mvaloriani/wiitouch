@@ -41,8 +41,8 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 			element=new Paper(poster.getNumberOfElements()+1, new ArrayList<String>());
 		else
 			element=new Control(poster.getNumberOfElements()+1, manager);
-		setElementArea(poster, row, col);
 		poster.addElement(element, row, col);
+		setElementArea(poster, row, col);
 		return element.getId();
 	}
 

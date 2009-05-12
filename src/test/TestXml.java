@@ -10,7 +10,9 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import manager.Manager;
+import manager.ManagerDati;
 import manager.PositionEX;
+import manager.PosterTypeEx;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
@@ -18,6 +20,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 import dataModel.Element;
 import dataModel.GridPoster;
 import dataModel.Paper;
+import dataModel.Poster;
 
 public class TestXml {
 
@@ -31,40 +34,28 @@ public class TestXml {
 	public static void main(String[] args) throws URISyntaxException, FileNotFoundException, PositionEX {
 		// TODO Auto-generated method stub
 			ArrayList<String> files = new ArrayList<String>(); 
+			Manager manager = new Manager();
+			ManagerDati managerDati = new ManagerDati(manager);
 			files.add("/path1/path2/a.jpg");
 			files.add("/path1/path2/a.txt");
-			Paper e1=new Paper(1,files);
-			Element e2=new Element(2);
+	
+			manager.createGridPoster("aaaa","bvbbbb","cccccc",2,1);
 			
+			try {
+				manager.addPaperGP(0, 0, files);
+				manager.addPaperGP(1, 0, files);
+			} catch (PosterTypeEx e) {
+				e.printStackTrace();
+			}
 
-			GridPoster p = new GridPoster("aaaa","bvbbbb","cccccc",2,1);
-
-			//GridPoster p = new GridPoster("a","b","c",2,2);
-
-			p.addElement(e1,0,0);
-			p.addElement(e2,1,0);
-			
-			
-			//DEFINIZIONE DEI VARI BINDING
-			XStream xstream=new XStream(new DomDriver());
-			xstream.processAnnotations(GridPoster.class);
-			xstream.processAnnotations(Element.class);
-			xstream.processAnnotations(Paper.class);
-			xstream.alias("Point", Point.class);
-			xstream.aliasField("FilesURI", Paper.class, "pathsFiles");
-			
 			//SALVATAGGIO DEL OGGETTO p SU UN FILE XML
-			PrintStream MyOutput = new PrintStream(new FileOutputStream("./original.xml"));
-			MyOutput.print(xstream.toXML(p));
+			manager.storePoster("./original.xml");
 			System.out.println("File Salvato Correnttamente");
-			System.out.println(xstream.toXML(p));
 			
-			//PROVO AD APRIRE IL FILE E LO LEGGO
+			//PROVO AD APRIRE IL FILE E LO CONVERTO
 			System.out.println("Apertura :./original.xml");
-			FileInputStream fis = new FileInputStream("./original.xml"); 
-			//CONVERSIONE DEL FILE IN OGGETTO
-			GridPoster newJoe = (GridPoster)xstream.fromXML(fis);
-			newJoe.check(new Manager());
+			GridPoster newJoe = (GridPoster) managerDati.loadPoster("./original.xml");
+			
 			System.out.println("File Salvato Correnttamente");
 			//STAMPA DELL'OGGETTO
 			System.out.print(newJoe.getElement(1));

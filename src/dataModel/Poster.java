@@ -16,11 +16,11 @@ public abstract class Poster{
 	
 	private Polygon area;
 	@XStreamAlias("Name")
-	private String name = "";
+	private String name;
 	@XStreamAlias("Description")
-	private String description = "";	
+	private String description;	
 	@XStreamAlias("Classroom")
-	private String studentClassroom = "";
+	private String studentClassroom;
 	private Boolean isCalibated;
 
 		
