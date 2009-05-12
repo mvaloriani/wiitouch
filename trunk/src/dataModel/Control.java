@@ -25,7 +25,12 @@ public class Control extends Element {
 		this.manager = manager;
 	}
 
-
+	/**
+	 * @param obtain the manager for the control
+	 */
+	public Manager getManager() {
+		return this.manager ;
+	}
 
 	public Control(int id, Polygon area, Manager manager) {
 		super(id, area);
