@@ -20,7 +20,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
  * @author Matteo,Giulio
  *
  */
-@XStreamAlias("PosterAGriglia")
+@XStreamAlias("GridPoster")
 public class GridPoster extends Poster {
 	@XStreamAlias("Row")
 	private int row;
