@@ -49,7 +49,7 @@ public class Manager implements IManager {
 	 * @param lastPaper
 	 */
 	public Manager() {
-		this.managerDati=new ManagerDati();
+		this.managerDati=new ManagerDati(this);
 		this.managerCreazione=null;
 		this.poster = null;
 		this.lastPaper = null;
@@ -158,7 +158,6 @@ public class Manager implements IManager {
 	@Override
 	public void loadPoster(String urlFile) throws FileNotFoundException {
 		poster = managerDati.loadPoster(urlFile);
-		poster.check(this);
 		
 	}
 
