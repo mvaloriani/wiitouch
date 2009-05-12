@@ -1,4 +1,4 @@
-<PosterAGriglia>
+<GridPoster>
   <Name>aaaa</Name>
   <Description>cccccc</Description>
   <Classroom>bvbbbb</Classroom>
@@ -12,6 +12,21 @@
         <y>0</y>
       </Point>
       <Paper>
+        <Area>
+          <npoints>4</npoints>
+          <xpoints>
+            <int>0</int>
+            <int>1024</int>
+            <int>1024</int>
+            <int>0</int>
+          </xpoints>
+          <ypoints>
+            <int>0</int>
+            <int>0</int>
+            <int>300</int>
+            <int>300</int>
+          </ypoints>
+        </Area>
         <id>1</id>
         <URL>/path1/path2/a.jpg</URL>
         <URL>/path1/path2/a.txt</URL>
@@ -22,9 +37,26 @@
         <x>1</x>
         <y>0</y>
       </Point>
-      <Element>
+      <Paper>
+        <Area>
+          <npoints>4</npoints>
+          <xpoints>
+            <int>0</int>
+            <int>1024</int>
+            <int>1024</int>
+            <int>0</int>
+          </xpoints>
+          <ypoints>
+            <int>300</int>
+            <int>300</int>
+            <int>600</int>
+            <int>600</int>
+          </ypoints>
+        </Area>
         <id>2</id>
-      </Element>
+        <URL>/path1/path2/a.jpg</URL>
+        <URL>/path1/path2/a.txt</URL>
+      </Paper>
     </entry>
   </Elementi>
-</PosterAGriglia>
+</GridPoster>
