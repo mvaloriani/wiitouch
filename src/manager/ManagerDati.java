@@ -22,8 +22,10 @@ import dataModel.Poster;
 public class ManagerDati {
 
 	private XStream xstream;
+	private Manager manager;
 
-	public ManagerDati() {
+	public ManagerDati(Manager manager) {
+		this.manager =manager;
 		xstream=new XStream(new DomDriver());
 		xstream.processAnnotations(GridPoster.class);
 		xstream.processAnnotations(Element.class);
@@ -36,9 +38,9 @@ public class ManagerDati {
 		System.out.println(urlFile);
 		FileInputStream fis = new FileInputStream(urlFile); 
 		//CONVERSIONE DEL FILE IN OGGETTO
-		GridPoster newJoe = (GridPoster)xstream.fromXML(fis);
-		
-		return newJoe;
+		GridPoster poster = (GridPoster)xstream.fromXML(fis);
+		poster.check(manager);
+		return poster;
 	}
 
 	public void storePoster(Poster poster, String urlFile) throws FileNotFoundException {
