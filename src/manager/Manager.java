@@ -2,12 +2,18 @@ package manager;
 
 import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import dataModel.FreePoster;
 import dataModel.GridPoster;
-import dataModel.Poster;
 import dataModel.Paper;
+import dataModel.Poster;
 
 
 /**
@@ -23,6 +29,12 @@ public class Manager implements IManager {
 
 	private Paper lastPaper;
 
+	public Paper getlastPaper()
+	{
+		return lastPaper;
+		
+	}
+	
 	public Poster getPoster() {
 		return poster;
 	}
@@ -53,11 +65,16 @@ public class Manager implements IManager {
 		this.managerCreazione=null;
 		this.poster = null;
 		this.lastPaper = null;
+		/*creazione del thread per vlc*/
+		vlcThread vlcThread=new vlcThread("1");
+		vlcThread.start();
+		
+		
+
 	}
 
 	//FreePoster methods
 	
-	@Override
 	public void createFreePoster(String name, String classe,
 			String description) {
 		managerCreazione = new ManagerCreazioneFreePoster(this);
@@ -65,7 +82,7 @@ public class Manager implements IManager {
 				description);
 	}
 		
-	@Override
+	
 	public Integer addControllFP(ArrayList<Point2D> points) throws PosterTypeEx {
 		if(poster instanceof FreePoster)
 			return ((ManagerCreazioneFreePoster)managerCreazione).addControll((FreePoster)poster, points);
@@ -73,7 +90,6 @@ public class Manager implements IManager {
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
 
-	@Override
 	public Integer addPaperFP(ArrayList<Point2D> points, ArrayList<String> files) throws PosterTypeEx {
 		if(poster instanceof FreePoster)
 			return ((ManagerCreazioneFreePoster)managerCreazione).addPaper((FreePoster)poster, points, files);
@@ -83,7 +99,7 @@ public class Manager implements IManager {
 
 	//GridPost methods
 	
-	@Override
+	
 	public void createGridPoster(String name, String classe,
 			String description, int row, int col) {
 		managerCreazione = new ManagerCreazioneGridPoster(this);
@@ -91,7 +107,7 @@ public class Manager implements IManager {
 				description, row, col);
 	}
 	
-	@Override
+	
 	public Integer addControlGP(int row, int col) throws PosterTypeEx, PositionEX{
 		if(poster instanceof GridPoster)
 			return ((ManagerCreazioneGridPoster)managerCreazione).addControl((GridPoster)poster, row, col);
@@ -99,7 +115,7 @@ public class Manager implements IManager {
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
 
-	@Override
+	
 	public Integer addPaperGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX{
 		if(poster instanceof GridPoster)
 			return ((ManagerCreazioneGridPoster)managerCreazione).addPaper((GridPoster)poster,
@@ -108,7 +124,7 @@ public class Manager implements IManager {
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
 
-	@Override
+	
 	public void setPaperFilesGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX{
 		if(poster instanceof GridPoster)
 			((ManagerCreazioneGridPoster)managerCreazione).setPaperFiles((GridPoster)poster, row, col, files);
@@ -116,7 +132,7 @@ public class Manager implements IManager {
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
 
-	@Override
+	
 	public void removeElementGP(int row, int col) throws PositionEX, PosterTypeEx {
 		if(poster instanceof GridPoster)
 			((ManagerCreazioneGridPoster)managerCreazione).removeElement((GridPoster)poster, row, col);
@@ -125,7 +141,7 @@ public class Manager implements IManager {
 		
 	}
 
-	@Override
+	
 	public void changeCellsNumerdGP(int row, int col) throws PosterTypeEx, PositionEX {
 		if(poster instanceof GridPoster)
 			((ManagerCreazioneGridPoster)managerCreazione).changeCellsNumerd((GridPoster)poster, row, col);
@@ -135,12 +151,12 @@ public class Manager implements IManager {
 
 	// Common methods
 	
-	@Override
+	
 	public void setPaperFiles(Integer id, ArrayList<String> Files) throws PositionEX {
 		managerCreazione.setPaperFiles(poster, id, Files);
 	}
 
-	@Override
+	
 	public void removeElement(Integer id) throws PositionEX {
 		managerCreazione.removeElement(poster, id);		
 	}
@@ -155,18 +171,33 @@ public class Manager implements IManager {
 	}
 
 
-	@Override
+	
 	public void loadPoster(String urlFile) throws FileNotFoundException {
 		poster = managerDati.loadPoster(urlFile);
 		
 	}
 
-	@Override
+	
 	public void storePoster(String urlFile) throws FileNotFoundException {
 		managerDati.storePoster(poster, urlFile);
 		
 	}
 	
-	
+	private static class vlcThread extends Thread {
+		 public vlcThread(String str) {
+			 super(str);
+		 }
+		 public void run() {
+		
+		 try {
+			Process ls_proc = Runtime.getRuntime().exec("/Applications/VLC.app/Contents/MacOS/VLC --intf=telnet");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+		
+		 }
+	}
 
 }
