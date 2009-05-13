@@ -4,6 +4,9 @@ import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import dataModel.FreePoster;
 import dataModel.GridPoster;
@@ -24,6 +27,8 @@ public class Manager implements IManager {
 
 	private Paper lastPaper;
 
+	private static Logger log;
+	
 	public Paper getlastPaper()
 	{
 		return lastPaper;
@@ -60,9 +65,27 @@ public class Manager implements IManager {
 		this.managerCreazione=null;
 		this.poster = null;
 		this.lastPaper = null;
+		
+		FileHandler fh=null;
+		log=Logger.getLogger("WiiTouch.manager");
+		try {
+			fh=new FileHandler("./log.txt");
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.toString());
+		}
+		log.addHandler(fh);
+		log.setLevel(Level.ALL);
+		
+		
 		/*creazione del thread per vlc*/
 		//vlcThread vlcThread=new vlcThread("1");
 		//vlcThread.start();
+		
+		
 		
 		
 
@@ -173,13 +196,27 @@ public class Manager implements IManager {
 			 super(str);
 		 }
 		 public void run() {
-		
-		 try {
-			Process ls_proc = Runtime.getRuntime().exec("/Applications/VLC.app/Contents/MacOS/VLC --intf=telnet");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			 if(System.getProperty("os.name").toLowerCase().contains("mac os x")){
+				 
+				 try {
+					Process ls_proc = Runtime.getRuntime().exec("./bin/Vlc/VLC.app/Contents/MacOS/VLC --intf=telnet");
+				} catch (IOException e) {
+					
+					log.info("Sistema operativo mac: apertura VLC: "+e.toString());
+				}
+			 }else if(System.getProperty("os.name").toLowerCase().contains("win"))
+			 {
+				 try {
+						Process ls_proc = Runtime.getRuntime().exec("./bin/VlcWin/vlc.exe --intf=telnet");
+					} catch (IOException e) {
+						
+						log.info("Sistema operativo windows: apertura VLC: "+e.toString());
+					} 
+			 }else
+			 {
+				 
+				 
+			 }
 		 
 		
 		 }
