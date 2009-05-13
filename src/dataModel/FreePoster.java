@@ -21,7 +21,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 @XStreamAlias("FreePoster")
 public class FreePoster extends Poster {
 
-	@XStreamOmitField
+	@XStreamAlias("ElementiFP")
 	private HashMap<Integer,Element> elementsList;
 	
 	/**
@@ -31,6 +31,7 @@ public class FreePoster extends Poster {
 	 */
 	public FreePoster(String name, String studentClassroom, String description) {
 		super(name, studentClassroom, description);
+		elementsList = new HashMap<Integer, Element>();
 	}
 
 	
