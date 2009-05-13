@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:java_profile="http:///schemas/java_profile/0" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http:///schemas/java_profile/0 pathmap://GW_JAVA_PROFILES/Java.profile.uml#_H_ZGcB5CEduWqeK3CXfnzA">
+  <uml:Package xmi:id="c46f1b28-5d49-4f5a-a6b5-89395215def1" name="ui">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="dcd60602-86c7-468c-b066-74ad20884efa" source="crossContainmentOwner">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="cf01c5ee-2dd8-4262-94ff-0aac8da0de50" key="parentResourceUri" value="platform:/resource/WiiTouch/src/model.auml"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="1a53a423-f147-4506-bae1-f57b8ded076c" key="parentId" value="f713c72e-9491-4aab-bdb9-ad3afd8b948a"/>
+    </eAnnotations>
+    <packagedElement xmi:type="uml:Class" xmi:id="59bb5373-c162-4f23-a78c-3be3913b2b05" name="CmdUI">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="a43e2d8c-b176-4ace-adf1-90e0fb996c16" name="CmdUI" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="fb7170cb-fdb2-4cf4-9685-416b1975b04a" name="manager">
+          <type xmi:type="uml:Interface" href="../manager/model.auml#32221b18-32a7-43a2-9da8-a60ac7c412d9"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="b7b9c581-64ca-4aea-9d87-8c1d35c2699f" name="return" type="59bb5373-c162-4f23-a78c-3be3913b2b05" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="45a050dc-3ec6-44be-bb97-71ef326113e3">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="c2d288e9-10a8-4e9c-aa47-b75239b76c76" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://GW_JAVA_PROFILES/Java.profile.uml#_H_ZGcB5CEduWqeK3CXfnzA"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://GW_JAVA_PROFILES/Java.profile.uml#_3xRZYR4-EduWqeK3CXfnzA"/>
+    </profileApplication>
+  </uml:Package>
+  <java_profile:create xmi:id="7d7303db-6723-40ef-92c8-9e3044938a9f" base_Operation="a43e2d8c-b176-4ace-adf1-90e0fb996c16"/>
+</xmi:XMI>
