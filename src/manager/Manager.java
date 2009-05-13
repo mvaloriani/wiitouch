@@ -82,8 +82,8 @@ public class Manager implements IManager {
 		
 		
 		/*creazione del thread per vlc*/
-		//vlcThread vlcThread=new vlcThread("1");
-		//vlcThread.start();
+		vlcThread vlcThread=new vlcThread("1");
+		vlcThread.start();
 		
 		
 		
@@ -207,7 +207,7 @@ public class Manager implements IManager {
 			 }else if(System.getProperty("os.name").toLowerCase().contains("win"))
 			 {
 				 try {
-						Process ls_proc = Runtime.getRuntime().exec("./bin/VlcWin/vlc.exe --intf=telnet");
+						Process ls_proc = Runtime.getRuntime().exec("./bin/Vlc/vlcWin/vlc.exe --intf=telnet");
 					} catch (IOException e) {
 						
 						log.info("Sistema operativo windows: apertura VLC: "+e.toString());
