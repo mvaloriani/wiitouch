@@ -8,7 +8,7 @@ public interface IManager {
 	
 	// FreePoster methods
 	public void createFreePoster(String name, String classe, String description);
-	public Integer addControllFP(ArrayList<Point2D> points) throws PosterTypeEx;
+	public Integer addControlFP(ArrayList<Point2D> points) throws PosterTypeEx;
 	public Integer addPaperFP(ArrayList<Point2D> points, ArrayList<String> files) throws PosterTypeEx;
 	
 	// GridPoster methods
