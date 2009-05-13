@@ -65,7 +65,7 @@ public class TestXml {
 			
 			manager.createFreePoster("2222222", "dddd", "dddd");
 			try {
-				manager.addControllFP(new ArrayList<Point2D>());
+				manager.addControlFP(new ArrayList<Point2D>());
 			} catch (PosterTypeEx e) {
 				e.printStackTrace();
 			}

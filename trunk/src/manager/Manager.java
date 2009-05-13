@@ -77,7 +77,7 @@ public class Manager implements IManager {
 				description);
 	}
 	
-	public Integer addControllFP(ArrayList<Point2D> points) throws PosterTypeEx {
+	public Integer addControlFP(ArrayList<Point2D> points) throws PosterTypeEx {
 		if(poster instanceof FreePoster)
 			return ((ManagerCreazioneFreePoster)managerCreazione).addControll((FreePoster)poster, points);
 		else

@@ -19,7 +19,7 @@ public abstract class Poster{
 	@XStreamAlias("Description")
 	private String description;	
 	@XStreamAlias("Classroom")
-	private String studentClassroom;
+	private String classroom;
 	private Boolean isCalibated;
 	
 	public Integer getMaxId(){
@@ -32,7 +32,7 @@ public abstract class Poster{
 	}
 
 	public String toString(){
-		String des = new String("Name: "+name+"\nDescription:"+description+"\nClassroom:"+studentClassroom+"\n");
+		String des = new String("Name: "+name+"\nDescription:"+description+"\nClassroom:"+classroom+"\n");
 		for (Integer i : getIdList())
 			try {
 				des=des+getElement(i).toString()+"\n";
@@ -85,17 +85,17 @@ public abstract class Poster{
 	}
 
 	/**
-	 * @return the studentClassroom
+	 * @return the classroom
 	 */
-	public String getStudentClassroom() {
-		return studentClassroom;
+	public String getClassroom() {
+		return classroom;
 	}
 
 	/**
-	 * @param studentClassroom the studentClassroom to set
+	 * @param classroom the classroom to set
 	 */
-	public void setStudentClassroom(String studentClassroom) {
-		this.studentClassroom = studentClassroom;
+	public void setClassroom(String studentClassroom) {
+		this.classroom = studentClassroom;
 	}
 	
 	/**
@@ -119,7 +119,7 @@ public abstract class Poster{
 	 */
 	public Poster(String name, String studentClassroom, String description) {
 		this.name = name;
-		this.studentClassroom = studentClassroom;
+		this.classroom = studentClassroom;
 		this.description = description;
 		this.isCalibated=false;
 	}
