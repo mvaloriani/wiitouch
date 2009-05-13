@@ -85,6 +85,7 @@ public class TestXml {
 			System.out.print(newBob.toString());
 			newBob.removeElement(2);
 			System.out.print(newBob.toString());
+			
 	}
 
 }
