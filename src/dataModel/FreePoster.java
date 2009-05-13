@@ -11,7 +11,6 @@ import manager.Manager;
 import manager.PositionEX;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 
 /**
