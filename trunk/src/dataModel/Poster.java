@@ -1,6 +1,5 @@
 package dataModel;
 
-import java.awt.Checkbox;
 import java.awt.Polygon;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -22,7 +21,26 @@ public abstract class Poster{
 	@XStreamAlias("Classroom")
 	private String studentClassroom;
 	private Boolean isCalibated;
+	
+	public Integer getMaxId(){
+		Integer max=0;
+		for(Integer i : getIdList()){
+			if (i>max)
+				max=i;
+		}
+		return max;
+	}
 
+	public String toString(){
+		String des = new String("Name: "+name+"\nDescription:"+description+"\nClassroom:"+studentClassroom+"\n");
+		for (Integer i : getIdList())
+			try {
+				des=des+getElement(i).toString()+"\n";
+			} catch (PositionEX e) {
+				e.printStackTrace();
+			}
+		return des;
+	}
 		
 	/**
 	 * @return the area

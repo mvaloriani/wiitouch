@@ -14,7 +14,7 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 
 	private Integer addElemen(FreePoster poster, ArrayList<Point2D> points, String type){
 		Polygon area = Utills.PolygonFromPoints(points);
-		int id = poster.getNumberOfElements()+1;
+		int id = poster.getMaxId()+1;
 		Element element;
 		if(type.equalsIgnoreCase("PAPER")){
 			 element = new Paper(id, area);

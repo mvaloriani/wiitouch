@@ -3,11 +3,6 @@ package manager;
 import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import dataModel.FreePoster;
@@ -66,8 +61,8 @@ public class Manager implements IManager {
 		this.poster = null;
 		this.lastPaper = null;
 		/*creazione del thread per vlc*/
-		vlcThread vlcThread=new vlcThread("1");
-		vlcThread.start();
+		//vlcThread vlcThread=new vlcThread("1");
+		//vlcThread.start();
 		
 		
 
@@ -81,7 +76,6 @@ public class Manager implements IManager {
 		poster = ((ManagerCreazioneFreePoster)managerCreazione).createFreePoster(name, classe,
 				description);
 	}
-		
 	
 	public Integer addControllFP(ArrayList<Point2D> points) throws PosterTypeEx {
 		if(poster instanceof FreePoster)
@@ -99,7 +93,6 @@ public class Manager implements IManager {
 
 	//GridPost methods
 	
-	
 	public void createGridPoster(String name, String classe,
 			String description, int row, int col) {
 		managerCreazione = new ManagerCreazioneGridPoster(this);
@@ -107,14 +100,12 @@ public class Manager implements IManager {
 				description, row, col);
 	}
 	
-	
 	public Integer addControlGP(int row, int col) throws PosterTypeEx, PositionEX{
 		if(poster instanceof GridPoster)
 			return ((ManagerCreazioneGridPoster)managerCreazione).addControl((GridPoster)poster, row, col);
 		else
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
-
 	
 	public Integer addPaperGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX{
 		if(poster instanceof GridPoster)
@@ -123,7 +114,6 @@ public class Manager implements IManager {
 		else
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
-
 	
 	public void setPaperFilesGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX{
 		if(poster instanceof GridPoster)
@@ -131,7 +121,6 @@ public class Manager implements IManager {
 		else
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
-
 	
 	public void removeElementGP(int row, int col) throws PositionEX, PosterTypeEx {
 		if(poster instanceof GridPoster)
@@ -140,7 +129,6 @@ public class Manager implements IManager {
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 		
 	}
-
 	
 	public void changeCellsNumerdGP(int row, int col) throws PosterTypeEx, PositionEX {
 		if(poster instanceof GridPoster)
@@ -151,11 +139,9 @@ public class Manager implements IManager {
 
 	// Common methods
 	
-	
 	public void setPaperFiles(Integer id, ArrayList<String> Files) throws PositionEX {
 		managerCreazione.setPaperFiles(poster, id, Files);
 	}
-
 	
 	public void removeElement(Integer id) throws PositionEX {
 		managerCreazione.removeElement(poster, id);		
@@ -176,7 +162,6 @@ public class Manager implements IManager {
 		poster = managerDati.loadPoster(urlFile);
 		
 	}
-
 	
 	public void storePoster(String urlFile) throws FileNotFoundException {
 		managerDati.storePoster(poster, urlFile);

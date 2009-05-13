@@ -7,8 +7,6 @@ import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
-import java.util.Map.Entry;
 
 import manager.Manager;
 import manager.PositionEX;
@@ -26,9 +24,7 @@ public class GridPoster extends Poster {
 	private int row;
 	@XStreamAlias("Coloumn")
 	private int col;
-	
-	//@XStreamImplicit(itemFieldName="part")
-	@XStreamAlias("Elementi")
+	@XStreamAlias("ElementiGP")
 	private HashMap<Point, Element> elementMap;
 	@XStreamOmitField
 	private HashMap<Integer, Point> idMap;

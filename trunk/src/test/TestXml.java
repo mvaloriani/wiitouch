@@ -1,6 +1,7 @@
 package test;
 
 import java.awt.Point;
+import java.awt.geom.Point2D;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -18,6 +19,7 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import dataModel.Element;
+import dataModel.FreePoster;
 import dataModel.GridPoster;
 import dataModel.Paper;
 import dataModel.Poster;
@@ -58,7 +60,31 @@ public class TestXml {
 			
 			System.out.println("File Salvato Correnttamente");
 			//STAMPA DELL'OGGETTO
-			System.out.print(newJoe.getElement(1));
+			System.out.print(newJoe.toString());
+			
+			
+			manager.createFreePoster("2222222", "dddd", "dddd");
+			try {
+				manager.addControllFP(new ArrayList<Point2D>());
+			} catch (PosterTypeEx e) {
+				e.printStackTrace();
+			}
+			try {
+				manager.addPaperFP(new ArrayList<Point2D>(), files);
+			} catch (PosterTypeEx e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			//SALVATAGGIO DEL OGGETTO p SU UN FILE XML
+			manager.storePoster("./original1.xml");
+			System.out.println("File Salvato Correnttamente");
+			
+			//PROVO AD APRIRE IL FILE E LO CONVERTO
+			System.out.println("Apertura :./original1.xml");
+			FreePoster newBob = (FreePoster) managerDati.loadPoster("./original1.xml");
+			System.out.print(newBob.toString());
+			newBob.removeElement(2);
+			System.out.print(newBob.toString());
 	}
 
 }
