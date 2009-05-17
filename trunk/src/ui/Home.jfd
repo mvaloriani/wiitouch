@@ -28,6 +28,10 @@
        <string>visible</string> 
        <boolean>true</boolean> 
       </void> 
+      <void method="setProperty"> 
+       <string>defaultCloseOperation</string> 
+       <int>3</int> 
+      </void> 
       <void method="add"> 
        <object class="com.jformdesigner.model.FormContainer"> 
         <string>javax.swing.JPanel</string> 
@@ -35,11 +39,11 @@
          <class>org.jdesktop.layout.GroupLayout</class> 
          <void method="setProperty"> 
           <string>$horizontalGroup</string> 
-          <string>par l {seq l {space :p:25:p, par l {seq {comp buttonWii:::p::p:1, space :::p, comp panelWii::::276:x}, seq l {par t:::p {comp buttonPlay::l:::x:1, comp caricaButton::l:p:162:p:1}, space :p:73:p, par l:::p {comp buttonModifica:::::x:1, comp buttonCrea::l:p:162:p:1}}}, space ::32:x}, seq t {space ::111:x, comp label1:::p::p, space :p:103:p}}</string> 
+          <string>par l {seq l {space :p:25:p, par l {seq {comp buttonWii:::p::p:1, space :::p, comp panelWii::::0:x}, seq l {par t:::p {comp buttonPlay::l:::x:1, comp buttonCarica::l:p:162:p:1}, space :p:73:p, par l:::p {comp buttonModifica:::::x:1, comp buttonCrea::l:p:162:p:1}}}, space ::32:x}, seq t {space ::111:x, comp labelTitle:::p::p, space :p:103:p}}</string> 
          </void> 
          <void method="setProperty"> 
           <string>$verticalGroup</string> 
-          <string>par l {seq {space :::p, comp label1:::p::p, space :::p, par c {seq c {comp buttonCrea:2::p:40:p, space :::p, comp buttonModifica:2::p:40:p}, seq c {comp caricaButton:2::p:40:p, space :::p, comp buttonPlay:2::p:57:p}}, space :p:26:p, par l {comp buttonWii:::p:36:p, comp panelWii::::202:x}, space :::p}}</string> 
+          <string>par l {seq {space :::p, comp labelTitle:::p::p, space :::p, par c {seq c {comp buttonCrea:2::p:40:p, space :::p, comp buttonModifica:2::p:40:p}, seq c {comp buttonCarica:2::p:40:p, space :::p, comp buttonPlay:2::p:57:p}}, space :p:26:p, par l {comp buttonWii:::p:36:p, comp panelWii::::0:x}, space :::p}}</string> 
          </void> 
         </object> 
         <void method="setProperty"> 
@@ -62,7 +66,7 @@
            <string>Carica Tabellone</string> 
           </void> 
           <void property="name"> 
-           <string>caricaButton</string> 
+           <string>buttonCarica</string> 
           </void> 
           <void method="auxiliary"> 
            <void method="setProperty"> 
@@ -100,6 +104,14 @@
             <string>buttonModifica</string> 
            </void> 
           </void> 
+          <void method="addEvent"> 
+           <object class="com.jformdesigner.model.FormEvent"> 
+            <string>java.awt.event.ActionListener</string> 
+            <string>actionPerformed</string> 
+            <string>buttonModificaActionPerformed</string> 
+            <boolean>true</boolean> 
+           </object> 
+          </void> 
          </object> 
         </void> 
         <void method="add"> 
@@ -117,6 +129,14 @@
             <string>JavaCodeGenerator.variableName</string> 
             <string>buttonCrea</string> 
            </void> 
+          </void> 
+          <void method="addEvent"> 
+           <object class="com.jformdesigner.model.FormEvent"> 
+            <string>java.awt.event.ActionListener</string> 
+            <string>actionPerformed</string> 
+            <string>buttonCreaActionPerformed</string> 
+            <boolean>true</boolean> 
+           </object> 
           </void> 
          </object> 
         </void> 
@@ -140,6 +160,14 @@
             <string>buttonPlay</string> 
            </void> 
           </void> 
+          <void method="addEvent"> 
+           <object class="com.jformdesigner.model.FormEvent"> 
+            <string>java.awt.event.ActionListener</string> 
+            <string>actionPerformed</string> 
+            <string>buttonPlayActionPerformed</string> 
+            <boolean>true</boolean> 
+           </object> 
+          </void> 
          </object> 
         </void> 
         <void method="add"> 
@@ -161,7 +189,7 @@
            </object> 
           </void> 
           <void property="name"> 
-           <string>label1</string> 
+           <string>labelTitle</string> 
           </void> 
           <void method="auxiliary"> 
            <void method="setProperty"> 
@@ -186,6 +214,14 @@
             <string>JavaCodeGenerator.variableName</string> 
             <string>buttonWii</string> 
            </void> 
+          </void> 
+          <void method="addEvent"> 
+           <object class="com.jformdesigner.model.FormEvent"> 
+            <string>java.awt.event.ActionListener</string> 
+            <string>actionPerformed</string> 
+            <string>buttonWiiActionPerformed</string> 
+            <boolean>true</boolean> 
+           </object> 
           </void> 
           <void method="addEvent"> 
            <object class="com.jformdesigner.model.FormEvent"> 

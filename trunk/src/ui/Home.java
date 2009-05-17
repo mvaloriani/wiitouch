@@ -33,9 +33,21 @@ public class Home extends JFrame {
 		pack();
 	}
 
+	private void buttonModificaActionPerformed(ActionEvent e) {
+		// TODO add your code here
+	}
+
+	private void buttonPlayActionPerformed(ActionEvent e) {
+		// TODO add your code here
+	}
+
+	private void buttonCreaActionPerformed(ActionEvent e) {
+		// TODO add your code here
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-		// Generated using JFormDesigner Evaluation license - Giulio Presazzi
+		// Generated using JFormDesigner Evaluation license - Matteo Valoriani
 		panel1 = new JPanel();
 		buttonCarica = new JButton();
 		buttonModifica = new JButton();
@@ -53,12 +65,21 @@ public class Home extends JFrame {
 		setTitle("Home");
 		setResizable(false);
 		setVisible(true);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 
 		//======== panel1 ========
 		{
 			panel1.setBackground(new Color(181, 208, 249));
+
+			// JFormDesigner evaluation mark
+			panel1.setBorder(new javax.swing.border.CompoundBorder(
+				new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+					"JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+					javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+					java.awt.Color.red), panel1.getBorder())); panel1.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
+
 
 			//---- buttonCarica ----
 			buttonCarica.setText("Carica Tabellone");
@@ -71,13 +92,28 @@ public class Home extends JFrame {
 			//---- buttonModifica ----
 			buttonModifica.setText("Modifica Tabellone");
 			buttonModifica.setEnabled(false);
+			buttonModifica.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					buttonModificaActionPerformed(e);
+				}
+			});
 
 			//---- buttonCrea ----
 			buttonCrea.setText("Crea Tabellone");
+			buttonCrea.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					buttonCreaActionPerformed(e);
+				}
+			});
 
 			//---- buttonPlay ----
 			buttonPlay.setText("Fai Parlare il Tabellone");
 			buttonPlay.setEnabled(false);
+			buttonPlay.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					buttonPlayActionPerformed(e);
+				}
+			});
 
 			//---- labelTitle ----
 			labelTitle.setForeground(Color.blue);
@@ -146,7 +182,7 @@ public class Home extends JFrame {
 							.addGroup(panel1Layout.createSequentialGroup()
 								.addComponent(buttonWii)
 								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-								.addComponent(panelWii, GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))
+								.addComponent(panelWii, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
 							.addGroup(panel1Layout.createSequentialGroup()
 								.addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
 									.addComponent(buttonPlay, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -179,7 +215,7 @@ public class Home extends JFrame {
 						.addGap(26, 26, 26)
 						.addGroup(panel1Layout.createParallelGroup()
 							.addComponent(buttonWii, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-							.addComponent(panelWii, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
+							.addComponent(panelWii, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
 						.addContainerGap())
 			);
 			panel1Layout.linkSize(SwingConstants.VERTICAL, new Component[] {buttonCarica, buttonCrea, buttonModifica, buttonPlay});
@@ -191,7 +227,7 @@ public class Home extends JFrame {
 	}
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-	// Generated using JFormDesigner Evaluation license - Giulio Presazzi
+	// Generated using JFormDesigner Evaluation license - Matteo Valoriani
 	private JPanel panel1;
 	private JButton buttonCarica;
 	private JButton buttonModifica;
