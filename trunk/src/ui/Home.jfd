@@ -17,12 +17,16 @@
        <int>0</int> 
       </void> 
       <void method="setProperty"> 
+       <string>title</string> 
+       <string>Home</string> 
+      </void> 
+      <void method="setProperty"> 
        <string>resizable</string> 
        <boolean>false</boolean> 
       </void> 
       <void method="setProperty"> 
-       <string>title</string> 
-       <string>Home</string> 
+       <string>visible</string> 
+       <boolean>true</boolean> 
       </void> 
       <void method="add"> 
        <object class="com.jformdesigner.model.FormContainer"> 
@@ -31,11 +35,11 @@
          <class>org.jdesktop.layout.GroupLayout</class> 
          <void method="setProperty"> 
           <string>$horizontalGroup</string> 
-          <string>par l {seq l {space :p:25:p, par l {seq {comp toggleButton1:::p::p:1, space :::p, comp panel2::::276:x}, seq l {par t:::p {comp button4::l:::x:1, comp caricaButton:1:l:p:162:p:1}, space :p:73:p, par l:::p {comp button2:::::x:1, comp button3:1:l:p:162:p:1}}}, space ::32:x}, seq t {space ::111:x, comp label1:::p::p, space :p:103:p}}</string> 
+          <string>par l {seq l {space :p:25:p, par l {seq {comp buttonWii:::p::p:1, space :::p, comp panelWii::::276:x}, seq l {par t:::p {comp buttonPlay::l:::x:1, comp caricaButton::l:p:162:p:1}, space :p:73:p, par l:::p {comp buttonModifica:::::x:1, comp buttonCrea::l:p:162:p:1}}}, space ::32:x}, seq t {space ::111:x, comp label1:::p::p, space :p:103:p}}</string> 
          </void> 
          <void method="setProperty"> 
           <string>$verticalGroup</string> 
-          <string>par l {seq {space :::p, comp label1:::p::p, space :::p, par c {seq c {comp button3:2::p:40:p, space :::p, comp button2:2::p:40:p}, seq c {comp caricaButton:2::p:40:p, space :::p, comp button4:2::p:57:p}}, space :p:26:p, par l {comp toggleButton1:::p:36:p, comp panel2::::202:x}, space :::p}}</string> 
+          <string>par l {seq {space :::p, comp label1:::p::p, space :::p, par c {seq c {comp buttonCrea:2::p:40:p, space :::p, comp buttonModifica:2::p:40:p}, seq c {comp caricaButton:2::p:40:p, space :::p, comp buttonPlay:2::p:57:p}}, space :p:26:p, par l {comp buttonWii:::p:36:p, comp panelWii::::202:x}, space :::p}}</string> 
          </void> 
         </object> 
         <void method="setProperty"> 
@@ -66,6 +70,14 @@
             <string>buttonCarica</string> 
            </void> 
           </void> 
+          <void method="addEvent"> 
+           <object class="com.jformdesigner.model.FormEvent"> 
+            <string>java.awt.event.ActionListener</string> 
+            <string>actionPerformed</string> 
+            <string>caricaButtonActionPerformed</string> 
+            <boolean>true</boolean> 
+           </object> 
+          </void> 
          </object> 
         </void> 
         <void method="add"> 
@@ -80,7 +92,7 @@
            <boolean>false</boolean> 
           </void> 
           <void property="name"> 
-           <string>button2</string> 
+           <string>buttonModifica</string> 
           </void> 
           <void method="auxiliary"> 
            <void method="setProperty"> 
@@ -98,7 +110,7 @@
            <string>Crea Tabellone</string> 
           </void> 
           <void property="name"> 
-           <string>button3</string> 
+           <string>buttonCrea</string> 
           </void> 
           <void method="auxiliary"> 
            <void method="setProperty"> 
@@ -120,7 +132,7 @@
            <boolean>false</boolean> 
           </void> 
           <void property="name"> 
-           <string>button4</string> 
+           <string>buttonPlay</string> 
           </void> 
           <void method="auxiliary"> 
            <void method="setProperty"> 
@@ -167,13 +179,21 @@
            <string>Connetti WiiMote</string> 
           </void> 
           <void property="name"> 
-           <string>toggleButton1</string> 
+           <string>buttonWii</string> 
           </void> 
           <void method="auxiliary"> 
            <void method="setProperty"> 
             <string>JavaCodeGenerator.variableName</string> 
             <string>buttonWii</string> 
            </void> 
+          </void> 
+          <void method="addEvent"> 
+           <object class="com.jformdesigner.model.FormEvent"> 
+            <string>java.awt.event.ActionListener</string> 
+            <string>actionPerformed</string> 
+            <string>buttonWiiActionPerformed</string> 
+            <boolean>true</boolean> 
+           </object> 
           </void> 
          </object> 
         </void> 
@@ -206,6 +226,22 @@
             <null/> 
            </object> 
           </void> 
+          <void method="setProperty"> 
+           <string>focusable</string> 
+           <boolean>false</boolean> 
+          </void> 
+          <void method="setProperty"> 
+           <string>visible</string> 
+           <boolean>false</boolean> 
+          </void> 
+          <void method="setProperty"> 
+           <string>verifyInputWhenFocusTarget</string> 
+           <boolean>false</boolean> 
+          </void> 
+          <void method="setProperty"> 
+           <string>requestFocusEnabled</string> 
+           <boolean>false</boolean> 
+          </void> 
           <void method="auxiliary"> 
            <void method="setProperty"> 
             <string>JavaCodeGenerator.variableName</string> 
@@ -213,7 +249,7 @@
            </void> 
           </void> 
           <void property="name"> 
-           <string>panel2</string> 
+           <string>panelWii</string> 
           </void> 
           <void method="add"> 
            <object class="com.jformdesigner.model.FormComponent"> 

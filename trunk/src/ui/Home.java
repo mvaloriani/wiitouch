@@ -20,12 +20,17 @@ public class Home extends JFrame {
 		initComponents();
 	}
 
-	private void wiiButtonClicked(ActionEvent e) {
-		if(panelWii.isEnabled()){
-			panelWii.setEnabled(false);
+	private void caricaButtonActionPerformed(ActionEvent e) {
+		// TODO add your code here
+	}
+
+	private void buttonWiiActionPerformed(ActionEvent e) {
+		if(panelWii.isVisible()){
+			panelWii.setVisible(false);
 		}
 		else
-			panelWii.setEnabled(true);
+			panelWii.setVisible(true);
+		pack();
 	}
 
 	private void initComponents() {
@@ -45,8 +50,9 @@ public class Home extends JFrame {
 		progressBar2 = new JProgressBar();
 
 		//======== this ========
-		setResizable(false);
 		setTitle("Home");
+		setResizable(false);
+		setVisible(true);
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 
@@ -54,16 +60,13 @@ public class Home extends JFrame {
 		{
 			panel1.setBackground(new Color(181, 208, 249));
 
-			// JFormDesigner evaluation mark
-			panel1.setBorder(new javax.swing.border.CompoundBorder(
-				new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-					"JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-					javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-					java.awt.Color.red), panel1.getBorder())); panel1.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
-
-
 			//---- buttonCarica ----
 			buttonCarica.setText("Carica Tabellone");
+			buttonCarica.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					caricaButtonActionPerformed(e);
+				}
+			});
 
 			//---- buttonModifica ----
 			buttonModifica.setText("Modifica Tabellone");
@@ -83,11 +86,20 @@ public class Home extends JFrame {
 
 			//---- buttonWii ----
 			buttonWii.setText("Connetti WiiMote");
+			buttonWii.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					buttonWiiActionPerformed(e);
+				}
+			});
 
 			//======== panelWii ========
 			{
 				panelWii.setBorder(new TitledBorder(null, "Informazioni WiiMote", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION,
 					new Font("Cambria", Font.BOLD, 14)));
+				panelWii.setFocusable(false);
+				panelWii.setVisible(false);
+				panelWii.setVerifyInputWhenFocusTarget(false);
+				panelWii.setRequestFocusEnabled(false);
 
 				//---- labelBatteria ----
 				labelBatteria.setText("Livello Batteria:");
@@ -149,7 +161,6 @@ public class Home extends JFrame {
 						.addComponent(labelTitle)
 						.addGap(103, 103, 103))
 			);
-			panel1Layout.linkSize(SwingConstants.HORIZONTAL, new Component[] {buttonCarica, buttonCrea});
 			panel1Layout.setVerticalGroup(
 				panel1Layout.createParallelGroup()
 					.addGroup(panel1Layout.createSequentialGroup()

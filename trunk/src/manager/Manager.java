@@ -199,7 +199,7 @@ public class Manager implements IManager {
 			 if(System.getProperty("os.name").toLowerCase().contains("mac os x")){
 				 
 				 try {
-					Process ls_proc = Runtime.getRuntime().exec("./bin/Vlc/VLC.app/Contents/MacOS/VLC --intf=telnet");
+					Process ls_proc = Runtime.getRuntime().exec("./Vlc/VLC.app/Contents/MacOS/VLC --intf=telnet");
 				} catch (IOException e) {
 					
 					log.info("Sistema operativo mac: apertura VLC: "+e.toString());
@@ -207,7 +207,7 @@ public class Manager implements IManager {
 			 }else if(System.getProperty("os.name").toLowerCase().contains("win"))
 			 {
 				 try {
-						Process ls_proc = Runtime.getRuntime().exec("./bin/Vlc/vlcWin/vlc.exe --intf=telnet");
+						Process ls_proc = Runtime.getRuntime().exec("./Vlc/vlcWin/vlc.exe --intf=telnet");
 					} catch (IOException e) {
 						
 						log.info("Sistema operativo windows: apertura VLC: "+e.toString());
