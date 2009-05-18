@@ -25,7 +25,6 @@ public interface IManager {
 	// Common methods
 	public void setPaperFiles(Integer id, ArrayList<String> Files) throws PositionEX;
 	public void removeElement(Integer id) throws PositionEX;
-
 	public IPoster getIPoster();
 	
 	
@@ -34,5 +33,9 @@ public interface IManager {
 	public void storePoster(String urlFile) throws FileNotFoundException;
 	
 	//Play method
-	public void play(Point2D point);
+	public void play();
+	public void stopPlay();
+	
+	//Wii method
+	public void calibra();
 }

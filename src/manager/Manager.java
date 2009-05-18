@@ -8,6 +8,11 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import Personal.EventoSelezionaPunto;
+import Personal.EventoSelezionaPuntoListener;
+import Personal.HW;
+import Personal.IWiiHw;
+
 import dataModel.FreePoster;
 import dataModel.GridPoster;
 import dataModel.Paper;
@@ -30,6 +35,8 @@ public class Manager implements IManager {
 
 	private static Logger log;
 	
+	private IWiiHw iWii;
+	
 	public Paper getlastPaper()
 	{
 		return lastPaper;
@@ -49,13 +56,6 @@ public class Manager implements IManager {
 	}
 
 	/**
-	 * @param managerCreazione the managerCreazione to set
-	 */
-	public void setManagerCreazione(ManagerCreazione managerCreazione) {
-		this.managerCreazione = managerCreazione;
-	}
-
-	/**
 	 * @param managerDati
 	 * @param managerCreazione
 	 * @param poster
@@ -66,20 +66,21 @@ public class Manager implements IManager {
 		this.managerCreazione=null;
 		this.poster = null;
 		this.lastPaper = null;
+		this.iWii = new HW();
 		
+		// logger
 		FileHandler fh=null;
 		log=Logger.getLogger("WiiTouch.manager");
 		try {
 			fh=new FileHandler("./log.txt");
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
 			System.out.println(e.toString());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			System.out.println(e.toString());
 		}
 		log.addHandler(fh);
 		log.setLevel(Level.ALL);
+		
 		
 		
 		/*creazione del thread per vlc*/
@@ -171,16 +172,14 @@ public class Manager implements IManager {
 		managerCreazione.removeElement(poster, id);		
 	}
 	
-	public void play(Point2D point){
-		try {
-			if (poster!=null)
-				poster.getElement(point).exec();		
-		} catch (PositionEX e) {
-			// not element associated to this point
-		}
+
+
+	@Override
+	public IPoster getIPoster() {
+		return poster;
 	}
 
-
+	// Load&Store methods 
 	
 	public void loadPoster(String urlFile) throws FileNotFoundException {
 		poster = managerDati.loadPoster(urlFile);
@@ -190,6 +189,42 @@ public class Manager implements IManager {
 	public void storePoster(String urlFile) throws FileNotFoundException {
 		managerDati.storePoster(poster, urlFile);
 		
+	}
+	
+	// WiiMethods
+	public void calibra(){
+		iWii.calibra();
+		poster.setIsCalibated(true);
+	}
+	
+	@Override
+	public void play() {
+		iWii.startPlay(new EventoSelezionaPuntoListener(){
+			public void OnEventoSelezionaPunto(EventoSelezionaPunto e) {
+				eventoSelezionaPuntoActionPerformed(e);
+			}
+			
+		});
+		
+	}
+
+	@Override
+	public void stopPlay() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	//private
+	private void play(Point2D point){
+		try {
+			if (poster!=null)
+				poster.getElement(point).exec();		
+		} catch (PositionEX e) {
+		}
+	}
+	
+	private void eventoSelezionaPuntoActionPerformed(EventoSelezionaPunto e){
+		play(e.getPunto());
 	}
 	
 	private static class vlcThread extends Thread {
@@ -223,9 +258,7 @@ public class Manager implements IManager {
 		 }
 	}
 
-	@Override
-	public IPoster getIPoster() {
-		return poster;
-	}
+
+
 
 }
