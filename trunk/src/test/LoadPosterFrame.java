@@ -1,20 +1,36 @@
+/*
+ * NewJFrame.java
+ *
+ * Created on 14 maggio 2009, 13.31
+ */
+
 package test;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.io.File;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
+import javax.swing.filechooser.FileFilter;
 
-public class LoadPosterFrame extends JFrame implements ActionListener{
-
+/**
+ *
+ * @author  giuliopresazzi
+ */
+public class LoadPosterFrame extends javax.swing.JFrame implements ActionListener {
+    
     /** Creates new form NewJFrame */
     public LoadPosterFrame() {
         initComponents();
         jButton1.addActionListener(this);
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension screenSize = tk.getScreenSize();
+        int screenHeight = screenSize.height;
+        int screenWidth = screenSize.width;
+        setSize(screenWidth / 2, screenHeight / 2);
+        setLocation(screenWidth / 4, screenHeight / 4);
+        this.setVisible(true);
     }
     
     /** This method is called from within the constructor to
@@ -24,79 +40,97 @@ public class LoadPosterFrame extends JFrame implements ActionListener{
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">                          
     private void initComponents() {
-        GridBagConstraints gridBagConstraints;
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-
-        getContentPane().setLayout(new GridBagLayout());
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        jButton1.setText("...");
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 7;
-        getContentPane().add(jButton1, gridBagConstraints);
+        setTitle("Carica cartellone");
+        setAlwaysOnTop(true);
+        setBackground(new java.awt.Color(181, 208, 249));
+        getContentPane().add(jLabel4, java.awt.BorderLayout.PAGE_START);
 
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 23;
-        getContentPane().add(jTextField1, gridBagConstraints);
+        getContentPane().add(jLabel3, java.awt.BorderLayout.LINE_END);
 
-        jLabel1.setText("Carica");
-        gridBagConstraints = new GridBagConstraints();
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        jPanel1.setBackground(new java.awt.Color(181, 208, 249));
+        jLabel2.setText("Seleziona un cartellone che hai gi\u00e0 creato");
+        gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipady = 47;
-        getContentPane().add(jLabel1, gridBagConstraints);
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 14;
+        jPanel1.add(jLabel2, gridBagConstraints);
 
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        jPanel2.setBackground(new java.awt.Color(181, 208, 249));
         jButton2.setText("Ok");
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 8;
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 11;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 17;
-        gridBagConstraints.insets = new Insets(0, 17, 0, 17);
-        getContentPane().add(jButton2, gridBagConstraints);
+        jPanel2.add(jButton2, gridBagConstraints);
 
         jButton3.setText("Annulla");
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 10;
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
-        getContentPane().add(jButton3, gridBagConstraints);
+        jPanel2.add(jButton3, gridBagConstraints);
 
-        jLabel2.setText("Seleziona un poster che hai gi\u00e0 creato");
-        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = GridBagConstraints.REMAINDER;
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipady = 14;
-        getContentPane().add(jLabel2, gridBagConstraints);
-
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 106;
-        getContentPane().add(jLabel3, gridBagConstraints);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(jPanel2, gridBagConstraints);
 
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 12;
-        getContentPane().add(jLabel4, gridBagConstraints);
+        jPanel3.setLayout(new java.awt.GridBagLayout());
+
+        jPanel3.setBackground(new java.awt.Color(181, 208, 249));
+        jLabel1.setText("Carica");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 47;
+        jPanel3.add(jLabel1, gridBagConstraints);
+
+        jTextField1.setColumns(20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 23;
+        jPanel3.add(jTextField1, gridBagConstraints);
+
+        jButton1.setText("...");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 14;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 7;
+        jPanel3.add(jButton1, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 1, 0, 1);
+        jPanel1.add(jPanel3, gridBagConstraints);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>                        
@@ -122,6 +156,9 @@ public class LoadPosterFrame extends JFrame implements ActionListener{
         //chooser.setFileFilter(filter);
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         chooser.showOpenDialog(this);
+        File file = chooser.getSelectedFile();
+        jTextField1.setText(file.getAbsolutePath());
+
     }
     
     // Variables declaration - do not modify                     
@@ -132,6 +169,9 @@ public class LoadPosterFrame extends JFrame implements ActionListener{
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration                   
     

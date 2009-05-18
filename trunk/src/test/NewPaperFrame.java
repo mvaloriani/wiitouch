@@ -6,6 +6,9 @@
 
 package test;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author  giuliopresazzi
@@ -15,6 +18,12 @@ public class NewPaperFrame extends javax.swing.JFrame {
     /** Creates new form NewPaperFrame */
     public NewPaperFrame() {
         initComponents();
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension screenSize = tk.getScreenSize();
+        int screenHeight = screenSize.height;
+        int screenWidth = screenSize.width;
+        setSize(screenWidth / 2, screenHeight / 2);
+        setLocation(screenWidth / 4, screenHeight / 4);
     }
     
     /** This method is called from within the constructor to
@@ -26,125 +35,101 @@ public class NewPaperFrame extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
-        getContentPane().setLayout(new java.awt.GridBagLayout());
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("File");
+        setBackground(new java.awt.Color(181, 208, 249));
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        jPanel2.setBackground(new java.awt.Color(181, 208, 249));
         jLabel1.setText("Foglio");
-        getContentPane().add(jLabel1, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(11, 0, 11, 0);
+        jPanel2.add(jLabel1, gridBagConstraints);
 
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        jPanel3.setLayout(new java.awt.GridBagLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Associa un file"));
-        jPanel1.setMinimumSize(new java.awt.Dimension(400, 200));
-        jPanel1.setPreferredSize(new java.awt.Dimension(400, 150));
+        jPanel3.setBackground(new java.awt.Color(181, 208, 249));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel2.setText("File");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        jPanel3.add(jLabel2, gridBagConstraints);
+
         jTextField1.setColumns(17);
         jTextField1.setMinimumSize(new java.awt.Dimension(20, 28));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        jPanel1.add(jTextField1, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        jPanel1.add(jTextField2, gridBagConstraints);
+        jPanel3.add(jTextField1, gridBagConstraints);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        jPanel1.add(jTextField3, gridBagConstraints);
-
-        jLabel2.setText("Audio");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        jPanel1.add(jLabel2, gridBagConstraints);
-
-        jLabel3.setText("Video");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        jPanel1.add(jLabel3, gridBagConstraints);
-
-        jLabel4.setText("Altro");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        jPanel1.add(jLabel4, gridBagConstraints);
-
+        jButton1.setBackground(new java.awt.Color(181, 208, 249));
         jButton1.setText("Anteprima");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 0;
-        jPanel1.add(jButton1, gridBagConstraints);
-
-        jButton2.setText("Anteprima");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        jPanel1.add(jButton2, gridBagConstraints);
-
-        jButton3.setText("Anteprima");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        jPanel1.add(jButton3, gridBagConstraints);
+        jPanel3.add(jButton1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 20, 0);
-        getContentPane().add(jPanel1, gridBagConstraints);
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipadx = 22;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.insets = new java.awt.Insets(10, 9, 10, 9);
+        jPanel2.add(jPanel3, gridBagConstraints);
 
+        jPanel1.setBackground(new java.awt.Color(181, 208, 249));
         jButton4.setText("Salva");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        getContentPane().add(jButton4, gridBagConstraints);
+        jPanel1.add(jButton4);
+
+        jButton2.setText("Cancella");
+        jPanel1.add(jButton2);
 
         jButton5.setText("Annulla");
+        jPanel1.add(jButton5);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        getContentPane().add(jButton5, gridBagConstraints);
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        jPanel2.add(jPanel1, gridBagConstraints);
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         pack();
+        this.setVisible(true);
     }// </editor-fold>                        
+    
+    
     
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration                   
     
 }
