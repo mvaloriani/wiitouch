@@ -69,7 +69,6 @@ public class Paper extends Element {
 	}
 
 	public void exec() {
-		// TODO Auto-generated method stub
 		InetAddress addr = null;
 		try {
 			addr = InetAddress.getByName("127.0.0.1");
@@ -99,11 +98,9 @@ public class Paper extends Element {
 			in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 		} catch (UnknownHostException e) {
 			System.err.println("Don't know about host: taranis.");
-			System.exit(1);
 		} catch (IOException e) {
 			System.err.println("Couldn't get I/O for "
 					+ "the connection to: taranis.");
-			System.exit(1);
 		}
 
 		BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));

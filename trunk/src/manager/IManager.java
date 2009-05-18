@@ -4,6 +4,8 @@ import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+import dataModel.IPoster;
+
 public interface IManager {
 	
 	// FreePoster methods
@@ -23,6 +25,9 @@ public interface IManager {
 	// Common methods
 	public void setPaperFiles(Integer id, ArrayList<String> Files) throws PositionEX;
 	public void removeElement(Integer id) throws PositionEX;
+
+	public IPoster getIPoster();
+	
 	
 	//Store&Load methods
 	public void loadPoster(String urlFile) throws FileNotFoundException;

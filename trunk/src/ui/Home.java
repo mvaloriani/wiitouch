@@ -47,7 +47,7 @@ public class Home extends JFrame {
 
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-		// Generated using JFormDesigner Evaluation license - Matteo Valoriani
+		// Generated using JFormDesigner Evaluation license - Giulio Presazzi
 		panel1 = new JPanel();
 		buttonCarica = new JButton();
 		buttonModifica = new JButton();
@@ -227,7 +227,7 @@ public class Home extends JFrame {
 	}
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-	// Generated using JFormDesigner Evaluation license - Matteo Valoriani
+	// Generated using JFormDesigner Evaluation license - Giulio Presazzi
 	private JPanel panel1;
 	private JButton buttonCarica;
 	private JButton buttonModifica;
