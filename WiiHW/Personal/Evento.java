@@ -3,17 +3,17 @@ package Personal;
 import java.awt.Point;
 
 public class Evento {
-	private static IHW inter;
+	private static HW inter;
 
 public void Evento(){
 
 	}
-	public void setInterfaccia(IHW interfaccia)
+	public void setInterfaccia(HW interfaccia)
 	{
 		Evento.inter=interfaccia;
 	}
 	
-	public IHW getInterfaccia(){
+	public HW getInterfaccia(){
 	return Evento.inter;
 	}
 	

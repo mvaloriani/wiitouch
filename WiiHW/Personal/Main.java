@@ -12,41 +12,37 @@ import javax.swing.JFrame;
 	     * event-dispatching thread.
 	     */
 
-		private static IHW wow;
+		private static HW wow;
 	    private static void createAndShowGUI() {
-	        //Create and set up the window.    
-	    	//WiimoteCalibration cal = new WiimoteCalibration();
+	        
 	    	JFrame frame = new JFrame();
-	    	//JFrame frame = cal.CreaFrame();
+	    	
 	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	       
 	        JButton buttonOk = new JButton("OK");
 	      //  JButton buttonAnnulla = new JButton("Annulla");
 	        
-	        
-	        
-	        /*TableModel fileTable = new FileTableModel("file");
-			JTable table = new JTable(fileTable);
-			table.setColumnSelectionAllowed(true);
-			JScrollPane scrollPane = new JScrollPane(table);
-			
-			frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
-	   
-	        */
-	        //frame.getContentPane().add(buttonAnnulla, BorderLayout.SOUTH); 
-	        //l'ho dovuta commentare perchè se no me lo sovrapponeva al bottone precedente
+	      
 	        
 	        frame.getContentPane().add(buttonOk, BorderLayout.SOUTH);
 	        
 	        
-	    wow = new IHW();
+	        wow = new HW();
+	        wow.calibra();
+	
+	        /*
+	        ProvaEvento ggg = new ProvaEvento();
 	        
-	     //   WiimoteWhiteboard bella = new WiimoteWhiteboard();
+	        wow.addEventoSelezionaPuntoListener(ggg);
+	        */
+	        ProvaEvento ka =new ProvaEvento();
+	        
+	   wow.startPlay(ka);
 	        
 	        
-	      // bella.main(null);
 	        
-	    
+	        
+	        
 	        
 	        //Display the window.
 	        frame.pack();
