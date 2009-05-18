@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 
 		private static HW wow;
 	    private static void createAndShowGUI() {
-	        
+	    	//System.setProperty("bluecove.jsr82.psm_minimum_off", "true");
 	    	JFrame frame = new JFrame();
 	    	
 	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,8 +28,8 @@ import javax.swing.JFrame;
 	        
 	        
 	        wow = new HW();
-	        wow.calibra();
-	
+	        
+	     
 	        /*
 	        ProvaEvento ggg = new ProvaEvento();
 	        
@@ -47,10 +47,14 @@ import javax.swing.JFrame;
 	        //Display the window.
 	        frame.pack();
 	        frame.setVisible(true);
+	        
+	    
+	        wow.calibra();
+	
 	    }
 	    
 	    
-	    
+	    /*
 	    public static void main(String[] args) {
 	        //Schedule a job for the event-dispatching thread:
 	        //creating and showing this application's GUI.
@@ -59,6 +63,6 @@ import javax.swing.JFrame;
 	                createAndShowGUI();
 	            }
 	        });
-	    }
+	    }/*
 	}
 

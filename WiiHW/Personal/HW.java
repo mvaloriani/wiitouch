@@ -3,6 +3,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import org.uweschmidt.wiimote.whiteboard.WiimoteWhiteboard;
+import org.uweschmidt.wiimote.whiteboard.calibration.WiimoteCalibration;
 
 
 public class HW implements IWiiHw{
@@ -11,23 +12,21 @@ public class HW implements IWiiHw{
  private static Evento Events;
  private boolean IsCalibrated;
  private boolean IsPlaying;
+ private WiimoteCalibration c;
  public ArrayList<EventoSelezionaPuntoListener> EventoSelezionaPuntoListeners=new ArrayList();
  
+
 	public void calibra(){
-		
 		this.IsCalibrated=true;
 		
+		
+		 //c = new WiimoteCalibration();
 		//try{
-			Board = new WiimoteWhiteboard();
-			Board.main(null);
 		/*}
 		catch(Exception ex)
 		{
 			JOptionPane.showMessageDialog(null, "Eccezzione");
-
-		}*/
-		
-		
+		}*/		
 	}
 	
 	public synchronized void addEventoSelezionaPuntoListener (EventoSelezionaPuntoListener l) {
@@ -56,7 +55,6 @@ public class HW implements IWiiHw{
 		}
 	
 	public void startPlay(EventoSelezionaPuntoListener lis){
-
 		this.IsPlaying=true;
 	this.addEventoSelezionaPuntoListener(lis);
 	}
@@ -72,26 +70,25 @@ public class HW implements IWiiHw{
 		return Board;
 	}
 	
-	public  HW()
+	public HW()
 	{
 		this.IsCalibrated=false;
 		this.IsPlaying=false;
-		
-
 		Events=new Evento();
 		Events.setInterfaccia(this);
-	
+		
+		Board = new WiimoteWhiteboard();
+		Board.main(null);
 	}
 	
-	
+
 	public void inputIRPen(Point p)
 	{
-
 		//JOptionPane.showMessageDialog(null, "Posizione Mouse x" + p.getX() + " Y " + p.getY());
 		if(this.IsPlaying==true){
 		this.notifyEventoSelezionaPunto(p);}
 	}
-	
+
 	
 	
 	
