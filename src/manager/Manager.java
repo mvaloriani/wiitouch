@@ -12,6 +12,7 @@ import dataModel.FreePoster;
 import dataModel.GridPoster;
 import dataModel.Paper;
 import dataModel.Poster;
+import dataModel.IPoster;
 
 
 /**
@@ -220,6 +221,11 @@ public class Manager implements IManager {
 		 
 		
 		 }
+	}
+
+	@Override
+	public IPoster getIPoster() {
+		return poster;
 	}
 
 }

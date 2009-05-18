@@ -42,7 +42,7 @@ public class GridPoster extends Poster {
 		/**
 	 * @return the row
 	 */
-	public int getRow() {
+	public Integer getRow() {
 		return row;
 	}
 
@@ -64,7 +64,7 @@ public class GridPoster extends Poster {
 	/**
 	 * @return the col
 	 */
-	public int getCol() {
+	public Integer getCol() {
 		return col;
 	}
 

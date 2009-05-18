@@ -11,7 +11,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 
 
-public abstract class Poster{
+public abstract class Poster implements IPoster{
 	
 	private Polygon area;
 	@XStreamAlias("Name")
@@ -122,6 +122,13 @@ public abstract class Poster{
 		this.classroom = studentClassroom;
 		this.description = description;
 		this.isCalibated=false;
+	}
+	
+	public Integer getCol(){
+		return null;
+	}
+	public Integer getRow(){
+		return null;
 	}
 
 	
