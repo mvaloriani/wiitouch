@@ -1,10 +1,12 @@
 package manager;
 
-import test.LoadPosterFrame;
-import test.NewElementFrame;
-import test.NewPaperFrame;
-import ui.Home;
+import ui.LoadPosterFrame;
+import ui.Modifica;
 import ui.ModificaPoster;
+import ui.NewElementFrame;
+import ui.NewPaperFrame;
+import ui.NewPosterFrame;
+
 
 public class Main {
 
@@ -17,14 +19,15 @@ public class Main {
 		system.createGridPoster("xsdfg", "2345", "serthj", 3, 5);
 		system.calibra();
 		
-		/*ModificaPoster mod = new ModificaPoster(system);
-		Home home = new Home();
+		ModificaPoster mod = new ModificaPoster(system);
+		//Home home = new Home();
 		NewPaperFrame np = new NewPaperFrame();
+		NewPosterFrame npf= new NewPosterFrame();
+		Modifica m=new Modifica();
+		
 		NewElementFrame ne = new NewElementFrame();
 		LoadPosterFrame lp = new LoadPosterFrame();
-		np.setVisible(true);
-		ne.setVisible(true);
-		lp.setVisible(true);*/
+	
 	}
 
 }
