@@ -174,7 +174,6 @@ public class Manager implements IManager {
 	
 
 
-	@Override
 	public IPoster getIPoster() {
 		return poster;
 	}
@@ -197,7 +196,7 @@ public class Manager implements IManager {
 		poster.setIsCalibated(true);
 	}
 	
-	@Override
+	
 	public void play() {
 		iWii.startPlay(new EventoSelezionaPuntoListener(){
 			public void OnEventoSelezionaPunto(EventoSelezionaPunto e) {
@@ -208,7 +207,7 @@ public class Manager implements IManager {
 		
 	}
 
-	@Override
+	
 	public void stopPlay() {
 		// TODO Auto-generated method stub
 		
