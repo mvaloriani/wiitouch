@@ -15,6 +15,7 @@ public class NewPaperFrame extends javax.swing.JFrame {
     /** Creates new form NewPaperFrame */
     public NewPaperFrame() {
         initComponents();
+        this.setVisible(true);
     }
     
     /** This method is called from within the constructor to
