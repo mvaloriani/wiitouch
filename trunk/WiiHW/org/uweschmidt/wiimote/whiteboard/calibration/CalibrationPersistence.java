@@ -28,6 +28,8 @@ package org.uweschmidt.wiimote.whiteboard.calibration;
 import java.awt.DisplayMode;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 import org.jdesktop.application.Application;
 import org.uweschmidt.wiimote.whiteboard.calibration.WiimoteCalibration.CalibrationEvent;
 import org.uweschmidt.wiimote.whiteboard.calibration.WiimoteCalibration.CalibrationEventListener;
@@ -67,6 +69,7 @@ public class CalibrationPersistence implements CalibrationEventListener {
 			calibration.load(Application.getInstance().getContext().getLocalStorage().openInputFile(fileName));
 		} catch (IOException e) {
 			// ignore
+
 		}
 	}
 	
