@@ -6,6 +6,14 @@
 
 package ui;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+
 /**
  *
  * @author  giuliopresazzi
@@ -15,6 +23,36 @@ public class NewPaperFrame extends javax.swing.JFrame {
     /** Creates new form NewPaperFrame */
     public NewPaperFrame() {
         initComponents();
+        jButton3.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent) {
+                
+            JFileChooser chooser=new JFileChooser();
+            chooser.setMultiSelectionEnabled(false);
+            chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            chooser.showOpenDialog(null);
+            File file = chooser.getSelectedFile();
+            jTextField1.setText(file.getAbsolutePath());
+            
+            }
+
+            
+        });
+        
+        jButton2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent) {
+                jTextField1.setText("");
+            }
+        });
+        
+        jButton5.addActionListener(new AnnullButton(this));
+        
+        //Mostra la finestra al centro dello schermo
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension screenSize = tk.getScreenSize();
+        int screenHeight = screenSize.height;
+        int screenWidth = screenSize.width;
+        
+        setLocation((screenWidth-this.getSize().width) / 2, (screenHeight-this.getSize().height) / 2);
         this.setVisible(true);
     }
     
@@ -33,6 +71,7 @@ public class NewPaperFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -41,20 +80,24 @@ public class NewPaperFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("File");
         setBackground(new java.awt.Color(181, 208, 249));
+        setResizable(false);
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jPanel2.setBackground(new java.awt.Color(181, 208, 249));
-        jLabel1.setText("Foglio");
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13));
+        jLabel1.setText("Assegna un contenuto");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(11, 0, 11, 0);
+        gridBagConstraints.ipadx = 40;
+        gridBagConstraints.insets = new java.awt.Insets(12, 9, 12, 9);
         jPanel2.add(jLabel1, gridBagConstraints);
 
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
         jPanel3.setBackground(new java.awt.Color(181, 208, 249));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13));
         jLabel2.setText("File");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -73,18 +116,23 @@ public class NewPaperFrame extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(181, 208, 249));
         jButton1.setText("Anteprima");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
         jPanel3.add(jButton1, gridBagConstraints);
+
+        jButton3.setText("...");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
+        jPanel3.add(jButton3, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
         gridBagConstraints.gridheight = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.ipadx = 22;
-        gridBagConstraints.ipady = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipady = 4;
         gridBagConstraints.insets = new java.awt.Insets(10, 9, 10, 9);
         jPanel2.add(jPanel3, gridBagConstraints);
 
@@ -108,10 +156,21 @@ public class NewPaperFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
     
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new NewPaperFrame().setVisible(true);
+            }
+        });
+    }
     
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
@@ -123,3 +182,15 @@ public class NewPaperFrame extends javax.swing.JFrame {
     // End of variables declaration                   
     
 }
+ class AnnullButton implements ActionListener{
+     private JFrame f=null;
+     public AnnullButton(JFrame ff)
+     {
+         f=ff;
+         
+     }
+    public void actionPerformed(ActionEvent actionEvent) {
+    
+         f.setVisible(false);  
+    }
+ }
