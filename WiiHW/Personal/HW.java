@@ -1,6 +1,10 @@
 package Personal;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.swing.JOptionPane;
 
 import org.uweschmidt.wiimote.whiteboard.WiimoteWhiteboard;
 import org.uweschmidt.wiimote.whiteboard.calibration.WiimoteCalibration;
@@ -14,7 +18,11 @@ public class HW implements IWiiHw{
  private boolean IsPlaying;
  private WiimoteCalibration c;
  public ArrayList<EventoSelezionaPuntoListener> EventoSelezionaPuntoListeners=new ArrayList();
- 
+ private int x;
+ Point pprec=null;
+ private ArrayList<Double> vett=new ArrayList();
+ private boolean enable=true;
+ Timer timer;
 
 	public void calibra(){
 		this.IsCalibrated=true;
@@ -79,16 +87,34 @@ public class HW implements IWiiHw{
 		
 		Board = new WiimoteWhiteboard();
 		Board.main(null);
+		x=0;
 	}
 	
 
-	public void inputIRPen(Point p)
+	public  void inputIRPen(Point p)
 	{
+		
+		
+		
 		//JOptionPane.showMessageDialog(null, "Posizione Mouse x" + p.getX() + " Y " + p.getY());
-		if(this.IsPlaying==true){
-		this.notifyEventoSelezionaPunto(p);}
+		if((this.IsPlaying==true)&&enable==true){
+		
+			this.notifyEventoSelezionaPunto(p);	
+			enable=false;
+			timer = new Timer();
+			timer.schedule(new RemindTask(), 1000);
+			
+			
+		}
+		
 	}
-
+	 class RemindTask extends TimerTask {
+		    public void run() {
+		      System.out.println("Time's up!");
+		      enable=true;
+		      timer.cancel(); //Not necessary because we call System.exit
+		    }
+		  }
 	
 	
 	

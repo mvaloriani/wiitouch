@@ -13,7 +13,7 @@ public void Evento(){
 		Evento.inter=interfaccia;
 	}
 	
-	public HW getInterfaccia(){
+	public static HW getInterfaccia(){
 	return Evento.inter;
 	}
 	

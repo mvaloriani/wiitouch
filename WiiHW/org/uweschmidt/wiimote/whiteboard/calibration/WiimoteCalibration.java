@@ -230,7 +230,9 @@ public class WiimoteCalibration {
 		public void finished(CalibrationState s) {
 			int x = s.getX(bounds) - bounds.x;
 			int y = s.getY(bounds) - bounds.y;
-			
+			//////OSCAR
+			System.out.println("int :" + x + "int :" + y );
+			///////////////////////
 			for (Wiimote wiimote : points.keySet()) {
 				add(statusLabel(points.get(wiimote).get(s) != null ? VISIBLE : NOT_VISIBLE, wiimote.getId(), x, y));
 			}

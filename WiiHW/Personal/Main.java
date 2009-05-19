@@ -17,7 +17,9 @@ import javax.swing.JFrame;
 	    	//System.setProperty("bluecove.jsr82.psm_minimum_off", "true");
 	    	JFrame frame = new JFrame();
 	    	
-	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	    	
+	    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	       
 	        JButton buttonOk = new JButton("OK");
 	      //  JButton buttonAnnulla = new JButton("Annulla");
@@ -30,14 +32,14 @@ import javax.swing.JFrame;
 	        wow = new HW();
 	        
 	     
-	        /*
-	        ProvaEvento ggg = new ProvaEvento();
 	        
-	        wow.addEventoSelezionaPuntoListener(ggg);
-	        */
+	      ProvaEvento ggg = new ProvaEvento();
+	      wow.startPlay(ggg);
+	        //wow.addEventoSelezionaPuntoListener(ggg);
+	       /*
 	        ProvaEvento ka =new ProvaEvento();
 	        
-	   wow.startPlay(ka);
+	   */
 	        
 	        
 	        
@@ -49,12 +51,12 @@ import javax.swing.JFrame;
 	        frame.setVisible(true);
 	        
 	    
-	        wow.calibra();
+	//        wow.calibra();
 	
 	    }
 	    
 	    
-	    /*
+	    
 	    public static void main(String[] args) {
 	        //Schedule a job for the event-dispatching thread:
 	        //creating and showing this application's GUI.
@@ -63,6 +65,6 @@ import javax.swing.JFrame;
 	                createAndShowGUI();
 	            }
 	        });
-	    }/*
+	    }
 	}
 
