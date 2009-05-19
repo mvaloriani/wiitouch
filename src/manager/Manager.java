@@ -216,13 +216,18 @@ public class Manager implements IManager {
 	//private
 	private void play(Point2D point){
 		try {
-			if (poster!=null)
-				poster.getElement(point).exec();		
+			if (poster!=null){
+				poster.getElement(point).exec();
+				System.out.println(poster.getElement(point));	
+				
+			}
 		} catch (PositionEX e) {
+			System.out.println("Elemento non identificato");
 		}
 	}
 	
 	private void eventoSelezionaPuntoActionPerformed(EventoSelezionaPunto e){
+		System.out.print("\npunto ricevuto x:"+ e.getPunto().x+ " y: "+e.getPunto().y);
 		play(e.getPunto());
 	}
 	
