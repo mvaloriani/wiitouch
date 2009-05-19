@@ -1,3 +1,5 @@
+package ui;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -9,7 +11,7 @@
  * Created on 19-mag-2009, 11.46.49
  */
 
-package javaapplication1;
+
 
 /**
  *
