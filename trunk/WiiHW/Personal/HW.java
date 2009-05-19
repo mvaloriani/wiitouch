@@ -102,7 +102,7 @@ public class HW implements IWiiHw{
 			this.notifyEventoSelezionaPunto(p);	
 			enable=false;
 			timer = new Timer();
-			timer.schedule(new RemindTask(), 1000);
+			timer.schedule(new RemindTask(), 500);
 			
 			
 		}
