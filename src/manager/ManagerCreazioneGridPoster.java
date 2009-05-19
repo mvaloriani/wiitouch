@@ -10,6 +10,7 @@ import dataModel.Control;
 import dataModel.Element;
 import dataModel.GridPoster;
 import dataModel.Paper;
+import dataModel.PauseControl;
 import dataModel.Poster;
 
 
@@ -36,11 +37,11 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 	}
 
 	private Integer addElement(GridPoster poster,int row, int col, String type) throws PositionEX{
-		Element element;
+		Element element=null;
 		if (type.equalsIgnoreCase("PAPER"))
 			element=new Paper(poster.getNumberOfElements()+1, new ArrayList<String>());
-		else
-			element=new Control(poster.getNumberOfElements()+1, manager);
+		if (type.equalsIgnoreCase("PAUSA"))
+			element=new PauseControl(poster.getNumberOfElements()+1, manager);
 		poster.addElement(element, row, col);
 		setElementArea(poster, row, col);
 		return element.getId();
@@ -86,8 +87,8 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		
 	}
 	
-	public Integer addControl(GridPoster poster,int row, int col) throws PositionEX{
-		int id= addElement(poster, row, col, "CONTROL");
+	public Integer addControl(GridPoster poster,int row, int col, String type) throws PositionEX{
+		int id= addElement(poster, row, col, type);
 		setElementArea(poster, row, col);
 		return id;
 	}
