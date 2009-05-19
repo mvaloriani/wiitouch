@@ -16,7 +16,7 @@ public interface IManager {
 	// GridPoster methods
 	public void createGridPoster(String name, String classe, String description,
 			int row, int col);
-	public Integer addControlGP(int row, int col) throws PosterTypeEx, PositionEX;
+	public Integer addControlGP(int row, int col, String type) throws PosterTypeEx, PositionEX;
 	public Integer addPaperGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX;
 	public void removeElementGP(int row, int col) throws PositionEX, PosterTypeEx;
 	public void setPaperFilesGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX;
