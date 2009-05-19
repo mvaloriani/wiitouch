@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 
 /**
  *
@@ -36,12 +37,15 @@ public class NewElementFrame extends javax.swing.JFrame {
             }
             
         });
-        Toolkit tk = Toolkit.getDefaultToolkit();
+        jButton2.addActionListener(new AnnullButton(this));
+        
+        
+         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
-        setSize(screenWidth / 2, screenHeight / 2);
-        setLocation(screenWidth / 4, screenHeight / 4);
+        
+        setLocation((screenWidth-this.getSize().width) / 2, (screenHeight-this.getSize().height) / 2);
         this.setVisible(true);
     }
     
@@ -66,6 +70,7 @@ public class NewElementFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aggiungi Elemento");
+        setResizable(false);
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(181, 208, 249));
@@ -102,14 +107,17 @@ public class NewElementFrame extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         jPanel1.add(jRadioButton1, gridBagConstraints);
 
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13));
         jLabel1.setText("Aggiungi Elemento al Cartellone");
-        jPanel1.add(jLabel1, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(14, 14, 14, 14);
+        jPanel1.add(jLabel1, gridBagConstraints);
 
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jPanel2.setBackground(new java.awt.Color(181, 208, 249));
         jComboBox1.setBackground(new java.awt.Color(181, 208, 249));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Play", "Pause", "Stop" }));
         jPanel2.add(jComboBox1, new java.awt.GridBagConstraints());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -123,6 +131,16 @@ public class NewElementFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
     
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new NewElementFrame().setVisible(true);
+            }
+        });
+    }
     
     // Variables declaration - do not modify                     
     private javax.swing.ButtonGroup buttonGroup1;
@@ -135,5 +153,16 @@ public class NewElementFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     // End of variables declaration                   
+    class AnnullButton implements ActionListener{
+     private JFrame f=null;
+     public AnnullButton(JFrame ff)
+     {
+         f=ff;
+         
+     }
+    public void actionPerformed(ActionEvent actionEvent) {
     
+         f.setVisible(false);  
+    }
+ }
 }
