@@ -206,7 +206,7 @@
           <type xmi:type="uml:Class" href="../../WiiHW/Personal/model.auml#582acceb-1487-4933-9e01-57f2fbc276ee"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="2a7a737c-ccac-4b1a-8b7f-d54c8fac9c45" name="addControlGP" visibility="public" raisedException="98f6d310-363d-4327-8d09-fae09ad19456 9f439f3d-6adc-49e4-a388-f2f63594205b">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="2a7a737c-ccac-4b1a-8b7f-d54c8fac9c45" name="addControlGP" visibility="public" raisedException="98f6d310-363d-4327-8d09-fae09ad19456 9f439f3d-6adc-49e4-a388-f2f63594205b 728ed888-e579-4fe2-ad6f-4506bb6be90c">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="865da3c6-2c86-41c2-9b97-3c16b0410c44" name="row">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
         </ownedParameter>
@@ -375,7 +375,7 @@
       <ownedOperation xmi:type="uml:Operation" xmi:id="e3ec97bd-ed7e-4339-b799-dabead5b96cb" name="play" visibility="public" isAbstract="true"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="ca0083c4-68d5-49bc-9019-7587b4d929d3" name="stopPlay" visibility="public" isAbstract="true"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="ce047758-2d3f-461e-a8dd-57e80a14ae9d" name="calibra" visibility="public" isAbstract="true"/>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="a90b0440-1317-492b-804d-b32261e94c1c" name="addControlGP" visibility="public" isAbstract="true" raisedException="98f6d310-363d-4327-8d09-fae09ad19456 9f439f3d-6adc-49e4-a388-f2f63594205b">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="a90b0440-1317-492b-804d-b32261e94c1c" name="addControlGP" visibility="public" isAbstract="true" raisedException="98f6d310-363d-4327-8d09-fae09ad19456 9f439f3d-6adc-49e4-a388-f2f63594205b 728ed888-e579-4fe2-ad6f-4506bb6be90c">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="f6069f13-0e98-469e-8e5f-ec32641933fb" name="row">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
         </ownedParameter>
@@ -570,7 +570,7 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="246559e4-c5d3-4049-b1f3-db6b527e9f9b" name="addElement" visibility="private" raisedException="9f439f3d-6adc-49e4-a388-f2f63594205b">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="246559e4-c5d3-4049-b1f3-db6b527e9f9b" name="addElement" visibility="private" raisedException="9f439f3d-6adc-49e4-a388-f2f63594205b 728ed888-e579-4fe2-ad6f-4506bb6be90c">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="b6a0126b-a90d-411a-be88-7536023cda4a" name="poster">
           <type xmi:type="uml:Class" href="../dataModel/model.auml#daa82f59-3011-4b13-8c09-1fa29bafaaf1"/>
         </ownedParameter>
@@ -675,7 +675,7 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="e6e091e8-17bd-4538-9f7c-c3e2687f2eba" name="addControl" visibility="public" raisedException="9f439f3d-6adc-49e4-a388-f2f63594205b">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="e6e091e8-17bd-4538-9f7c-c3e2687f2eba" name="addControl" visibility="public" raisedException="9f439f3d-6adc-49e4-a388-f2f63594205b 728ed888-e579-4fe2-ad6f-4506bb6be90c">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="62340bca-9b3a-41de-991c-d58a41471ae5" name="poster">
           <type xmi:type="uml:Class" href="../dataModel/model.auml#daa82f59-3011-4b13-8c09-1fa29bafaaf1"/>
         </ownedParameter>
@@ -708,6 +708,35 @@
     <packagedElement xmi:type="uml:Association" xmi:id="c4d38a92-097d-4ce5-a9e5-62aa013778b4" name="ManagerDati.xstream_Ass" memberEnd="52e46c52-ea1b-4b5c-a7ff-3b0b8e660fb9 3845e123-0053-47bd-8896-4059b16a34fe">
       <ownedEnd xmi:type="uml:Property" xmi:id="52e46c52-ea1b-4b5c-a7ff-3b0b8e660fb9" name="xstream;default" type="194e4901-a187-4f93-8119-fe45fe6980f2" association="c4d38a92-097d-4ce5-a9e5-62aa013778b4"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="728ed888-e579-4fe2-ad6f-4506bb6be90c" name="ElementTypeEX">
+      <generalization xmi:type="uml:Generalization" xmi:id="88dce884-aa96-476e-a3d2-3ddfb6f36676">
+        <general xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/lang/model.auml#lang.[C]Exception"/>
+      </generalization>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="a456a583-0357-4010-b306-8bcf09e9c5cf" name="ElementTypeEX" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="371dd6cd-743f-46ed-a3d2-f9cecb94c061" name="return" type="728ed888-e579-4fe2-ad6f-4506bb6be90c" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="55e70943-03e0-4c45-925a-078bace34ce0" name="ElementTypeEX" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="df79171a-3cc7-4ac2-9ba0-b19546889545" name="message">
+          <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/lang/model.auml#lang.[C]String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="3da1b69c-7f63-482c-90ef-1ab5314eb0df" name="cause">
+          <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/lang/model.auml#lang.[C]Throwable"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="6d7bd69f-e715-4ffd-9273-2f739d1f6dde" name="return" type="728ed888-e579-4fe2-ad6f-4506bb6be90c" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="41cf50ed-d4cf-4076-a5fc-60b5dd8ec431" name="ElementTypeEX" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="ffc212e0-27d3-4ee0-887e-892eee2056c9" name="message">
+          <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/lang/model.auml#lang.[C]String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="a259507a-894e-47f0-9caa-b94e7886af32" name="return" type="728ed888-e579-4fe2-ad6f-4506bb6be90c" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="5e8f5f12-48a9-4a5d-935f-577915b4fd68" name="ElementTypeEX" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="a34a3e07-a0eb-4cc0-b544-a95c3d6684d8" name="cause">
+          <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/lang/model.auml#lang.[C]Throwable"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="479f4166-c3ca-4f96-a068-6db64d27d3a7" name="return" type="728ed888-e579-4fe2-ad6f-4506bb6be90c" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="c522ac3f-1490-4f14-9139-6f714de49399">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="1af95cbb-a7ef-4acc-872b-a9097d6f8a40" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://GW_JAVA_PROFILES/Java.profile.uml#_H_ZGcB5CEduWqeK3CXfnzA"/>
@@ -730,4 +759,8 @@
   <java_profile:create xmi:id="3b5a3b21-8ff2-4d84-8404-2a2256dae9ee" base_Operation="d6a06a5a-3dcf-4992-b803-a129916b84bf"/>
   <java_profile:create xmi:id="a63f0228-b563-4a35-8457-3d71c306a9ba" base_Operation="31f3cc84-b55a-41f2-ba63-ac688def5513"/>
   <java_profile:create xmi:id="1c5f0338-883e-4781-8b85-0e7231ae7254" base_Operation="68d78490-bcdd-4b79-a612-9c6d55ab2498"/>
+  <java_profile:create xmi:id="beaa72e7-6fc5-4895-b423-3c9a6447d5d8" base_Operation="a456a583-0357-4010-b306-8bcf09e9c5cf"/>
+  <java_profile:create xmi:id="6201717c-d352-4b1e-8ee9-2407ffd3a8cf" base_Operation="55e70943-03e0-4c45-925a-078bace34ce0"/>
+  <java_profile:create xmi:id="9e061e59-fbd1-48bc-882f-9c02555fa2c8" base_Operation="41cf50ed-d4cf-4076-a5fc-60b5dd8ec431"/>
+  <java_profile:create xmi:id="b70cf642-d5df-4d15-83fe-7709d0d11ab6" base_Operation="5e8f5f12-48a9-4a5d-935f-577915b4fd68"/>
 </xmi:XMI>
