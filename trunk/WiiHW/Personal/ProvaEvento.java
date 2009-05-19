@@ -15,10 +15,6 @@ public class ProvaEvento implements EventoSelezionaPuntoListener{
 	public void  OnEventoSelezionaPunto(EventoSelezionaPunto e){
 		JOptionPane.showMessageDialog(null, "Evento Punto x" + e.getPunto().getX() + " y " + e.getPunto().getY());
 		//((IHW)(e.getSource())).removeEventoSelezionaPuntoListener(this);
-		try {
-			  Thread.sleep(3000);
-			}
-			catch (Exception zzz) {}
 			//((IHW)(e.getSource())).addEventoSelezionaPuntoListener(this);	
 	}
 }

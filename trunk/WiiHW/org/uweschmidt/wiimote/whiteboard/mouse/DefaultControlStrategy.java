@@ -44,11 +44,11 @@ public class DefaultControlStrategy implements CursorControlStrategy {
 		if (p != null) {
 			//OSCAR
 			//Mouse.move(p);
-			Evento select= new Evento();
-			select.getInterfaccia().inputIRPen(p);
+			
+			Evento.getInterfaccia().inputIRPen(p);
 			
 			
-			
+			//OSCAR
 			//if (prefs.isLeftClick() && !(prefs.isRightClick() && rcs.trigger())) {
 			//	if (WWPreferences.MOUSE_PRESS_DELAY > 0 && !Mouse.LEFT_BUTTON.isPressed()) {
 				//s}}
