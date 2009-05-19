@@ -20,7 +20,11 @@ public class Main {
 		ArrayList<String> p1 = new ArrayList<String>();
 		p1.add("/Users/giuliopresazzi/Movies/jonny.mp4");
 		system.addPaperGP(0, 1, p1);
-		system.addControlGP(1, 0, "PAUSE");
+		try {
+			system.addControlGP(1, 0, "PAUSE");
+		} catch (ElementTypeEX e) {
+			e.printStackTrace();
+		}
 		//system.calibra();
 		system.play();
 		//ModificaPoster mod = new ModificaPoster(system);

@@ -12,6 +12,7 @@ import dataModel.GridPoster;
 import dataModel.Paper;
 import dataModel.PauseControl;
 import dataModel.Poster;
+import dataModel.StopControl;
 
 
 
@@ -36,12 +37,18 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 			e.setArea(area);
 	}
 
-	private Integer addElement(GridPoster poster,int row, int col, String type) throws PositionEX{
+	private Integer addElement(GridPoster poster,int row, int col, String type) throws PositionEX, ElementTypeEX{
 		Element element=null;
 		if (type.equalsIgnoreCase("PAPER"))
 			element=new Paper(poster.getNumberOfElements()+1, new ArrayList<String>());
-		if (type.equalsIgnoreCase("PAUSA"))
+		else 
+			if (type.equalsIgnoreCase("PAUSE"))
 			element=new PauseControl(poster.getNumberOfElements()+1, manager);
+		else 
+			if (type.equalsIgnoreCase("STOP"))
+			element=new StopControl(poster.getNumberOfElements()+1, manager);
+			else
+				throw new ElementTypeEX("Type not found");
 		poster.addElement(element, row, col);
 		setElementArea(poster, row, col);
 		return element.getId();
@@ -68,7 +75,10 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 	}
 	
 	public Integer addPaper(GridPoster poster, int row, int col, ArrayList<String> files) throws PositionEX{
-		int id= addElement(poster, row, col, "PAPER");
+		int id = 0;
+		try {
+			id = addElement(poster, row, col, "PAPER");
+		} catch (ElementTypeEX e) {	}
 		setPaperFiles(poster, id, files);
 		setElementArea(poster, row, col);
 		return id;
@@ -87,7 +97,7 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		
 	}
 	
-	public Integer addControl(GridPoster poster,int row, int col, String type) throws PositionEX{
+	public Integer addControl(GridPoster poster,int row, int col, String type) throws PositionEX, ElementTypeEX{
 		int id= addElement(poster, row, col, type);
 		setElementArea(poster, row, col);
 		return id;

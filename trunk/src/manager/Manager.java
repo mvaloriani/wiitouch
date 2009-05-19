@@ -125,7 +125,7 @@ public class Manager implements IManager {
 				description, row, col);
 	}
 	
-	public Integer addControlGP(int row, int col, String type) throws PosterTypeEx, PositionEX{
+	public Integer addControlGP(int row, int col, String type) throws PosterTypeEx, PositionEX, ElementTypeEX{
 		if(poster instanceof GridPoster)
 			return ((ManagerCreazioneGridPoster)managerCreazione).addControl((GridPoster)poster, row, col, type);
 		else
