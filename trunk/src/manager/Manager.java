@@ -37,6 +37,15 @@ public class Manager implements IManager {
 	
 	private IWiiHw iWii;
 	
+	private vlcThread vlcThread;
+	
+	public void endSystem()
+	{
+		 System.out.println("Provo a chiudere vlc");
+		vlcThread.termina();
+		
+	}
+	
 	public Paper getlastPaper()
 	{
 		return lastPaper;
@@ -84,12 +93,8 @@ public class Manager implements IManager {
 		
 		
 		/*creazione del thread per vlc*/
-		vlcThread vlcThread=new vlcThread("1");
+		vlcThread=new vlcThread("VlcThread");
 		vlcThread.start();
-		
-		
-		
-		
 
 	}
 
@@ -232,14 +237,18 @@ public class Manager implements IManager {
 	}
 	
 	private static class vlcThread extends Thread {
+		
+		private Process ls_proc;
+		
 		 public vlcThread(String str) {
 			 super(str);
 		 }
 		 public void run() {
+			 
 			 if(System.getProperty("os.name").toLowerCase().contains("mac os x")){
 				 
 				 try {
-					Process ls_proc = Runtime.getRuntime().exec("./Vlc/VLC.app/Contents/MacOS/VLC --intf=telnet");
+					 ls_proc = Runtime.getRuntime().exec("./Vlc/VLC.app/Contents/MacOS/VLC --intf=telnet");
 				} catch (IOException e) {
 					
 					log.info("Sistema operativo mac: apertura VLC: "+e.toString());
@@ -247,7 +256,7 @@ public class Manager implements IManager {
 			 }else if(System.getProperty("os.name").toLowerCase().contains("win"))
 			 {
 				 try {
-						Process ls_proc = Runtime.getRuntime().exec("./Vlc/vlcWin/vlc.exe --intf=telnet");
+						 ls_proc = Runtime.getRuntime().exec("./Vlc/vlcWin/vlc.exe --intf=telnet");
 					} catch (IOException e) {
 						
 						log.info("Sistema operativo windows: apertura VLC: "+e.toString());
@@ -260,7 +269,13 @@ public class Manager implements IManager {
 		 
 		
 		 }
+		 public void termina()
+		 {
+			 if(ls_proc!=null)
+				 ls_proc.destroy();
+		 }
 	}
+
 
 
 

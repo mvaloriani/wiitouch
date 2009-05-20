@@ -38,4 +38,7 @@ public interface IManager {
 	
 	//Wii method
 	public void calibra();
+	
+	//get vlcThred
+	public void endSystem();
 }
