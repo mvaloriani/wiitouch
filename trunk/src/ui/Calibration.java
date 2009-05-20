@@ -9,7 +9,7 @@
  * Created on 19-mag-2009, 11.46.49
  */
 
-package javaapplication1;
+package ui;
 
 /**
  *

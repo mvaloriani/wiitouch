@@ -1,4 +1,4 @@
-package javaapplication1;
+package ui;
 
 /*
  * To change this template, choose Tools | Templates

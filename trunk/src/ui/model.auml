@@ -12,11 +12,47 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="1cfa0a19-06b5-4f86-a28c-28a83b8188b8" name="frame1" visibility="private" association="702b809f-75f3-4cb5-9153-fd7350214475">
         <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JFrame"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="dd436e84-f5cb-4052-9a8c-207c834e60b6" name="panel1" visibility="private" association="1a03c3ee-cd54-49d9-bbec-fad17b6658e3">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="61510091-3a33-4728-8a7f-fd821aeadbd1" name="tabellonePanel" visibility="private" association="dd1bd1ef-e842-4dce-afad-fc91644287d1">
         <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JPanel"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="08a171c9-1303-4dc1-be59-d3bc0f27370c" name="panel2" visibility="private" association="f3d53136-3059-4856-900d-03c741a8c749">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="d7edf3a6-5f10-4327-a7c9-e1699e2397fc" name="menuPanel" visibility="private" association="7dfd6e7e-83f8-4c0a-815b-68d8cd45cdf6">
         <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JPanel"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="2024f048-09f8-4b4c-9f1b-cbcaecd95263" name="button1" visibility="private" association="d5485078-5b13-4060-a143-d1bdf8446dfb">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JButton"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="37f27c3a-30e5-4e34-9068-11709c9ca433" name="button2" visibility="private" association="b32ca653-f5e0-44bb-9ab7-6fb315d225b2">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JButton"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="0c84bcdb-91c5-40ce-acff-f20c799ed2a8" name="button3" visibility="private" association="7e0efd44-4bf7-403a-8d0d-03a9deee52fb">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JButton"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="9da3be7a-f3f3-4669-95d9-4150b0943d4f" name="button4" visibility="private" association="07b49876-65c0-4437-bcf6-8789ab63c220">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JButton"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="d17c634e-4b53-4fd4-b3a6-c1c5dfb68638" name="button5" visibility="private" association="e0afa341-4ccc-4761-a0b3-2338687a5368">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JButton"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="efb6c1e1-43df-4451-b930-ba24dc147bca" name="descrizionePanel" visibility="private" association="115cd49e-1c26-4032-a651-9b8f72be3a75">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JPanel"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="57f4a12e-b551-4caa-94dd-06567ab0893d" name="label1" visibility="private" association="e56cd9c9-d177-4c3c-93a5-7b5471ae0c51">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JLabel"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="accdbdba-3f56-4721-82b1-eed1e9f4c91e" name="textField1" visibility="private" association="4a4edd90-b25e-4dd2-89d3-028f4fae3333">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JTextField"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="aaa7ccf5-121d-4570-8926-95105a6b029d" name="label3" visibility="private" association="733b41e0-4bf4-4db9-88d9-f638c3a27031">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JLabel"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="3ef75739-d8c4-431d-9ba6-02f7ae92273d" name="textArea1" visibility="private" association="e2ff874c-6f6a-4e96-8e77-a641e64b5359">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JTextArea"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="642dab4d-87ef-4660-a5ee-140bc5ac273e" name="label2" visibility="private" association="20424bae-36af-4cf6-97f3-010a3ef5ec86">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JLabel"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="303e58e8-965d-4a1a-a4e3-e82f31e6570c" name="textField2" visibility="private" association="dcf158a1-a9e9-4aa2-826c-617e68928f43">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JTextField"/>
       </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="1a11e98f-3d19-4a87-bcac-6194c701ec5a" name="Modifica" visibility="public">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="c807b87a-44ac-4ac7-bf56-f4f798b15c14" name="return" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" direction="return"/>
@@ -25,12 +61,6 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="702b809f-75f3-4cb5-9153-fd7350214475" name="Modifica.frame1_Ass" memberEnd="677d460c-dba2-44e1-867f-aa87fe6d0698 1cfa0a19-06b5-4f86-a28c-28a83b8188b8">
       <ownedEnd xmi:type="uml:Property" xmi:id="677d460c-dba2-44e1-867f-aa87fe6d0698" name="frame1;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="702b809f-75f3-4cb5-9153-fd7350214475"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="1a03c3ee-cd54-49d9-bbec-fad17b6658e3" name="Modifica.panel1_Ass" memberEnd="59d0e2db-08e6-4355-b34d-c191b2afd860 dd436e84-f5cb-4052-9a8c-207c834e60b6">
-      <ownedEnd xmi:type="uml:Property" xmi:id="59d0e2db-08e6-4355-b34d-c191b2afd860" name="panel1;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="1a03c3ee-cd54-49d9-bbec-fad17b6658e3"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="f3d53136-3059-4856-900d-03c741a8c749" name="Modifica.panel2_Ass" memberEnd="437554c7-ab8a-4e63-bde5-874b626b1f1c 08a171c9-1303-4dc1-be59-d3bc0f27370c">
-      <ownedEnd xmi:type="uml:Property" xmi:id="437554c7-ab8a-4e63-bde5-874b626b1f1c" name="panel2;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="f3d53136-3059-4856-900d-03c741a8c749"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="c86cbe2f-c049-45bd-b940-5c5352a99198" name="CmdUI">
       <ownedOperation xmi:type="uml:Operation" xmi:id="d8e760b3-418e-4e73-a459-3979a8fe4a27" name="CmdUI" visibility="public">
@@ -172,7 +202,7 @@
     <packagedElement xmi:type="uml:Association" xmi:id="b488972b-ce8a-49b5-a80f-c59d276f081d" name="ModificaPoster.iPoster_Ass" memberEnd="df2f7af3-a54f-4cce-997c-19eb12546e77 07b549e8-d4f9-46db-9b35-54f4b30111ad">
       <ownedEnd xmi:type="uml:Property" xmi:id="df2f7af3-a54f-4cce-997c-19eb12546e77" name="iPoster;default" type="7a9b41af-99b3-4531-93e6-ee3c0354b098" association="b488972b-ce8a-49b5-a80f-c59d276f081d"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="4d8484da-b437-41a5-b153-13df0a22235f" name="Home">
+    <packagedElement xmi:type="uml:Class" xmi:id="4d8484da-b437-41a5-b153-13df0a22235f" name="Home" clientDependency="b28c5de1-f25a-4179-9b4b-721b2b78440a">
       <generalization xmi:type="uml:Generalization" xmi:id="076c74f7-b49a-4844-b949-c389415d819a">
         <general xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JFrame"/>
       </generalization>
@@ -212,9 +242,13 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="a602ee6b-1f76-4de1-ad79-5562d83409b7" name="progressBar2" visibility="private" association="cf8e6ed4-7c09-45e2-99bf-9ef378700ad7">
         <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JProgressBar"/>
       </ownedAttribute>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="9fdea490-b46a-4d21-b0d8-3a0e11cbee06" name="Home" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="a0c2ac3d-f5ca-4a26-8571-177f004e20cf" name="return" type="4d8484da-b437-41a5-b153-13df0a22235f" direction="return"/>
-      </ownedOperation>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="a8f86f39-fd21-49bc-b9c5-1c8eb3981a2b" name="manager" visibility="private" association="30e5ac2e-900a-44cd-89d1-40288bad6d16">
+        <type xmi:type="uml:Interface" href="../manager/model.auml#5faf34a1-51c4-41ad-9800-66e67dc7f03c"/>
+      </ownedAttribute>
+      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="b28c5de1-f25a-4179-9b4b-721b2b78440a" name="Home_implements_WindowListener" client="4d8484da-b437-41a5-b153-13df0a22235f">
+        <supplier xmi:type="uml:Interface" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/awt/event/model.auml#event.[C]WindowListener"/>
+        <contract xmi:type="uml:Interface" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/awt/event/model.auml#event.[C]WindowListener"/>
+      </interfaceRealization>
       <ownedOperation xmi:type="uml:Operation" xmi:id="575bdaf2-4922-46fc-b620-fee8539de3a6" name="caricaButtonActionPerformed" visibility="private">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="79b2ff5c-1c96-4ac6-a1df-df218958f28e" name="e">
           <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/awt/event/model.auml#event.[C]ActionEvent"/>
@@ -241,6 +275,47 @@
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="762f88b8-be8b-45d9-b660-8b3e8d63e972" name="initComponents" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="aa1d0ae2-64cb-45ae-9a06-e2e118ee7180" name="Home" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="607c4c02-76d2-41a8-bcea-610e179fc77e" name="manager">
+          <type xmi:type="uml:Interface" href="../manager/model.auml#5faf34a1-51c4-41ad-9800-66e67dc7f03c"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="fc9ec35c-b1d4-4e10-ad0b-d76dcc857696" name="return" type="4d8484da-b437-41a5-b153-13df0a22235f" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="9e3f4b87-f095-40ca-ab88-f7a5cf6b1938" name="windowActivated" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="f5f8ada8-0402-4552-96c4-4c9657d63da9" name="e">
+          <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/awt/event/model.auml#event.[C]WindowEvent"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="bdcce800-c921-4c2e-9e2e-96f15b8d66ce" name="windowClosed" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="79cf847d-a98b-47e5-93a3-2294cadfc943" name="e">
+          <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/awt/event/model.auml#event.[C]WindowEvent"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="893359e4-c973-4756-ab10-8702094fe674" name="windowDeactivated" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="32d67299-265a-40db-b58c-4557ff897f04" name="e">
+          <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/awt/event/model.auml#event.[C]WindowEvent"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="b6fdca29-5fee-4cdd-9836-b9992463cb9d" name="windowDeiconified" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="2b420805-f2ce-47cc-8461-139b10dfc584" name="e">
+          <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/awt/event/model.auml#event.[C]WindowEvent"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="cf9b142d-9108-4e1e-a0bd-e8d56f067aeb" name="windowIconified" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="4bae521f-a3ac-49a6-bd50-0165fb4e0ba3" name="e">
+          <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/awt/event/model.auml#event.[C]WindowEvent"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="9395544f-0a58-4e6d-9233-5648568707c8" name="windowOpened" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="efd60263-c3d2-41bb-b8e6-0de1c51fcd5f" name="e">
+          <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/awt/event/model.auml#event.[C]WindowEvent"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="a207debd-99be-4a2f-9ac4-0fb5530ddaaf" name="windowClosing" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="45cc0d61-f849-4cc4-af86-b7cfae0c65c8" name="e">
+          <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/awt/event/model.auml#event.[C]WindowEvent"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="54fd3179-3d14-4e6c-aa96-77fea6f02206" name="Home.panel1_Ass" memberEnd="749def08-f83d-4944-8d2c-99e20bd99aec c27605f5-27ad-44bb-890d-45d1ae52f21a">
       <ownedEnd xmi:type="uml:Property" xmi:id="749def08-f83d-4944-8d2c-99e20bd99aec" name="panel1;default" type="4d8484da-b437-41a5-b153-13df0a22235f" association="54fd3179-3d14-4e6c-aa96-77fea6f02206"/>
@@ -595,6 +670,15 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="0619e59d-cbb6-491a-af3e-9d2c4d71c403" name="jTextField5" visibility="private" association="e57ea2fd-f381-4dc3-b8a0-3c47bcafbcaa">
         <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JTextField"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="0773ca92-1979-4ec9-be78-d09fdb08cff1" name="jButton2" visibility="private" association="d79c3632-b7c9-4f5e-89da-ecd0647cb9cc">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JButton"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="bb3bbff9-21b5-4b1c-bfb8-bffb3eefda0d" name="jButton3" visibility="private" association="321e3353-f264-4995-b9fd-dc6f35273604">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JButton"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="cfe1f88d-66dc-48de-b4a4-103d4d8f5443" name="jPanel5" visibility="private" association="d217b26f-8569-4042-9cb6-8aea9c5733dd">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JPanel"/>
+      </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="b37b2067-73a6-4be3-8a81-95d2a0c3851e" name="NewPosterFrame" visibility="public">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="d9e726de-e71c-4a81-bdf6-d1c7a7ce1046" name="return" type="875967c7-772e-47c5-903d-b890306c98c5" direction="return"/>
       </ownedOperation>
@@ -714,6 +798,152 @@
     <packagedElement xmi:type="uml:Association" xmi:id="579a478b-8bc3-4970-97e3-9244fa5f3b69" name="LoadPosterFrame.jButton4_Ass" memberEnd="6315441c-62d5-4dc0-9435-a15cae79e52e e5be2066-4be1-42d2-82a7-09a369711660">
       <ownedEnd xmi:type="uml:Property" xmi:id="6315441c-62d5-4dc0-9435-a15cae79e52e" name="jButton4;default" type="a5e04f8d-23cc-49e2-b4c0-2443714fb5a5" association="579a478b-8bc3-4970-97e3-9244fa5f3b69"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="7387703e-d5d9-4c06-8c36-9a51dd27f25a" name="Calibration">
+      <generalization xmi:type="uml:Generalization" xmi:id="f2c5cfdb-9f0a-40c6-a567-26663c8faeb4">
+        <general xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JFrame"/>
+      </generalization>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="86964f7a-a09c-460c-b9f0-08342064a014" name="jButton1" visibility="private" association="0d395591-954b-401a-a4bf-829a4d93b12b">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JButton"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="a1049e37-a2b6-4a4f-b3b6-52af7cc945b6" name="jButton2" visibility="private" association="e05c329e-b8f9-4d4a-a71b-6f84a413fcff">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JButton"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="30d9e600-4e60-4549-9a9f-2726f3b3c483" name="jPanel1" visibility="private" association="015b9473-7a63-4818-ace1-4fcdb0c56e14">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JPanel"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="3c8cc57b-cee1-4f19-b767-7ca8d5b03688" name="jPanel3" visibility="private" association="cf77bc96-dc8d-41de-9554-1dfbca85a306">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JPanel"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="b2d8870b-0c86-40bd-8eb3-78653d0c829a" name="jTextArea1" visibility="private" association="1b890bd7-070a-43f9-b9b1-cfc6bbb21a6b">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JTextArea"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="f3749981-aa1a-43ad-9fc3-3328f1e6cbb6" name="Calibration" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="24849fd1-92a6-4872-91c3-58a20b2ced62" name="return" type="7387703e-d5d9-4c06-8c36-9a51dd27f25a" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="a2928c3b-9ff9-47a9-8ada-406660c78bfd" name="initComponents" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="f91e6114-0a7a-487f-a6d9-2096a53fb597" name="main" visibility="public" isStatic="true">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="5aef4315-2d91-4924-b12c-511ad2cb763c" name="args">
+          <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/lang/model.auml#lang.[C]String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="0d395591-954b-401a-a4bf-829a4d93b12b" name="Calibration.jButton1_Ass" memberEnd="9d43c1b3-3c79-47c0-a1b6-4df0d3f699a0 86964f7a-a09c-460c-b9f0-08342064a014">
+      <ownedEnd xmi:type="uml:Property" xmi:id="9d43c1b3-3c79-47c0-a1b6-4df0d3f699a0" name="jButton1;default" type="7387703e-d5d9-4c06-8c36-9a51dd27f25a" association="0d395591-954b-401a-a4bf-829a4d93b12b"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="e05c329e-b8f9-4d4a-a71b-6f84a413fcff" name="Calibration.jButton2_Ass" memberEnd="84d421c8-4ad5-4868-9bff-17c16e09b5e7 a1049e37-a2b6-4a4f-b3b6-52af7cc945b6">
+      <ownedEnd xmi:type="uml:Property" xmi:id="84d421c8-4ad5-4868-9bff-17c16e09b5e7" name="jButton2;default" type="7387703e-d5d9-4c06-8c36-9a51dd27f25a" association="e05c329e-b8f9-4d4a-a71b-6f84a413fcff"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="015b9473-7a63-4818-ace1-4fcdb0c56e14" name="Calibration.jPanel1_Ass" memberEnd="748689ee-cbc7-42a4-8455-94a31dccb520 30d9e600-4e60-4549-9a9f-2726f3b3c483">
+      <ownedEnd xmi:type="uml:Property" xmi:id="748689ee-cbc7-42a4-8455-94a31dccb520" name="jPanel1;default" type="7387703e-d5d9-4c06-8c36-9a51dd27f25a" association="015b9473-7a63-4818-ace1-4fcdb0c56e14"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="cf77bc96-dc8d-41de-9554-1dfbca85a306" name="Calibration.jPanel3_Ass" memberEnd="a55f3298-d1d5-4f44-8223-caeb53bed1f4 3c8cc57b-cee1-4f19-b767-7ca8d5b03688">
+      <ownedEnd xmi:type="uml:Property" xmi:id="a55f3298-d1d5-4f44-8223-caeb53bed1f4" name="jPanel3;default" type="7387703e-d5d9-4c06-8c36-9a51dd27f25a" association="cf77bc96-dc8d-41de-9554-1dfbca85a306"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="1b890bd7-070a-43f9-b9b1-cfc6bbb21a6b" name="Calibration.jTextArea1_Ass" memberEnd="93b0050e-9218-48d4-b6df-bcbecfea2085 b2d8870b-0c86-40bd-8eb3-78653d0c829a">
+      <ownedEnd xmi:type="uml:Property" xmi:id="93b0050e-9218-48d4-b6df-bcbecfea2085" name="jTextArea1;default" type="7387703e-d5d9-4c06-8c36-9a51dd27f25a" association="1b890bd7-070a-43f9-b9b1-cfc6bbb21a6b"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="dd1bd1ef-e842-4dce-afad-fc91644287d1" name="Modifica.tabellonePanel_Ass" memberEnd="62bbc98f-4a01-43e2-9529-341dd1146613 61510091-3a33-4728-8a7f-fd821aeadbd1">
+      <ownedEnd xmi:type="uml:Property" xmi:id="62bbc98f-4a01-43e2-9529-341dd1146613" name="tabellonePanel;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="dd1bd1ef-e842-4dce-afad-fc91644287d1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="7dfd6e7e-83f8-4c0a-815b-68d8cd45cdf6" name="Modifica.menuPanel_Ass" memberEnd="e4a3f2c9-d14e-4398-8511-ed3b048d1f52 d7edf3a6-5f10-4327-a7c9-e1699e2397fc">
+      <ownedEnd xmi:type="uml:Property" xmi:id="e4a3f2c9-d14e-4398-8511-ed3b048d1f52" name="menuPanel;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="7dfd6e7e-83f8-4c0a-815b-68d8cd45cdf6"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="d5485078-5b13-4060-a143-d1bdf8446dfb" name="Modifica.button1_Ass" memberEnd="6ef877aa-81cb-46bb-8eb6-f63beb2f5c2c 2024f048-09f8-4b4c-9f1b-cbcaecd95263">
+      <ownedEnd xmi:type="uml:Property" xmi:id="6ef877aa-81cb-46bb-8eb6-f63beb2f5c2c" name="button1;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="d5485078-5b13-4060-a143-d1bdf8446dfb"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="b32ca653-f5e0-44bb-9ab7-6fb315d225b2" name="Modifica.button2_Ass" memberEnd="3c06523c-5a46-4eb4-8b07-2748acb639f0 37f27c3a-30e5-4e34-9068-11709c9ca433">
+      <ownedEnd xmi:type="uml:Property" xmi:id="3c06523c-5a46-4eb4-8b07-2748acb639f0" name="button2;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="b32ca653-f5e0-44bb-9ab7-6fb315d225b2"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="7e0efd44-4bf7-403a-8d0d-03a9deee52fb" name="Modifica.button3_Ass" memberEnd="cea1e268-1e5c-43cf-95ed-2a814a8c1c20 0c84bcdb-91c5-40ce-acff-f20c799ed2a8">
+      <ownedEnd xmi:type="uml:Property" xmi:id="cea1e268-1e5c-43cf-95ed-2a814a8c1c20" name="button3;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="7e0efd44-4bf7-403a-8d0d-03a9deee52fb"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="07b49876-65c0-4437-bcf6-8789ab63c220" name="Modifica.button4_Ass" memberEnd="0243c423-1c6c-48c0-ae9d-2416a04302a6 9da3be7a-f3f3-4669-95d9-4150b0943d4f">
+      <ownedEnd xmi:type="uml:Property" xmi:id="0243c423-1c6c-48c0-ae9d-2416a04302a6" name="button4;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="07b49876-65c0-4437-bcf6-8789ab63c220"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="e0afa341-4ccc-4761-a0b3-2338687a5368" name="Modifica.button5_Ass" memberEnd="6277c539-5975-44f1-b93c-fb0043727c65 d17c634e-4b53-4fd4-b3a6-c1c5dfb68638">
+      <ownedEnd xmi:type="uml:Property" xmi:id="6277c539-5975-44f1-b93c-fb0043727c65" name="button5;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="e0afa341-4ccc-4761-a0b3-2338687a5368"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="115cd49e-1c26-4032-a651-9b8f72be3a75" name="Modifica.descrizionePanel_Ass" memberEnd="dc97f93e-872a-4eee-94f3-7968c2efea32 efb6c1e1-43df-4451-b930-ba24dc147bca">
+      <ownedEnd xmi:type="uml:Property" xmi:id="dc97f93e-872a-4eee-94f3-7968c2efea32" name="descrizionePanel;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="115cd49e-1c26-4032-a651-9b8f72be3a75"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="e56cd9c9-d177-4c3c-93a5-7b5471ae0c51" name="Modifica.label1_Ass" memberEnd="bd1717c4-c358-4580-a1a5-192b8ecb446f 57f4a12e-b551-4caa-94dd-06567ab0893d">
+      <ownedEnd xmi:type="uml:Property" xmi:id="bd1717c4-c358-4580-a1a5-192b8ecb446f" name="label1;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="e56cd9c9-d177-4c3c-93a5-7b5471ae0c51"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="4a4edd90-b25e-4dd2-89d3-028f4fae3333" name="Modifica.textField1_Ass" memberEnd="0a5e372e-90d6-4a32-b317-a88b5ab10a4f accdbdba-3f56-4721-82b1-eed1e9f4c91e">
+      <ownedEnd xmi:type="uml:Property" xmi:id="0a5e372e-90d6-4a32-b317-a88b5ab10a4f" name="textField1;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="4a4edd90-b25e-4dd2-89d3-028f4fae3333"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="733b41e0-4bf4-4db9-88d9-f638c3a27031" name="Modifica.label3_Ass" memberEnd="ca1263f5-5031-48e0-b1ad-7659bcca9269 aaa7ccf5-121d-4570-8926-95105a6b029d">
+      <ownedEnd xmi:type="uml:Property" xmi:id="ca1263f5-5031-48e0-b1ad-7659bcca9269" name="label3;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="733b41e0-4bf4-4db9-88d9-f638c3a27031"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="e2ff874c-6f6a-4e96-8e77-a641e64b5359" name="Modifica.textArea1_Ass" memberEnd="551e5321-8688-47de-aff4-0bfc1f8b386d 3ef75739-d8c4-431d-9ba6-02f7ae92273d">
+      <ownedEnd xmi:type="uml:Property" xmi:id="551e5321-8688-47de-aff4-0bfc1f8b386d" name="textArea1;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="e2ff874c-6f6a-4e96-8e77-a641e64b5359"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="20424bae-36af-4cf6-97f3-010a3ef5ec86" name="Modifica.label2_Ass" memberEnd="11c523a3-929d-4bed-a61f-e025eba3101d 642dab4d-87ef-4660-a5ee-140bc5ac273e">
+      <ownedEnd xmi:type="uml:Property" xmi:id="11c523a3-929d-4bed-a61f-e025eba3101d" name="label2;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="20424bae-36af-4cf6-97f3-010a3ef5ec86"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="dcf158a1-a9e9-4aa2-826c-617e68928f43" name="Modifica.textField2_Ass" memberEnd="206c23a6-9324-45fa-bbd2-21d3890396cb 303e58e8-965d-4a1a-a4e3-e82f31e6570c">
+      <ownedEnd xmi:type="uml:Property" xmi:id="206c23a6-9324-45fa-bbd2-21d3890396cb" name="textField2;default" type="8b69514d-c12d-4b87-af9b-bafac7e9c2e0" association="dcf158a1-a9e9-4aa2-826c-617e68928f43"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="d79c3632-b7c9-4f5e-89da-ecd0647cb9cc" name="NewPosterFrame.jButton2_Ass" memberEnd="3d8753e3-547c-4ea9-a2cd-3890de30a138 0773ca92-1979-4ec9-be78-d09fdb08cff1">
+      <ownedEnd xmi:type="uml:Property" xmi:id="3d8753e3-547c-4ea9-a2cd-3890de30a138" name="jButton2;default" type="875967c7-772e-47c5-903d-b890306c98c5" association="d79c3632-b7c9-4f5e-89da-ecd0647cb9cc"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="321e3353-f264-4995-b9fd-dc6f35273604" name="NewPosterFrame.jButton3_Ass" memberEnd="b938aa93-3106-4faa-a8c6-4d25b4e669b7 bb3bbff9-21b5-4b1c-bfb8-bffb3eefda0d">
+      <ownedEnd xmi:type="uml:Property" xmi:id="b938aa93-3106-4faa-a8c6-4d25b4e669b7" name="jButton3;default" type="875967c7-772e-47c5-903d-b890306c98c5" association="321e3353-f264-4995-b9fd-dc6f35273604"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="d217b26f-8569-4042-9cb6-8aea9c5733dd" name="NewPosterFrame.jPanel5_Ass" memberEnd="bba7807b-5dca-406e-87b1-bcc4c2285ee2 cfe1f88d-66dc-48de-b4a4-103d4d8f5443">
+      <ownedEnd xmi:type="uml:Property" xmi:id="bba7807b-5dca-406e-87b1-bcc4c2285ee2" name="jPanel5;default" type="875967c7-772e-47c5-903d-b890306c98c5" association="d217b26f-8569-4042-9cb6-8aea9c5733dd"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="fcbff115-c4d2-4ca2-be14-85e32f9a4516" name="RemoveElement">
+      <generalization xmi:type="uml:Generalization" xmi:id="c26e0d35-dd38-47d9-9a01-e2034bc8ca24">
+        <general xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JFrame"/>
+      </generalization>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="c2283ad9-d985-4ccf-8523-d758a4ece3ba" name="jButton1" visibility="private" association="213c6584-257c-4dd8-8932-74f7306b07e3">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JButton"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="05d8de87-3bf0-4dfa-a1e1-2841b42133ad" name="jButton2" visibility="private" association="8b53b1b9-be7b-4381-8ba7-13d5a30e002a">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JButton"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="60b5fd99-a56a-4d28-b6b4-a8819810abc5" name="jPanel1" visibility="private" association="26546233-e7b7-452e-b06e-863c4d8f52f0">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JPanel"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="ad943054-8a3e-4c9b-9269-5d75a64a26ee" name="jPanel3" visibility="private" association="a28c67f1-9dcb-4d7e-b243-e0dfff65fbea">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JPanel"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="46a220d8-d42d-4e89-9860-7741e39ee65e" name="jTextArea1" visibility="private" association="fd3fd415-d7ea-47e2-ac45-bb68a589bbed">
+        <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/javax/swing/model.auml#swing.[C]JTextArea"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="53df0dfd-4945-46d4-a21b-75fb045a6ba5" name="RemoveElement" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="9c58f99a-0620-4f4e-bcab-e8434a2281ec" name="return" type="fcbff115-c4d2-4ca2-be14-85e32f9a4516" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="93d67778-9f8a-4e4e-9340-b3739a1b5322" name="initComponents" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="9a5b6ae6-146c-4f08-ad53-e298a8407b1d" name="main" visibility="public" isStatic="true">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="56e5d443-a47a-441b-9568-1110502af337" name="args">
+          <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/lang/model.auml#lang.[C]String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="213c6584-257c-4dd8-8932-74f7306b07e3" name="RemoveElement.jButton1_Ass" memberEnd="30f916a8-192f-4ce4-9c3f-554a85721e0f c2283ad9-d985-4ccf-8523-d758a4ece3ba">
+      <ownedEnd xmi:type="uml:Property" xmi:id="30f916a8-192f-4ce4-9c3f-554a85721e0f" name="jButton1;default" type="fcbff115-c4d2-4ca2-be14-85e32f9a4516" association="213c6584-257c-4dd8-8932-74f7306b07e3"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="8b53b1b9-be7b-4381-8ba7-13d5a30e002a" name="RemoveElement.jButton2_Ass" memberEnd="7b5987a7-eced-4b84-8f6a-9f957ebe08f1 05d8de87-3bf0-4dfa-a1e1-2841b42133ad">
+      <ownedEnd xmi:type="uml:Property" xmi:id="7b5987a7-eced-4b84-8f6a-9f957ebe08f1" name="jButton2;default" type="fcbff115-c4d2-4ca2-be14-85e32f9a4516" association="8b53b1b9-be7b-4381-8ba7-13d5a30e002a"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="26546233-e7b7-452e-b06e-863c4d8f52f0" name="RemoveElement.jPanel1_Ass" memberEnd="e6a13646-3ec5-43bd-b8a8-a6411d29c0ba 60b5fd99-a56a-4d28-b6b4-a8819810abc5">
+      <ownedEnd xmi:type="uml:Property" xmi:id="e6a13646-3ec5-43bd-b8a8-a6411d29c0ba" name="jPanel1;default" type="fcbff115-c4d2-4ca2-be14-85e32f9a4516" association="26546233-e7b7-452e-b06e-863c4d8f52f0"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="a28c67f1-9dcb-4d7e-b243-e0dfff65fbea" name="RemoveElement.jPanel3_Ass" memberEnd="aa8ec142-ca3c-4ef6-a968-bde05eca7995 ad943054-8a3e-4c9b-9269-5d75a64a26ee">
+      <ownedEnd xmi:type="uml:Property" xmi:id="aa8ec142-ca3c-4ef6-a968-bde05eca7995" name="jPanel3;default" type="fcbff115-c4d2-4ca2-be14-85e32f9a4516" association="a28c67f1-9dcb-4d7e-b243-e0dfff65fbea"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="fd3fd415-d7ea-47e2-ac45-bb68a589bbed" name="RemoveElement.jTextArea1_Ass" memberEnd="c6c0f34d-4dd3-45a2-961d-6e156f22182a 46a220d8-d42d-4e89-9860-7741e39ee65e">
+      <ownedEnd xmi:type="uml:Property" xmi:id="c6c0f34d-4dd3-45a2-961d-6e156f22182a" name="jTextArea1;default" type="fcbff115-c4d2-4ca2-be14-85e32f9a4516" association="fd3fd415-d7ea-47e2-ac45-bb68a589bbed"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="30e5ac2e-900a-44cd-89d1-40288bad6d16" name="Home.manager_Ass" memberEnd="e5d8a262-ecb7-4cde-a318-66ec7e768f4a a8f86f39-fd21-49bc-b9c5-1c8eb3981a2b">
+      <ownedEnd xmi:type="uml:Property" xmi:id="e5d8a262-ecb7-4cde-a318-66ec7e768f4a" name="manager;default" type="4d8484da-b437-41a5-b153-13df0a22235f" association="30e5ac2e-900a-44cd-89d1-40288bad6d16"/>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="5dee91b7-f24e-4a5f-9c70-c624e65174a9">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="3997fa8e-4447-461d-a763-c421eb0999a2" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://GW_JAVA_PROFILES/Java.profile.uml#_H_ZGcB5CEduWqeK3CXfnzA"/>
@@ -724,11 +954,13 @@
   <java_profile:create xmi:id="73ced959-71d8-45c3-9a63-031fb9af6107" base_Operation="1a11e98f-3d19-4a87-bcac-6194c701ec5a"/>
   <java_profile:create xmi:id="850f3666-edb0-429e-9019-8fee4dd87653" base_Operation="d8e760b3-418e-4e73-a459-3979a8fe4a27"/>
   <java_profile:create xmi:id="642da088-de1a-4dd4-a473-b1bacb9ee7ff" base_Operation="b5548dd6-b91e-4a25-baeb-b759a3e526dd"/>
-  <java_profile:create xmi:id="5c2d057b-c444-42aa-b24d-79f8762a4906" base_Operation="9fdea490-b46a-4d21-b0d8-3a0e11cbee06"/>
   <java_profile:create xmi:id="ec9bb1ab-6338-49bf-8c17-408526b8e77c" base_Operation="700e4dd3-7fcf-4ab1-9680-c34a51c41a92"/>
   <java_profile:create xmi:id="f32b8329-6783-4889-9b63-ce9b7d3d98b0" base_Operation="d5ef451a-eb0f-4198-913a-d4a09810e3bc"/>
   <java_profile:create xmi:id="65487f93-858f-414e-bfa8-b4a1146aaa11" base_Operation="60ef6fc2-03df-44e3-ba08-53df5a6588e1"/>
   <java_profile:create xmi:id="d9a359d2-3734-452c-bba6-47d03677e90b" base_Operation="b37b2067-73a6-4be3-8a81-95d2a0c3851e"/>
   <java_profile:create xmi:id="7229c3e6-956a-4025-b711-d33f158c989a" base_Operation="689a3cde-360e-4ee0-ab13-362d40456664"/>
   <java_profile:create xmi:id="f4f6221e-a35c-44e9-9e27-4d617873ba50" base_Operation="7ca9285d-4627-4bf1-83c1-81f25b13fcf1"/>
+  <java_profile:create xmi:id="55434de9-0825-40aa-8d42-6d1d7f32742a" base_Operation="f3749981-aa1a-43ad-9fc3-3328f1e6cbb6"/>
+  <java_profile:create xmi:id="39e13c67-7d28-47ec-8bd2-48ed6976e307" base_Operation="53df0dfd-4945-46d4-a21b-75fb045a6ba5"/>
+  <java_profile:create xmi:id="5452a77e-eefa-4cd3-8684-9baf2d902f48" base_Operation="aa1d0ae2-64cb-45ae-9a06-e2e118ee7180"/>
 </xmi:XMI>

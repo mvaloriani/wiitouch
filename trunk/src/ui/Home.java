@@ -4,25 +4,48 @@
 
 package ui;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
-import javax.swing.*;
-import javax.swing.border.*;
-import org.jdesktop.layout.*;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.JToggleButton;
+import javax.swing.SwingConstants;
+import javax.swing.border.TitledBorder;
 
-import sun.awt.windows.WWindowPeer;
+import manager.IManager;
 
 /**
  * @author Giulio Presazzi
  */
-public class Home extends JFrame {
-	public Home() {
+public class Home extends JFrame implements WindowListener{
+	
+	private IManager manager;
+	
+	public Home(IManager manager) {
 		initComponents();
+		addWindowListener(this);
+
+		this.manager=manager;
 	}
+  
 
 	private void caricaButtonActionPerformed(ActionEvent e) {
 		// TODO add your code here
+		
 	}
 
 	private void buttonWiiActionPerformed(ActionEvent e) {
@@ -66,7 +89,7 @@ public class Home extends JFrame {
 		setTitle("Home");
 		setResizable(false);
 		setVisible(true);
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 
@@ -208,4 +231,40 @@ public class Home extends JFrame {
 	private JLabel labelSeganle;
 	private JProgressBar progressBar2;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
+
+	public void windowActivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void windowClosed(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void windowDeactivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void windowDeiconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void windowIconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void windowOpened(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void windowClosing(WindowEvent e) {
+		// TODO Auto-generated method stub
+		e.getWindow().setVisible(false);
+		e.getWindow().dispose();
+       
+    	manager.endSystem();
+		    	//System.exit(1);
+		   
+	}
 }
