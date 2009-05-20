@@ -4,28 +4,14 @@
 
 package ui;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.JToggleButton;
-import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
-import javax.swing.border.TitledBorder;
+import javax.swing.*;
+import javax.swing.border.*;
+import org.jdesktop.layout.*;
 
-import org.jdesktop.layout.GroupLayout;
-import org.jdesktop.layout.LayoutStyle;
-
+import sun.awt.windows.WWindowPeer;
 
 /**
  * @author Giulio Presazzi
@@ -64,11 +50,11 @@ public class Home extends JFrame {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		// Generated using JFormDesigner Evaluation license - Giulio Presazzi
 		panel1 = new JPanel();
-		buttonCarica = new JButton();
-		buttonModifica = new JButton();
-		buttonCrea = new JButton();
 		buttonPlay = new JButton();
 		labelTitle = new JLabel();
+		buttonCarica = new JButton();
+		buttonCrea = new JButton();
+		buttonModifica = new JButton();
 		buttonWii = new JToggleButton();
 		panelWii = new JPanel();
 		labelBatteria = new JLabel();
@@ -95,31 +81,11 @@ public class Home extends JFrame {
 					javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
 					java.awt.Color.red), panel1.getBorder())); panel1.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
-
-			//---- buttonCarica ----
-			buttonCarica.setText("Carica Tabellone");
-			buttonCarica.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					caricaButtonActionPerformed(e);
-				}
-			});
-
-			//---- buttonModifica ----
-			buttonModifica.setText("Modifica Tabellone");
-			buttonModifica.setEnabled(false);
-			buttonModifica.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					buttonModificaActionPerformed(e);
-				}
-			});
-
-			//---- buttonCrea ----
-			buttonCrea.setText("Crea Tabellone");
-			buttonCrea.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					buttonCreaActionPerformed(e);
-				}
-			});
+			panel1.setLayout(new GridBagLayout());
+			((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {143, 23, 34, 39, 0, 0};
+			((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0};
+			((GridBagLayout)panel1.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
+			((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
 
 			//---- buttonPlay ----
 			buttonPlay.setText("Fai Parlare il Tabellone");
@@ -129,11 +95,51 @@ public class Home extends JFrame {
 					buttonPlayActionPerformed(e);
 				}
 			});
+			panel1.add(buttonPlay, new GridBagConstraints(0, 2, 2, 1, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 5, 5), 0, 0));
 
 			//---- labelTitle ----
 			labelTitle.setForeground(Color.blue);
 			labelTitle.setHorizontalAlignment(SwingConstants.CENTER);
 			labelTitle.setIcon(new ImageIcon("D:\\Workspace\\WiiTouchProject\\imm\\Untitled.png"));
+			panel1.add(labelTitle, new GridBagConstraints(0, 0, 5, 1, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 5, 0), 0, 0));
+
+			//---- buttonCarica ----
+			buttonCarica.setText("Carica Tabellone");
+			buttonCarica.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					caricaButtonActionPerformed(e);
+				}
+			});
+			panel1.add(buttonCarica, new GridBagConstraints(0, 1, 2, 1, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 5, 5), 0, 0));
+
+			//---- buttonCrea ----
+			buttonCrea.setText("Crea Tabellone");
+			buttonCrea.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					buttonCreaActionPerformed(e);
+				}
+			});
+			panel1.add(buttonCrea, new GridBagConstraints(3, 1, 2, 1, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 5, 0), 0, 0));
+
+			//---- buttonModifica ----
+			buttonModifica.setText("Modifica Tabellone");
+			buttonModifica.setEnabled(false);
+			buttonModifica.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					buttonModificaActionPerformed(e);
+				}
+			});
+			panel1.add(buttonModifica, new GridBagConstraints(3, 2, 2, 1, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 5, 0), 0, 0));
 
 			//---- buttonWii ----
 			buttonWii.setText("Connetti WiiMote");
@@ -142,98 +148,44 @@ public class Home extends JFrame {
 					buttonWiiActionPerformed(e);
 				}
 			});
+			panel1.add(buttonWii, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 5, 5), 0, 0));
 
 			//======== panelWii ========
 			{
 				panelWii.setBorder(new TitledBorder(null, "Informazioni WiiMote", TitledBorder.CENTER, TitledBorder.DEFAULT_POSITION,
 					new Font("Cambria", Font.BOLD, 14)));
 				panelWii.setFocusable(false);
-				panelWii.setVisible(false);
 				panelWii.setVerifyInputWhenFocusTarget(false);
 				panelWii.setRequestFocusEnabled(false);
+				panelWii.setLayout(new GridBagLayout());
+				((GridBagLayout)panelWii.getLayout()).columnWidths = new int[] {0, 108, 0};
+				((GridBagLayout)panelWii.getLayout()).rowHeights = new int[] {0, 0, 0};
+				((GridBagLayout)panelWii.getLayout()).columnWeights = new double[] {0.0, 0.0, 1.0E-4};
+				((GridBagLayout)panelWii.getLayout()).rowWeights = new double[] {0.0, 0.0, 1.0E-4};
 
 				//---- labelBatteria ----
 				labelBatteria.setText("Livello Batteria:");
+				panelWii.add(labelBatteria, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 5), 0, 0));
+				panelWii.add(progressBar1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 5, 0), 0, 0));
 
 				//---- labelSeganle ----
 				labelSeganle.setText("Livello Segnale:");
-
-				GroupLayout panelWiiLayout = new GroupLayout(panelWii);
-				panelWii.setLayout(panelWiiLayout);
-				panelWiiLayout.setHorizontalGroup(
-					panelWiiLayout.createParallelGroup()
-						.addGroup(panelWiiLayout.createSequentialGroup()
-							.addGap(25, 25, 25)
-							.addGroup(panelWiiLayout.createParallelGroup()
-								.addGroup(panelWiiLayout.createSequentialGroup()
-									.addComponent(labelBatteria)
-									.addGap(5, 5, 5)
-									.addComponent(progressBar1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(panelWiiLayout.createSequentialGroup()
-									.addComponent(labelSeganle)
-									.addGap(5, 5, 5)
-									.addComponent(progressBar2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-				);
-				panelWiiLayout.setVerticalGroup(
-					panelWiiLayout.createParallelGroup()
-						.addGroup(panelWiiLayout.createSequentialGroup()
-							.addGroup(panelWiiLayout.createParallelGroup()
-								.addComponent(labelBatteria, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-								.addComponent(progressBar1, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
-							.addGap(30, 30, 30)
-							.addGroup(panelWiiLayout.createParallelGroup()
-								.addComponent(labelSeganle, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-								.addComponent(progressBar2, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)))
-				);
+				panelWii.add(labelSeganle, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 0, 5), 0, 0));
+				panelWii.add(progressBar2, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
+					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+					new Insets(0, 0, 0, 0), 0, 0));
 			}
-
-			GroupLayout panel1Layout = new GroupLayout(panel1);
-			panel1.setLayout(panel1Layout);
-			panel1Layout.setHorizontalGroup(
-				panel1Layout.createParallelGroup()
-					.addGroup(panel1Layout.createSequentialGroup()
-						.addGap(25, 25, 25)
-						.addGroup(panel1Layout.createParallelGroup()
-							.addGroup(panel1Layout.createSequentialGroup()
-								.addComponent(buttonWii)
-								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-								.addComponent(panelWii, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
-							.addGroup(panel1Layout.createSequentialGroup()
-								.addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-									.addComponent(buttonPlay, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(buttonCarica, GroupLayout.Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE))
-								.addGap(73, 73, 73)
-								.addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-									.addComponent(buttonModifica, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(buttonCrea, GroupLayout.PREFERRED_SIZE, 162, GroupLayout.PREFERRED_SIZE))))
-						.addContainerGap(32, Short.MAX_VALUE))
-					.addGroup(GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-						.addContainerGap(111, Short.MAX_VALUE)
-						.addComponent(labelTitle)
-						.addGap(103, 103, 103))
-			);
-			panel1Layout.setVerticalGroup(
-				panel1Layout.createParallelGroup()
-					.addGroup(panel1Layout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(labelTitle)
-						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-						.addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-							.addGroup(panel1Layout.createSequentialGroup()
-								.addComponent(buttonCrea, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-								.addComponent(buttonModifica, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
-							.addGroup(panel1Layout.createSequentialGroup()
-								.addComponent(buttonCarica, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-								.addComponent(buttonPlay, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)))
-						.addGap(26, 26, 26)
-						.addGroup(panel1Layout.createParallelGroup()
-							.addComponent(buttonWii, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-							.addComponent(panelWii, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
-						.addContainerGap())
-			);
-			panel1Layout.linkSize(SwingConstants.VERTICAL, new Component[] {buttonCarica, buttonCrea, buttonModifica, buttonPlay});
+			panel1.add(panelWii, new GridBagConstraints(1, 3, 4, 2, 0.0, 0.0,
+				GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 0), 0, 0));
 		}
 		contentPane.add(panel1);
 		pack();
@@ -244,11 +196,11 @@ public class Home extends JFrame {
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
 	// Generated using JFormDesigner Evaluation license - Giulio Presazzi
 	private JPanel panel1;
-	private JButton buttonCarica;
-	private JButton buttonModifica;
-	private JButton buttonCrea;
 	private JButton buttonPlay;
 	private JLabel labelTitle;
+	private JButton buttonCarica;
+	private JButton buttonCrea;
+	private JButton buttonModifica;
 	private JToggleButton buttonWii;
 	private JPanel panelWii;
 	private JLabel labelBatteria;
