@@ -46,11 +46,15 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="9d436c7b-3043-4bb4-af35-4b6898318243" name="iWii" visibility="private" association="cc8c62a7-891a-4c2f-ae35-9c4bd198a0a3">
         <type xmi:type="uml:Interface" href="../../WiiHW/Personal/model.auml#145d06a1-18ee-42b7-a541-4175f44dcada"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="9a2f7b2e-c4e7-4472-ac8c-afeaf03c0d39" name="vlcThread" visibility="private" type="0d29f8ec-4984-45a7-a56c-a93936e1974c" association="d0ec0e90-6ad6-43bf-bc59-141490c3a583"/>
       <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="4449aa21-e6b9-4236-abd9-3194211aa8a9" name="Manager_implements_IManager" supplier="5faf34a1-51c4-41ad-9800-66e67dc7f03c" client="9aacd820-54e4-4f5a-8e30-e57f2ab86751" contract="5faf34a1-51c4-41ad-9800-66e67dc7f03c"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="0d29f8ec-4984-45a7-a56c-a93936e1974c" name="vlcThread" visibility="private">
         <generalization xmi:type="uml:Generalization" xmi:id="6023b2e9-1480-4faf-baf3-479f685060f0">
           <general xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/lang/model.auml#lang.[C]Thread"/>
         </generalization>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="52a1db6a-06b4-45d2-bd85-a6f592e1e874" name="ls_proc" visibility="private" association="03f9938a-2ade-4703-b37c-4505338893de">
+          <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/lang/model.auml#lang.[C]Process"/>
+        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="b1957ea7-4c97-4bd8-9745-30fddc31d9be" name="vlcThread" visibility="public">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="abaa7a45-5b97-40b5-bf54-6317916cc9f0" name="str">
             <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/lang/model.auml#lang.[C]String"/>
@@ -58,6 +62,7 @@
           <ownedParameter xmi:type="uml:Parameter" xmi:id="d680d90a-bd19-4187-9281-038e7f21fffc" name="return" type="0d29f8ec-4984-45a7-a56c-a93936e1974c" direction="return"/>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="0f28270a-5ec6-4793-94b7-81dd934ead26" name="run" visibility="public"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="a6112286-a385-456f-9213-875271bc349b" name="termina" visibility="public"/>
       </nestedClassifier>
       <ownedOperation xmi:type="uml:Operation" xmi:id="7e841672-7ba4-4d88-8ba3-2f38f91f7ef3" name="getlastPaper" visibility="public">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="90509b58-3c07-4d3c-a218-607f067adca8" name="return" direction="return">
@@ -220,6 +225,7 @@
           <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/lang/model.auml#lang.[C]Integer"/>
         </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="b1188858-eef8-4f49-830b-b7097db24f09" name="endSystem" visibility="public"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="58b499a8-9d45-43c9-8cd7-69e5bf8c57c4" name="ManagerCreazione.manager_Ass" memberEnd="1bf100f3-3c24-4b23-ba57-b243f28d8afb ee72913d-bd48-40f9-b8ed-b234123515c0">
       <ownedEnd xmi:type="uml:Property" xmi:id="1bf100f3-3c24-4b23-ba57-b243f28d8afb" name="manager;default" type="0879d193-cbd3-4184-b3d5-d32969aed27e" association="58b499a8-9d45-43c9-8cd7-69e5bf8c57c4"/>
@@ -389,6 +395,7 @@
           <type xmi:type="uml:Class" href="../../../../plugin/com.gentleware.uml2.jre50/model/allJarsFlat/java/lang/model.auml#lang.[C]Integer"/>
         </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="57c32e1a-1561-4534-99b3-8c8a53e717d3" name="endSystem" visibility="public" isAbstract="true"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="194e4901-a187-4f93-8119-fe45fe6980f2" name="ManagerDati">
       <ownedAttribute xmi:type="uml:Property" xmi:id="f1802b6a-5aae-4804-85be-b81094416187" name="manager" visibility="private" type="9aacd820-54e4-4f5a-8e30-e57f2ab86751" association="240da904-3349-4ebf-bf62-9f2430004348"/>
@@ -736,6 +743,12 @@
         </ownedParameter>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="479f4166-c3ca-4f96-a068-6db64d27d3a7" name="return" type="728ed888-e579-4fe2-ad6f-4506bb6be90c" direction="return"/>
       </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="d0ec0e90-6ad6-43bf-bc59-141490c3a583" name="Manager.vlcThread_Ass" memberEnd="8d48dac1-9cff-436d-ae6b-a3d7f958bc21 9a2f7b2e-c4e7-4472-ac8c-afeaf03c0d39">
+      <ownedEnd xmi:type="uml:Property" xmi:id="8d48dac1-9cff-436d-ae6b-a3d7f958bc21" name="vlcThread;default" type="9aacd820-54e4-4f5a-8e30-e57f2ab86751" association="d0ec0e90-6ad6-43bf-bc59-141490c3a583"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="03f9938a-2ade-4703-b37c-4505338893de" name="vlcThread.ls_proc_Ass" memberEnd="c84aac53-e6d0-42dd-81ba-5928a947f358 52a1db6a-06b4-45d2-bd85-a6f592e1e874">
+      <ownedEnd xmi:type="uml:Property" xmi:id="c84aac53-e6d0-42dd-81ba-5928a947f358" name="ls_proc;default" type="0d29f8ec-4984-45a7-a56c-a93936e1974c" association="03f9938a-2ade-4703-b37c-4505338893de"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="c522ac3f-1490-4f14-9139-6f714de49399">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="1af95cbb-a7ef-4acc-872b-a9097d6f8a40" source="http://www.eclipse.org/uml2/2.0.0/UML">

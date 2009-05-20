@@ -2,12 +2,7 @@ package manager;
 
 import java.util.ArrayList;
 
-import ui.LoadPosterFrame;
-import ui.Modifica;
-import ui.ModificaPoster;
-import ui.NewElementFrame;
-import ui.NewPaperFrame;
-import ui.NewPosterFrame;
+import ui.Home;
 
 
 public class Main {
@@ -32,16 +27,17 @@ public class Main {
 		} catch (ElementTypeEX e) {
 			e.printStackTrace();
 		}
+		
 		//system.calibra();
 		system.play();
-		ModificaPoster mod = new ModificaPoster(system);
-		//Home home = new Home();
-		NewPaperFrame np = new NewPaperFrame();
-		NewPosterFrame npf= new NewPosterFrame();
-		Modifica m=new Modifica();
+		//ModificaPoster mod = new ModificaPoster(system);
+		Home home = new Home(system);
+		//NewPaperFrame np = new NewPaperFrame();
+		//NewPosterFrame npf= new NewPosterFrame();
+		//Modifica m=new Modifica();
 		
-		NewElementFrame ne = new NewElementFrame();
-		LoadPosterFrame lp = new LoadPosterFrame();
+		//NewElementFrame ne = new NewElementFrame();
+		//LoadPosterFrame lp = new LoadPosterFrame();
 	
 	}
 
