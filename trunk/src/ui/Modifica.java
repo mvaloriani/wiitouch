@@ -41,6 +41,7 @@ public class Modifica extends JFrame {
 			frame1.setFocusable(false);
 			frame1.setFocusableWindowState(false);
 			frame1.setVisible(true);
+			frame1.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 			Container frame1ContentPane = frame1.getContentPane();
 			frame1ContentPane.setLayout(new GridBagLayout());
 			((GridBagLayout)frame1ContentPane.getLayout()).columnWidths = new int[] {470, 220, 0};
@@ -53,7 +54,7 @@ public class Modifica extends JFrame {
 				tabellonePanel.setBackground(Color.white);
 				tabellonePanel.setBorder(new CompoundBorder(
 					new BevelBorder(BevelBorder.LOWERED),
-					new TitledBorder("Tabellonerrrerr")));
+					new TitledBorder("Tabellone")));
 				tabellonePanel.setOpaque(false);
 				tabellonePanel.setMinimumSize(new Dimension(450, 450));
 				tabellonePanel.setMaximumSize(new Dimension(3600, 3600));
