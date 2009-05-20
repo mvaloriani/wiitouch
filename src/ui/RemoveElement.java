@@ -1,6 +1,4 @@
-package ui;
-
-
+package javaapplication1;
 
 /*
  * To change this template, choose Tools | Templates
@@ -45,6 +43,7 @@ public class RemoveElement extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calibrazione");
         setResizable(false);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(181, 208, 249));
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -59,6 +58,7 @@ public class RemoveElement extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 24;
+        gridBagConstraints.insets = new java.awt.Insets(28, 24, 0, 24);
         jPanel1.add(jTextArea1, gridBagConstraints);
 
         jPanel3.setBackground(new java.awt.Color(181, 208, 249));
@@ -80,19 +80,10 @@ public class RemoveElement extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 119;
-        gridBagConstraints.insets = new java.awt.Insets(27, 0, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(27, 0, 15, 0);
         jPanel1.add(jPanel3, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jPanel1, new java.awt.GridBagConstraints());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

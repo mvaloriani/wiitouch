@@ -1,5 +1,3 @@
-package ui;
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -11,7 +9,7 @@ package ui;
  * Created on 19-mag-2009, 11.46.49
  */
 
-
+package javaapplication1;
 
 /**
  *
@@ -43,6 +41,7 @@ public class Calibration extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calibrazione");
         setResizable(false);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(181, 208, 249));
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -57,6 +56,7 @@ public class Calibration extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 24;
+        gridBagConstraints.insets = new java.awt.Insets(40, 19, 4, 19);
         jPanel1.add(jTextArea1, gridBagConstraints);
 
         jPanel3.setBackground(new java.awt.Color(181, 208, 249));
@@ -78,19 +78,12 @@ public class Calibration extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 119;
-        gridBagConstraints.insets = new java.awt.Insets(27, 0, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(27, 0, 18, 0);
         jPanel1.add(jPanel3, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        getContentPane().add(jPanel1, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
