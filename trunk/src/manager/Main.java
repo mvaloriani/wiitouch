@@ -2,6 +2,13 @@ package manager;
 
 import java.util.ArrayList;
 
+import ui.LoadPosterFrame;
+import ui.Modifica;
+import ui.ModificaPoster;
+import ui.NewElementFrame;
+import ui.NewPaperFrame;
+import ui.NewPosterFrame;
+
 
 public class Main {
 
@@ -11,7 +18,7 @@ public class Main {
 	 * @throws PosterTypeEx 
 	 */
 	public static void main(String[] args) throws PosterTypeEx, PositionEX {
-		System.setProperty("bluecove.jsr82.psm_minimum_off", "true");
+		//System.setProperty("bluecove.jsr82.psm_minimum_off", "true");
 		IManager system = new Manager();
 		system.createGridPoster("xsdfg", "2345", "serthj", 2, 2);
 		ArrayList<String> p = new ArrayList<String>();
@@ -27,14 +34,14 @@ public class Main {
 		}
 		//system.calibra();
 		system.play();
-		//ModificaPoster mod = new ModificaPoster(system);
+		ModificaPoster mod = new ModificaPoster(system);
 		//Home home = new Home();
-		//NewPaperFrame np = new NewPaperFrame();
-		//NewPosterFrame npf= new NewPosterFrame();
-		//Modifica m=new Modifica();
+		NewPaperFrame np = new NewPaperFrame();
+		NewPosterFrame npf= new NewPosterFrame();
+		Modifica m=new Modifica();
 		
-		//NewElementFrame ne = new NewElementFrame();
-		//LoadPosterFrame lp = new LoadPosterFrame();
+		NewElementFrame ne = new NewElementFrame();
+		LoadPosterFrame lp = new LoadPosterFrame();
 	
 	}
 
