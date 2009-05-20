@@ -84,7 +84,7 @@ public class NewPaperFrame extends javax.swing.JFrame {
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jPanel2.setBackground(new java.awt.Color(181, 208, 249));
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13));
+        jLabel1.setFont(new java.awt.Font("Cambria", 1, 24));
         jLabel1.setText("Assegna un contenuto");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -97,7 +97,7 @@ public class NewPaperFrame extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(181, 208, 249));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13));
+        jLabel2.setFont(new java.awt.Font("Cambria", 1, 24));
         jLabel2.setText("File");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -105,6 +105,7 @@ public class NewPaperFrame extends javax.swing.JFrame {
         jPanel3.add(jLabel2, gridBagConstraints);
 
         jTextField1.setColumns(17);
+        jTextField1.setFont(new java.awt.Font("Cambria", 0, 24));
         jTextField1.setMinimumSize(new java.awt.Dimension(20, 28));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -114,12 +115,14 @@ public class NewPaperFrame extends javax.swing.JFrame {
         jPanel3.add(jTextField1, gridBagConstraints);
 
         jButton1.setBackground(new java.awt.Color(181, 208, 249));
+        jButton1.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton1.setText("Anteprima");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
         jPanel3.add(jButton1, gridBagConstraints);
 
+        jButton3.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton3.setText("...");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
@@ -137,12 +140,15 @@ public class NewPaperFrame extends javax.swing.JFrame {
         jPanel2.add(jPanel3, gridBagConstraints);
 
         jPanel1.setBackground(new java.awt.Color(181, 208, 249));
+        jButton4.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton4.setText("Salva");
         jPanel1.add(jButton4);
 
+        jButton2.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton2.setText("Cancella");
         jPanel1.add(jButton2);
 
+        jButton5.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton5.setText("Annulla");
         jPanel1.add(jButton5);
 

@@ -22,17 +22,17 @@ public class NewElementFrame extends javax.swing.JFrame {
     public NewElementFrame() {
         //jPanel2.setVisible(false);
         initComponents();
-        jPanel2.setVisible(false);
+        jComboBox1.setVisible(false);
         jRadioButton2.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent) {
-                jPanel2.setVisible(true);
+                jComboBox1.setVisible(true);
                 
             }
             
         });
         jRadioButton1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent) {
-                jPanel2.setVisible(false);
+                jComboBox1.setVisible(false);
                 
             }
             
@@ -65,7 +65,6 @@ public class NewElementFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,13 +73,16 @@ public class NewElementFrame extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(181, 208, 249));
+        jButton1.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton1.setText("Aggiungi");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         jPanel1.add(jButton1, gridBagConstraints);
 
         buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("Cambria", 0, 24));
         jRadioButton2.setText("Controllo");
         jRadioButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton2.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -91,13 +93,16 @@ public class NewElementFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 1, 10, 1);
         jPanel1.add(jRadioButton2, gridBagConstraints);
 
+        jButton2.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton2.setText("Annulla");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         jPanel1.add(jButton2, gridBagConstraints);
 
         buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("Cambria", 0, 24));
         jRadioButton1.setText("Foglio");
         jRadioButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -107,24 +112,20 @@ public class NewElementFrame extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         jPanel1.add(jRadioButton1, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13));
+        jLabel1.setFont(new java.awt.Font("Cambria", 1, 24));
         jLabel1.setText("Aggiungi Elemento al Cartellone");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(14, 14, 14, 14);
         jPanel1.add(jLabel1, gridBagConstraints);
 
-        jPanel2.setLayout(new java.awt.GridBagLayout());
-
-        jPanel2.setBackground(new java.awt.Color(181, 208, 249));
         jComboBox1.setBackground(new java.awt.Color(181, 208, 249));
+        jComboBox1.setFont(new java.awt.Font("Cambria", 0, 24));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Play", "Pause", "Stop" }));
-        jPanel2.add(jComboBox1, new java.awt.GridBagConstraints());
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        jPanel1.add(jPanel2, gridBagConstraints);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(jComboBox1, gridBagConstraints);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -149,7 +150,6 @@ public class NewElementFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     // End of variables declaration                   
