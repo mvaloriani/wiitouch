@@ -11,8 +11,8 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
 
 /**
  *
@@ -24,12 +24,17 @@ public class LoadPosterFrame extends javax.swing.JFrame implements ActionListene
     public LoadPosterFrame() {
         initComponents();
         jButton1.addActionListener(this);
+        jButton4.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent) {
+                jTextField1.setText("");
+            }
+        });
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
-        setSize(screenWidth / 2, screenHeight / 2);
-        setLocation(screenWidth / 4, screenHeight / 4);
+        
+        setLocation((screenWidth-this.getSize().width) / 2, (screenHeight-this.getSize().height) / 2);
         this.setVisible(true);
     }
     
@@ -49,6 +54,7 @@ public class LoadPosterFrame extends javax.swing.JFrame implements ActionListene
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -65,10 +71,12 @@ public class LoadPosterFrame extends javax.swing.JFrame implements ActionListene
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(181, 208, 249));
+        jLabel2.setFont(new java.awt.Font("Cambria", 1, 24));
         jLabel2.setText("Seleziona un cartellone che hai gi\u00e0 creato");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 14;
         jPanel1.add(jLabel2, gridBagConstraints);
@@ -76,57 +84,74 @@ public class LoadPosterFrame extends javax.swing.JFrame implements ActionListene
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jPanel2.setBackground(new java.awt.Color(181, 208, 249));
+        jButton2.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton2.setText("Ok");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 17;
         jPanel2.add(jButton2, gridBagConstraints);
 
+        jButton3.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton3.setText("Annulla");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
         jPanel2.add(jButton3, gridBagConstraints);
 
+        jButton4.setFont(new java.awt.Font("Cambria", 0, 24));
+        jButton4.setText("Cancella");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        jPanel2.add(jButton4, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHEAST;
         jPanel1.add(jPanel2, gridBagConstraints);
 
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
         jPanel3.setBackground(new java.awt.Color(181, 208, 249));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel1.setFont(new java.awt.Font("Cambria", 0, 24));
         jLabel1.setText("Carica");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 47;
+        gridBagConstraints.insets = new java.awt.Insets(0, 16, 0, 16);
         jPanel3.add(jLabel1, gridBagConstraints);
 
         jTextField1.setColumns(20);
+        jTextField1.setFont(new java.awt.Font("Cambria", 0, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 23;
         jPanel3.add(jTextField1, gridBagConstraints);
 
+        jButton1.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton1.setText("...");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 14;
+        gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 7;
+        gridBagConstraints.insets = new java.awt.Insets(0, 11, 0, 11);
         jPanel3.add(jButton1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 1, 0, 1);
         jPanel1.add(jPanel3, gridBagConstraints);
 
@@ -135,6 +160,7 @@ public class LoadPosterFrame extends javax.swing.JFrame implements ActionListene
         pack();
     }// </editor-fold>                        
     
+
 
     public void actionPerformed(ActionEvent actionEvent) {
         
@@ -164,6 +190,7 @@ public class LoadPosterFrame extends javax.swing.JFrame implements ActionListene
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
