@@ -87,7 +87,8 @@ public class Paper extends Element {
 		try {
 			sock.connect(sockaddr);
 		} catch (IOException e1) {
-			e1.printStackTrace();
+			System.err.println("Socket problem.");
+			return;
 		}
 
 		PrintWriter out = null;
