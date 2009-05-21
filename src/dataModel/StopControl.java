@@ -38,8 +38,8 @@ public class StopControl extends Control {
 		try {
 			sock.connect(sockaddr);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			System.err.println("Socket problem.");
+			return;
 		}
 		
 	        PrintWriter out = null;
