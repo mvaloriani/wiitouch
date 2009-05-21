@@ -1,5 +1,13 @@
 package ui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
+import manager.IManager;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -19,9 +27,13 @@ package ui;
 public class NewPosterFrame extends javax.swing.JFrame {
 
 
-    /** Creates new form principale */
-    public NewPosterFrame() {
+    /** Creates new form principale 
+     * @param manager 
+     * @param home */
+    public NewPosterFrame(Home home, IManager manager) {
         initComponents();
+        this.home = home;
+        this.manager = manager;
      jPanel4.setVisible(false);
     }
 
@@ -56,9 +68,9 @@ public class NewPosterFrame extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jPanel5 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        creaButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        annullaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Crea Poster");
@@ -227,23 +239,34 @@ public class NewPosterFrame extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(181, 208, 249));
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setText("Crea poster");
-        jButton1.setToolTipText("Crea Poster");
+        creaButton.setText("Crea poster");
+        creaButton.setToolTipText("Crea Poster");
+        creaButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent) {
+                creaActionPerformed(actionEvent);
+            }
+        });
+        
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(13, 6, 18, 6);
-        jPanel5.add(jButton1, gridBagConstraints);
+        jPanel5.add(creaButton, gridBagConstraints);
 
-        jButton2.setText("Assegna contenuti");
-        jButton2.setToolTipText("Aggiungi ora i contenuti multimediali");
+//        jButton2.setText("Assegna contenuti");
+//        jButton2.setToolTipText("Aggiungi ora i contenuti multimediali");
+//        gridBagConstraints = new java.awt.GridBagConstraints();
+//        gridBagConstraints.insets = new java.awt.Insets(13, 7, 19, 7);
+//        jPanel5.add(jButton2, gridBagConstraints);
+
+        annullaButton.setText("Annulla");
+        annullaButton.setToolTipText("Annulla");
+        annullaButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent) {
+                annullaActionPerformed(actionEvent);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(13, 7, 19, 7);
-        jPanel5.add(jButton2, gridBagConstraints);
-
-        jButton3.setText("Annulla");
-        jButton3.setToolTipText("Annulla");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.insets = new java.awt.Insets(13, 7, 19, 7);
-        jPanel5.add(jButton3, gridBagConstraints);
+        jPanel5.add(annullaButton, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -266,36 +289,48 @@ public class NewPosterFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void annullaActionPerformed(ActionEvent actionEvent) {
+    	dispose();
+    }
+    
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void showTextField(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showTextField
-jPanel4.setVisible(true);
+    	jPanel4.setVisible(true);
 
 // TODO add your handling code here:
     }//GEN-LAST:event_showTextField
 
     private void notShowTextField(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notShowTextField
-jPanel4.setVisible(false);        // TODO add your handling code here:
+    	jPanel4.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_notShowTextField
 
+
+	private void creaActionPerformed(ActionEvent actionEvent) {
+			AggiungiOra aggiungiOra = new AggiungiOra(home, manager);
+			home.enablePosterMethods(true);
+			dispose();
+	  }
+	
+    
     /**
     * @param args the command line arguments
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewPosterFrame().setVisible(true);
+                new NewPosterFrame(null, null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton creaButton;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton annullaButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -318,6 +353,7 @@ jPanel4.setVisible(false);        // TODO add your handling code here:
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 
-
+    private Home home;
+    private IManager manager;
 
 }
