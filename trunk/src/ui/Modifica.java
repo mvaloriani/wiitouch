@@ -22,7 +22,8 @@ public class Modifica extends javax.swing.JFrame {
     /** Creates new form Modifica 
      * @param manager */
     public Modifica(IManager manager) {
-        initComponents();
+        this.manager = manager;
+    	initComponents();
     }
 
     /** This method is called from within the constructor to
@@ -83,6 +84,7 @@ public class Modifica extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setText(manager.getIPoster().getDescription());
         jScrollPane1.setViewportView(jTextArea1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -92,7 +94,7 @@ public class Modifica extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 12, 0);
         descrizionePanel.add(jScrollPane1, gridBagConstraints);
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(20, 20));
+        jTextField1.setText(manager.getIPoster().getName());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -100,7 +102,7 @@ public class Modifica extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 12, 0);
         descrizionePanel.add(jTextField1, gridBagConstraints);
 
-        jTextField2.setText("jTextField2");
+        jTextField1.setText(manager.getIPoster().getClassroom());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -229,5 +231,5 @@ public class Modifica extends javax.swing.JFrame {
     private javax.swing.JButton rimuoviButton;
     private javax.swing.JButton salvaButton;
     // End of variables declaration//GEN-END:variables
-
+    private IManager manager;
 }

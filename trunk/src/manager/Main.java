@@ -1,5 +1,6 @@
 package manager;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import ui.Home;
@@ -29,10 +30,20 @@ public class Main {
 		} catch (ElementTypeEX e) {
 			e.printStackTrace();
 		}
-		
+		try {
+			system.storePoster("./original.xml");
+		} catch (FileNotFoundException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		//system.calibra();
 		system.play();
-		//ModificaPoster mod = new ModificaPoster(system);
+
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		try{
 			Home home = new Home(system);
 			home.setVisible(true);
@@ -40,14 +51,7 @@ public class Main {
 			e.printStackTrace();
 			System.err.println("AWT problems");
 
-		}
-		//NewPaperFrame np = new NewPaperFrame();
-		//NewPosterFrame npf= new NewPosterFrame();
-		//Modifica m=new Modifica();
-		
-		//NewElementFrame ne = new NewElementFrame();
-		//LoadPosterFrame lp = new LoadPosterFrame();
-	
+		}	
 	}
 
 }

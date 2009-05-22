@@ -95,6 +95,11 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		topPanel.add(jLabel1, gridBagConstraints);
 
 		modificaButton.setText("Modifica Tabellone");
+		modificaButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				modificaButtonActionPerformed(evt);
+			}
+		});
 		modificaButton.setEnabled(false);
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.gridx = 1;
@@ -185,6 +190,10 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 
 	private void caricaButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		LoadPosterFrame loadFrame = new LoadPosterFrame(this, manager);
+	}
+	
+	private void modificaButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		Modifica modifica = new Modifica(manager);
 	}
 
 	private void connettiButtonActionPerformed(java.awt.event.ActionEvent evt) {
