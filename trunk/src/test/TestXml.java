@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+import manager.ElementTypeEX;
 import manager.Manager;
 import manager.ManagerDati;
 import manager.PositionEX;
@@ -65,8 +66,10 @@ public class TestXml {
 			
 			manager.createFreePoster("2222222", "dddd", "dddd");
 			try {
-				manager.addControlFP(new ArrayList<Point2D>());
+				manager.addControlFP(new ArrayList<Point2D>(),"PAUSE");
 			} catch (PosterTypeEx e) {
+				e.printStackTrace();
+			} catch (ElementTypeEX e) {
 				e.printStackTrace();
 			}
 			try {

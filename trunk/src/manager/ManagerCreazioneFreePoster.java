@@ -12,20 +12,6 @@ import dataModel.Poster;
 
 public class ManagerCreazioneFreePoster extends ManagerCreazione {
 
-	private Integer addElemen(FreePoster poster, ArrayList<Point2D> points, String type){
-		Polygon area = Utills.PolygonFromPoints(points);
-		int id = poster.getMaxId()+1;
-		Element element;
-		if(type.equalsIgnoreCase("PAPER")){
-			 element = new Paper(id, area);
-		}
-		else{
-			 element = new Control(id, manager);
-		}
-		poster.addElement(element);
-		return id;
-	}
-
 	private void setElementArea(Poster poster, int id, ArrayList<Point2D> points) throws PositionEX{
 		Element e = poster.getElement(id);
 		if (e!=null){
@@ -38,16 +24,24 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 		super(manager);
 	}
 		
+	
 	public Poster createFreePoster(String name, String classe, String description){
 		return new FreePoster(name, classe, description);
 	}
 
-	public Integer addPaper(FreePoster poster, ArrayList<Point2D> points, ArrayList<String> files){
-		int id=addElemen(poster, points, "PAPER");
+	public Integer addPaper(FreePoster poster, ArrayList<Point2D> points, ArrayList<String> files) throws PositionEX{
+		Element element=null;
 		try {
-			setPaperFiles(poster, id, files);
-		} catch (PositionEX e) {}
-		return id;
+			element = super.newElement(poster, "PAPER");
+		} catch (ElementTypeEX e) {
+			e.printStackTrace();
+		}
+		Polygon area = Utills.PolygonFromPoints(points);
+		element.setArea(area);
+		setPaperFiles(poster, element.getId(), files);
+		poster.addElement(element);
+		return element.getId();
+
 	}
 	
 	public void setPaperFiles(Poster poster,int id, ArrayList<String> files) throws PositionEX{
@@ -57,7 +51,12 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 		}
 	}
 
-	public Integer addControll(FreePoster poster, ArrayList<Point2D> points){
-		return addElemen(poster, points, "CONTROL");
+	
+	public Integer addControll(FreePoster poster, ArrayList<Point2D> points, String type) throws ElementTypeEX {
+		Polygon area = Utills.PolygonFromPoints(points);
+		Element element=super.newElement(poster, type);
+		element.setArea(area);
+		poster.addElement(element);
+		return element.getId();
 	}
 }

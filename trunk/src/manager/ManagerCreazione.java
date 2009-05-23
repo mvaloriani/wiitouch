@@ -2,7 +2,13 @@ package manager;
 
 import java.util.ArrayList;
 
+import dataModel.Element;
+import dataModel.GridPoster;
+import dataModel.Paper;
+import dataModel.PauseControl;
 import dataModel.Poster;
+import dataModel.StopControl;
+import dataModel.VolumeControl;
 
 
 
@@ -22,6 +28,31 @@ public abstract class ManagerCreazione{
 
 	}
 		
+	protected Element newElement(Poster poster, String type) throws ElementTypeEX{
+		Element element=null;
+		if (type.equalsIgnoreCase("PAPER"))
+			element=new Paper(poster.getNumberOfElements()+1, new ArrayList<String>());
+		else 
+			if (type.equalsIgnoreCase("PAUSE"))
+			element=new PauseControl(poster.getNumberOfElements()+1, manager);
+		else 
+			if (type.equalsIgnoreCase("STOP"))
+			element=new StopControl(poster.getNumberOfElements()+1, manager);
+		else
+			if (type.equalsIgnoreCase("PLUSVOLUME"))
+				element=new VolumeControl(poster.getNumberOfElements()+1, manager,"+");
+		else
+			if (type.equalsIgnoreCase("MINUSVOLUME"))
+				element=new VolumeControl(poster.getNumberOfElements()+1, manager,"-");
+		else
+			if (type.equalsIgnoreCase("MUTEVOLUME"))
+				element=new VolumeControl(poster.getNumberOfElements()+1, manager,"X");
+		else
+				throw new ElementTypeEX("Type not found");
+		return element;
+
+	}
+	
 	public abstract void setPaperFiles(Poster poster, int id, ArrayList<String> Files) throws PositionEX;
 
 }

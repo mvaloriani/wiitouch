@@ -107,14 +107,14 @@ public class Manager implements IManager {
 				description);
 	}
 	
-	public Integer addControlFP(ArrayList<Point2D> points) throws PosterTypeEx {
+	public Integer addControlFP(ArrayList<Point2D> points, String type) throws PosterTypeEx, ElementTypeEX {
 		if(poster instanceof FreePoster)
-			return ((ManagerCreazioneFreePoster)managerCreazione).addControll((FreePoster)poster, points);
+			return ((ManagerCreazioneFreePoster)managerCreazione).addControll((FreePoster)poster, points,type);
 		else
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
 
-	public Integer addPaperFP(ArrayList<Point2D> points, ArrayList<String> files) throws PosterTypeEx {
+	public Integer addPaperFP(ArrayList<Point2D> points, ArrayList<String> files) throws PosterTypeEx, PositionEX {
 		if(poster instanceof FreePoster)
 			return ((ManagerCreazioneFreePoster)managerCreazione).addPaper((FreePoster)poster, points, files);
 		else
