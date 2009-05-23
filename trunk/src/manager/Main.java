@@ -30,17 +30,9 @@ public class Main {
 		} catch (ElementTypeEX e) {
 			e.printStackTrace();
 		}
-		try {
-			system.storePoster("./original.xml");
-		} catch (FileNotFoundException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
-		//system.calibra();
-		system.play();
 
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}

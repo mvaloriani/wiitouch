@@ -79,6 +79,11 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 
 		playButton.setText("Fai Parlare");
 		playButton.setEnabled(false);
+		modificaButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				playButtonActionPerformed(evt);
+			}
+		});
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.gridx = 0;
 		gridBagConstraints.gridy = 2;
@@ -205,6 +210,10 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		pack();
 	}
 
+	private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		manager.play();
+	}
+	
 	/**
 	 * @param args the command line a/rguments
 	 */

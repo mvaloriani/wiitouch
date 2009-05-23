@@ -19,8 +19,8 @@ import manager.IManager;
  */
 public class Modifica extends javax.swing.JFrame {
 
-    /** Creates new form Modifica 
-     * @param manager */
+
+	/** Creates new form Modifica */
     public Modifica(IManager manager) {
         this.manager = manager;
     	initComponents();
@@ -39,9 +39,9 @@ public class Modifica extends javax.swing.JFrame {
         cartellonePanel = new javax.swing.JPanel();
         descrizionePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        descrizioneTextArea = new javax.swing.JTextArea();
+        nomeTextField = new javax.swing.JTextField();
+        classeTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -52,23 +52,23 @@ public class Modifica extends javax.swing.JFrame {
         anteprimaButton = new javax.swing.JButton();
         salvaButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         cartellonePanel.setBackground(new java.awt.Color(255, 255, 255));
         cartellonePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartellone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 14))); // NOI18N
-        cartellonePanel.setMinimumSize(new java.awt.Dimension(400, 400));
-        cartellonePanel.setPreferredSize(new java.awt.Dimension(400, 400));
+        cartellonePanel.setMinimumSize(new java.awt.Dimension(450, 450));
+        cartellonePanel.setPreferredSize(new java.awt.Dimension(450, 450));
 
         javax.swing.GroupLayout cartellonePanelLayout = new javax.swing.GroupLayout(cartellonePanel);
         cartellonePanel.setLayout(cartellonePanelLayout);
         cartellonePanelLayout.setHorizontalGroup(
             cartellonePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 388, Short.MAX_VALUE)
+            .addGap(0, 438, Short.MAX_VALUE)
         );
         cartellonePanelLayout.setVerticalGroup(
             cartellonePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 372, Short.MAX_VALUE)
+            .addGap(0, 422, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -81,11 +81,11 @@ public class Modifica extends javax.swing.JFrame {
 
         jScrollPane1.setHorizontalScrollBar(null);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setText(manager.getIPoster().getDescription());
-        jScrollPane1.setViewportView(jTextArea1);
+        descrizioneTextArea.setColumns(20);
+        descrizioneTextArea.setLineWrap(true);
+        descrizioneTextArea.setRows(5);
+        descrizioneTextArea.setText(manager.getIPoster().getDescription());
+        jScrollPane1.setViewportView(descrizioneTextArea);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -94,22 +94,28 @@ public class Modifica extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 12, 0);
         descrizionePanel.add(jScrollPane1, gridBagConstraints);
 
-        jTextField1.setText(manager.getIPoster().getName());
+        nomeTextField.setText(manager.getIPoster().getName());
+        nomeTextField.setPreferredSize(new java.awt.Dimension(20, 20));
+        nomeTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeTextFieldActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 12, 0);
-        descrizionePanel.add(jTextField1, gridBagConstraints);
+        descrizionePanel.add(nomeTextField, gridBagConstraints);
 
-        jTextField1.setText(manager.getIPoster().getClassroom());
+        classeTextField.setText(manager.getIPoster().getClassroom());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 12, 0);
-        descrizionePanel.add(jTextField2, gridBagConstraints);
+        descrizionePanel.add(classeTextField, gridBagConstraints);
 
         jLabel1.setText("Nome:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -142,9 +148,9 @@ public class Modifica extends javax.swing.JFrame {
 
         operazioniPanel.setBackground(new java.awt.Color(181, 208, 249));
         operazioniPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createTitledBorder(null, "Operazioni", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 14)))); // NOI18N
-        operazioniPanel.setMinimumSize(new java.awt.Dimension(550, 55));
-        operazioniPanel.setPreferredSize(new java.awt.Dimension(500, 80));
-        operazioniPanel.setLayout(new java.awt.GridLayout());
+        operazioniPanel.setMinimumSize(new java.awt.Dimension(650, 55));
+        operazioniPanel.setPreferredSize(new java.awt.Dimension(600, 80));
+        operazioniPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         aggiungiButton.setText("Aggiungi elemento");
         aggiungiButton.addActionListener(new java.awt.event.ActionListener() {
@@ -171,9 +177,19 @@ public class Modifica extends javax.swing.JFrame {
         operazioniPanel.add(modificaButton);
 
         anteprimaButton.setText("Anteprima");
+        anteprimaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anteprimaButtonActionPerformed(evt);
+            }
+        });
         operazioniPanel.add(anteprimaButton);
 
         salvaButton.setText("Salva tutto");
+        salvaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvaButtonActionPerformed(evt);
+            }
+        });
         operazioniPanel.add(salvaButton);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -184,8 +200,8 @@ public class Modifica extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 7;
         gridBagConstraints.ipady = 2;
         getContentPane().add(operazioniPanel, gridBagConstraints);
-        operazioniPanel.getAccessibleContext().setAccessibleName("Operazioni");
         
+        setResizable(false);
         setVisible(true);
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -202,6 +218,17 @@ public class Modifica extends javax.swing.JFrame {
         // TODO add your handling code here:
 }//GEN-LAST:event_modificaButtonActionPerformed
 
+    private void nomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldActionPerformed
+        // TODO add your handling code here:
+}//GEN-LAST:event_nomeTextFieldActionPerformed
+
+    private void salvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salvaButtonActionPerformed
+
+    private void anteprimaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteprimaButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_anteprimaButtonActionPerformed
 
     /**
     * @param args the command line arguments
@@ -218,15 +245,15 @@ public class Modifica extends javax.swing.JFrame {
     private javax.swing.JButton aggiungiButton;
     private javax.swing.JButton anteprimaButton;
     private javax.swing.JPanel cartellonePanel;
+    private javax.swing.JTextField classeTextField;
     private javax.swing.JPanel descrizionePanel;
+    private javax.swing.JTextArea descrizioneTextArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JButton modificaButton;
+    private javax.swing.JTextField nomeTextField;
     private javax.swing.JPanel operazioniPanel;
     private javax.swing.JButton rimuoviButton;
     private javax.swing.JButton salvaButton;
