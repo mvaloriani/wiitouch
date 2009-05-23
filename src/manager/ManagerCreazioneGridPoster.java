@@ -13,6 +13,7 @@ import dataModel.Paper;
 import dataModel.PauseControl;
 import dataModel.Poster;
 import dataModel.StopControl;
+import dataModel.VolumeControl;
 
 
 
@@ -38,17 +39,7 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 	}
 
 	private Integer addElement(GridPoster poster,int row, int col, String type) throws PositionEX, ElementTypeEX{
-		Element element=null;
-		if (type.equalsIgnoreCase("PAPER"))
-			element=new Paper(poster.getNumberOfElements()+1, new ArrayList<String>());
-		else 
-			if (type.equalsIgnoreCase("PAUSE"))
-			element=new PauseControl(poster.getNumberOfElements()+1, manager);
-		else 
-			if (type.equalsIgnoreCase("STOP"))
-			element=new StopControl(poster.getNumberOfElements()+1, manager);
-			else
-				throw new ElementTypeEX("Type not found");
+		Element element=super.newElement(poster, type);
 		poster.addElement(element, row, col);
 		setElementArea(poster, row, col);
 		return element.getId();
@@ -58,6 +49,7 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		super(manager);
 	}
 
+	
 	public GridPoster createGridPoster(String name, String classe, String description, int row, int col){
 		return new GridPoster(name, classe, description, row, col);
 	}
@@ -74,14 +66,19 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		
 	}
 	
+	
 	public Integer addPaper(GridPoster poster, int row, int col, ArrayList<String> files) throws PositionEX{
-		int id = 0;
+		Element element=null;
 		try {
-			id = addElement(poster, row, col, "PAPER");
-		} catch (ElementTypeEX e) {	}
-		setPaperFiles(poster, id, files);
+			element = super.newElement(poster, "PAPER");
+		} catch (ElementTypeEX e) {
+			e.printStackTrace();
+		}
+		poster.addElement(element, row, col);
 		setElementArea(poster, row, col);
-		return id;
+		setPaperFiles(poster, element.getId(), files);
+
+		return element.getId();
 	}
 
 	public void setPaperFiles(GridPoster poster, int row, int col, ArrayList<String> files) throws PositionEX {
@@ -97,12 +94,15 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		
 	}
 	
+	
 	public Integer addControl(GridPoster poster,int row, int col, String type) throws PositionEX, ElementTypeEX{
-		int id= addElement(poster, row, col, type);
+		Element element=super.newElement(poster, type);
+		poster.addElement(element, row, col);
 		setElementArea(poster, row, col);
-		return id;
+		return element.getId();
 	}
 
+	
 	public void removeElement(GridPoster poster, int row, int col) throws PositionEX {
 		poster.removeElement(row, col);
 		
