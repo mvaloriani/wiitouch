@@ -2,11 +2,16 @@ package ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.text.spi.DateFormatProvider;
+import java.util.Date;
 
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import manager.IManager;
+import manager.Manager;
 
 /*
  * To change this template, choose Tools | Templates
@@ -27,7 +32,8 @@ import manager.IManager;
 public class NewPosterFrame extends javax.swing.JFrame {
 
 
-    /** Creates new form principale 
+
+	/** Creates new form principale 
      * @param manager 
      * @param home */
     public NewPosterFrame(Home home, IManager manager) {
@@ -51,10 +57,10 @@ public class NewPosterFrame extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        nomeTextField = new javax.swing.JTextField();
+        classeTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        descrizioneTextArea = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -65,8 +71,8 @@ public class NewPosterFrame extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        grigliaRadioButton = new javax.swing.JRadioButton();
+        liberoRadioButton = new javax.swing.JRadioButton();
         jPanel5 = new javax.swing.JPanel();
         creaButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -100,17 +106,17 @@ public class NewPosterFrame extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 14, 0, 15);
-        jPanel1.add(jTextField1, gridBagConstraints);
+        jPanel1.add(nomeTextField, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(14, 15, 14, 15);
-        jPanel1.add(jTextField2, gridBagConstraints);
+        jPanel1.add(classeTextField, gridBagConstraints);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        descrizioneTextArea.setColumns(20);
+        descrizioneTextArea.setRows(5);
+        jScrollPane1.setViewportView(descrizioneTextArea);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -118,7 +124,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(2, 15, 2, 15);
         jPanel1.add(jScrollPane1, gridBagConstraints);
 
-        jLabel1.setText("Nome");
+        jLabel1.setText("*Nome");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -133,8 +139,17 @@ public class NewPosterFrame extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 18, 0, 0);
         jPanel1.add(jLabel3, gridBagConstraints);
+        
+//        notaLabel.setText("I campi contrassegnati con '*' sono obbligatori");
+//        gridBagConstraints = new java.awt.GridBagConstraints();
+//        gridBagConstraints.gridx = 0;
+//        gridBagConstraints.gridy = 3;
+//        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+//        gridBagConstraints.insets = new java.awt.Insets(0, 18, 0, 0);
+//        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+//        jPanel1.add(notaLabel, gridBagConstraints);
 
-        jLabel2.setText("Classe");
+        jLabel2.setText("*Classe");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -170,11 +185,6 @@ public class NewPosterFrame extends javax.swing.JFrame {
         jPanel4.add(jLabel6, gridBagConstraints);
 
         jTextField3.setColumns(2);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -196,7 +206,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         jPanel2.add(jPanel4, gridBagConstraints);
 
-        jLabel4.setText("SELEZIONA TIPO POSTER");
+        jLabel4.setText("*SELEZIONA TIPO POSTER");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -205,10 +215,10 @@ public class NewPosterFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(26, 0, 26, 0);
         jPanel2.add(jLabel4, gridBagConstraints);
 
-        jRadioButton1.setBackground(new java.awt.Color(181, 208, 249));
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("A griglia");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        grigliaRadioButton.setBackground(new java.awt.Color(181, 208, 249));
+        buttonGroup1.add(grigliaRadioButton);
+        grigliaRadioButton.setText("A griglia");
+        grigliaRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showTextField(evt);
             }
@@ -218,12 +228,12 @@ public class NewPosterFrame extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        jPanel2.add(jRadioButton1, gridBagConstraints);
+        jPanel2.add(grigliaRadioButton, gridBagConstraints);
 
-        jRadioButton2.setBackground(new java.awt.Color(181, 208, 249));
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Libero");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        liberoRadioButton.setBackground(new java.awt.Color(181, 208, 249));
+        buttonGroup1.add(liberoRadioButton);
+        liberoRadioButton.setText("Libero");
+        liberoRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 notShowTextField(evt);
             }
@@ -234,7 +244,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 0, 7, 0);
-        jPanel2.add(jRadioButton2, gridBagConstraints);
+        jPanel2.add(liberoRadioButton, gridBagConstraints);
 
         jPanel5.setBackground(new java.awt.Color(181, 208, 249));
         jPanel5.setLayout(new java.awt.GridBagLayout());
@@ -293,10 +303,6 @@ public class NewPosterFrame extends javax.swing.JFrame {
     	dispose();
     }
     
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
     private void showTextField(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showTextField
     	jPanel4.setVisible(true);
 
@@ -308,12 +314,26 @@ public class NewPosterFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_notShowTextField
 
 
-	private void creaActionPerformed(ActionEvent actionEvent) {
-			AggiungiOra aggiungiOra = new AggiungiOra(home, manager);
-			home.enablePosterMethods(true);
-			dispose();
-	  }
-	
+    private void creaActionPerformed(ActionEvent actionEvent) {
+    	if((nomeTextField.getText().equals("")==false)&&(classeTextField.getText().equals("")==false)&&
+    		(liberoRadioButton.isSelected()||grigliaRadioButton.isSelected())){
+        	if(liberoRadioButton.isSelected())
+        		manager.createFreePoster(nomeTextField.getText(), classeTextField.getText(), descrizioneTextArea.getText());
+        	else 
+        		manager.createGridPoster(nomeTextField.getText(), classeTextField.getText(),
+        				descrizioneTextArea.getText(), new Integer(jTextField3.getText()),
+        				new Integer(jTextField5.getText()));
+    		try {
+    			manager.storePoster("./temp/"+(int)System.nanoTime()+"temp.xml");
+    		} catch (FileNotFoundException e) {
+    			e.printStackTrace();
+    		}
+    		AggiungiOra aggiungiOra = new AggiungiOra(home, manager);
+    		home.enablePosterMethods(true);
+    		dispose();
+    	}
+    }
+
     
     /**
     * @param args the command line arguments
@@ -343,14 +363,15 @@ public class NewPosterFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton grigliaRadioButton;
+    private javax.swing.JRadioButton liberoRadioButton;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextArea descrizioneTextArea;
+    private javax.swing.JTextField nomeTextField;
+    private javax.swing.JTextField classeTextField;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
+    private JLabel notaLabel;
     // End of variables declaration//GEN-END:variables
 
     private Home home;
