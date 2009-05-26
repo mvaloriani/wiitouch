@@ -328,7 +328,12 @@ public class NewPosterFrame extends javax.swing.JFrame {
     		} catch (FileNotFoundException e) {
     			e.printStackTrace();
     		}
-    		AggiungiOra aggiungiOra = new AggiungiOra(home, manager);
+    		if(liberoRadioButton.isSelected()){
+    			CalibraOra calibraOra = new CalibraOra(manager);
+    			}
+    		else{
+    			AggiungiOra aggiungiOra = new AggiungiOra(home, manager);
+    		}
     		home.enablePosterMethods(true);
     		dispose();
     	}

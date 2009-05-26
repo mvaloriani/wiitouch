@@ -59,18 +59,7 @@ public class Modifica extends javax.swing.JFrame {
         cartellonePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartellone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 14))); // NOI18N
         cartellonePanel.setMinimumSize(new java.awt.Dimension(450, 450));
         cartellonePanel.setPreferredSize(new java.awt.Dimension(450, 450));
-
-        javax.swing.GroupLayout cartellonePanelLayout = new javax.swing.GroupLayout(cartellonePanel);
-        cartellonePanel.setLayout(cartellonePanelLayout);
-        cartellonePanelLayout.setHorizontalGroup(
-            cartellonePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 438, Short.MAX_VALUE)
-        );
-        cartellonePanelLayout.setVerticalGroup(
-            cartellonePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 422, Short.MAX_VALUE)
-        );
-
+        cartellonePanel.setLayout(new java.awt.GridBagLayout());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         getContentPane().add(cartellonePanel, gridBagConstraints);
