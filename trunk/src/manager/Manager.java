@@ -212,7 +212,6 @@ public class Manager implements IManager {
 		
 	}
 
-	
 	public void stopPlay() {
 		// TODO Auto-generated method stub
 		
