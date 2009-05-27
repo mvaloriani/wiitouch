@@ -36,6 +36,7 @@ public interface IManager {
 	//Play method
 	public void play();
 	public void stopPlay();
+	public void connect();
 	
 	//Wii method
 	public void calibra();
