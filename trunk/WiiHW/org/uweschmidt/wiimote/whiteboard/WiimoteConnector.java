@@ -25,7 +25,11 @@
 
 package org.uweschmidt.wiimote.whiteboard;
 
+import javax.swing.JOptionPane;
+
 import org.uweschmidt.wiimote.whiteboard.preferences.WWPreferences;
+
+import Personal.Evento;
 
 import wiiremotej.WiiRemote;
 import wiiremotej.WiiRemoteJ;
@@ -40,12 +44,36 @@ public class WiimoteConnector {
 	
 	public void connect() {
 		if (!WWPreferences.WIIMOTE_BT_ADDRESSES.isEmpty()) {
+			//OSCAR
+			System.out.println("ok bluethot ");
 			WiimoteWhiteboard.getLogger().info(String.format("Directly connecting to bluetooth address(es) %s.", WWPreferences.WIIMOTE_BT_ADDRESSES));
 			for (int i = 0; i < Math.min(WWPreferences.WIIMOTE_BT_ADDRESSES.size(), WWPreferences.WIIMOTES); i++) {
 				connect(WWPreferences.WIIMOTE_BT_ADDRESSES.get(i));
 			}
 		} else {
-			WiiRemoteJ.findRemotes(dh, WWPreferences.WIIMOTES);
+			//OSCAR
+			try{
+				WiiRemoteJ.findRemotes(dh, WWPreferences.WIIMOTES);
+			}catch(IllegalStateException e){
+				Object[] options = { "Ritenta", "Annulla" };
+				int valu= JOptionPane.showOptionDialog(null, "Assicurarsi che il Bluetooth sia attivo", "NESSUNA CONNESSIONE BLUETOOTH",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE,
+				null, options, options[0]);
+				System.out.println("non bluethoth input valuore " +valu);
+				if(valu==0)
+				{//Se vuole ritentare riprovo a riaprire 
+					//dovrei chiudere!!
+					try{
+					Thread.sleep(1000);}
+					catch(Exception e34){};
+					//this.connect();
+					Evento.getInterfaccia().connect();
+					//WiimoteWhiteboard.main(null);
+					
+				
+				}
+				
+			}
 		}
 	}
 	
