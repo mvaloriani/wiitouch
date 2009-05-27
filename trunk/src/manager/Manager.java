@@ -167,6 +167,13 @@ public class Manager implements IManager {
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
 
+	public Integer getIdFromPointGP(int row, int col) throws PosterTypeEx, PositionEX{
+		if(poster instanceof GridPoster){
+			return ((ManagerCreazioneGridPoster)managerCreazione).getIdFromPoint((GridPoster)poster,row,col);
+		}
+		else
+			throw new PosterTypeEx("Current poster isn't GridPoster");	
+	}
 	// Common methods
 	
 	public void setPaperFiles(Integer id, ArrayList<String> Files) throws PositionEX {

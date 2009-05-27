@@ -21,6 +21,7 @@ public interface IManager {
 	public void removeElementGP(int row, int col) throws PositionEX, PosterTypeEx;
 	public void setPaperFilesGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX;
 	public void changeCellsNumerdGP(int row, int col) throws PosterTypeEx, PositionEX;
+	public Integer getIdFromPointGP(int row, int col) throws PosterTypeEx, PositionEX;
 	
 	// Common methods
 	public void setPaperFiles(Integer id, ArrayList<String> Files) throws PositionEX;
