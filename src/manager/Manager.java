@@ -207,7 +207,7 @@ public class Manager implements IManager {
 		iWii.calibra();
 		poster.setIsCalibated(true);
 	}
-	
+
 	
 	public void play() {
 		iWii.startPlay(new EventoSelezionaPuntoListener(){
@@ -224,6 +224,9 @@ public class Manager implements IManager {
 		
 	}
 	
+	public void connect(){
+		iWii.connect();
+	}
 	//private
 	private void play(Point2D point){
 		try {

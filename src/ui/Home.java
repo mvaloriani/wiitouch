@@ -135,7 +135,7 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		downPanel.setBackground(new java.awt.Color(181, 204, 249));
 		downPanel.setLayout(new java.awt.GridBagLayout());
 
-		connettiButton.setText("Calibra");
+		connettiButton.setText("Connetti WiiMote");
 		connettiButton.setActionCommand("Connetti");
 		connettiButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +150,7 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		wiiPanel.setBackground(new java.awt.Color(255, 255, 255));
 		wiiPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informazioni WiiMote", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 11))); // NOI18N
 		wiiPanel.setLayout(new java.awt.GridBagLayout());
+		wiiPanel.setVisible(false);
 
 		jLabel2.setBackground(new java.awt.Color(189, 204, 249));
 		jLabel2.setText("Batteria:");
@@ -205,8 +206,10 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		if(wiiPanel.isVisible()){
 			wiiPanel.setVisible(false);
 		}
-		else
+		else{
 			wiiPanel.setVisible(true);
+			manager.connect();
+		}
 		pack();
 	}
 
