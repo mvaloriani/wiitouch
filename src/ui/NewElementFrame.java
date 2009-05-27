@@ -7,10 +7,18 @@
 package ui;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
+
+import manager.ElementTypeEX;
+import manager.IManager;
+import manager.PositionEX;
+import manager.PosterTypeEx;
+import dataModel.Control;
 
 /**
  *
@@ -18,8 +26,15 @@ import javax.swing.JFrame;
  */
 public class NewElementFrame extends javax.swing.JFrame {
     
+	private IManager manager=null;
+	private Point position=null;
+	private Boolean grid=null;
+	
     /** Creates new form NewElementFrame */
-    public NewElementFrame() {
+    public NewElementFrame(IManager manager,Point position) {
+    	this.manager=manager;
+    	this.position=position;
+    	grid=new Boolean(true);
         //jPanel2.setVisible(false);
         initComponents();
         jComboBox1.setVisible(false);
@@ -75,6 +90,55 @@ public class NewElementFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(181, 208, 249));
         jButton1.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton1.setText("Aggiungi");
+        jButton1.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				// Ho premuto il tasto di aggiunta di un elemento
+				if(jRadioButton1.isSelected())
+				{
+					//ho selezionato l'elemento foglio
+					
+					
+					//manager.addPaperGP(position.x, position.y, null);
+					NewPaperFrame newPaper=null;
+					if(grid)
+						 newPaper=new NewPaperFrame(manager,position);
+				}
+				else if(jRadioButton2.isSelected())
+				{
+					//ho selezionato l'elemento controllo
+					
+					String control=new String();
+					if(jComboBox1.getSelectedItem().toString()=="Stop")
+						control=Control.STOP_CONTROL;
+					else if(jComboBox1.getSelectedItem().toString()=="Pause")
+						control=Control.PAUSE_CONTROL;
+					else if(jComboBox1.getSelectedItem().toString()=="Volume +")
+						control=Control.PLUSVOLUME_CONTROL;
+					else if(jComboBox1.getSelectedItem().toString()=="Volume -")
+						control=Control.MINUSVOLUME_CONTROL;
+					else if(jComboBox1.getSelectedItem().toString()=="Muto")
+						control=Control.MUTEVOLUME_CONTROL;
+					
+					try {
+						
+						manager.addControlGP(position.x, position.y, control);
+					} catch (PosterTypeEx e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (PositionEX e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (ElementTypeEX e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					};
+				}
+				
+				
+			}
+        	
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -120,7 +184,7 @@ public class NewElementFrame extends javax.swing.JFrame {
 
         jComboBox1.setBackground(new java.awt.Color(181, 208, 249));
         jComboBox1.setFont(new java.awt.Font("Cambria", 0, 24));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Play", "Pause", "Stop" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Pause", "Stop" ,"Volume +","Volume -","Muto"}));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -132,16 +196,7 @@ public class NewElementFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new NewElementFrame().setVisible(true);
-            }
-        });
-    }
+
     
     // Variables declaration - do not modify                     
     private javax.swing.ButtonGroup buttonGroup1;

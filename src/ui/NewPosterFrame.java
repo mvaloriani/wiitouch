@@ -3,15 +3,10 @@ package ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
-import java.text.spi.DateFormatProvider;
-import java.util.Date;
 
-import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import manager.IManager;
-import manager.Manager;
 
 /*
  * To change this template, choose Tools | Templates
