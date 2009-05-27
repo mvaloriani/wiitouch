@@ -107,5 +107,9 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		poster.removeElement(row, col);
 		
 	}
+
+	public Integer getIdFromPoint(GridPoster gridPoster, int row, int col) throws PositionEX {
+		return gridPoster.getIdFromPoint(row, col);
+	}
 	
 }
