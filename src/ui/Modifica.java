@@ -21,16 +21,17 @@ import javax.swing.JPanel;
 
 import manager.IManager;
 import manager.PositionEX;
-import manager.PosterTypeEx;
+import dataModel.Control;
 import dataModel.GridPoster;
 import dataModel.IPoster;
+import dataModel.Paper;
 
 /**
  *
  * @author Matteo
  */
 public class Modifica extends javax.swing.JFrame {
-	private int id;
+	 private IManager manager;
 
 	/** Creates new form Modifica */
     public Modifica(IManager manager) {
@@ -56,7 +57,7 @@ public class Modifica extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        cartellonePanel = new cartellonePanelClass();
+        cartellonePanel = new cartellonePanelClass(manager);
         descrizionePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         descrizioneTextArea = new javax.swing.JTextArea();
@@ -244,16 +245,7 @@ public class Modifica extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_anteprimaButtonActionPerformed
 
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Modifica(null).setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aggiungiButton;
@@ -272,7 +264,7 @@ public class Modifica extends javax.swing.JFrame {
     private javax.swing.JButton rimuoviButton;
     private javax.swing.JButton salvaButton;
     // End of variables declaration//GEN-END:variables
-    private IManager manager;
+   
 }
 
 class cartellonePanelClass extends JPanel implements MouseListener {
@@ -280,8 +272,13 @@ class cartellonePanelClass extends JPanel implements MouseListener {
 	private int col;
 	private int mouseX=0;
 	private int mouseY=0;
+	private IManager manager;
 	
 	
+	public cartellonePanelClass(IManager manager)
+	{
+		this.manager=manager;	
+	}
 	
     public void paint(Graphics g) {
         super.paint(g);
@@ -289,10 +286,40 @@ class cartellonePanelClass extends JPanel implements MouseListener {
 	        for(int x=0;x<col;x++){
 	        	g.setColor(new Color(0,0,0));
 	        	g.drawRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+	        	
+        		
+        		
+        		try {
+					if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Control)
+					{
+						g.setColor(new Color(0,0,255));
+			        	g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+			        	
+					}
+				} catch (PositionEX e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+				}
+				try {
+					if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Paper)
+					{
+						g.setColor(new Color(0,255,0));
+			        	g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+			        	
+					}
+				} catch (PositionEX e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+				}
+				
+	        	
 	        	if(mouseX>=x*(this.getWidth()/col) && mouseX<=(x+1)*(this.getWidth()/col) &&
 	        			mouseY>=y*(this.getHeight()/row) && mouseY<=(y+1)*(this.getHeight()/row)){
-	        		g.setColor(new Color(255,0,0));
+	        	
+					g.setColor(new Color(255,0,0));
 	        		g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+	        		
+	        	
 	        	}
 	        }
         }
@@ -307,6 +334,7 @@ class cartellonePanelClass extends JPanel implements MouseListener {
     public Point getPosition()
     {
     	Point position=new Point();
+    	
     	for(int y=0;y<row;y++){
 	        for(int x=0;x<col;x++){
 	        	if(mouseX>=x*(this.getWidth()/col) && mouseX<=(x+1)*(this.getWidth()/col) &&

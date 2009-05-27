@@ -11,7 +11,16 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
@@ -69,6 +78,11 @@ public class NewPaperFrame extends javax.swing.JFrame {
         
         setLocation((screenWidth-this.getSize().width) / 2, (screenHeight-this.getSize().height) / 2);
         this.setVisible(true);
+    }
+    
+    public String getUrl()
+    {
+    	return this.jTextField1.getText();
     }
     
     /** This method is called from within the constructor to
@@ -132,6 +146,62 @@ public class NewPaperFrame extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(181, 208, 249));
         jButton1.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton1.setText("Anteprima");
+        jButton1.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				InetAddress addr = null;
+				try {
+					addr = InetAddress.getByName("127.0.0.1");
+				} catch (UnknownHostException e1) {
+					e1.printStackTrace();
+				}
+				int port = 4212;
+				SocketAddress sockaddr = new InetSocketAddress(addr, port);
+
+				// Create an unbound socket
+				Socket sock = new Socket();
+
+				// This method will block no more than timeoutMs.
+				// If the timeout occurs, SocketTimeoutException is thrown.
+				// int timeoutMs = 2000; Ê // 2 seconds
+				try {
+					sock.connect(sockaddr);
+				} catch (IOException e1) {
+					System.err.println("Socket problem.");
+					return;
+				}
+
+				PrintWriter out = null;
+				BufferedReader in = null;
+
+				try {
+					out = new PrintWriter(sock.getOutputStream(), true);
+					in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+				} catch (UnknownHostException e1) {
+					System.err.println("Don't know about host: taranis.");
+				} catch (IOException e1) {
+					System.err.println("Couldn't get I/O for "
+							+ "the connection to: taranis.");
+				}
+
+				BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+				String userInput;
+
+				out.println("admin");
+				out.flush();
+				out.println("del all");
+				out.flush();
+				out.println("new myMedia broadcast enabled");
+				out.flush();
+				out.println("setup myMedia input " + jTextField1.getText());
+				out.flush();
+				out.println("control myMedia play");
+				out.flush();
+				
+			}
+        	
+        	
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
@@ -160,21 +230,8 @@ public class NewPaperFrame extends javax.swing.JFrame {
         jButton4.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-			
-					if(jTextField1.getText()!=null && jTextField1.getText()!=""){
-						if(grid)
-							try {
-								ArrayList<String> lista=new ArrayList<String>();
-								lista.add(jTextField1.getText());
-								manager.addPaperGP(position.x, position.y,lista );
-							} catch (PosterTypeEx e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							} catch (PositionEX e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-				}
+				saveButtonPerformed();
+				
 			}
         	
         });
@@ -198,7 +255,26 @@ public class NewPaperFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
     
-
+    public void saveButtonPerformed() {
+    	
+		if(this.getUrl()!=null && this.getUrl()!=""){
+			if(grid)
+				try {
+					ArrayList<String> lista=new ArrayList<String>();
+					lista.add(this.getUrl());
+					manager.addPaperGP(position.x, position.y,lista );
+					
+				} catch (PosterTypeEx e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (PositionEX e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+	}
+		this.dispose();
+}
+    
     
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
@@ -227,3 +303,4 @@ public class NewPaperFrame extends javax.swing.JFrame {
          f.setVisible(false);  
     }
  }
+ 
