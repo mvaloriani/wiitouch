@@ -124,6 +124,7 @@ public class WiimoteDataHandler extends WiiRemoteAdapter implements ExitListener
 						// triggers #statusReported(WRStatusEvent)
 						if (remote.isConnected())
 							remote.requestStatus();
+							Evento.getInterfaccia().notifyRemote(true);
 					} catch (Exception e) {
 						e.printStackTrace();
 						WiimoteWhiteboard.getLogger().log(Level.WARNING, "Error on requesting status from Wii Remote", e);

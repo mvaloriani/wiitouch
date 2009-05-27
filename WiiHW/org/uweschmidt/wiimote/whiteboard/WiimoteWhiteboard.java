@@ -53,6 +53,7 @@ import org.uweschmidt.wiimote.whiteboard.util.Util;
 import org.uweschmidt.wiimote.whiteboard.util.WiiRemoteJErrorHandler;
 
 import wiiremotej.WiiRemoteJ;
+import Personal.Evento;
 import apple.dts.samplecode.osxadapter.OSXAdapter;
 
 public class WiimoteWhiteboard extends SingleFrameApplication {
@@ -80,6 +81,7 @@ public class WiimoteWhiteboard extends SingleFrameApplication {
 		Application.launch(WiimoteWhiteboard.class, args);
 	}
 		
+	
 	@Override
 	protected void startup() {
 		try {
@@ -102,6 +104,9 @@ public class WiimoteWhiteboard extends SingleFrameApplication {
 //			new IRDotLogger(dh);
 			
 			MainPanel mp = new MainPanel(dh, calibration);
+			//OSCAR
+			Evento.getInterfaccia().setCalibration(calibration);
+			Evento.getInterfaccia().setDH(dh);
 			AboutWindow af = new AboutWindow();
 			HelpHandler hh = new HelpHandler();
 			PreferencesWindow pf = new PreferencesWindow(mp, hh);
