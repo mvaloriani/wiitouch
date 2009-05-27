@@ -10,7 +10,13 @@ import manager.Manager;
 public class Control extends Element {
 	@XStreamOmitField
 	private Manager manager;
-
+	
+	public static final String PAUSE_CONTROL="PAUSE";
+	public static final String STOP_CONTROL="STOP";
+	public static final String PLUSVOLUME_CONTROL="PLUSVOLUME";
+	public static final String MINUSVOLUME_CONTROL="MINUSVOLUME";
+	public static final String MUTEVOLUME_CONTROL="MUTEVOLUME";
+	
 	public Control(int id, Manager manager) {
 		super(id);
 		this.manager=manager;
