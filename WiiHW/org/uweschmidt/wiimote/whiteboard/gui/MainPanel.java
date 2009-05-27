@@ -66,6 +66,8 @@ import org.uweschmidt.wiimote.whiteboard.ds.Wiimote;
 import org.uweschmidt.wiimote.whiteboard.preferences.WWPreferences;
 import org.uweschmidt.wiimote.whiteboard.util.Util;
 
+import Personal.Evento;
+
 @SuppressWarnings("serial")
 public class MainPanel extends JPanel implements WiimoteDataListener, CalibrationEventListener {
 	
@@ -296,7 +298,9 @@ public class MainPanel extends JPanel implements WiimoteDataListener, Calibratio
 		calibrationButton.putClientProperty("JButton.buttonType", "textured");
 		calibrationButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calibration.start(dh.getConnectedWiimotes());
+			//OSCAR
+			calibration.start(dh.getConnectedWiimotes());
+			//	Evento.getInterfaccia().calibra();
 			}
 		});
 
