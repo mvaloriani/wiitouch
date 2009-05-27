@@ -93,49 +93,8 @@ public class NewElementFrame extends javax.swing.JFrame {
         jButton1.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-				// Ho premuto il tasto di aggiunta di un elemento
-				if(jRadioButton1.isSelected())
-				{
-					//ho selezionato l'elemento foglio
-					
-					
-					//manager.addPaperGP(position.x, position.y, null);
-					NewPaperFrame newPaper=null;
-					if(grid)
-						 newPaper=new NewPaperFrame(manager,position);
-				}
-				else if(jRadioButton2.isSelected())
-				{
-					//ho selezionato l'elemento controllo
-					
-					String control=new String();
-					if(jComboBox1.getSelectedItem().toString()=="Stop")
-						control=Control.STOP_CONTROL;
-					else if(jComboBox1.getSelectedItem().toString()=="Pause")
-						control=Control.PAUSE_CONTROL;
-					else if(jComboBox1.getSelectedItem().toString()=="Volume +")
-						control=Control.PLUSVOLUME_CONTROL;
-					else if(jComboBox1.getSelectedItem().toString()=="Volume -")
-						control=Control.MINUSVOLUME_CONTROL;
-					else if(jComboBox1.getSelectedItem().toString()=="Muto")
-						control=Control.MUTEVOLUME_CONTROL;
-					
-					try {
-						
-						manager.addControlGP(position.x, position.y, control);
-					} catch (PosterTypeEx e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (PositionEX e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (ElementTypeEX e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					};
-				}
 				
-				
+				addButtonPerformed();
 			}
         	
         });
@@ -194,8 +153,54 @@ public class NewElementFrame extends javax.swing.JFrame {
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
-    }// </editor-fold>                        
+    }// </editor-fold>     
     
+    
+    public void addButtonPerformed() {
+		// Ho premuto il tasto di aggiunta di un elemento
+		if(jRadioButton1.isSelected())
+		{
+			//ho selezionato l'elemento foglio
+			
+			
+			//manager.addPaperGP(position.x, position.y, null);
+			NewPaperFrame newPaper=null;
+			if(grid)
+				 newPaper=new NewPaperFrame(manager,position);
+		}
+		else if(jRadioButton2.isSelected())
+		{
+			//ho selezionato l'elemento controllo
+			
+			String control=new String();
+			if(jComboBox1.getSelectedItem().toString()=="Stop")
+				control=Control.STOP_CONTROL;
+			else if(jComboBox1.getSelectedItem().toString()=="Pause")
+				control=Control.PAUSE_CONTROL;
+			else if(jComboBox1.getSelectedItem().toString()=="Volume +")
+				control=Control.PLUSVOLUME_CONTROL;
+			else if(jComboBox1.getSelectedItem().toString()=="Volume -")
+				control=Control.MINUSVOLUME_CONTROL;
+			else if(jComboBox1.getSelectedItem().toString()=="Muto")
+				control=Control.MUTEVOLUME_CONTROL;
+			
+			try {
+				
+				manager.addControlGP(position.x, position.y, control);
+			} catch (PosterTypeEx e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (PositionEX e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ElementTypeEX e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			};
+		}
+		this.dispose();
+		
+	}
 
     
     // Variables declaration - do not modify                     
@@ -221,3 +226,4 @@ public class NewElementFrame extends javax.swing.JFrame {
     }
  }
 }
+
