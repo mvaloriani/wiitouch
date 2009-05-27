@@ -11,19 +11,39 @@
 
 package ui;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.JPanel;
+
 import manager.IManager;
+import manager.PositionEX;
+import manager.PosterTypeEx;
+import dataModel.GridPoster;
+import dataModel.IPoster;
 
 /**
  *
  * @author Matteo
  */
 public class Modifica extends javax.swing.JFrame {
-
+	private int id;
 
 	/** Creates new form Modifica */
     public Modifica(IManager manager) {
         this.manager = manager;
+       
     	initComponents();
+    	IPoster p=manager.getIPoster();
+    	if(p instanceof GridPoster)
+    	{
+    		GridPoster gp=(GridPoster)p;
+    		cartellonePanel.setGridSize(gp.getRow(), gp.getCol());
+    		
+    	}
     }
 
     /** This method is called from within the constructor to
@@ -36,7 +56,7 @@ public class Modifica extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        cartellonePanel = new javax.swing.JPanel();
+        cartellonePanel = new cartellonePanelClass();
         descrizionePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         descrizioneTextArea = new javax.swing.JTextArea();
@@ -56,10 +76,11 @@ public class Modifica extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         cartellonePanel.setBackground(new java.awt.Color(255, 255, 255));
-        cartellonePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartellone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 14))); // NOI18N
+        //cartellonePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartellone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 14))); // NOI18N
         cartellonePanel.setMinimumSize(new java.awt.Dimension(450, 450));
         cartellonePanel.setPreferredSize(new java.awt.Dimension(450, 450));
         cartellonePanel.setLayout(new java.awt.GridBagLayout());
+        cartellonePanel.addMouseListener(cartellonePanel);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         getContentPane().add(cartellonePanel, gridBagConstraints);
@@ -197,6 +218,10 @@ public class Modifica extends javax.swing.JFrame {
 
     private void aggiungiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
         // TODO add your handling code here:
+    	NewElementFrame newElement;
+    	if(manager.getIPoster() instanceof GridPoster)
+    		newElement=new NewElementFrame(manager,cartellonePanel.getPosition());
+		
 }//GEN-LAST:event_aggiungiButtonActionPerformed
 
     private void rimuoviButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rimuoviButtonActionPerformed
@@ -233,7 +258,7 @@ public class Modifica extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aggiungiButton;
     private javax.swing.JButton anteprimaButton;
-    private javax.swing.JPanel cartellonePanel;
+    private cartellonePanelClass cartellonePanel;
     private javax.swing.JTextField classeTextField;
     private javax.swing.JPanel descrizionePanel;
     private javax.swing.JTextArea descrizioneTextArea;
@@ -248,4 +273,73 @@ public class Modifica extends javax.swing.JFrame {
     private javax.swing.JButton salvaButton;
     // End of variables declaration//GEN-END:variables
     private IManager manager;
+}
+
+class cartellonePanelClass extends JPanel implements MouseListener {
+	private int row;
+	private int col;
+	private int mouseX=0;
+	private int mouseY=0;
+	
+	
+	
+    public void paint(Graphics g) {
+        super.paint(g);
+        for(int y=0;y<row;y++){
+	        for(int x=0;x<col;x++){
+	        	g.setColor(new Color(0,0,0));
+	        	g.drawRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+	        	if(mouseX>=x*(this.getWidth()/col) && mouseX<=(x+1)*(this.getWidth()/col) &&
+	        			mouseY>=y*(this.getHeight()/row) && mouseY<=(y+1)*(this.getHeight()/row)){
+	        		g.setColor(new Color(255,0,0));
+	        		g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+	        	}
+	        }
+        }
+	        	
+    }
+    public void setGridSize(int row,int col)
+    {
+    	this.col=col;
+    	this.row=row;
+    	
+    }
+    public Point getPosition()
+    {
+    	Point position=new Point();
+    	for(int y=0;y<row;y++){
+	        for(int x=0;x<col;x++){
+	        	if(mouseX>=x*(this.getWidth()/col) && mouseX<=(x+1)*(this.getWidth()/col) &&
+	        			mouseY>=y*(this.getHeight()/row) && mouseY<=(y+1)*(this.getHeight()/row)){
+	        			position.setLocation(y, x);
+	        			
+	        			
+	        	}
+	        }
+        }
+    	return position;
+    }
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		mouseX=e.getX();
+		mouseY=e.getY();
+		
+		repaint();
+	}
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

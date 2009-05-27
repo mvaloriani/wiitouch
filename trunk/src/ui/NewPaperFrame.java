@@ -7,12 +7,19 @@
 package ui;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
+
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+
+import manager.IManager;
+import manager.PositionEX;
+import manager.PosterTypeEx;
 
 /**
  *
@@ -20,8 +27,16 @@ import javax.swing.JFrame;
  */
 public class NewPaperFrame extends javax.swing.JFrame {
     
+	private IManager manager=null;
+	private Point position=null;
+	private Boolean grid=null;
+	
     /** Creates new form NewPaperFrame */
-    public NewPaperFrame() {
+    public NewPaperFrame(IManager manager,Point position) {
+     	this.manager=manager;
+    	this.position=position;
+    	grid=new Boolean(true);
+    	
         initComponents();
         jButton3.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent) {
@@ -142,6 +157,27 @@ public class NewPaperFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(181, 208, 249));
         jButton4.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton4.setText("Salva");
+        jButton4.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+			
+					if(jTextField1.getText()!=null && jTextField1.getText()!=""){
+						if(grid)
+							try {
+								ArrayList<String> lista=new ArrayList<String>();
+								lista.add(jTextField1.getText());
+								manager.addPaperGP(position.x, position.y,lista );
+							} catch (PosterTypeEx e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							} catch (PositionEX e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+				}
+			}
+        	
+        });
         jPanel1.add(jButton4);
 
         jButton2.setFont(new java.awt.Font("Cambria", 0, 24));
@@ -162,16 +198,7 @@ public class NewPaperFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new NewPaperFrame().setVisible(true);
-            }
-        });
-    }
+
     
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
