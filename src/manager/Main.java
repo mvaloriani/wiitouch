@@ -1,11 +1,8 @@
 package manager;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import ui.Home;
-import ui.Modifica;
-import ui.NewPosterFrame;
 
 
 public class Main {
@@ -16,7 +13,7 @@ public class Main {
 	 * @throws PosterTypeEx 
 	 */
 	public static void main(String[] args) throws PosterTypeEx, PositionEX {
-		System.setProperty("bluecove.jsr82.psm_minimum_off", "true");
+		//System.setProperty("bluecove.jsr82.psm_minimum_off", "true");
 		IManager system = new Manager();
 		system.createGridPoster("xsdfg", "2345", "serthj", 2, 2);
 		ArrayList<String> p = new ArrayList<String>();

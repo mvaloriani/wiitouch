@@ -232,7 +232,8 @@ public class Manager implements IManager {
 		try {
 			if (poster!=null){
 				poster.getElement(point).exec();
-				System.out.println(poster.getElement(point));	
+				System.out.println("\n"+poster.getElement(point));
+				
 				
 			}
 		} catch (PositionEX e) {
