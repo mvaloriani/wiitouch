@@ -16,6 +16,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileNotFoundException;
 
 import javax.swing.JPanel;
 
@@ -30,18 +31,18 @@ import dataModel.Paper;
  *
  * @author Matteo
  */
-public class Modifica extends javax.swing.JFrame {
+public class ModificaGridPoster extends javax.swing.JFrame {
 	 private IManager manager;
-
+	 private IPoster poster;
 	/** Creates new form Modifica */
-    public Modifica(IManager manager) {
+    public ModificaGridPoster(IManager manager) {
         this.manager = manager;
        
     	initComponents();
-    	IPoster p=manager.getIPoster();
-    	if(p instanceof GridPoster)
+    	poster=manager.getIPoster();
+    	if(poster instanceof GridPoster)
     	{
-    		GridPoster gp=(GridPoster)p;
+    		GridPoster gp=(GridPoster)poster;
     		cartellonePanel.setGridSize(gp.getRow(), gp.getCol());
     		
     	}
@@ -238,7 +239,13 @@ public class Modifica extends javax.swing.JFrame {
 }//GEN-LAST:event_nomeTextFieldActionPerformed
 
     private void salvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaButtonActionPerformed
-        // TODO add your handling code here:
+    	try {
+			manager.storePoster("./temp/"+poster.getName()+"_"+poster.getClassroom()+".xml");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.dispose();
     }//GEN-LAST:event_salvaButtonActionPerformed
 
     private void anteprimaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteprimaButtonActionPerformed

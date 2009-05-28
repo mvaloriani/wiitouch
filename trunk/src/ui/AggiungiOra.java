@@ -28,7 +28,7 @@ public class AggiungiOra extends JFrame {
 		dispose();
 	}
 	private void aggiungiActionPerformed(ActionEvent actionEvent) {
-		Modifica modifica =new Modifica(manager);
+		ModificaGridPoster modifica =new ModificaGridPoster(manager);
 		dispose();
 	}
 	
