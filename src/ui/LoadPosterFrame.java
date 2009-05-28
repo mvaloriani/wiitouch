@@ -11,12 +11,9 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileFilter;
 
 import manager.IManager;
 
@@ -205,6 +202,7 @@ public class LoadPosterFrame extends javax.swing.JFrame{
         //filter.setDescription("Poster");
         //chooser.setFileFilter(filter);
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        chooser.setCurrentDirectory(new File("./"));
         chooser.showOpenDialog(this);
         File file = chooser.getSelectedFile();
         pathFileTextField.setText(file.getAbsolutePath());
