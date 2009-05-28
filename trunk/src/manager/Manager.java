@@ -188,7 +188,7 @@ public class Manager implements IManager {
 
 
 	public IPoster getIPoster() {
-		return poster;
+		return ((IPoster)poster);
 	}
 
 	// Load&Store methods 

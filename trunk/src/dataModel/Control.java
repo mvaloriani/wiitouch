@@ -1,13 +1,15 @@
 package dataModel;
 
+import java.awt.Image;
 import java.awt.Polygon;
+import java.awt.Toolkit;
 
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 import manager.Manager;
 
 
-public class Control extends Element {
+public abstract class Control extends Element {
 	@XStreamOmitField
 	private Manager manager;
 	
@@ -44,9 +46,7 @@ public class Control extends Element {
 	}
 
 	@Override
-	public void exec() {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void exec();
+	
 
 }
