@@ -96,7 +96,8 @@ public class CalibraOra extends JFrame {
 				okButton.setText("OK");
 				okButton.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent actionEvent) {
-					    calibraActionPerformed(actionEvent);					
+					    calibraActionPerformed(actionEvent);
+					    ModificaLibero modLib=new ModificaLibero(manager);
 					}
 					
 				});
