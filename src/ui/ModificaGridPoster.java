@@ -13,7 +13,10 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
@@ -26,6 +29,8 @@ import dataModel.Control;
 import dataModel.GridPoster;
 import dataModel.IPoster;
 import dataModel.Paper;
+import dataModel.PauseControl;
+import dataModel.StopControl;
 
 /**
  *
@@ -58,7 +63,7 @@ public class ModificaGridPoster extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        cartellonePanel = new cartellonePanelClass(manager);
+        cartellonePanel = new CartellonePanelClass(manager);
         descrizionePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         descrizioneTextArea = new javax.swing.JTextArea();
@@ -108,11 +113,6 @@ public class ModificaGridPoster extends javax.swing.JFrame {
 
         nomeTextField.setText(manager.getIPoster().getName());
         nomeTextField.setPreferredSize(new java.awt.Dimension(20, 20));
-        nomeTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeTextFieldActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -234,10 +234,6 @@ public class ModificaGridPoster extends javax.swing.JFrame {
         // TODO add your handling code here:
 }//GEN-LAST:event_modificaButtonActionPerformed
 
-    private void nomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_nomeTextFieldActionPerformed
-
     private void salvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaButtonActionPerformed
     	try {
 			manager.storePoster("./temp/"+poster.getName()+"_"+poster.getClassroom()+".xml");
@@ -257,7 +253,7 @@ public class ModificaGridPoster extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aggiungiButton;
     private javax.swing.JButton anteprimaButton;
-    private cartellonePanelClass cartellonePanel;
+    private CartellonePanelClass cartellonePanel;
     private javax.swing.JTextField classeTextField;
     private javax.swing.JPanel descrizionePanel;
     private javax.swing.JTextArea descrizioneTextArea;
@@ -274,54 +270,72 @@ public class ModificaGridPoster extends javax.swing.JFrame {
    
 }
 
-class cartellonePanelClass extends JPanel implements MouseListener {
+class CartellonePanelClass extends JPanel implements MouseListener {
 	private int row;
 	private int col;
 	private int mouseX=0;
 	private int mouseY=0;
 	private IManager manager;
-	
-	
-	public cartellonePanelClass(IManager manager)
+	private IPoster poster;
+	private Image imgStop;
+	private Image imgPause;
+	private Image imgGen;
+	private Image imgPaper;
+	public CartellonePanelClass(IManager manager)
 	{
-		this.manager=manager;	
+		this.manager=manager;
+		this.poster = manager.getIPoster();
+		Toolkit toolkit = getToolkit();
+		imgStop = toolkit.createImage("./stop.png");
+		imgPause = toolkit.createImage("./pause.png");
+		imgGen = toolkit.createImage("./gear.png");
+		imgPaper= toolkit.createImage("./txt.png");
 	}
 	
     public void paint(Graphics g) {
         super.paint(g);
         for(int y=0;y<row;y++){
 	        for(int x=0;x<col;x++){
+
+	        	
 	        	g.setColor(new Color(0,0,0));
 	        	g.drawRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
-	        	
-        		
         		
         		try {
 					if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Control)
 					{
 						g.setColor(new Color(0,0,255));
 			        	g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
-			        	
+			        	if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof PauseControl){
+			        		g.drawImage(imgPause,x*(this.getWidth()/col),y*(this.getHeight()/row),
+			        				this.getWidth()/col, this.getHeight()/row, this);
+			        	}
+			        	else if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof StopControl){
+			        		g.drawImage(imgStop,x*(this.getWidth()/col),y*(this.getHeight()/row),
+			        				this.getWidth()/col, this.getHeight()/row, this);
+			        	}
+			        	else
+			        		g.drawImage(imgGen,x*(this.getWidth()/col),y*(this.getHeight()/row),
+			        				this.getWidth()/col, this.getHeight()/row, this);
 					}
-				} catch (PositionEX e) {
-					// TODO Auto-generated catch block
-					//e.printStackTrace();
-				}
-				try {
 					if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Paper)
 					{
 						g.setColor(new Color(0,255,0));
 			        	g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+			        	g.drawImage(imgPaper,
+			        			x*(this.getWidth()/col),y*(this.getHeight()/row),
+		        				this.getWidth()/col, this.getHeight()/row, this);
 			        	
-					}
+					}	
+					
+
 				} catch (PositionEX e) {
 					// TODO Auto-generated catch block
 					//e.printStackTrace();
-				}
-				
+				}				
 	        	
-	        	if(mouseX>=x*(this.getWidth()/col) && mouseX<=(x+1)*(this.getWidth()/col) &&
-	        			mouseY>=y*(this.getHeight()/row) && mouseY<=(y+1)*(this.getHeight()/row)){
+	        	if(mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
+	        			mouseY>y*(this.getHeight()/row) && mouseY<(y+1)*(this.getHeight()/row)){
 	        	
 					g.setColor(new Color(255,0,0));
 	        		g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);

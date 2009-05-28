@@ -1,6 +1,8 @@
 package dataModel;
 
+import java.awt.Image;
 import java.awt.Polygon;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ConnectException;
@@ -23,6 +25,7 @@ public class Element {
 	@XStreamAlias("Area")
 	private Polygon area;
 	private int id;
+	private String icon;
 
 	public String toString(){
 		return("ID:"+id+";");
@@ -53,6 +56,9 @@ public class Element {
 		return id;
 	}
 
+	public String getIcon(){
+		return null;
+	}
 
 	/**
 	 * Constructor of the object

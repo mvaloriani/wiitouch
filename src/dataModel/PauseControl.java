@@ -1,5 +1,7 @@
 package dataModel;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -37,4 +39,7 @@ public class PauseControl extends Control {
 			System.out.println(e.getMessage());
 		}
 	}
+	public String toString(){
+		return super.toString()+"/n"+"Pausa";
+		}
 }

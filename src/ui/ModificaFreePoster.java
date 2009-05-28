@@ -1,14 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * Modifica.java
- *
- * Created on May 21, 2009, 9:32:27 PM
- */
-
 package ui;
 
 import java.awt.Color;

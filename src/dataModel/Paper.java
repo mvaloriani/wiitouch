@@ -1,6 +1,8 @@
 package dataModel;
 
+import java.awt.Image;
 import java.awt.Polygon;
+import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,6 +26,7 @@ public class Paper extends Element {
 	private ArrayList<String> pathsFiles;
 	@XStreamOmitField
 	private int actualFile;
+
 	
 	public String toString() {
 		String result = super.toString()+"\n Files:\n";
@@ -118,6 +121,5 @@ public class Paper extends Element {
 		out.println("control myMedia play");
 		out.flush();
 	}
-	
 
 }
