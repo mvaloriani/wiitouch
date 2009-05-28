@@ -12,8 +12,10 @@
 package ui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
@@ -67,6 +69,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        aggiungiAreaButton=new javax.swing.JButton();
         operazioniPanel = new javax.swing.JPanel();
         aggiungiButton = new javax.swing.JButton();
         rimuoviButton = new javax.swing.JButton();
@@ -164,6 +167,14 @@ public class ModificaFreePoster extends javax.swing.JFrame {
         operazioniPanel.setPreferredSize(new java.awt.Dimension(600, 80));
         operazioniPanel.setLayout(new java.awt.GridLayout(1, 0));
 
+        
+        aggiungiAreaButton.setText("Aggiungi Area");
+        aggiungiAreaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	aggiungiAreaButtonActionPerformed(evt);
+            }
+        });
+        
         aggiungiButton.setText("Aggiungi elemento");
         aggiungiButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,16 +225,31 @@ public class ModificaFreePoster extends javax.swing.JFrame {
         getContentPane().add(operazioniPanel, gridBagConstraints);
         
         setResizable(false);
-        setVisible(true);
+        
         pack();
+        
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension screenSize = tk.getScreenSize();
+        int screenHeight = screenSize.height;
+        int screenWidth = screenSize.width;
+        
+        setLocation((screenWidth-this.getSize().width) / 2, (screenHeight-this.getSize().height) / 2);
+        this.setVisible(true);
+        
     }// </editor-fold>//GEN-END:initComponents
 
-    private void aggiungiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
-    	NewElementFrame newElement;
-    	if(manager.getIPoster() instanceof GridPoster)
-    		newElement=new NewElementFrame(manager,cartellonePanel.getPosition());
+    private void aggiungiAreaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
+    	
 		
-}//GEN-LAST:event_aggiungiButtonActionPerformed
+}
+
+    
+    private void aggiungiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
+    	NewElementFrame newElement=null;
+    	//if(manager.getIPoster() instanceof GridPoster)
+    		//newElement=new NewElementFrame(manager,cartellonePanel.getPosition());
+		
+}
 
     private void rimuoviButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rimuoviButtonActionPerformed
         // TODO add your handling code here:
@@ -254,6 +280,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton aggiungiAreaButton;
     private javax.swing.JButton aggiungiButton;
     private javax.swing.JButton anteprimaButton;
     private cartellonePanelClass cartellonePanel;
@@ -288,48 +315,7 @@ class cartellonePanelClass extends JPanel implements MouseListener {
 	
     public void paint(Graphics g) {
         super.paint(g);
-        for(int y=0;y<row;y++){
-	        for(int x=0;x<col;x++){
-	        	g.setColor(new Color(0,0,0));
-	        	g.drawRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
-	        	
-        		
-        		
-        		try {
-					if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Control)
-					{
-						g.setColor(new Color(0,0,255));
-			        	g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
-			        	
-					}
-				} catch (PositionEX e) {
-					// TODO Auto-generated catch block
-					//e.printStackTrace();
-				}
-				try {
-					if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Paper)
-					{
-						g.setColor(new Color(0,255,0));
-			        	g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
-			        	
-					}
-				} catch (PositionEX e) {
-					// TODO Auto-generated catch block
-					//e.printStackTrace();
-				}
-				
-	        	
-	        	if(mouseX>=x*(this.getWidth()/col) && mouseX<=(x+1)*(this.getWidth()/col) &&
-	        			mouseY>=y*(this.getHeight()/row) && mouseY<=(y+1)*(this.getHeight()/row)){
-	        	
-					g.setColor(new Color(255,0,0));
-	        		g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
-	        		
-	        	
-	        	}
-	        }
-        }
-	        	
+      
     }
     public void setGridSize(int row,int col)
     {
@@ -337,22 +323,7 @@ class cartellonePanelClass extends JPanel implements MouseListener {
     	this.row=row;
     	
     }
-    public Point getPosition()
-    {
-    	Point position=new Point();
-    	
-    	for(int y=0;y<row;y++){
-	        for(int x=0;x<col;x++){
-	        	if(mouseX>=x*(this.getWidth()/col) && mouseX<=(x+1)*(this.getWidth()/col) &&
-	        			mouseY>=y*(this.getHeight()/row) && mouseY<=(y+1)*(this.getHeight()/row)){
-	        			position.setLocation(y, x);
-	        			
-	        			
-	        	}
-	        }
-        }
-    	return position;
-    }
+
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		mouseX=e.getX();

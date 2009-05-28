@@ -11,6 +11,8 @@
 
 package ui;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -189,6 +191,13 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		getContentPane().add(downPanel, gridBagConstraints);
 
 		pack();
+		Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension screenSize = tk.getScreenSize();
+        int screenHeight = screenSize.height;
+        int screenWidth = screenSize.width;
+        
+        setLocation((screenWidth-this.getSize().width) / 2, (screenHeight-this.getSize().height) / 2);
+        this.setVisible(true);
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void creaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creaButtonActionPerformed
