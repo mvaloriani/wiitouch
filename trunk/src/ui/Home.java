@@ -15,6 +15,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import manager.IManager;
+import dataModel.FreePoster;
+import dataModel.GridPoster;
 
 /**
  *
@@ -199,7 +201,12 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 	}
 	
 	private void modificaButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		ModificaGridPoster modifica = new ModificaGridPoster(manager);
+		ModificaGridPoster modifica=null;
+		ModificaFreePoster modLib=null;
+		if(manager.getIPoster() instanceof GridPoster)
+			 modifica = new ModificaGridPoster(manager);
+		else if(manager.getIPoster() instanceof FreePoster)
+			 modLib=new ModificaFreePoster(manager);
 	}
 
 	private void connettiButtonActionPerformed(java.awt.event.ActionEvent evt) {

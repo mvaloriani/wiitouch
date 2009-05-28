@@ -4,26 +4,48 @@
  */
 
 /*
- * ModificaLibero.java
+ * Modifica.java
  *
  * Created on May 21, 2009, 9:32:27 PM
  */
 
 package ui;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.FileNotFoundException;
+
+import javax.swing.JPanel;
+
 import manager.IManager;
+import manager.PositionEX;
+import dataModel.Control;
+import dataModel.GridPoster;
+import dataModel.IPoster;
+import dataModel.Paper;
 
 /**
  *
- * @author luca
+ * @author Matteo
  */
 public class ModificaFreePoster extends javax.swing.JFrame {
-
-
-	/** Creates new form ModificaLibero */
+	 private IManager manager;
+	 private IPoster poster;
+	/** Creates new form Modifica */
     public ModificaFreePoster(IManager manager) {
         this.manager = manager;
+       
     	initComponents();
+    	poster=manager.getIPoster();
+    	if(poster instanceof GridPoster)
+    	{
+    		GridPoster gp=(GridPoster)poster;
+    		cartellonePanel.setGridSize(gp.getRow(), gp.getCol());
+    		
+    	}
     }
 
     /** This method is called from within the constructor to
@@ -35,8 +57,8 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
-
-        cartellonePanel = new javax.swing.JPanel();
+        this.setTitle("Poster Libero");
+        cartellonePanel = new cartellonePanelClass(manager);
         descrizionePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         descrizioneTextArea = new javax.swing.JTextArea();
@@ -56,16 +78,15 @@ public class ModificaFreePoster extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         cartellonePanel.setBackground(new java.awt.Color(255, 255, 255));
-        cartellonePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartellone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 14))); // NOI18N
+        //cartellonePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartellone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 14))); // NOI18N
         cartellonePanel.setMinimumSize(new java.awt.Dimension(450, 450));
         cartellonePanel.setPreferredSize(new java.awt.Dimension(450, 450));
         cartellonePanel.setLayout(new java.awt.GridBagLayout());
+        cartellonePanel.addMouseListener(cartellonePanel);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         getContentPane().add(cartellonePanel, gridBagConstraints);
-      
-        
-        
+
         descrizionePanel.setBackground(new java.awt.Color(181, 208, 249));
         descrizionePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Descrizione\n", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 14))); // NOI18N
         descrizionePanel.setLayout(new java.awt.GridBagLayout());
@@ -194,12 +215,14 @@ public class ModificaFreePoster extends javax.swing.JFrame {
         
         setResizable(false);
         setVisible(true);
-        setTitle("Modifica Griglia Libera");
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void aggiungiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
-        // TODO add your handling code here:
+    	NewElementFrame newElement;
+    	if(manager.getIPoster() instanceof GridPoster)
+    		newElement=new NewElementFrame(manager,cartellonePanel.getPosition());
+		
 }//GEN-LAST:event_aggiungiButtonActionPerformed
 
     private void rimuoviButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rimuoviButtonActionPerformed
@@ -215,28 +238,25 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 }//GEN-LAST:event_nomeTextFieldActionPerformed
 
     private void salvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaButtonActionPerformed
-        // TODO add your handling code here:
+    	try {
+			manager.storePoster("./temp/"+poster.getName()+"_"+poster.getClassroom()+".xml");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.dispose();
     }//GEN-LAST:event_salvaButtonActionPerformed
 
     private void anteprimaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteprimaButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_anteprimaButtonActionPerformed
 
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ModificaFreePoster(null).setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aggiungiButton;
     private javax.swing.JButton anteprimaButton;
-    private javax.swing.JPanel cartellonePanel;
+    private cartellonePanelClass cartellonePanel;
     private javax.swing.JTextField classeTextField;
     private javax.swing.JPanel descrizionePanel;
     private javax.swing.JTextArea descrizioneTextArea;
@@ -250,5 +270,110 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     private javax.swing.JButton rimuoviButton;
     private javax.swing.JButton salvaButton;
     // End of variables declaration//GEN-END:variables
-    private IManager manager;
+   
+}
+
+class cartellonePanelClass extends JPanel implements MouseListener {
+	private int row;
+	private int col;
+	private int mouseX=0;
+	private int mouseY=0;
+	private IManager manager;
+	
+	
+	public cartellonePanelClass(IManager manager)
+	{
+		this.manager=manager;	
+	}
+	
+    public void paint(Graphics g) {
+        super.paint(g);
+        for(int y=0;y<row;y++){
+	        for(int x=0;x<col;x++){
+	        	g.setColor(new Color(0,0,0));
+	        	g.drawRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+	        	
+        		
+        		
+        		try {
+					if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Control)
+					{
+						g.setColor(new Color(0,0,255));
+			        	g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+			        	
+					}
+				} catch (PositionEX e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+				}
+				try {
+					if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Paper)
+					{
+						g.setColor(new Color(0,255,0));
+			        	g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+			        	
+					}
+				} catch (PositionEX e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+				}
+				
+	        	
+	        	if(mouseX>=x*(this.getWidth()/col) && mouseX<=(x+1)*(this.getWidth()/col) &&
+	        			mouseY>=y*(this.getHeight()/row) && mouseY<=(y+1)*(this.getHeight()/row)){
+	        	
+					g.setColor(new Color(255,0,0));
+	        		g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+	        		
+	        	
+	        	}
+	        }
+        }
+	        	
+    }
+    public void setGridSize(int row,int col)
+    {
+    	this.col=col;
+    	this.row=row;
+    	
+    }
+    public Point getPosition()
+    {
+    	Point position=new Point();
+    	
+    	for(int y=0;y<row;y++){
+	        for(int x=0;x<col;x++){
+	        	if(mouseX>=x*(this.getWidth()/col) && mouseX<=(x+1)*(this.getWidth()/col) &&
+	        			mouseY>=y*(this.getHeight()/row) && mouseY<=(y+1)*(this.getHeight()/row)){
+	        			position.setLocation(y, x);
+	        			
+	        			
+	        	}
+	        }
+        }
+    	return position;
+    }
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		mouseX=e.getX();
+		mouseY=e.getY();
+		
+		repaint();
+	}
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
