@@ -1,12 +1,16 @@
 package dataModel;
 
+import java.util.ArrayList;
+
 public interface IPoster {
 	
-	String getName();
-	String getDescription();
-	String getClassroom();
+	public String getName();
+	public String getDescription();
+	public String getClassroom();
 	
-	Integer getCol();
-	Integer getRow();
+	public Integer getCol();
+	public Integer getRow();
+	
+	public ArrayList<Integer> getIdList();
 
 }
