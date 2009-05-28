@@ -25,6 +25,7 @@ import dataModel.IPoster;
  */
 public class Manager implements IManager {
 
+
 	private ManagerDati managerDati;
 
 	private ManagerCreazione managerCreazione;
@@ -194,7 +195,10 @@ public class Manager implements IManager {
 	
 	public void loadPoster(String urlFile) throws FileNotFoundException {
 		poster = managerDati.loadPoster(urlFile);
-		
+		if(poster instanceof GridPoster)
+			managerCreazione=new ManagerCreazioneGridPoster(this);
+		if(poster instanceof FreePoster)
+			managerCreazione=new ManagerCreazioneFreePoster(this);
 	}
 	
 	public void storePoster(String urlFile) throws FileNotFoundException {
