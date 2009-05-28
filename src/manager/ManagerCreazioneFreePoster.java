@@ -38,8 +38,9 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 		}
 		Polygon area = Utills.PolygonFromPoints(points);
 		element.setArea(area);
-		setPaperFiles(poster, element.getId(), files);
 		poster.addElement(element);
+		setPaperFiles(poster, element.getId(), files);
+		
 		return element.getId();
 
 	}
