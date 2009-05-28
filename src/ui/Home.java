@@ -199,7 +199,7 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 	}
 	
 	private void modificaButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		Modifica modifica = new Modifica(manager);
+		ModificaGridPoster modifica = new ModificaGridPoster(manager);
 	}
 
 	private void connettiButtonActionPerformed(java.awt.event.ActionEvent evt) {

@@ -319,7 +319,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
         				descrizioneTextArea.getText(), new Integer(jTextField3.getText()),
         				new Integer(jTextField5.getText()));
     		try {
-    			manager.storePoster("./temp/"+(int)System.nanoTime()+"temp.xml");
+    			manager.storePoster("./temp/"+nomeTextField.getText()+"_"+classeTextField.getText()+".xml");
     		} catch (FileNotFoundException e) {
     			e.printStackTrace();
     		}

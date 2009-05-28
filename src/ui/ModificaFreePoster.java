@@ -17,11 +17,11 @@ import manager.IManager;
  *
  * @author luca
  */
-public class ModificaLibero extends javax.swing.JFrame {
+public class ModificaFreePoster extends javax.swing.JFrame {
 
 
 	/** Creates new form ModificaLibero */
-    public ModificaLibero(IManager manager) {
+    public ModificaFreePoster(IManager manager) {
         this.manager = manager;
     	initComponents();
     }
@@ -228,7 +228,7 @@ public class ModificaLibero extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificaLibero(null).setVisible(true);
+                new ModificaFreePoster(null).setVisible(true);
             }
         });
     }
