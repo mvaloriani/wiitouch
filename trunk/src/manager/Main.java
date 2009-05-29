@@ -15,11 +15,7 @@ public class Main {
 	public static void main(String[] args) throws PosterTypeEx, PositionEX {
 		//System.setProperty("bluecove.jsr82.psm_minimum_off", "true");
 		IManager system = new Manager();
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
+
 		try{
 			Home home = new Home(system);
 			home.setVisible(true);

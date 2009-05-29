@@ -1,5 +1,7 @@
 package manager;
 
+import java.awt.Point;
+import java.awt.Polygon;
 import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -175,6 +177,7 @@ public class Manager implements IManager {
 		else
 			throw new PosterTypeEx("Current poster isn't GridPoster");	
 	}
+	
 	// Common methods
 	
 	public void setPaperFiles(Integer id, ArrayList<String> Files) throws PositionEX {
@@ -212,7 +215,6 @@ public class Manager implements IManager {
 		poster.setIsCalibated(true);
 	}
 
-	
 	public void play() {
 		iWii.startPlay(new EventoSelezionaPuntoListener(){
 			public void OnEventoSelezionaPunto(EventoSelezionaPunto e) {
@@ -231,13 +233,28 @@ public class Manager implements IManager {
 	public void connect(){
 		iWii.connect();
 	}
+	
+	public synchronized Polygon createArea(Integer numPoints){
+		final ArrayList<Point2D> pointsList = new ArrayList<Point2D>();
+		iWii.startPlay(new EventoSelezionaPuntoListener(){
+			public synchronized void OnEventoSelezionaPunto(EventoSelezionaPunto e) {
+				System.out.print("\npunto ricevuto x:"+ e.getPunto().x+ " y: "+e.getPunto().y);
+				pointsList.add(e.getPunto());		
+			}		
+		});
+		while(pointsList.size()<numPoints){
+			
+		}
+		iWii.removeAllListeners();
+		return Utills.PolygonFromPoints(pointsList);
+	}
+	
 	//private
 	private void play(Point2D point){
 		try {
 			if (poster!=null){
 				poster.getElement(point).exec();
-				System.out.println("\n"+poster.getElement(point));
-				
+				System.out.println("\n"+poster.getElement(point));		
 				
 			}
 		} catch (PositionEX e) {
