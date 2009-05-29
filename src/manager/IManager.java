@@ -1,5 +1,6 @@
 package manager;
 
+import java.awt.Polygon;
 import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -36,10 +37,12 @@ public interface IManager {
 	//Play method
 	public void play();
 	public void stopPlay();
-	public void connect();
+	
 	
 	//Wii method
 	public void calibra();
+	public Polygon createArea(Integer numPoints);
+	public void connect();
 	
 	//get vlcThred
 	public void endSystem();
