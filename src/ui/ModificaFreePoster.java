@@ -3,15 +3,22 @@ package ui;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Polygon;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
 import manager.IManager;
-import dataModel.GridPoster;
+import manager.PositionEX;
+import manager.PosterTypeEx;
+import dataModel.FreePoster;
 import dataModel.IPoster;
 
 /**
@@ -22,17 +29,38 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 	 private IManager manager;
 	 private IPoster poster;
 	/** Creates new form Modifica */
+	 
     public ModificaFreePoster(IManager manager) {
         this.manager = manager;
-       
     	initComponents();
-    	poster=manager.getIPoster();
-    	if(poster instanceof GridPoster)
-    	{
-    		GridPoster gp=(GridPoster)poster;
-    		cartellonePanel.setGridSize(gp.getRow(), gp.getCol());
-    		
-    	}
+    	
+    	//////
+    	ArrayList<Point2D> lista1,lista2=null;
+    	lista1=new ArrayList<Point2D>();
+    	lista2=new ArrayList<Point2D>();
+    	
+    	lista1.add(new Point(0,0));
+    	lista1.add(new Point(0,640));
+    	lista1.add(new Point(800,640));
+    	lista1.add(new Point(800,0));
+    	
+    	lista2.add(new Point(0,640));
+    	lista2.add(new Point(0,1280));
+    	lista2.add(new Point(800,160));
+    	lista2.add(new Point(800,640));
+    	
+    	try {
+			manager.addPaperFP(lista1, null);
+			manager.addPaperFP(lista2, null);
+			
+		} catch (PosterTypeEx e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (PositionEX e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	//////
     }
 
     /** This method is called from within the constructor to
@@ -160,6 +188,8 @@ public class ModificaFreePoster extends javax.swing.JFrame {
             }
         });
         
+        operazioniPanel.add(aggiungiAreaButton);
+        
         aggiungiButton.setText("Aggiungi elemento");
         aggiungiButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,28 +316,62 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 }
 
 class CartellonePanelClass extends JPanel implements MouseListener {
-	private int row;
-	private int col;
+
 	private int mouseX=0;
 	private int mouseY=0;
 	private IManager manager;
+	private double scaleX;
+	private double scaleY;
+	
+	
 	
 	
 	public CartellonePanelClass(IManager manager)
 	{
 		this.manager=manager;	
+		
+		Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension screenSize = tk.getScreenSize();
+        int screenHeight = screenSize.height;
+        int screenWidth = screenSize.width;
+        
+        scaleX=((double)this.getSize().getWidth())/((double)screenWidth);
+        
+        scaleY=((double)this.getSize().getHeight())/((double)screenHeight);
+        
+		System.out.println(this.getPreferredSize().width +" "+ ((double)screenWidth)+"  x: "+scaleX+" y: "+scaleY);
 	}
 	
     public void paint(Graphics g) {
         super.paint(g);
-      
+        FreePoster poster=((FreePoster)manager.getIPoster());
+        
+        for(Integer id:poster.getIdList())
+        {
+        	System.out.println("ElementID:"+id);
+        	Polygon newArea=new Polygon();
+        	try {
+        		Polygon area=poster.getElement(id).getArea();
+				for(int x=0; x< area.xpoints.length;x++)
+				{
+					double px=area.xpoints[x]*scaleX;
+					double py=area.ypoints[x]*scaleY;
+					
+					newArea.addPoint((int)px, (int)py);
+					
+				}
+				((Graphics2D)g).drawPolygon(newArea);
+			} catch (PositionEX e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	
+        	
+        }
+        
+        
     }
-    public void setGridSize(int row,int col)
-    {
-    	this.col=col;
-    	this.row=row;
-    	
-    }
+
 
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
