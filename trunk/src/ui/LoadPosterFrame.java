@@ -203,9 +203,11 @@ public class LoadPosterFrame extends javax.swing.JFrame{
         //chooser.setFileFilter(filter);
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         chooser.setCurrentDirectory(new File("./"));
-        chooser.showOpenDialog(this);
-        File file = chooser.getSelectedFile();
-        pathFileTextField.setText(file.getAbsolutePath());
+        if(chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
+        {
+	        File file = chooser.getSelectedFile();
+	        pathFileTextField.setText(file.getAbsolutePath());
+        }
 
     }
     

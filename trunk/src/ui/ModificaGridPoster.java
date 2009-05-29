@@ -253,7 +253,6 @@ public class ModificaGridPoster extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aggiungiButton;
     private javax.swing.JButton anteprimaButton;
-    private CartellonePanelClass cartellonePanel;
     private javax.swing.JTextField classeTextField;
     private javax.swing.JPanel descrizionePanel;
     private javax.swing.JTextArea descrizioneTextArea;

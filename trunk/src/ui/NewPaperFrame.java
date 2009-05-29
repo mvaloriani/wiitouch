@@ -38,6 +38,7 @@ public class NewPaperFrame extends javax.swing.JFrame {
     
 	private IManager manager=null;
 	private Point position=null;
+	private Integer elementId=null;
 	private Boolean grid=null;
 	
     /** Creates new form NewPaperFrame */
@@ -45,18 +46,30 @@ public class NewPaperFrame extends javax.swing.JFrame {
      	this.manager=manager;
     	this.position=position;
     	grid=new Boolean(true);
-    	
+    	inizialize();
+    }
+    
+    public NewPaperFrame(IManager manager, Integer elementId) {
+    	this.manager=manager;
+    	this.elementId=elementId;
+    	grid=new Boolean(false);
+    	inizialize();
+	}
+    
+    private void inizialize()
+    {
         initComponents();
         jButton3.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent) {
                 
-            JFileChooser chooser=new JFileChooser();
-            chooser.setMultiSelectionEnabled(false);
-            chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            chooser.showOpenDialog(null);
-            File file = chooser.getSelectedFile();
-            jTextField1.setText(file.getAbsolutePath());
-            
+	            JFileChooser chooser=new JFileChooser();
+	            chooser.setMultiSelectionEnabled(false);
+	            chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+	            if(chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+	            {
+		            File file = chooser.getSelectedFile();
+		            jTextField1.setText(file.getAbsolutePath());
+	            }
             }
 
             
@@ -79,8 +92,8 @@ public class NewPaperFrame extends javax.swing.JFrame {
         setLocation((screenWidth-this.getSize().width) / 2, (screenHeight-this.getSize().height) / 2);
         this.setVisible(true);
     }
-    
-    public String getUrl()
+
+	public String getUrl()
     {
     	return this.jTextField1.getText();
     }
@@ -258,7 +271,7 @@ public class NewPaperFrame extends javax.swing.JFrame {
     public void saveButtonPerformed() {
     	
 		if(this.getUrl()!=null && this.getUrl()!=""){
-			if(grid)
+			if(grid){
 				try {
 					ArrayList<String> lista=new ArrayList<String>();
 					lista.add(this.getUrl());
@@ -271,7 +284,13 @@ public class NewPaperFrame extends javax.swing.JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-	}
+			}
+			else{
+				manager.setElementToPaper(elementId,stringa);
+			}
+					
+				
+		}
 		this.dispose();
 }
     

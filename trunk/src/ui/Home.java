@@ -233,17 +233,6 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		manager.play();
 	}
 	
-	/**
-	 * @param args the command line a/rguments
-	 */
-	public static void main(String args[]) {
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new Home(null).setVisible(true);
-			}
-		});
-	}
-
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton caricaButton;
 	private javax.swing.JButton connettiButton;
