@@ -82,7 +82,7 @@ public class NewElementFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Aggiungi Elemento");
         setResizable(false);
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -92,8 +92,7 @@ public class NewElementFrame extends javax.swing.JFrame {
         jButton1.setText("Aggiungi");
         jButton1.addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent e) {
-				
+			public void actionPerformed(ActionEvent e) {	
 				addButtonPerformed();
 			}
         	
@@ -126,7 +125,7 @@ public class NewElementFrame extends javax.swing.JFrame {
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Cambria", 0, 24));
-        jRadioButton1.setText("Foglio");
+        jRadioButton1.setText("Audio/Video");
         jRadioButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
         gridBagConstraints = new java.awt.GridBagConstraints();
