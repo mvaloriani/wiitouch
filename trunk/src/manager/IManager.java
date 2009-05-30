@@ -14,6 +14,7 @@ public interface IManager {
 	public Integer addControlFP(ArrayList<Point2D> points, String type) throws PosterTypeEx, ElementTypeEX;
 	public Integer addPaperFP(ArrayList<Point2D> points, ArrayList<String> files) throws PosterTypeEx, PositionEX;
 	
+	
 	// GridPoster methods
 	public void createGridPoster(String name, String classe, String description,
 			int row, int col);
