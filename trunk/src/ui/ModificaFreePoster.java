@@ -13,13 +13,17 @@ import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import manager.IManager;
 import manager.PositionEX;
 import manager.PosterTypeEx;
+import dataModel.Control;
+import dataModel.Element;
 import dataModel.FreePoster;
 import dataModel.IPoster;
+import dataModel.Paper;
 
 /**
  *
@@ -35,23 +39,30 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     	initComponents();
     	
     	//////
-    	ArrayList<Point2D> lista1,lista2=null;
+    	ArrayList<Point2D> lista1,lista2,lista3=null;
     	lista1=new ArrayList<Point2D>();
     	lista2=new ArrayList<Point2D>();
+    	lista3=new ArrayList<Point2D>();
     	
     	lista1.add(new Point(0,0));
-    	lista1.add(new Point(0,640));
-    	lista1.add(new Point(800,640));
-    	lista1.add(new Point(800,0));
+    	lista1.add(new Point(640,0));
+    	lista1.add(new Point(640,800));
+    	lista1.add(new Point(0,800));
     	
-    	lista2.add(new Point(0,640));
-    	lista2.add(new Point(0,1280));
-    	lista2.add(new Point(800,160));
-    	lista2.add(new Point(800,640));
+    	lista2.add(new Point(640,0));
+    	lista2.add(new Point(1280,0));
+    	lista2.add(new Point(1280,300));
+    	lista2.add(new Point(640,300));
+    	
+    	lista3.add(new Point(640,550));
+    	lista3.add(new Point(1280,550));
+    	lista3.add(new Point(1280,800));
+    	lista3.add(new Point(640,800));
     	
     	try {
 			manager.addPaperFP(lista1, null);
 			manager.addPaperFP(lista2, null);
+			manager.addPaperFP(lista3, null);
 			
 		} catch (PosterTypeEx e) {
 			// TODO Auto-generated catch block
@@ -73,7 +84,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
         this.setTitle("Poster Libero");
-        cartellonePanel = new CartellonePanelClass(manager);
+        cartellonePanel = new CartellonePanelClass(manager,this);
         descrizionePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         descrizioneTextArea = new javax.swing.JTextArea();
@@ -260,38 +271,90 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 
     
     private void aggiungiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
-    	NewElementFrame newElement=null;
+    	if(cartellonePanel.isElementSelected()){
+    		NewElementFrame newElement=null;
+    	}
+    	else
+    	{
+    		JOptionPane.showMessageDialog(this, "Selezionare almeno un elemento sul poster", "Attenzione", JOptionPane.WARNING_MESSAGE);
+    	}
     	//if(manager.getIPoster() instanceof GridPoster)
     		//newElement=new NewElementFrame(manager,cartellonePanel.getPosition());
 		
 }
 
     private void rimuoviButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rimuoviButtonActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_rimuoviButtonActionPerformed
+        if(cartellonePanel.isElementSelected()){
+	    	int result=JOptionPane.showConfirmDialog(this, "Sei sicuro di volere cancellare questo elemento dal poster ?");
+	        if(result==JOptionPane.YES_OPTION)
+	        {
+	        	try {
+					manager.removeElement(cartellonePanel.getSelectedElement());
+					cartellonePanel.repaint();
+				} catch (PositionEX e) {
+					//controllo gia se selezionato
+				}
+	        }
+        }
+    }
 
     private void modificaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaButtonActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_modificaButtonActionPerformed
+    	if(cartellonePanel.isElementSelected())
+    	{
+    		Element currentElement=null;
+			try {
+				currentElement = ((FreePoster)manager.getIPoster()).getElement(cartellonePanel.getSelectedElement());
+			} catch (PositionEX e) {
+				
+			}
+    		if(currentElement instanceof Control)
+    		{
+    			
+    		}else if(currentElement instanceof Paper)
+    		{
+    			
+    		}else
+    		{
+    			JOptionPane.showMessageDialog(null, "Prima di modificare un elemento lo devi selezionare");
+    		}
+    	}
+    }
 
     private void nomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldActionPerformed
         // TODO add your handling code here:
-}//GEN-LAST:event_nomeTextFieldActionPerformed
-
+    }
+    
     private void salvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaButtonActionPerformed
     	try {
 			manager.storePoster("./temp/"+poster.getName()+"_"+poster.getClassroom()+".xml");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.dispose();
-    }//GEN-LAST:event_salvaButtonActionPerformed
+    }
 
     private void anteprimaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteprimaButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_anteprimaButtonActionPerformed
-
+    	try {
+			((FreePoster)manager.getIPoster()).getElement(cartellonePanel.getSelectedElement()).exec();
+		} catch (PositionEX e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    public void enableElementButton()
+    {
+    	this.modificaButton.setEnabled(true);
+    	this.rimuoviButton.setEnabled(true);
+    	this.aggiungiButton.setEnabled(true);
+    	this.anteprimaButton.setEnabled(true);
+    }
+	public void disableElementButton()
+    {
+    	this.modificaButton.setEnabled(false);
+    	this.rimuoviButton.setEnabled(false);
+    	this.aggiungiButton.setEnabled(false);
+    	this.anteprimaButton.setEnabled(false);
+    }
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -322,33 +385,39 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 	private IManager manager;
 	private double scaleX;
 	private double scaleY;
-	
-	
-	
-	
-	public CartellonePanelClass(IManager manager)
+	private int screenHeight = 0;
+	private int screenWidth = 0;
+	private ModificaFreePoster poster;
+    
+	public CartellonePanelClass(IManager manager,ModificaFreePoster poster)
 	{
 		this.manager=manager;	
-		
-		Toolkit tk = Toolkit.getDefaultToolkit();
+		this.poster=poster;
+	    Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
-        int screenHeight = screenSize.height;
-        int screenWidth = screenSize.width;
+        screenHeight = screenSize.height;
+       screenWidth = screenSize.width;
         
         scaleX=((double)this.getSize().getWidth())/((double)screenWidth);
         
         scaleY=((double)this.getSize().getHeight())/((double)screenHeight);
-        
-		System.out.println(this.getPreferredSize().width +" "+ ((double)screenWidth)+"  x: "+scaleX+" y: "+scaleY);
+        System.out.println("larg:"+ this.getSize().width+ "  larg2 : "+this.getWidth()+ "larg 3 :"+ this.getSize().getWidth());
 	}
 	
     public void paint(Graphics g) {
         super.paint(g);
+        
+        if(scaleX!=((double)this.getSize().getWidth())/((double)screenWidth))
+        {
+        	
+        	scaleX=((double)this.getSize().getWidth())/((double)screenWidth);
+            scaleY=((double)this.getSize().getHeight())/((double)screenHeight);
+        }
+
         FreePoster poster=((FreePoster)manager.getIPoster());
         
         for(Integer id:poster.getIdList())
         {
-        	System.out.println("ElementID:"+id);
         	Polygon newArea=new Polygon();
         	try {
         		Polygon area=poster.getElement(id).getArea();
@@ -360,7 +429,11 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 					newArea.addPoint((int)px, (int)py);
 					
 				}
-				((Graphics2D)g).drawPolygon(newArea);
+				if(newArea.contains(new Point(mouseX,mouseY)))
+				{
+					((Graphics2D)g).fillPolygon(newArea);
+				}else
+					((Graphics2D)g).drawPolygon(newArea);
 			} catch (PositionEX e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -372,11 +445,44 @@ class CartellonePanelClass extends JPanel implements MouseListener {
         
     }
 
+    private Point getRealPoint()
+    {
+    	
+    	return new Point((int)(mouseX/scaleX),(int)(mouseY/scaleY));
+    }
+    
+    public boolean isElementSelected()
+    {
+    	 try {
+			((FreePoster)(manager.getIPoster())).getElement(getRealPoint());
+			return true;
+    	 } catch (PositionEX e) {
+			// TODO Auto-generated catch block
+			return false;
+		}
+    	
+    }
+    
+    public Integer getSelectedElement() throws PositionEX
+    {
+    	if(isElementSelected()){
+    		return ((FreePoster)(manager.getIPoster())).getElement(getRealPoint()).getId();
+    		
+    	}else
+    		throw new PositionEX("Not selected Element");
+    }
 
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		mouseX=e.getX();
 		mouseY=e.getY();
+		if(isElementSelected())
+		{
+			poster.enableElementButton();
+		}else
+		{
+			poster.disableElementButton();
+		}
 		
 		repaint();
 	}
