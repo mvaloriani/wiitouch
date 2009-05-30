@@ -17,14 +17,22 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import Personal.EventoSelezionaPunto;
+import Personal.EventoSelezionaPuntoListener;
 
 import manager.IManager;
 import manager.PositionEX;
+import manager.PosterTypeEx;
 import dataModel.Control;
 import dataModel.GridPoster;
 import dataModel.IPoster;
@@ -91,6 +99,12 @@ public class ModificaGridPoster extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         getContentPane().add(cartellonePanel, gridBagConstraints);
+        cartellonePanel.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evt) {	
+				changeButtons(evt);
+			}
+        	
+        });
 
         descrizionePanel.setBackground(new java.awt.Color(181, 208, 249));
         descrizionePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Descrizione\n", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 14))); // NOI18N
@@ -213,21 +227,25 @@ public class ModificaGridPoster extends javax.swing.JFrame {
         gridBagConstraints.ipady = 2;
         getContentPane().add(operazioniPanel, gridBagConstraints);
         
+        setEnableButtons(false, false, false, false);
         setResizable(false);
         setVisible(true);
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void aggiungiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
-        // TODO add your handling code here:
-    	NewElementFrame newElement;
-    	if(manager.getIPoster() instanceof GridPoster)
-    		newElement=new NewElementFrame(manager,cartellonePanel.getPosition());
-		
-}//GEN-LAST:event_aggiungiButtonActionPerformed
-
+    	setEnableButtons(false, false, false, false);
+    	NewElementFrame newElement=new NewElementFrame(manager,cartellonePanel.getPosition());	
+    }
+    
     private void rimuoviButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rimuoviButtonActionPerformed
-        // TODO add your handling code here:
+    	Point p = cartellonePanel.getPosition();
+    	try {
+			manager.removeElement(manager.getIdFromPointGP(p.x,p.y));
+			changeButtons(new ActionEvent(cartellonePanel.getPosition(), 0, "click"));
+		} catch (PositionEX e) {e.printStackTrace();
+		} catch (PosterTypeEx e) {e.printStackTrace();
+		}
 }//GEN-LAST:event_rimuoviButtonActionPerformed
 
     private void modificaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaButtonActionPerformed
@@ -249,10 +267,30 @@ public class ModificaGridPoster extends javax.swing.JFrame {
     }//GEN-LAST:event_anteprimaButtonActionPerformed
 
    
-
+    private void changeButtons(java.awt.event.ActionEvent evt){
+    	Point p = (Point) evt.getSource();
+    	try {
+			if (((GridPoster)poster).getElement(p.x, p.y) instanceof Paper)
+				setEnableButtons(false, true, true, true);
+			else
+				setEnableButtons(false, true, true, false);
+			
+		} catch (PositionEX e) {
+			setEnableButtons(true, false, false, false);
+		}    	
+    } 
+    private void setEnableButtons(boolean aggiungi, boolean modifica, boolean rimuovi, boolean anteprima){
+    	aggiungiButton.setEnabled(aggiungi);
+    	modificaButton.setEnabled(modifica);
+    	rimuoviButton.setEnabled(rimuovi);
+    	anteprimaButton.setEnabled(anteprima);	
+    }
+ 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aggiungiButton;
     private javax.swing.JButton anteprimaButton;
+    private CartellonePanelClass cartellonePanel;
     private javax.swing.JTextField classeTextField;
     private javax.swing.JPanel descrizionePanel;
     private javax.swing.JTextArea descrizioneTextArea;
@@ -280,6 +318,7 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 	private Image imgPause;
 	private Image imgGen;
 	private Image imgPaper;
+	private ArrayList<ActionListener> listeners=new ArrayList();
 	public CartellonePanelClass(IManager manager)
 	{
 		this.manager=manager;
@@ -291,7 +330,26 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 		imgPaper= toolkit.createImage("./txt.png");
 	}
 	
-    public void paint(Graphics g) {
+    public synchronized void addActionListener(ActionListener actionListener) {
+		listeners.add(actionListener);
+	}
+	
+	public synchronized void removeActionListener(ActionListener actionListener) {
+		listeners.remove(actionListener);
+	}
+	
+	public void notifyElementSelected(Point p)
+	{
+		if(this.listeners.isEmpty()==false){
+			ActionEvent event=new ActionEvent(p, 1, "click");
+			for(ActionListener l : listeners){
+				l.actionPerformed(event);
+			}
+		}
+	}
+	
+
+	public void paint(Graphics g) {
         super.paint(g);
         for(int y=0;y<row;y++){
 	        for(int x=0;x<col;x++){
@@ -371,9 +429,10 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 		// TODO Auto-generated method stub
 		mouseX=e.getX();
 		mouseY=e.getY();
-		
+		notifyElementSelected(getPosition());
 		repaint();
 	}
+	
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
@@ -386,8 +445,10 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 		// TODO Auto-generated method stub
 		
 	}
-	public void mouseReleased(MouseEvent e) {
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

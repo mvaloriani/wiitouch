@@ -57,7 +57,8 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		jLabel3 = new javax.swing.JLabel();
 		jProgressBar1 = new javax.swing.JProgressBar();
 		jProgressBar2 = new javax.swing.JProgressBar();
-
+		jSeparator1 = new javax.swing.JSeparator();
+		
 		setTitle("Home");
 		setBackground(new java.awt.Color(51, 51, 255));
 		setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -90,7 +91,7 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		});
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.gridx = 0;
-		gridBagConstraints.gridy = 2;
+		gridBagConstraints.gridy = 3;
 		gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
 		gridBagConstraints.ipadx = 45;
 		gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
@@ -112,7 +113,7 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		modificaButton.setEnabled(false);
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.gridx = 1;
-		gridBagConstraints.gridy = 2;
+		gridBagConstraints.gridy = 3;
 		gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
 		gridBagConstraints.ipadx = 45;
 		gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
@@ -132,6 +133,14 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
 		topPanel.add(creaButton, gridBagConstraints);
 
+		 gridBagConstraints = new java.awt.GridBagConstraints();
+	     gridBagConstraints.gridx = 0;
+	     gridBagConstraints.gridy = 2;
+	     gridBagConstraints.gridwidth = 2;
+	     gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+	     topPanel.add(jSeparator1, gridBagConstraints);
+
+		
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.ipadx = 39;
 		getContentPane().add(topPanel, gridBagConstraints);
@@ -224,6 +233,8 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		}
 		else{
 			wiiPanel.setVisible(true);
+			pack();
+			
 			manager.connect();
 		}
 		pack();
@@ -233,6 +244,17 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		manager.play();
 	}
 	
+	/**
+	 * @param args the command line a/rguments
+	 */
+	public static void main(String args[]) {
+		java.awt.EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				new Home(null).setVisible(true);
+			}
+		});
+	}
+
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton caricaButton;
 	private javax.swing.JButton connettiButton;
@@ -247,6 +269,7 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 	private javax.swing.JButton playButton;
 	private javax.swing.JPanel topPanel;
 	private javax.swing.JPanel wiiPanel;
+	private javax.swing.JSeparator jSeparator1;
 	// End of variables declaration//GEN-END:variables
 	private IManager manager;
 
