@@ -286,7 +286,8 @@ public class NewPaperFrame extends javax.swing.JFrame {
 				}
 			}
 			else{
-				manager.setElementToPaper(elementId,stringa);
+				//manager.setElementToPaper(elementId,stringa);
+				System.out.println("Attesa costruzione metodo setElementToPaper");
 			}
 					
 				
