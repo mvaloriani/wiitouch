@@ -60,4 +60,6 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 		poster.addElement(element);
 		return element.getId();
 	}
+
+
 }
