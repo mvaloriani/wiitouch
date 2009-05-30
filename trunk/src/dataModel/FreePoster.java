@@ -74,7 +74,8 @@ public class FreePoster extends Poster {
 		}
 		return idList;
 	}
-
+	
+	
 
 	@Override
 	public void check(Manager manager) {
