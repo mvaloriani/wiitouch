@@ -84,7 +84,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
         this.setTitle("Poster Libero");
-        cartellonePanel = new CartellonePanelClass(manager,this);
+        cartellonePanel = new CartellonePannelloClass(manager,this);
         descrizionePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         descrizioneTextArea = new javax.swing.JTextArea();
@@ -361,7 +361,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     private javax.swing.JButton aggiungiAreaButton;
     private javax.swing.JButton aggiungiButton;
     private javax.swing.JButton anteprimaButton;
-    private CartellonePanelClass cartellonePanel;
+    private CartellonePannelloClass cartellonePanel;
     private javax.swing.JTextField classeTextField;
     private javax.swing.JPanel descrizionePanel;
     private javax.swing.JTextArea descrizioneTextArea;
@@ -378,7 +378,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
    
 }
 
-class CartellonePanelClass extends JPanel implements MouseListener {
+class CartellonePannelloClass extends JPanel implements MouseListener {
 
 	private int mouseX=0;
 	private int mouseY=0;
@@ -389,7 +389,7 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 	private int screenWidth = 0;
 	private ModificaFreePoster poster;
     
-	public CartellonePanelClass(IManager manager,ModificaFreePoster poster)
+	public CartellonePannelloClass(IManager manager,ModificaFreePoster poster)
 	{
 		this.manager=manager;	
 		this.poster=poster;
