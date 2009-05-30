@@ -14,12 +14,11 @@ import Personal.EventoSelezionaPunto;
 import Personal.EventoSelezionaPuntoListener;
 import Personal.HW;
 import Personal.IWiiHw;
-
 import dataModel.FreePoster;
 import dataModel.GridPoster;
+import dataModel.IPoster;
 import dataModel.Paper;
 import dataModel.Poster;
-import dataModel.IPoster;
 
 
 /**
@@ -124,6 +123,8 @@ public class Manager implements IManager {
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
 
+
+	
 	//GridPost methods
 	
 	public void createGridPoster(String name, String classe,
@@ -245,7 +246,7 @@ public class Manager implements IManager {
 		while(pointsList.size()<numPoints){
 			
 		}
-		iWii.removeAllListeners();
+		//iWii.removeAllListeners();
 		return Utills.PolygonFromPoints(pointsList);
 	}
 	

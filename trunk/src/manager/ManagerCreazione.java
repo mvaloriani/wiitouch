@@ -54,5 +54,5 @@ public abstract class ManagerCreazione{
 	}
 	
 	public abstract void setPaperFiles(Poster poster, int id, ArrayList<String> Files) throws PositionEX;
-
+	
 }
