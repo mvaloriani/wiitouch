@@ -34,6 +34,7 @@ import manager.IManager;
 import manager.PositionEX;
 import manager.PosterTypeEx;
 import dataModel.Control;
+import dataModel.Element;
 import dataModel.GridPoster;
 import dataModel.IPoster;
 import dataModel.Paper;
@@ -249,7 +250,19 @@ public class ModificaGridPoster extends javax.swing.JFrame {
 }//GEN-LAST:event_rimuoviButtonActionPerformed
 
     private void modificaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaButtonActionPerformed
-        // TODO add your handling code here:
+    	Point position = cartellonePanel.getPosition();
+    	try {
+			Element currentElement=((GridPoster)poster).getElement(position.x,position.y);
+			if(currentElement instanceof Paper){
+		    	NewPaperFrame newElement=new NewPaperFrame(manager,position);
+			}
+			else{
+				
+			}
+		} catch (PositionEX e) {
+			System.out.println("nessun elemento selezionato");
+			e.printStackTrace();
+		}
 }//GEN-LAST:event_modificaButtonActionPerformed
 
     private void salvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaButtonActionPerformed
@@ -318,7 +331,7 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 	private Image imgPause;
 	private Image imgGen;
 	private Image imgPaper;
-	private ArrayList<ActionListener> listeners=new ArrayList();
+	private ArrayList<ActionListener> listeners=new ArrayList<ActionListener>();
 	public CartellonePanelClass(IManager manager)
 	{
 		this.manager=manager;

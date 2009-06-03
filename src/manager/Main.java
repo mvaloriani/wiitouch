@@ -12,7 +12,7 @@ public class Main {
 	 * @throws PositionEX 
 	 * @throws PosterTypeEx 
 	 */
-	public static void main(String[] args) throws PosterTypeEx, PositionEX {
+	public static void main(String[] args) {
 		//System.setProperty("bluecove.jsr82.psm_minimum_off", "true");
 		IManager system = new Manager();
 

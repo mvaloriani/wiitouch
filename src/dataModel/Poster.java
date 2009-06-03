@@ -37,6 +37,7 @@ public abstract class Poster implements IPoster{
 			try {
 				des=des+getElement(i).toString()+"\n";
 			} catch (PositionEX e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		return des;
@@ -131,7 +132,6 @@ public abstract class Poster implements IPoster{
 		return null;
 	}
 
-	
 	public abstract void removeElement(int id) throws PositionEX;
 	public abstract Integer getNumberOfElements();
 	public abstract Element getElement(int id) throws PositionEX;

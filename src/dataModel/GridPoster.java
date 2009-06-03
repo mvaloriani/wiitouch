@@ -160,4 +160,5 @@ public class GridPoster extends Poster {
 		removeElement(getElement(row, col).getId());
 	}
 
+
 }
