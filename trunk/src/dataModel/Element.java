@@ -15,7 +15,7 @@ import java.net.UnknownHostException;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("Element")
-public class Element {
+public class Element implements IElement{
 
 	/**
 	 * @uml.property  name="area"
@@ -56,9 +56,6 @@ public class Element {
 		return id;
 	}
 
-	public String getIcon(){
-		return null;
-	}
 
 	/**
 	 * Constructor of the object
