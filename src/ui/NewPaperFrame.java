@@ -11,6 +11,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Point2D;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -26,14 +27,11 @@ import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
-import dataModel.Element;
-import dataModel.GridPoster;
-import dataModel.IElement;
-import dataModel.Paper;
-
 import manager.IManager;
 import manager.PositionEX;
 import manager.PosterTypeEx;
+import dataModel.Element;
+import dataModel.FreePoster;
 
 /**
  *
@@ -41,111 +39,67 @@ import manager.PosterTypeEx;
  */
 public class NewPaperFrame extends javax.swing.JFrame {
     
-	private IManager manager;
-	private Point position;
-	private Boolean grid;
+	private IManager manager=null;
+	private Point position=null;
+	private Integer elementId=null;
+	private Boolean grid=null;
 	
     /** Creates new form NewPaperFrame */
     public NewPaperFrame(IManager manager,Point position) {
      	this.manager=manager;
     	this.position=position;
-    	grid = true;
-    	
-        initComponents();
-    
-        try {
-			IElement p = ((GridPoster)manager.getIPoster()).getElement(position.x, position.y);
-			if(p instanceof Paper)
-				fileTextField.setText(((Paper)p).getPathsFiles().get(0));
-		} catch (Exception e) {
-			System.out.println("elemento non ancora creato");
-		}
+    	grid=new Boolean(true);
+    	inizialize();
     }
     
-    private void anteprimaActionPerformed(){
-    	InetAddress addr = null;
-    	try {
-    		addr = InetAddress.getByName("127.0.0.1");
-    	} catch (UnknownHostException e1) {
-    		e1.printStackTrace();
-    	}
-    	int port = 4212;
-    	SocketAddress sockaddr = new InetSocketAddress(addr, port);
-
-    	// Create an unbound socket
-    	Socket sock = new Socket();
-
-    	// This method will block no more than timeoutMs.
-    	// If the timeout occurs, SocketTimeoutException is thrown.
-    	// int timeoutMs = 2000; Ê // 2 seconds
-    	try {
-    		sock.connect(sockaddr);
-    	} catch (IOException e1) {
-    		System.err.println("Socket problem.");
-    		return;
-    	}
-
-    	PrintWriter out = null;
-    	BufferedReader in = null;
-
-    	try {
-    		out = new PrintWriter(sock.getOutputStream(), true);
-    		in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-    	} catch (UnknownHostException e1) {
-    		System.err.println("Don't know about host: taranis.");
-    	} catch (IOException e1) {
-    		System.err.println("Couldn't get I/O for "
-    				+ "the connection to: taranis.");
-    	}
-
-    	BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
-    	String userInput;
-
-    	out.println("admin");
-    	out.flush();
-    	out.println("del all");
-    	out.flush();
-    	out.println("new myMedia broadcast enabled");
-    	out.flush();
-    	out.println("setup myMedia input " + fileTextField.getText());
-    	out.flush();
-    	out.println("control myMedia play");
-    	out.flush();
-
-    }
-    
-    private void annullaButtonPerformed(){
-    	this.dispose();
-    }
-    
-    private void navigaActionPerformed(){
-        JFileChooser chooser=new JFileChooser();
-        chooser.setMultiSelectionEnabled(false);
-        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        chooser.showOpenDialog(null);
-        File file = chooser.getSelectedFile();
-        fileTextField.setText(file.getAbsolutePath());
-    }
-    
-    public void saveButtonPerformed() {
-    	
-		if(this.fileTextField.getText()!=null && this.fileTextField.getText()!=""){
-			if(grid)
-				try {
-					ArrayList<String> lista=new ArrayList<String>();
-					lista.add(this.fileTextField.getText());
-					manager.addPaperGP(position.x, position.y,lista );
-					
-				} catch (PosterTypeEx e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (PositionEX e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+    public NewPaperFrame(IManager manager, Integer elementId) {
+    	this.manager=manager;
+    	this.elementId=elementId;
+    	grid=new Boolean(false);
+    	inizialize();
 	}
-		this.dispose();
-}
+    
+    private void inizialize()
+    {
+        initComponents();
+        jButton3.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent) {
+                
+	            JFileChooser chooser=new JFileChooser();
+	            chooser.setMultiSelectionEnabled(false);
+	            chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+	            if(chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+	            {
+		            File file = chooser.getSelectedFile();
+		            jTextField1.setText(file.getAbsolutePath());
+	            }
+            }
+
+            
+        });
+        
+        jButton2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent) {
+                jTextField1.setText("");
+            }
+        });
+        
+        jButton5.addActionListener(new AnnullButton(this));
+        
+        //Mostra la finestra al centro dello schermo
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension screenSize = tk.getScreenSize();
+        int screenHeight = screenSize.height;
+        int screenWidth = screenSize.width;
+        
+        setLocation((screenWidth-this.getSize().width) / 2, (screenHeight-this.getSize().height) / 2);
+        this.setVisible(true);
+    }
+
+	public String getUrl()
+    {
+    	return this.jTextField1.getText();
+    }
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -160,14 +114,15 @@ public class NewPaperFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        fileTextField = new javax.swing.JTextField();
-        anteprimaButton = new javax.swing.JButton();
-        navigaButton = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        salvaButton = new javax.swing.JButton();
-        annullaButton = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("File");
         setBackground(new java.awt.Color(181, 208, 249));
         setResizable(false);
@@ -194,42 +149,86 @@ public class NewPaperFrame extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         jPanel3.add(jLabel2, gridBagConstraints);
 
-        fileTextField.setColumns(17);
-        fileTextField.setFont(new java.awt.Font("Cambria", 0, 24));
-        fileTextField.setMinimumSize(new java.awt.Dimension(20, 28));
-        fileTextField.setText("");
+        jTextField1.setColumns(17);
+        jTextField1.setFont(new java.awt.Font("Cambria", 0, 24));
+        jTextField1.setMinimumSize(new java.awt.Dimension(20, 28));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        jPanel3.add(fileTextField, gridBagConstraints);
+        jPanel3.add(jTextField1, gridBagConstraints);
 
-        anteprimaButton.setBackground(new java.awt.Color(181, 208, 249));
-        anteprimaButton.setFont(new java.awt.Font("Cambria", 0, 24));
-        anteprimaButton.setText("Anteprima");
-        anteprimaButton.addActionListener(new ActionListener(){
+        jButton1.setBackground(new java.awt.Color(181, 208, 249));
+        jButton1.setFont(new java.awt.Font("Cambria", 0, 24));
+        jButton1.setText("Anteprima");
+        jButton1.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-				anteprimaActionPerformed();       	
+				InetAddress addr = null;
+				try {
+					addr = InetAddress.getByName("127.0.0.1");
+				} catch (UnknownHostException e1) {
+					e1.printStackTrace();
+				}
+				int port = 4212;
+				SocketAddress sockaddr = new InetSocketAddress(addr, port);
+
+				// Create an unbound socket
+				Socket sock = new Socket();
+
+				// This method will block no more than timeoutMs.
+				// If the timeout occurs, SocketTimeoutException is thrown.
+				// int timeoutMs = 2000; Ê // 2 seconds
+				try {
+					sock.connect(sockaddr);
+				} catch (IOException e1) {
+					System.err.println("Socket problem.");
+					return;
+				}
+
+				PrintWriter out = null;
+				BufferedReader in = null;
+
+				try {
+					out = new PrintWriter(sock.getOutputStream(), true);
+					in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+				} catch (UnknownHostException e1) {
+					System.err.println("Don't know about host: taranis.");
+				} catch (IOException e1) {
+					System.err.println("Couldn't get I/O for "
+							+ "the connection to: taranis.");
+				}
+
+				BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+				String userInput;
+
+				out.println("admin");
+				out.flush();
+				out.println("del all");
+				out.flush();
+				out.println("new myMedia broadcast enabled");
+				out.flush();
+				out.println("setup myMedia input " + jTextField1.getText());
+				out.flush();
+				out.println("control myMedia play");
+				out.flush();
+				
 			}
+        	
+        	
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
-        jPanel3.add(anteprimaButton, gridBagConstraints);
+        jPanel3.add(jButton1, gridBagConstraints);
 
-        navigaButton.setFont(new java.awt.Font("Cambria", 0, 24));
-        navigaButton.setText("...");
-        navigaButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent actionEvent) {
-                navigaActionPerformed();            
-            }          
-        });
+        jButton3.setFont(new java.awt.Font("Cambria", 0, 24));
+        jButton3.setText("...");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 0;
-        jPanel3.add(navigaButton, gridBagConstraints);
+        jPanel3.add(jButton3, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -242,9 +241,9 @@ public class NewPaperFrame extends javax.swing.JFrame {
         jPanel2.add(jPanel3, gridBagConstraints);
 
         jPanel1.setBackground(new java.awt.Color(181, 208, 249));
-        salvaButton.setFont(new java.awt.Font("Cambria", 0, 24));
-        salvaButton.setText("Salva");
-        salvaButton.addActionListener(new ActionListener(){
+        jButton4.setFont(new java.awt.Font("Cambria", 0, 24));
+        jButton4.setText("Salva");
+        jButton4.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 				saveButtonPerformed();
@@ -252,19 +251,15 @@ public class NewPaperFrame extends javax.swing.JFrame {
 			}
         	
         });
-        jPanel1.add(salvaButton);
+        jPanel1.add(jButton4);
 
+        jButton2.setFont(new java.awt.Font("Cambria", 0, 24));
+        jButton2.setText("Cancella");
+        jPanel1.add(jButton2);
 
-        annullaButton.setFont(new java.awt.Font("Cambria", 0, 24));
-        annullaButton.setText("Annulla");
-        annullaButton.addActionListener(new ActionListener(){
-
-			public void actionPerformed(ActionEvent e) {
-				annullaButtonPerformed();
-				}
-        	
-        });
-        jPanel1.add(annullaButton);
+        jButton5.setFont(new java.awt.Font("Cambria", 0, 24));
+        jButton5.setText("Annulla");
+        jPanel1.add(jButton5);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -273,33 +268,83 @@ public class NewPaperFrame extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        this.setVisible(true);
-        
-        //Mostra la finestra al centro dello schermo
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        Dimension screenSize = tk.getScreenSize();
-        int screenHeight = screenSize.height;
-        int screenWidth = screenSize.width;
-        
-        setLocation((screenWidth-this.getSize().width) / 2, (screenHeight-this.getSize().height) / 2);
-        
         pack();
-    }// </editor-fold>   
+    }// </editor-fold>                        
+    
+    public void saveButtonPerformed() {
+    	
+		if(this.getUrl()!=null && this.getUrl()!=""){
+			ArrayList<String> paths=new ArrayList<String>();
+			paths.add(this.getUrl());
+			if(grid){
+				try {
+					
+					manager.addPaperGP(position.x, position.y,paths );
+					
+				} catch (PosterTypeEx e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (PositionEX e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			else{
+				Element oldElement=null;
+				try {
+						oldElement = ((FreePoster)(manager.getIPoster())).getElement(elementId);
+					
+						ArrayList<Point2D> lista=new ArrayList<Point2D>();
+						for(int x=0 ;x<oldElement.getArea().xpoints.length;x++)
+						{
+							
+							lista.add(new Point(oldElement.getArea().xpoints[x],oldElement.getArea().ypoints[x]));
+						}
+						
+						manager.addPaperFP(lista, paths);
+						manager.removeElement(oldElement.getId());
+					} catch (PositionEX e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (PosterTypeEx e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+					}
+					//manager.setElementToPaper(elementId,stringa);
+					//System.out.println("Attesa costruzione metodo setElementToPaper");
+			}
+					
+				
+		}
+		this.dispose();
+}
     
     
     // Variables declaration - do not modify                     
-    private javax.swing.JButton anteprimaButton;
-    private javax.swing.JButton navigaButton;
-    private javax.swing.JButton salvaButton;
-    private javax.swing.JButton annullaButton;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField fileTextField;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration                   
     
 }
-
+ class AnnullButton implements ActionListener{
+     private JFrame f=null;
+     public AnnullButton(JFrame ff)
+     {
+         f=ff;
+         
+     }
+    public void actionPerformed(ActionEvent actionEvent) {
+    
+         f.setVisible(false);  
+    }
+ }
  
