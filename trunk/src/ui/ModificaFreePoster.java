@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import manager.ElementTypeEX;
 import manager.IManager;
 import manager.PositionEX;
 import manager.PosterTypeEx;
@@ -37,6 +38,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 	 
     public ModificaFreePoster(IManager manager) {
         this.manager = manager;
+        poster=manager.getIPoster();
     	initComponents();
     	
     	//////
@@ -62,17 +64,19 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     	
     	try {
 			manager.addPaperFP(lista1, null);
-			manager.addPaperFP(lista2, null);
+			manager.addControlFP(lista2, Control.MINUSVOLUME_CONTROL);
 			manager.addPaperFP(lista3, null);
 			
 		} catch (PosterTypeEx e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (PositionEX e) {
-			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}catch (ElementTypeEX e) {
+			
 			e.printStackTrace();
 		}
-    	//////
     }
 
     /** This method is called from within the constructor to
@@ -347,11 +351,22 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
     }
-    public void enableElementButton()
+    public void enableElementButton(int type)
     {
-    	this.modificaButton.setEnabled(true);
+    	if(type==0){
+    		this.modificaButton.setEnabled(true);
+    		this.aggiungiButton.setEnabled(true);
+    	}
+    	else if(type==1){
+    		this.modificaButton.setEnabled(false);
+    		this.aggiungiButton.setEnabled(false);
+    	}
+    	else if(type==2)
+    	{
+    		this.modificaButton.setEnabled(true);
+    		this.aggiungiButton.setEnabled(false);
+    	}
     	this.rimuoviButton.setEnabled(true);
-    	this.aggiungiButton.setEnabled(true);
     	this.anteprimaButton.setEnabled(true);
     }
 	public void disableElementButton()
@@ -393,12 +408,12 @@ class CartellonePannelloClass extends JPanel implements MouseListener {
 	private double scaleY;
 	private int screenHeight = 0;
 	private int screenWidth = 0;
-	private ModificaFreePoster poster;
+	private ModificaFreePoster posterMod;
     
 	public CartellonePannelloClass(IManager manager,ModificaFreePoster poster)
 	{
 		this.manager=manager;	
-		this.poster=poster;
+		this.posterMod=poster;
 	    Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
         screenHeight = screenSize.height;
@@ -506,10 +521,20 @@ class CartellonePannelloClass extends JPanel implements MouseListener {
 		mouseY=e.getY();
 		if(isElementSelected())
 		{
-			poster.enableElementButton();
+			try {
+				//type 0 per un generico element, 1 per un control e 2 per un paper
+				
+				if(((FreePoster)(manager.getIPoster())).getElement(this.getSelectedElement()) instanceof Control)
+					posterMod.enableElementButton(1);
+				else if(((FreePoster)(manager.getIPoster())).getElement(this.getSelectedElement()) instanceof Paper)
+					posterMod.enableElementButton(2);
+				else posterMod.enableElementButton(0);
+			} catch (PositionEX e1) {
+				
+			}
 		}else
 		{
-			poster.disableElementButton();
+			posterMod.disableElementButton();
 		}
 		
 		repaint();
