@@ -180,9 +180,7 @@ public class NewElementFrame extends javax.swing.JFrame {
 		if(jRadioButton1.isSelected())
 		{
 			//ho selezionato l'elemento foglio
-			
-			
-			//manager.addPaperGP(position.x, position.y, null);
+	
 			NewPaperFrame newPaper=null;
 			if(grid)
 				 newPaper=new NewPaperFrame(manager,position);
@@ -209,20 +207,16 @@ public class NewElementFrame extends javax.swing.JFrame {
 				if(grid)
 					manager.addControlGP(position.x, position.y, control);
 				else{
-					//manager.setElementToControl(elementId,control);
-					//System.out.println("Attesa costruzione metodo setElementToControl");
 					Element oldElement=((FreePoster)(manager.getIPoster())).getElement(elementID);
 					ArrayList<Point2D> lista=new ArrayList<Point2D>();
-					int x=0;
-					for(x=0 ;x<oldElement.getArea().xpoints.length;x++)
+					
+					for(int x=0;x<oldElement.getArea().xpoints.length;x++)
 					{
 						
 						lista.add(new Point(oldElement.getArea().xpoints[x],oldElement.getArea().ypoints[x]));
 					}
 					manager.addControlFP(lista, control);
-					//System.out.println("Ultimo controllo inserito "+((FreePoster)manager.getIPoster()).getElement(new Point(oldElement.getArea().xpoints[x-1],oldElement.getArea().ypoints[x-1])).getId());
-					System.out.println("Elimino elemento "+ oldElement.getId());
-					manager.removeElement(oldElement.getId());
+					manager.removeElement(elementID);
 				}
 			} catch (PosterTypeEx e1) {
 				// TODO Auto-generated catch block

@@ -302,7 +302,7 @@ public class NewPaperFrame extends javax.swing.JFrame {
 						}
 						
 						manager.addPaperFP(lista, paths);
-						manager.removeElement(oldElement.getId());
+						manager.removeElement(elementId);
 					} catch (PositionEX e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
