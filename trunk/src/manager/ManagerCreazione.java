@@ -31,7 +31,7 @@ public abstract class ManagerCreazione{
 	protected Element newElement(Poster poster, String type) throws ElementTypeEX{
 		Element element=null;
 		if (type.equalsIgnoreCase("PAPER"))
-			element=new Paper(poster.getNumberOfElements()+1, new ArrayList<String>());
+			element=new Paper(poster.getMaxId()+1, new ArrayList<String>());
 		else 
 			if (type.equalsIgnoreCase("PAUSE"))
 			element=new PauseControl(poster.getMaxId()+1, manager);
