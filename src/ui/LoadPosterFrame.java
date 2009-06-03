@@ -53,7 +53,6 @@ public class LoadPosterFrame extends javax.swing.JFrame{
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         pathFileTextField = new javax.swing.JTextField();
-        
         navigaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -189,13 +188,26 @@ public class LoadPosterFrame extends javax.swing.JFrame{
         
         JFileChooser chooser = new JFileChooser();
         chooser.setMultiSelectionEnabled(false);
+        /*FileFilter filter = new FileFilter() {
 
+            public boolean accept(File file) {
+            }
+
+            public String getDescription() {
+                
+            }
+        };*/
+        //filter.addExtension("xml");
+   
+        //filter.setDescription("Poster");
+        //chooser.setFileFilter(filter);
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        chooser.setCurrentDirectory(new File("./temp"));
-        chooser.showOpenDialog(this);
-        File file = chooser.getSelectedFile();
-        if (file!=null)
-        	pathFileTextField.setText(file.getAbsolutePath());
+        chooser.setCurrentDirectory(new File("./temp/"));
+        if(chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
+        {
+	        File file = chooser.getSelectedFile();
+	        pathFileTextField.setText(file.getAbsolutePath());
+        }
 
     }
     
@@ -216,7 +228,6 @@ public class LoadPosterFrame extends javax.swing.JFrame{
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField pathFileTextField;
-    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration                   
     
     private Home home;
