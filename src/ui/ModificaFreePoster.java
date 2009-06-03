@@ -1,6 +1,7 @@
 package ui;
 
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -273,14 +274,19 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     private void aggiungiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
     	if(cartellonePanel.isElementSelected()){
     		NewElementFrame newElement=null;
+    		if(manager.getIPoster() instanceof FreePoster)
+				try {
+					newElement=new NewElementFrame(manager,cartellonePanel.getSelectedElement());
+				} catch (PositionEX e) {
+					
+				}
+    		
     	}
     	else
     	{
     		JOptionPane.showMessageDialog(this, "Selezionare almeno un elemento sul poster", "Attenzione", JOptionPane.WARNING_MESSAGE);
     	}
-    	//if(manager.getIPoster() instanceof GridPoster)
-    		//newElement=new NewElementFrame(manager,cartellonePanel.getPosition());
-		
+    	
 }
 
     private void rimuoviButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rimuoviButtonActionPerformed
@@ -421,6 +427,8 @@ class CartellonePannelloClass extends JPanel implements MouseListener {
         	Polygon newArea=new Polygon();
         	try {
         		Polygon area=poster.getElement(id).getArea();
+        		Element e=poster.getElement(id);
+        		
 				for(int x=0; x< area.xpoints.length;x++)
 				{
 					double px=area.xpoints[x]*scaleX;
@@ -431,9 +439,29 @@ class CartellonePannelloClass extends JPanel implements MouseListener {
 				}
 				if(newArea.contains(new Point(mouseX,mouseY)))
 				{
+					g.setColor(new Color(255,0,0));
 					((Graphics2D)g).fillPolygon(newArea);
-				}else
-					((Graphics2D)g).drawPolygon(newArea);
+				}else{
+					g.setColor(new Color(0,0,0));
+					
+					if(poster.getElement(id) instanceof Control)
+	        		{
+	        			g.setColor(new Color(0,0,255));
+	        			
+	        		}
+					else if(poster.getElement(id) instanceof Paper)
+	        		{
+	        			g.setColor(new Color(0,255,0));
+	        			
+	        		}
+	        		else if(poster.getElement(id) instanceof Element)
+	        		{
+	        			g.setColor(new Color(0,0,0));
+	        			
+	        		}
+	        		((Graphics2D)g).fillPolygon(newArea);
+				}
+				
 			} catch (PositionEX e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
