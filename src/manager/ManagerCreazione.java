@@ -34,19 +34,19 @@ public abstract class ManagerCreazione{
 			element=new Paper(poster.getNumberOfElements()+1, new ArrayList<String>());
 		else 
 			if (type.equalsIgnoreCase("PAUSE"))
-			element=new PauseControl(poster.getNumberOfElements()+1, manager);
+			element=new PauseControl(poster.getMaxId()+1, manager);
 		else 
 			if (type.equalsIgnoreCase("STOP"))
-			element=new StopControl(poster.getNumberOfElements()+1, manager);
+			element=new StopControl(poster.getMaxId()+1, manager);
 		else
 			if (type.equalsIgnoreCase("PLUSVOLUME"))
-				element=new VolumeControl(poster.getNumberOfElements()+1, manager,"+");
+				element=new VolumeControl(poster.getMaxId()+1, manager,"+");
 		else
 			if (type.equalsIgnoreCase("MINUSVOLUME"))
-				element=new VolumeControl(poster.getNumberOfElements()+1, manager,"-");
+				element=new VolumeControl(poster.getMaxId()+1, manager,"-");
 		else
 			if (type.equalsIgnoreCase("MUTEVOLUME"))
-				element=new VolumeControl(poster.getNumberOfElements()+1, manager,"X");
+				element=new VolumeControl(poster.getMaxId()+1, manager,"X");
 		else
 				throw new ElementTypeEX("Type not found");
 		return element;
