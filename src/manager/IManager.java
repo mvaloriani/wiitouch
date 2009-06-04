@@ -49,6 +49,7 @@ public interface IManager {
 	public Polygon createArea(Integer numPoints);
 	public void connect();
 	public void batteryLevel(ActionListener listener);
+	public boolean wiiConnected();
 	
 	//get vlcThred
 	public void endSystem();

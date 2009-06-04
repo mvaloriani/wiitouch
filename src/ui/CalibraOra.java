@@ -28,6 +28,14 @@ public class CalibraOra extends JFrame {
     }
 	
 	protected void calibraActionPerformed(ActionEvent actionEvent) {
+		if(manager.wiiConnected()){
+			manager.connect();
+			try {
+				Thread.sleep(20000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 		manager.calibra();
 		
 		
@@ -71,7 +79,7 @@ public class CalibraOra extends JFrame {
 				contentPanel.setLayout(new BorderLayout());
 
 				//---- testoTextPane ----
-				testoTextPane.setText("Prima di poter modificare o usare questo tipo di cartellone \u00e8 necessario impostare l'area di lavoro.\nSe si desidera impostare ora l'area di lavoro premere ok e seguire le istruzioni.");
+				testoTextPane.setText("Prima di poter modificare o usare questo di cartellone \u00e8 necessario impostare l'area di lavoro.\nSe si desidera impostare ora l'area di lavoro premere accendere il WiiMote e premere ok.");
 				testoTextPane.setFont(new Font("Cambria", Font.PLAIN, 16));
 				testoTextPane.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
 				testoTextPane.setBackground(new Color(189, 204, 249));

@@ -52,6 +52,8 @@ public class Manager implements IManager {
 	
 	private vlcThread vlcThread;
 
+	private boolean wiiConnected;
+	
 	public void endSystem()
 	{
 		System.out.println("Provo a chiudere vlc");
@@ -69,6 +71,9 @@ public class Manager implements IManager {
 		return poster;
 	}
 
+	public boolean wiiConnected(){
+		return wiiConnected;
+	}
 
 	/**
 	 * @return the managerCreazione
@@ -246,9 +251,16 @@ public class Manager implements IManager {
 	}
 
 	public void connect(){
-		iWii.connect();
+		try{
+			iWii.connect();
+			wiiConnected=true;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
+	
 	public synchronized Polygon createArea(Integer numPoints){
 		pointsList= new ArrayList<Point2D>();
 		iWii.startPlay(new EventoSelezionaPuntoListener(){
@@ -369,7 +381,6 @@ public class Manager implements IManager {
 	public void batteryLevel(ActionListener listener) {
 		iWii.batteryLevel(listener);
 	}
-
 
 
 
