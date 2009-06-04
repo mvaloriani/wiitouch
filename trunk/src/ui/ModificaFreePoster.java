@@ -308,6 +308,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     		Element currentElement=null;
 			try {
 				currentElement = ((FreePoster)manager.getIPoster()).getElement(cartellonePanel.getSelectedElement());
+				NewPaperFrame newElement=new NewPaperFrame(manager,currentElement.getId());
 			} catch (PositionEX e) {
 				
 			}
@@ -348,7 +349,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     public void enableElementButton(int type)
     {
     	if(type==0){
-    		this.modificaButton.setEnabled(true);
+    		this.modificaButton.setEnabled(false);
     		this.aggiungiButton.setEnabled(true);
     	}
     	else if(type==1){
