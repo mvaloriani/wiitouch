@@ -35,6 +35,7 @@ import manager.PositionEX;
 import manager.PosterTypeEx;
 import dataModel.Control;
 import dataModel.Element;
+import dataModel.FreePoster;
 import dataModel.GridPoster;
 import dataModel.IPoster;
 import dataModel.Paper;
@@ -276,17 +277,20 @@ public class ModificaGridPoster extends javax.swing.JFrame {
     }//GEN-LAST:event_salvaButtonActionPerformed
 
     private void anteprimaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteprimaButtonActionPerformed
-        // TODO add your handling code here:
+        	try {
+    			((GridPoster)manager.getIPoster()).getElement(cartellonePanel.getPosition().x, cartellonePanel.getPosition().y).exec();
+    		} catch (PositionEX e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
     }//GEN-LAST:event_anteprimaButtonActionPerformed
 
    
     private void changeButtons(java.awt.event.ActionEvent evt){
     	Point p = (Point) evt.getSource();
     	try {
-			if (((GridPoster)poster).getElement(p.x, p.y) instanceof Paper)
+			if (((GridPoster)poster).getElement(p.x, p.y) instanceof Element)
 				setEnableButtons(false, true, true, true);
-			else
-				setEnableButtons(false, true, true, false);
 			
 		} catch (PositionEX e) {
 			setEnableButtons(true, false, false, false);
