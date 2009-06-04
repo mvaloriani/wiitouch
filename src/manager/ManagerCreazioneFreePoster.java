@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import dataModel.Control;
 import dataModel.Element;
 import dataModel.FreePoster;
+import dataModel.GridPoster;
 import dataModel.Paper;
 import dataModel.Poster;
 
@@ -45,6 +46,22 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 
 	}
 	
+	public Integer addElement(FreePoster poster,ArrayList<Point2D> points) throws PositionEX
+	{
+		Element element=null;
+		try {
+			element = super.newElement(poster, "GENERIC");
+		} catch (ElementTypeEX e) {
+			e.printStackTrace();
+		}
+		Polygon area = Utills.PolygonFromPoints(points);
+		element.setArea(area);
+		poster.addElement(element);
+		
+		return element.getId();
+		
+	}
+	
 	public void setPaperFiles(Poster poster,int id, ArrayList<String> files) throws PositionEX{
 		Element e = poster.getElement(id);
 		if (e instanceof Paper){
@@ -59,6 +76,10 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 		element.setArea(area);
 		poster.addElement(element);
 		return element.getId();
+	}
+	public void removeElement(GridPoster poster, int id) throws PositionEX {
+		poster.removeElement(id);
+		
 	}
 
 
