@@ -365,6 +365,12 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 		}
 	}
 	
+	private void setCell(Graphics g, Color color, Image img, int x, int y){
+		g.setColor(color);
+		g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+		g.drawImage(img,x*(this.getWidth()/col),y*(this.getHeight()/row),
+				this.getWidth()/col, this.getHeight()/row, this);
+	}
 
 	public void paint(Graphics g) {
         super.paint(g);
@@ -378,27 +384,18 @@ class CartellonePanelClass extends JPanel implements MouseListener {
         		try {
 					if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Control)
 					{
-						g.setColor(new Color(0,0,255));
-			        	g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
 			        	if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof PauseControl){
-			        		g.drawImage(imgPause,x*(this.getWidth()/col),y*(this.getHeight()/row),
-			        				this.getWidth()/col, this.getHeight()/row, this);
+			        		setCell(g, new Color(0,0,255), imgPause, x, y);
 			        	}
 			        	else if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof StopControl){
-			        		g.drawImage(imgStop,x*(this.getWidth()/col),y*(this.getHeight()/row),
-			        				this.getWidth()/col, this.getHeight()/row, this);
+			        		setCell(g, new Color(0,0,255), imgStop, x, y);
 			        	}
 			        	else
-			        		g.drawImage(imgGen,x*(this.getWidth()/col),y*(this.getHeight()/row),
-			        				this.getWidth()/col, this.getHeight()/row, this);
+			        		setCell(g, new Color(0,0,255), imgGen, x, y);
 					}
 					if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Paper)
 					{
-						g.setColor(new Color(0,255,0));
-			        	g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
-			        	g.drawImage(imgPaper,
-			        			x*(this.getWidth()/col),y*(this.getHeight()/row),
-		        				this.getWidth()/col, this.getHeight()/row, this);
+						setCell(g, new Color(0,255,0), imgPaper, x, y);
 			        	
 					}	
 					
@@ -410,9 +407,7 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 	        	
 	        	if(mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
 	        			mouseY>y*(this.getHeight()/row) && mouseY<(y+1)*(this.getHeight()/row)){
-	        	
-					g.setColor(new Color(255,0,0));
-	        		g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+					setCell(g, new Color(255,0,0), null, x, y);
 	        		
 	        	
 	        	}

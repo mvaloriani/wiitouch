@@ -1,6 +1,8 @@
 package manager;
 
 import java.awt.Polygon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -13,6 +15,8 @@ import java.util.ArrayList;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.event.ChangeListener;
 
 import Personal.EventoSelezionaPunto;
 import Personal.EventoSelezionaPuntoListener;
@@ -44,6 +48,8 @@ public class Manager implements IManager {
 
 	private IWiiHw iWii;
 
+	private ArrayList<Point2D> pointsList;
+	
 	private vlcThread vlcThread;
 
 	public void endSystem()
@@ -244,16 +250,17 @@ public class Manager implements IManager {
 	}
 
 	public synchronized Polygon createArea(Integer numPoints){
-		final ArrayList<Point2D> pointsList = new ArrayList<Point2D>();
+		pointsList= new ArrayList<Point2D>();
 		iWii.startPlay(new EventoSelezionaPuntoListener(){
 			public synchronized void OnEventoSelezionaPunto(EventoSelezionaPunto e) {
-				System.out.print("\npunto ricevuto x:"+ e.getPunto().x+ " y: "+e.getPunto().y);
-				pointsList.add(e.getPunto());		
+				newArea(e);
+				
 			}		
 		});
 		while(pointsList.size()<numPoints){
-
+			
 		}
+		iWii.stopPlay();
 		//iWii.removeAllListeners();
 		return Utills.PolygonFromPoints(pointsList);
 	}
@@ -271,6 +278,11 @@ public class Manager implements IManager {
 		}
 	}
 
+	private void newArea(EventoSelezionaPunto e){
+		System.out.print("\n size:" +pointsList.size()+" Aggiungo il punto ricevuto x:"+ e.getPunto().x+ " y: "+e.getPunto().y);
+		pointsList.add(e.getPunto());	
+	}
+	
 	private void eventoSelezionaPuntoActionPerformed(EventoSelezionaPunto e){
 		System.out.print("\npunto ricevuto x:"+ e.getPunto().x+ " y: "+e.getPunto().y);
 		play(e.getPunto());
@@ -286,43 +298,43 @@ public class Manager implements IManager {
 		public void run() {
 
 			this.exec();
-//			boolean error=false;
-//			Integer count=0;
-//			do{
-//				System.out.println("aspetto");
-//				try {
-//					Thread.sleep(1000);
-//				} catch (InterruptedException e2) {
-//					// TODO Auto-generated catch block
-//					e2.printStackTrace();
-//				}
-//				InetAddress addr = null;
-//				try {
-//					addr = InetAddress.getByName("127.0.0.1");
-//				} catch (UnknownHostException e) {
-//					e.printStackTrace();
-//				}
-//				int port = 4212;
-//				SocketAddress sockaddr = new InetSocketAddress(addr, port);
-//
-//				// Create an unbound socket
-//				Socket sock = new Socket();
-//
-//				// This method will block no more than timeoutMs.
-//				// If the timeout occurs, SocketTimeoutException is thrown.
-//				// int timeoutMs = 2000; Ê // 2 seconds
-//				try {
-//					sock.connect(sockaddr);
-//					System.out.println("connessione ok");
-//					error=false;
-//				} catch (IOException e1) {
-//					System.err.println("Socket problem.");
-//					error=true;
-//					count=count+1;
-//					ls_proc.destroy();
-//					this.exec();
-//				}
-//			}while(error&&(count<10));
+			boolean error=false;
+			Integer count=0;
+			do{
+				System.out.println("aspetto");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				InetAddress addr = null;
+				try {
+					addr = InetAddress.getByName("127.0.0.1");
+				} catch (UnknownHostException e) {
+					e.printStackTrace();
+				}
+				int port = 4212;
+				SocketAddress sockaddr = new InetSocketAddress(addr, port);
+
+				// Create an unbound socket
+				Socket sock = new Socket();
+
+				// This method will block no more than timeoutMs.
+				// If the timeout occurs, SocketTimeoutException is thrown.
+				// int timeoutMs = 2000; Ê // 2 seconds
+				try {
+					sock.connect(sockaddr);
+					System.out.println("connessione ok");
+					error=false;
+				} catch (IOException e1) {
+					System.err.println("Socket problem.");
+					error=true;
+					count=count+1;
+					ls_proc.destroy();
+					this.exec();
+				}
+			}while(error&&(count<10));
 
 
 		}
@@ -354,6 +366,9 @@ public class Manager implements IManager {
 	}
 
 
+	public void batteryLevel(ActionListener listener) {
+		iWii.batteryLevel(listener);
+	}
 
 
 

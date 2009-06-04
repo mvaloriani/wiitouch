@@ -72,54 +72,26 @@ public class Paper extends Element {
 	}
 
 	public void exec() {
-		InetAddress addr = null;
-		try {
-			addr = InetAddress.getByName("127.0.0.1");
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
-		int port = 4212;
-		SocketAddress sockaddr = new InetSocketAddress(addr, port);
-
-		// Create an unbound socket
-		Socket sock = new Socket();
-
-		// This method will block no more than timeoutMs.
-		// If the timeout occurs, SocketTimeoutException is thrown.
-		// int timeoutMs = 2000; Ê // 2 seconds
-		try {
-			sock.connect(sockaddr);
-		} catch (IOException e1) {
-			System.err.println("Socket problem.");
-			return;
-		}
-
+		
 		PrintWriter out = null;
-		BufferedReader in = null;
-
 		try {
-			out = new PrintWriter(sock.getOutputStream(), true);
-			in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-		} catch (UnknownHostException e) {
-			System.err.println("Don't know about host: taranis.");
-		} catch (IOException e) {
-			System.err.println("Couldn't get I/O for "
-					+ "the connection to: taranis.");
+			out=super.openConnection();
+			out.println("admin");
+			out.flush();
+			out.println("del all");
+			out.flush();
+			out.println("new myMedia broadcast enabled");
+			out.flush();
+			out.println("setup myMedia input " + pathsFiles.get(actualFile));
+			out.flush();
+			out.println("control myMedia play");
+			out.flush();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 
-		BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
-		String userInput;
-
-		out.println("admin");
-		out.flush();
-		out.println("del all");
-		out.flush();
-		out.println("new myMedia broadcast enabled");
-		out.flush();
-		out.println("setup myMedia input " + pathsFiles.get(actualFile));
-		out.flush();
-		out.println("control myMedia play");
-		out.flush();
+		
 	}
 
 }

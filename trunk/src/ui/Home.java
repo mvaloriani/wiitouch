@@ -13,8 +13,13 @@ package ui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import manager.IManager;
 import dataModel.FreePoster;
@@ -32,6 +37,15 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		this.manager = manager;
 		addWindowListener(this);
 		initComponents();
+		manager.batteryLevel(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				batteryManager(e);
+				
+			}
+			
+		});
 	}
 
 	/** This method is called from within the constructor to
@@ -242,6 +256,13 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 
 	private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		manager.play();
+	}
+	
+	private void batteryManager(ActionEvent e){
+		if (wiiPanel.isVisible()==true){
+			jProgressBar1.setValue((Integer)(e.getSource()));
+			jProgressBar1.setString(jProgressBar1.getValue()+"%");
+		}
 	}
 	
 	/**
