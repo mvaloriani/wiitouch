@@ -1,11 +1,13 @@
 package Personal;
 
+import java.awt.event.ActionListener;
+
 public interface IWiiHw {
 	
 	public void calibra();
 	public void startPlay(EventoSelezionaPuntoListener lis);
 	public void stopPlay();
 	public void connect();
-	public double batteryLevel();
+	public void batteryLevel(ActionListener pippo);
 
 }
