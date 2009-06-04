@@ -41,36 +41,36 @@ public class ModificaFreePoster extends javax.swing.JFrame {
         poster=manager.getIPoster();
     	initComponents();
     	
-    	//////
-    	ArrayList<Point2D> lista1,lista2,lista3=null;
-    	lista1=new ArrayList<Point2D>();
-    	lista2=new ArrayList<Point2D>();
-    	lista3=new ArrayList<Point2D>();
-    	
-    	lista1.add(new Point(0,0));
-    	lista1.add(new Point(640,0));
-    	lista1.add(new Point(640,800));
-    	lista1.add(new Point(0,800));
-    	
-    	lista2.add(new Point(640,0));
-    	lista2.add(new Point(1280,0));
-    	lista2.add(new Point(1280,300));
-    	lista2.add(new Point(640,300));
-    	
-    	lista3.add(new Point(640,550));
-    	lista3.add(new Point(1280,550));
-    	lista3.add(new Point(1280,800));
-    	lista3.add(new Point(640,800));
-    	
-    	try {
-			manager.addGenericElementFP(lista1);
-			manager.addGenericElementFP(lista2);
-			manager.addGenericElementFP(lista3);
-			
-		} catch (PositionEX e) {
-			
-			e.printStackTrace();
-		}
+//    	//////
+//    	ArrayList<Point2D> lista1,lista2,lista3=null;
+//    	lista1=new ArrayList<Point2D>();
+//    	lista2=new ArrayList<Point2D>();
+//    	lista3=new ArrayList<Point2D>();
+//    	
+//    	lista1.add(new Point(0,0));
+//    	lista1.add(new Point(640,0));
+//    	lista1.add(new Point(640,800));
+//    	lista1.add(new Point(0,800));
+//    	
+//    	lista2.add(new Point(640,0));
+//    	lista2.add(new P//oint(1280,0));
+//    	lista2.add(new Point(1280,300));
+//    	lista2.add(new Point(640,300));
+//    	
+//    	lista3.add(new Point(640,550));
+//    	lista3.add(new Point(1280,550));
+//    	lista3.add(new Point(1280,800));
+//    	lista3.add(new Point(640,800));
+//    	
+//    	try {
+//			manager.addGenericElementFP(lista1);
+//			manager.addGenericElementFP(lista2);
+//			manager.addGenericElementFP(lista3);
+//			
+//		} catch (PositionEX e) {
+//			
+//			e.printStackTrace();
+//		}
     }
 
     /** This method is called from within the constructor to
@@ -264,7 +264,15 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aggiungiAreaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
-    	
+    	Polygon area=manager.createArea(4);
+		ArrayList<Point2D> points = new ArrayList<Point2D>();
+		for(int i=0; i< area.npoints;i++){
+			points.add(new Point(area.xpoints[i],area.ypoints[i]));
+		}try {
+			manager.addGenericElementFP(points);
+		} catch (PositionEX e) {
+			e.printStackTrace();
+		}
 		
 }
 

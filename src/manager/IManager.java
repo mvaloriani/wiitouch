@@ -1,9 +1,12 @@
 package manager;
 
 import java.awt.Polygon;
+import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+
+import javax.swing.event.ChangeListener;
 
 import dataModel.Element;
 import dataModel.IPoster;
@@ -45,6 +48,7 @@ public interface IManager {
 	public void calibra();
 	public Polygon createArea(Integer numPoints);
 	public void connect();
+	public void batteryLevel(ActionListener listener);
 	
 	//get vlcThred
 	public void endSystem();
