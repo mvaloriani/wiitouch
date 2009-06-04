@@ -77,6 +77,9 @@ public class WiimoteDataHandler extends WiiRemoteAdapter implements ExitListener
 	private MouseSmoothingStrategy mss[] = new MouseSmoothingStrategy[4];
 	private CursorControlStrategy cursorControlStrategy;
 	
+	public Set<WiimoteDataListener> getWiiMote(){
+		return this.listener;
+	}
 	public WiimoteDataHandler(WiimoteCalibration calibration) {
 		this.calibration = calibration;		
 		Application.getInstance().addExitListener(this);
@@ -124,7 +127,9 @@ public class WiimoteDataHandler extends WiiRemoteAdapter implements ExitListener
 						// triggers #statusReported(WRStatusEvent)
 						if (remote.isConnected())
 							remote.requestStatus();
+						//OSCAR
 							Evento.getInterfaccia().notifyRemote(true);
+							
 					} catch (Exception e) {
 						e.printStackTrace();
 						WiimoteWhiteboard.getLogger().log(Level.WARNING, "Error on requesting status from Wii Remote", e);
@@ -238,6 +243,8 @@ public class WiimoteDataHandler extends WiiRemoteAdapter implements ExitListener
 		synchronized (listener) {
 			for (WiimoteDataListener l : listener)
 				l.batteryLevel(remotes.get(e.getSource()), e.getBatteryLevel());
+				//OSCAR
+			Evento.getInterfaccia().setBatteryLevel(e.getBatteryLevel());
 		}
 	}
 
