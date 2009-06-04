@@ -46,7 +46,7 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 
 	}
 	
-	public Integer addElement(FreePoster poster,ArrayList<Point2D> points) throws PositionEX
+	public Integer addElement(FreePoster poster,ArrayList<Point2D> points)
 	{
 		Element element=null;
 		try {
