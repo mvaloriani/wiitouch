@@ -196,7 +196,7 @@ public class ModificaGridPoster extends javax.swing.JFrame {
         });
         operazioniPanel.add(rimuoviButton);
 
-        modificaButton.setText("Modifica elemento");
+        modificaButton.setText("Modifica contenuto");
         modificaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modificaButtonActionPerformed(evt);
@@ -346,15 +346,15 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 		imgGen = toolkit.createImage("./gear.png");
 		imgPaper= toolkit.createImage("./txt.png");
 	}
-	
-    public synchronized void addActionListener(ActionListener actionListener) {
+
+	public synchronized void addActionListener(ActionListener actionListener) {
 		listeners.add(actionListener);
 	}
-	
+
 	public synchronized void removeActionListener(ActionListener actionListener) {
 		listeners.remove(actionListener);
 	}
-	
+
 	public void notifyElementSelected(Point p)
 	{
 		if(this.listeners.isEmpty()==false){
@@ -364,8 +364,8 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 			}
 		}
 	}
-	
-	private void setCell(Graphics g, Color color, Image img, int x, int y){
+
+	private void fillCell(Graphics g, Color color, Image img, int x, int y){
 		g.setColor(color);
 		g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
 		g.drawImage(img,x*(this.getWidth()/col),y*(this.getHeight()/row),
@@ -373,48 +373,61 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 	}
 
 	public void paint(Graphics g) {
-        super.paint(g);
-        for(int y=0;y<row;y++){
-	        for(int x=0;x<col;x++){
+		super.paint(g);
+		for(int y=0;y<row;y++){
+			for(int x=0;x<col;x++){
 
-	        	
-	        	g.setColor(new Color(0,0,0));
-	        	g.drawRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
-        		
-        		try {
+
+				try {
 					if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Control)
 					{
-			        	if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof PauseControl){
-			        		setCell(g, new Color(0,0,255), imgPause, x, y);
-			        	}
-			        	else if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof StopControl){
-			        		setCell(g, new Color(0,0,255), imgStop, x, y);
-			        	}
-			        	else
-			        		setCell(g, new Color(0,0,255), imgGen, x, y);
+						if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof PauseControl){
+							if(mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
+									mouseY>y*(this.getHeight()/row) && mouseY<(y+1)*(this.getHeight()/row)){
+								fillCell(g, new Color(255,0,0), imgPause, x, y);
+							}
+							else
+								fillCell(g, new Color(0,0,255), imgPause, x, y);
+						}
+						else if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof StopControl){
+							if(mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
+									mouseY>y*(this.getHeight()/row) && mouseY<(y+1)*(this.getHeight()/row)){
+								fillCell(g, new Color(255,0,0), imgStop, x, y);
+							}
+							else
+							fillCell(g, new Color(0,0,255), imgStop, x, y);
+						}
+						else
+							if(mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
+									mouseY>y*(this.getHeight()/row) && mouseY<(y+1)*(this.getHeight()/row)){
+								fillCell(g, new Color(255,0,0), imgGen, x, y);
+							}
+							else
+							fillCell(g, new Color(0,0,255), imgGen, x, y);
 					}
 					if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Paper)
 					{
-						setCell(g, new Color(0,255,0), imgPaper, x, y);
-			        	
+						if(mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
+								mouseY>y*(this.getHeight()/row) && mouseY<(y+1)*(this.getHeight()/row)){
+							fillCell(g, new Color(255,0,0), imgPaper, x, y);
+						}
+						else
+						fillCell(g, new Color(0,255,0), imgPaper, x, y);
+
 					}	
-					
+
 
 				} catch (PositionEX e) {
 					// TODO Auto-generated catch block
 					//e.printStackTrace();
 				}				
-	        	
-	        	if(mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
-	        			mouseY>y*(this.getHeight()/row) && mouseY<(y+1)*(this.getHeight()/row)){
-					setCell(g, new Color(255,0,0), null, x, y);
-	        		
-	        	
-	        	}
-	        }
-        }
-	        	
-    }
+				
+				g.setColor(new Color(0,0,0));
+				g.drawRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+			}
+		}
+
+	}
     public void setGridSize(int row,int col)
     {
     	this.col=col;

@@ -37,15 +37,7 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		this.manager = manager;
 		addWindowListener(this);
 		initComponents();
-		manager.batteryLevel(new ActionListener(){
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				batteryManager(e);
-				
-			}
-			
-		});
 	}
 
 	/** This method is called from within the constructor to
@@ -195,6 +187,11 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
 		wiiPanel.add(jProgressBar1, gridBagConstraints);
+		 manager.batteryLevel(new ActionListener() {
+			   public void actionPerformed(ActionEvent evt) {
+			     batteryManager(evt);
+			   }
+			  });
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.gridx = 1;
 		gridBagConstraints.gridy = 1;
@@ -260,7 +257,8 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 	
 	private void batteryManager(ActionEvent e){
 		if (wiiPanel.isVisible()==true){
-			jProgressBar1.setValue((Integer)(e.getSource()));
+			String s=e.getSource().toString();
+		    jProgressBar1.setValue(Integer.parseInt(s));
 			jProgressBar1.setString(jProgressBar1.getValue()+"%");
 		}
 	}
