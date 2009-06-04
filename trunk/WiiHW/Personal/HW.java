@@ -1,5 +1,7 @@
 package Personal;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -21,6 +23,7 @@ public class HW implements IWiiHw{
  private WhiteBoardThread whiteBoard;
  private WiimoteCalibration calibration;
  private WiimoteDataHandler dh;
+ private ActionListener batteriaListener;
  private double BatteryLevel;
  public ArrayList<EventoSelezionaPuntoListener> EventoSelezionaPuntoListeners=new ArrayList();
  private int x;
@@ -112,12 +115,23 @@ public void notifyRemote(boolean c)
 	
 public void setBatteryLevel(double d)
 {
-		this.BatteryLevel=d;
+	System.out.println("Batteria " + d);
+	if(this.batteriaListener!=null)
+		{
+			
+			this.BatteryLevel=d *100;
+			
+			ActionEvent c= new ActionEvent((int)this.BatteryLevel,5,"");
+			this.batteriaListener.actionPerformed(c);
+
+		}
 	}
 	
-public double batteryLevel()
+public void batteryLevel(ActionListener pippo)//Setta che vuole sapere il livello della batteria
 {
-	return this.BatteryLevel;
+	this.batteriaListener=pippo;
+
+	//return this.BatteryLevel;
 }
 	/*connetto il wiimote all'applicazione*/
 	public void connect()

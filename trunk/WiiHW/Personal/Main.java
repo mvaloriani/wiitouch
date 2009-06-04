@@ -56,7 +56,7 @@ import javax.swing.JOptionPane;
 					try{
 						Thread.sleep(60000);}
 						catch(Exception e34){};		
-			JOptionPane.showConfirmDialog(null, "livello batteria pari a" + wow.batteryLevel());
+			//JOptionPane.showConfirmDialog(null, "livello batteria pari a" + wow.batteryLevel());
 				
 			
 			}
