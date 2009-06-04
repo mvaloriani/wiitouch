@@ -138,7 +138,7 @@ public void batteryLevel(ActionListener pippo)//Setta che vuole sapere il livell
 	{
 	//l'idea è di chiudere l'applicazione e riaprirla se il bluethoot è aperto
 		
-			
+		System.out.println("Chiamo l' HW connect ");
 		this.whiteBoard= new WhiteBoardThread("whiteboard");
 		try{this.whiteBoard.run();}
 		catch( Exception e)
