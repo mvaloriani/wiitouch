@@ -3,6 +3,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 
 	public class Main extends JFrame{
@@ -30,7 +31,7 @@ import javax.swing.JFrame;
 	        
 	        
 	        wow = new HW();
-	        
+	        wow.connect();
 	     
 	        
 	      ProvaEvento ggg = new ProvaEvento();
@@ -49,10 +50,19 @@ import javax.swing.JFrame;
 	        //Display the window.
 	        frame.pack();
 	        frame.setVisible(true);
-	        
 	    
-	//        wow.calibra();
+	        new Thread(new Runnable() {
+				public void run() {
+					try{
+						Thread.sleep(60000);}
+						catch(Exception e34){};		
+			JOptionPane.showConfirmDialog(null, "livello batteria pari a" + wow.batteryLevel());
+				
+			
+			}
+			}).start();
 	
+	      
 	    }
 	    
 	    
