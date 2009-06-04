@@ -1,6 +1,5 @@
 package manager;
 
-import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
@@ -14,6 +13,7 @@ import Personal.EventoSelezionaPunto;
 import Personal.EventoSelezionaPuntoListener;
 import Personal.HW;
 import Personal.IWiiHw;
+import dataModel.Element;
 import dataModel.FreePoster;
 import dataModel.GridPoster;
 import dataModel.IPoster;
@@ -306,6 +306,10 @@ public class Manager implements IManager {
 			 if(ls_proc!=null)
 				 ls_proc.destroy();
 		 }
+	}
+
+	public Integer addGenericElementFP(ArrayList<Point2D> points) throws PositionEX {
+		return ((ManagerCreazioneFreePoster)managerCreazione).addElement((FreePoster)poster,points);
 	}
 
 

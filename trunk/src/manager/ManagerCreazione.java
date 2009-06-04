@@ -33,6 +33,9 @@ public abstract class ManagerCreazione{
 		if (type.equalsIgnoreCase("PAPER"))
 			element=new Paper(poster.getMaxId()+1, new ArrayList<String>());
 		else 
+		if (type.equalsIgnoreCase("GENERIC"))
+			element=new Element(poster.getMaxId()+1);
+		else 
 			if (type.equalsIgnoreCase("PAUSE"))
 			element=new PauseControl(poster.getMaxId()+1, manager);
 		else 
