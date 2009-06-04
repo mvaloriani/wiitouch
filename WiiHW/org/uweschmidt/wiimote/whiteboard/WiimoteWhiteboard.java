@@ -57,8 +57,9 @@ import Personal.Evento;
 import apple.dts.samplecode.osxadapter.OSXAdapter;
 
 public class WiimoteWhiteboard extends SingleFrameApplication {
+
 	
-	
+
 	
 	public static void main(String args[]) {
 		if (Util.MAC_OS_X && !Util.INSIDE_APP_BUNDLE) {
@@ -97,21 +98,24 @@ public class WiimoteWhiteboard extends SingleFrameApplication {
 
 			final JFrame f = getMainFrame();
 			LogWindow lw = new LogWindow();
-			
+			//
 			final WiimoteCalibration calibration = new WiimoteCalibration();
 			WiimoteDataHandler dh = new WiimoteDataHandler(calibration);
 			
 //			new IRDotLogger(dh);
 			
-			MainPanel mp = new MainPanel(dh, calibration);
+			
+			//OSCAR
+			System.out.println("PREMI 1 e 2");
+			//MainPanel mp = new MainPanel(dh, calibration);
 			//OSCAR
 			Evento.getInterfaccia().setCalibration(calibration);
 			Evento.getInterfaccia().setDH(dh);
-			AboutWindow af = new AboutWindow();
-			HelpHandler hh = new HelpHandler();
-			PreferencesWindow pf = new PreferencesWindow(mp, hh);
-			f.setJMenuBar(new MenuBar(pf, af, hh, lw));
-			registerForMacOSXEvents(pf, af);
+			//AboutWindow af = new AboutWindow();
+			//HelpHandler hh = new HelpHandler();
+			//prencesWindow pf = new PreferencesWindow(mp, hh);
+			//f.setJMenuBar(new MenuBar(pf, af, hh, lw));
+			//registerForMacOSXEvents(pf, af);
 			
 			// update Mouse's screen
 			calibration.addCalibrationEventListener(new WiimoteCalibration.CalibrationEventListener() {
@@ -139,7 +143,10 @@ public class WiimoteWhiteboard extends SingleFrameApplication {
 				getContext().getSessionStorage().restore(f, "mainFrame.session.xml");
 			} catch (Exception e) {}
 			
-			show(mp);
+			//OSCAR
+		//	show(mp);
+			
+			
 			// f.pack() is called in 'show' above if f.isValid() == false
 			f.pack();
 			
