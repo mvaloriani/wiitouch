@@ -63,17 +63,11 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     	lista3.add(new Point(640,800));
     	
     	try {
-			manager.addPaperFP(lista1, null);
-			manager.addControlFP(lista2, Control.MINUSVOLUME_CONTROL);
-			manager.addPaperFP(lista3, null);
+			manager.addGenericElementFP(lista1);
+			manager.addGenericElementFP(lista2);
+			manager.addGenericElementFP(lista3);
 			
-		} catch (PosterTypeEx e) {
-			
-			e.printStackTrace();
 		} catch (PositionEX e) {
-			
-			e.printStackTrace();
-		}catch (ElementTypeEX e) {
 			
 			e.printStackTrace();
 		}
