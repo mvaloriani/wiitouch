@@ -70,6 +70,13 @@ import manager.PosterTypeEx;
      	this.elementId=elementId;
      	grid=new Boolean(false);
      	initComponents();
+     	 try {
+  			IElement p = ((FreePoster)manager.getIPoster()).getElement(elementId);
+  			if(p instanceof Paper)
+  				fileTextField.setText(((Paper)p).getPathsFiles().get(0));
+  		} catch (Exception e) {
+  			System.out.println("elemento non ancora creato");
+  		}
  	}
      
      private void anteprimaActionPerformed(){
