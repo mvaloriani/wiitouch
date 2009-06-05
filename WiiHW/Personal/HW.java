@@ -17,13 +17,14 @@ public class HW implements IWiiHw{
 	
  public WiimoteWhiteboard Board;
  private static Evento Events;
- private boolean IsAddedRemote;
+ private int NumberAddedRemote;
  private boolean IsCalibrated;
  private boolean IsPlaying;
  private WhiteBoardThread whiteBoard;
  private WiimoteCalibration calibration;
  private WiimoteDataHandler dh;
  private ActionListener batteriaListener;
+ private ActionListener remoteListener;
  private double BatteryLevel;
  public ArrayList<EventoSelezionaPuntoListener> EventoSelezionaPuntoListeners=new ArrayList();
  private int x;
@@ -98,7 +99,7 @@ public WiimoteWhiteboard getWhiteboard(){
 
 public HW()
 	{
-		this.IsAddedRemote=false;
+		this.NumberAddedRemote=0;
 		this.IsCalibrated=false;
 		this.IsPlaying=false;
 		this.BatteryLevel=0;
@@ -106,11 +107,20 @@ public HW()
 		Events.setInterfaccia(this);	
 	}
 
-
-public void notifyRemote(boolean c)
+public void notifyError(String c)
 {
-		this.IsAddedRemote=c;
-	
+	System.out.println("Errore nella Sincronizzazione! Spegnere e riaccendere il WiiMote!");
+}
+
+
+public void notifyRemote(int c)
+{
+		this.NumberAddedRemote=c;
+		if(this.remoteListener!=null){
+			ActionEvent evt =new ActionEvent(c,1,"");
+			this.remoteListener.actionPerformed(evt);
+		}
+		System.out.println("Ci Sono " + c+ " remote connessi");
 }
 	
 public void setBatteryLevel(double d)
@@ -118,32 +128,39 @@ public void setBatteryLevel(double d)
 	System.out.println("Batteria " + d);
 	if(this.batteriaListener!=null)
 		{
-			
 			this.BatteryLevel=d *100;
-			
-			ActionEvent c= new ActionEvent((int)this.BatteryLevel,5,"");
-			this.batteriaListener.actionPerformed(c);
-
+			ActionEvent evt= new ActionEvent((int)this.BatteryLevel,5,"");
+			this.batteriaListener.actionPerformed(evt);
 		}
 	}
+
+
+public void remoteAdded(ActionListener pippo)
+{
+	this.remoteListener=pippo;
+}
 	
-public void batteryLevel(ActionListener pippo)//Setta che vuole sapere il livello della batteria
+public void batteryLevel(ActionListener pippo)
 {
 	this.batteriaListener=pippo;
-
-	//return this.BatteryLevel;
 }
-	/*connetto il wiimote all'applicazione*/
+	
+
+
+
+
+
+
+/*connetto il wiimote all'applicazione*/
 	public void connect()
 	{
-	//l'idea è di chiudere l'applicazione e riaprirla se il bluethoot è aperto
+	
 		
-		System.out.println("Chiamo l' HW connect ");
 		this.whiteBoard= new WhiteBoardThread("whiteboard");
 		try{this.whiteBoard.run();}
 		catch( Exception e)
 		{
-		JOptionPane.showConfirmDialog(null,"eccezioneeeee");
+		System.out.println("L'apertura del nuovo Thread whiteBoard non è andata a buon fine");
 		}
 			
 	}
