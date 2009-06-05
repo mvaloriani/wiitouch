@@ -377,10 +377,11 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 		for(int y=0;y<row;y++){
 			for(int x=0;x<col;x++){
 
-
+				boolean isElement=false;
 				try {
 					if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Control)
 					{
+						isElement=true;
 						if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof PauseControl){
 							if(mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
 									mouseY>y*(this.getHeight()/row) && mouseY<(y+1)*(this.getHeight()/row)){
@@ -404,17 +405,19 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 							}
 							else
 							fillCell(g, new Color(0,0,255), imgGen, x, y);
+					
 					}
-					if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Paper)
+					else if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Paper)
 					{
+						isElement=true;
 						if(mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
 								mouseY>y*(this.getHeight()/row) && mouseY<(y+1)*(this.getHeight()/row)){
 							fillCell(g, new Color(255,0,0), imgPaper, x, y);
 						}
 						else
 						fillCell(g, new Color(0,255,0), imgPaper, x, y);
-
-					}	
+						
+					}
 
 
 				} catch (PositionEX e) {
@@ -424,6 +427,12 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 				
 				g.setColor(new Color(0,0,0));
 				g.drawRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+				if(isElement==false && mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
+						mouseY>y*(this.getHeight()/row) && mouseY<(y+1)*(this.getHeight()/row)){
+					g.setColor(new Color(255,0,0));
+					g.fillRect(x*(this.getWidth()/col),y*(this.getHeight()/row),this.getWidth()/col, this.getHeight()/row);
+			
+				}
 			}
 		}
 
@@ -470,7 +479,7 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
+
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
