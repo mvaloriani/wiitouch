@@ -55,14 +55,11 @@ public class WiimoteConnector {
 			try{
 				WiiRemoteJ.findRemotes(dh, WWPreferences.WIIMOTES);
 			}catch(IllegalStateException e){
-				
+				/*
 				new Thread(new Runnable() {
 					public void run() {
 					
-				Object[] options = { "Ritenta", "Annulla" };
-				int valu= JOptionPane.showOptionDialog(null, "Assicurarsi che il Bluetooth sia attivo", "NESSUNA CONNESSIONE BLUETOOTH",
-				JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE,
-				null, options, options[0]);
+				
 				System.out.println("non bluethoth input valuore " +valu);
 				if(valu==0)
 				{//Se vuole ritentare riprovo a riaprire 
@@ -77,7 +74,7 @@ public class WiimoteConnector {
 				
 				}}
 				}).start();
-				
+				*/
 			}
 		}
 	}

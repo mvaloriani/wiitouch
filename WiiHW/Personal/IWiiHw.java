@@ -9,5 +9,6 @@ public interface IWiiHw {
 	public void stopPlay();
 	public void connect();
 	public void batteryLevel(ActionListener pippo);
+	public void remoteAdded(ActionListener pippo);
 
 }

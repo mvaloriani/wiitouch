@@ -35,6 +35,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+
 import org.jdesktop.application.Application;
 import org.jdesktop.application.Application.ExitListener;
 import org.uweschmidt.wiimote.whiteboard.calibration.WiimoteCalibration;
@@ -46,6 +49,7 @@ import org.uweschmidt.wiimote.whiteboard.mouse.smoothing.MouseSmoothingStrategy;
 import org.uweschmidt.wiimote.whiteboard.preferences.WWPreferences;
 import org.uweschmidt.wiimote.whiteboard.preferences.WWPreferences.PreferencesListener;
 
+import wiiremotej.PrebufferedSound;
 import wiiremotej.WiiRemote;
 import wiiremotej.WiiRemoteJ;
 import wiiremotej.event.WRButtonEvent;
@@ -86,6 +90,8 @@ public class WiimoteDataHandler extends WiiRemoteAdapter implements ExitListener
 		prefs.addPreferencesListener(this);
 		preferencesChanged();
 		new WiimoteConnector(this).connect();
+		
+		
 //		WiiRemoteJ.findRemotes(this, WWPreferences.WIIMOTES);
 	}
 	
@@ -101,20 +107,42 @@ public class WiimoteDataHandler extends WiiRemoteAdapter implements ExitListener
 			int id = remotes.size()+1;
 			final Wiimote wiimote = new Wiimote(remote, remote.getBluetoothAddress(), id);
 			remotes.put(remote, wiimote);
-			remote.setAccelerometerEnabled(false);
+			//OSCAR
+		//	remote.setAccelerometerEnabled(false);
+			
+			
+			
+			
+			
+			
 //			remote.setIRSensorEnabled(true, WRIREvent.BASIC, SENSITIVITY_BLOCK1, SENSITIVITY_BLOCK2);
 			enableIR(wiimote);
-			remote.setLEDIlluminated(id-1, true);			
 			remote.setUseMouse(false);
 			
 			synchronized (listener) {
 				for (WiimoteDataListener l : listener)
 					l.wiimoteConnected(wiimote);
+				
+				
+				//OSCAR
+				Evento.getInterfaccia().notifyRemote(remotes.size());
+				remote.setLEDIlluminated(0, true);
+				remote.setLEDIlluminated(1, true);
+				remote.setLEDIlluminated(2, true);
+				remote.setLEDIlluminated(3, true);
+				remote.startVibrating();
+				Thread.sleep(1000);
+				remote.setLEDIlluminated(1,false);
+				remote.setLEDIlluminated(2,false);
+				remote.stopVibrating();
 			}
 			
 		} catch (Exception e) {
-			e.printStackTrace();
-			WiimoteWhiteboard.getLogger().log(Level.SEVERE, "Error on configuring Wii Remote", e);
+			//e.printStackTrace();
+			//WiimoteWhiteboard.getLogger().log(Level.SEVERE, "Error on configuring Wii Remote", e);
+			System.out.println("ERRORE nella sincronizzazione:Spegnere il remote");
+			//OSCAR
+			Evento.getInterfaccia().notifyError("");
 		}
 		
 		remote.addWiiRemoteListener(this);
@@ -127,8 +155,7 @@ public class WiimoteDataHandler extends WiiRemoteAdapter implements ExitListener
 						// triggers #statusReported(WRStatusEvent)
 						if (remote.isConnected())
 							remote.requestStatus();
-						//OSCAR
-							Evento.getInterfaccia().notifyRemote(true);
+
 							
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -244,7 +271,7 @@ public class WiimoteDataHandler extends WiiRemoteAdapter implements ExitListener
 			for (WiimoteDataListener l : listener)
 				l.batteryLevel(remotes.get(e.getSource()), e.getBatteryLevel());
 				//OSCAR
-			Evento.getInterfaccia().setBatteryLevel(e.getBatteryLevel());
+				Evento.getInterfaccia().setBatteryLevel(e.getBatteryLevel());
 		}
 	}
 
@@ -260,6 +287,10 @@ public class WiimoteDataHandler extends WiiRemoteAdapter implements ExitListener
 	public void wiiDeviceDiscovered(WiiDeviceDiscoveredEvent e) {
 		if (e.getWiiDevice() instanceof WiiRemote) {
 			addRemote((WiiRemote)e.getWiiDevice());
+
+			//OSCAR
+			System.out.println("TROVATO WIIMOTE");
+			Evento.getInterfaccia().notifyRemote(remotes.size());
 		}
 	}
 	
@@ -282,7 +313,11 @@ public class WiimoteDataHandler extends WiiRemoteAdapter implements ExitListener
 			}
 		}
 		if (remove != null) remotes.remove(remove);
-	}	
+		//OSCAR
+		System.out.println("RIMOSSO REMOTE");
+		//OSCAR
+		Evento.getInterfaccia().notifyRemote(remotes.size());
+		}	
 	
 	
 	/*
