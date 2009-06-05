@@ -9,6 +9,7 @@ public interface IPoster {
 	public String getName();
 	public String getDescription();
 	public String getClassroom();
+	public Boolean isCalibated();
 	//public IElement getElement(Integer id) throws PositionEX;
 	
 	public Integer getCol();

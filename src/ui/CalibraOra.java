@@ -12,6 +12,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import manager.IManager;
+import manager.Manager;
 
 /**
  * @author Giulio Presazzi
@@ -27,17 +28,19 @@ public class CalibraOra extends JFrame {
     	dispose();
     }
 	
-	protected void calibraActionPerformed(ActionEvent actionEvent) {
-		if(manager.wiiConnected()){
-			manager.connect();
+	protected void connettiActionPerformed(ActionEvent actionEvent) {
+		if(manager.wiiConnected()==false){
 			try {
-				Thread.sleep(20000);
+				manager.connect();
+				Thread.sleep(2000);
+				manager.calibra();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		manager.calibra();
-		
+		else 
+			manager.calibra();
+		dispose();
 		
 	}
 	
@@ -79,7 +82,10 @@ public class CalibraOra extends JFrame {
 				contentPanel.setLayout(new BorderLayout());
 
 				//---- testoTextPane ----
-				testoTextPane.setText("Prima di poter modificare o usare questo di cartellone \u00e8 necessario impostare l'area di lavoro.\nSe si desidera impostare ora l'area di lavoro premere accendere il WiiMote e premere ok.");
+				if (manager.wiiConnected()==false)
+					testoTextPane.setText("Prima di poter modificare o usare questo di cartellone \u00e8 necessario impostare l'area di lavoro.\nSe si desidera impostare ora l'area di lavoro accendere il WiiMote e premere i bottoni 1 e 2, poi cliccare ok.");
+				else
+					testoTextPane.setText("Prima di poter modificare o usare questo di cartellone \u00e8 necessario impostare l'area di lavoro premere ok.");
 				testoTextPane.setFont(new Font("Cambria", Font.PLAIN, 16));
 				testoTextPane.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
 				testoTextPane.setBackground(new Color(189, 204, 249));
@@ -104,7 +110,7 @@ public class CalibraOra extends JFrame {
 				okButton.setText("OK");
 				okButton.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent actionEvent) {
-					    calibraActionPerformed(actionEvent);
+					    connettiActionPerformed(actionEvent);
 					    
 					}
 					
