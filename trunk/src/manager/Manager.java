@@ -12,6 +12,7 @@ import java.net.Socket;
 import java.net.SocketAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.EventListener;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,7 +34,7 @@ import dataModel.Poster;
 /**
  * @uml.dependency   supplier="manager.IManager"
  */
-public class Manager implements IManager {
+public class Manager implements IManager, EventListener{
 
 
 	private ManagerDati managerDati;
@@ -53,6 +54,8 @@ public class Manager implements IManager {
 	private vlcThread vlcThread;
 
 	private boolean wiiConnected;
+	
+	private ArrayList<ActionListener> actionListenerList;
 	
 	public void endSystem()
 	{
@@ -93,7 +96,9 @@ public class Manager implements IManager {
 		this.managerCreazione=null;
 		this.poster = null;
 		this.lastPaper = null;
+		this.actionListenerList= new ArrayList<ActionListener>();
 		this.iWii = new HW();
+		this.wiiConnected=false;
 
 		// logger
 		FileHandler fh=null;
@@ -238,7 +243,7 @@ public class Manager implements IManager {
 	public void play() {
 		iWii.startPlay(new EventoSelezionaPuntoListener(){
 			public void OnEventoSelezionaPunto(EventoSelezionaPunto e) {
-				eventoSelezionaPuntoActionPerformed(e);
+				ricevutoPuntoActionPerformed(e);
 			}
 
 		});
@@ -250,16 +255,23 @@ public class Manager implements IManager {
 
 	}
 
-	public void connect(){
+	public void connect() throws ExceptionInInitializerError{
 		try{
 			iWii.connect();
 			wiiConnected=true;
+			notifyConnection();
 		}catch (Exception e) {
-			e.printStackTrace();
+			throw (new ExceptionInInitializerError());
 		}
 		
 	}
 
+	public void batteryLevel(ActionListener listener) {
+		iWii.batteryLevel(listener);
+	}
+	public void connectionManager(ActionListener listener) {
+		actionListenerList.add(listener);
+	}
 	
 	public synchronized Polygon createArea(Integer numPoints){
 		pointsList= new ArrayList<Point2D>();
@@ -295,11 +307,16 @@ public class Manager implements IManager {
 		pointsList.add(e.getPunto());	
 	}
 	
-	private void eventoSelezionaPuntoActionPerformed(EventoSelezionaPunto e){
+	private void ricevutoPuntoActionPerformed(EventoSelezionaPunto e){
 		System.out.print("\npunto ricevuto x:"+ e.getPunto().x+ " y: "+e.getPunto().y);
 		play(e.getPunto());
 	}
 
+	private void notifyConnection(){
+		for(ActionListener a : actionListenerList)
+			a.actionPerformed(new ActionEvent(this, 0, null));
+	}
+	
 	private static class vlcThread extends Thread {
 
 		private Process ls_proc;
@@ -378,9 +395,7 @@ public class Manager implements IManager {
 	}
 
 
-	public void batteryLevel(ActionListener listener) {
-		iWii.batteryLevel(listener);
-	}
+
 
 
 

@@ -21,6 +21,8 @@ import java.awt.event.WindowListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import sun.awt.windows.WWindowPeer;
+
 import manager.IManager;
 import dataModel.FreePoster;
 import dataModel.GridPoster;
@@ -90,7 +92,7 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 
 		playButton.setText("Fai Parlare");
 		playButton.setEnabled(false);
-		modificaButton.addActionListener(new java.awt.event.ActionListener() {
+		playButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				playButtonActionPerformed(evt);
 			}
@@ -187,11 +189,18 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
 		wiiPanel.add(jProgressBar1, gridBagConstraints);
-		 manager.batteryLevel(new ActionListener() {
+		manager.batteryLevel(new ActionListener() {
 			   public void actionPerformed(ActionEvent evt) {
 			     batteryManager(evt);
 			   }
 			  });
+		manager.connectionManager(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				connectionManager();
+				
+			}
+			
+		});
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.gridx = 1;
 		gridBagConstraints.gridy = 1;
@@ -244,15 +253,16 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		}
 		else{
 			wiiPanel.setVisible(true);
-			pack();
-			
 			manager.connect();
 		}
-		pack();
 	}
 
 	private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		manager.play();
+		if (manager.getIPoster().isCalibated())
+			manager.play();
+		else{
+			CalibraOra calibraOra = new CalibraOra(manager);
+		}
 	}
 	
 	private void batteryManager(ActionEvent e){
@@ -261,6 +271,11 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		    jProgressBar1.setValue(Integer.parseInt(s));
 			jProgressBar1.setString(jProgressBar1.getValue()+"%");
 		}
+	}
+	
+	private void connectionManager(){
+		if (wiiPanel.isVisible()==false)
+			wiiPanel.setVisible(true);
 	}
 	
 	/**

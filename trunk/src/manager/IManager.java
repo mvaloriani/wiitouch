@@ -47,9 +47,10 @@ public interface IManager {
 	//Wii method
 	public void calibra();
 	public Polygon createArea(Integer numPoints);
-	public void connect();
+	public void connect() throws ExceptionInInitializerError;
 	public void batteryLevel(ActionListener listener);
 	public boolean wiiConnected();
+	public void connectionManager(ActionListener listener);
 	
 	//get vlcThred
 	public void endSystem();
