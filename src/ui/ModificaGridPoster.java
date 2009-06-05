@@ -238,6 +238,7 @@ public class ModificaGridPoster extends javax.swing.JFrame {
     private void aggiungiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
     	setEnableButtons(false, false, false, false);
     	NewElementFrame newElement=new NewElementFrame(manager,cartellonePanel.getPosition());	
+    	cartellonePanel.repaint();
     }
     
     private void rimuoviButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rimuoviButtonActionPerformed
@@ -248,6 +249,7 @@ public class ModificaGridPoster extends javax.swing.JFrame {
 		} catch (PositionEX e) {e.printStackTrace();
 		} catch (PosterTypeEx e) {e.printStackTrace();
 		}
+		cartellonePanel.repaint();
 }//GEN-LAST:event_rimuoviButtonActionPerformed
 
     private void modificaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaButtonActionPerformed

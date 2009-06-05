@@ -273,7 +273,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 		} catch (PositionEX e) {
 			e.printStackTrace();
 		}
-		
+		cartellonePanel.repaint();
 }
 
     
@@ -292,6 +292,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     	{
     		JOptionPane.showMessageDialog(this, "Selezionare almeno un elemento sul poster", "Attenzione", JOptionPane.WARNING_MESSAGE);
     	}
+    	cartellonePanel.repaint();
     	
 }
 
@@ -308,6 +309,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 				}
 	        }
         }
+        cartellonePanel.repaint();
     }
 
     private void modificaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaButtonActionPerformed
