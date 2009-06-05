@@ -62,10 +62,11 @@ public class WiimoteWhiteboard extends SingleFrameApplication {
 
 	
 	public static void main(String args[]) {
-		if (Util.MAC_OS_X && !Util.INSIDE_APP_BUNDLE) {
-			System.setProperty("apple.laf.useScreenMenuBar", "true");
-			System.setProperty("com.apple.mrj.application.apple.menu.about.name", getProperty("id"));
-		}
+		//OSCAR
+		//if (Util.MAC_OS_X && !Util.INSIDE_APP_BUNDLE) {
+			//System.setProperty("apple.laf.useScreenMenuBar", "true");
+			//System.setProperty("com.apple.mrj.application.apple.menu.about.name", getProperty("id"));
+		//}
 
 		String lang = WWPreferences.getPreferences().getLanguage();
 		if (lang.length() > 0) {
@@ -93,6 +94,7 @@ public class WiimoteWhiteboard extends SingleFrameApplication {
 						UpdateNotifier.checkForUpdate(getProperty("version"));
 				}
 			}).start();
+			
 			
 			Logger.getLogger("wiimotewhiteboard").setUseParentHandlers(false);
 
