@@ -269,6 +269,11 @@ public class Manager implements IManager, EventListener{
 	public void batteryLevel(ActionListener listener) {
 		iWii.batteryLevel(listener);
 	}
+	
+
+	public void remoteAdded(ActionListener listener) {
+		iWii.remoteAdded(listener);
+	}
 	public void connectionManager(ActionListener listener) {
 		actionListenerList.add(listener);
 	}
@@ -393,9 +398,6 @@ public class Manager implements IManager, EventListener{
 			}
 		}
 	}
-
-
-
 
 
 

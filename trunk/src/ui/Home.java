@@ -18,10 +18,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import sun.awt.windows.WWindowPeer;
+import javax.swing.JOptionPane;
 
 import manager.IManager;
 import dataModel.FreePoster;
@@ -189,11 +186,21 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
 		wiiPanel.add(jProgressBar1, gridBagConstraints);
-		manager.batteryLevel(new ActionListener() {
-			   public void actionPerformed(ActionEvent evt) {
-			     batteryManager(evt);
-			   }
-			  });
+		
+		
+		this.getManager().batteryLevel(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				batteryManager(evt);
+			}
+		});
+		
+		this.getManager().remoteAdded(new ActionListener() {
+			public void actionPerformed(ActionEvent evt)
+			{
+				remoteManager(evt);
+			}
+		});
+		
 		manager.connectionManager(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				connectionManager();
@@ -248,13 +255,7 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 	}
 
 	private void connettiButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if(wiiPanel.isVisible()){
-			wiiPanel.setVisible(false);
-		}
-		else{
-			wiiPanel.setVisible(true);
-			manager.connect();
-		}
+		connettiManager(evt);
 	}
 
 	private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,9 +274,53 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		}
 	}
 	
+	private void remoteManager(ActionEvent e){
+		//System.out.println("AAAAAA");
+		String s=e.getSource().toString();
+		if(Integer.parseInt(s)!=0)
+				{
+				connettiButton.setVisible(false);
+				wiiPanel.setVisible(true);
+				pack();
+				}
+		else
+		{
+			wiiPanel.setVisible(false);
+			connettiButton.setVisible(true);
+			connettiButton.setText("Connetti WiiMote");
+			pack();
+		
+		}
+	}
+	
+	private void connettiManager(ActionEvent evt){
+		if(this.primoAccesso==true)
+		{
+			Object[] options = { "Ok", "Annulla" };
+			int valu= JOptionPane.showOptionDialog(null, "Assicurarsi che il Bluetooth sia attivo", "CONNESSIONE BLUETOOTH",
+			JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+			null, options, options[0]);
+			if(valu==0)
+			{
+				this.primoAccesso=false;
+				manager.connect();
+				this.connettiButton.setText("Premi i tasti 1 e 2 del WiiMote");
+			}
+			
+		}
+		else
+		{
+		if(!wiiPanel.isVisible()){
+			manager.connect();
+			this.connettiButton.setText("Premi i tasti 1 e 2 del WiiMote");
+		}
+		}
+		
+
+	}
 	private void connectionManager(){
-		if (wiiPanel.isVisible()==false)
-			wiiPanel.setVisible(true);
+		//if (wiiPanel.isVisible()==false)
+		//	wiiPanel.setVisible(true);
 	}
 	
 	/**
@@ -290,6 +335,7 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
+	private boolean primoAccesso=true;
 	private javax.swing.JButton caricaButton;
 	private javax.swing.JButton connettiButton;
 	private javax.swing.JButton creaButton;

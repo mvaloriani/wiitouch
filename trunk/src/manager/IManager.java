@@ -49,6 +49,7 @@ public interface IManager {
 	public Polygon createArea(Integer numPoints);
 	public void connect() throws ExceptionInInitializerError;
 	public void batteryLevel(ActionListener listener);
+	public void remoteAdded(ActionListener listener);
 	public boolean wiiConnected();
 	public void connectionManager(ActionListener listener);
 	
