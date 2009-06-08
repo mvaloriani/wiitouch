@@ -92,7 +92,7 @@ public class CalibraOra extends JFrame {
 				contentPanel.add(testoTextPane, BorderLayout.CENTER);
 
 				//---- Alert ----
-				Alert.setText("Questo \u00e8 un cartellone di tipo libero!");
+				Alert.setText("Questo \u00e8 un cartellone non \u00e8 ancora stato calibrato!");
 				Alert.setFont(new Font("Cambria", Font.BOLD, 16));
 				contentPanel.add(Alert, BorderLayout.NORTH);
 			}

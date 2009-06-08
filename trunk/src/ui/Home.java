@@ -19,6 +19,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 import manager.IManager;
 import dataModel.FreePoster;
@@ -33,6 +34,12 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 
 	/** Creates new form Home */
 	public Home(IManager manager) {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		this.manager = manager;
 		addWindowListener(this);
 		initComponents();
