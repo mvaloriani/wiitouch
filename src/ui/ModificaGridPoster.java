@@ -93,7 +93,7 @@ public class ModificaGridPoster extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
-        setAlwaysOnTop(true);
+        //setAlwaysOnTop(true);
         setTitle("Modifica");
 
         cartellonePanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -194,7 +194,7 @@ public class ModificaGridPoster extends javax.swing.JFrame {
         });
         operazioniPanel.add(aggiungiButton);
 
-        rimuoviButton.setText("Rmuovi");
+        rimuoviButton.setText("Rimuovi");
         rimuoviButton.setToolTipText("Rimuovi contenuto dall'area selezionata");
         rimuoviButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

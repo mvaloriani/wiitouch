@@ -49,13 +49,11 @@ public class Manager implements IManager, EventListener{
 	
 	private ArrayList<ActionListener> actionListenerList;
 
-	private VlcThread vlcThread2;
 	
 	public void endSystem()
 	{
 		System.out.println("Provo a chiudere vlc");
 		vlcThread.termina();
-		vlcThread2.termina();
 
 	}
 

@@ -293,7 +293,8 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		if (wiiPanel.isVisible()==true){
 			String s=e.getSource().toString();
 		    jProgressBar1.setValue(Integer.parseInt(s));
-			jProgressBar1.setString(jProgressBar1.getValue()+"%");
+			jProgressBar1.setString(e.getSource().toString()+"%");
+			
 		}
 	}
 	
