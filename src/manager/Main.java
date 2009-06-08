@@ -23,7 +23,7 @@ public class Main {
 		IManager system = new Manager();
 
 		try{
-			Thread.sleep(5*1000);
+			Thread.sleep(2*1000);
 			Home home = new Home(system);
 			home.setVisible(true);
 		}catch (Exception e) {

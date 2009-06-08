@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.Dimension;
+import java.awt.Event;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,9 +36,10 @@ public class NewPosterFrame extends javax.swing.JFrame {
      * @param home */
     public NewPosterFrame(Home home, IManager manager) {
         initComponents();
+
         this.home = home;
         this.manager = manager;
-     jPanel4.setVisible(false);
+
     }
 
     /** This method is called from within the constructor to
@@ -77,15 +79,19 @@ public class NewPosterFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Crea Poster");
+        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(181, 208, 249));
-        setMinimumSize(new java.awt.Dimension(240, 335));
+        setMinimumSize(new java.awt.Dimension(210, 335));
+        setMaximumSize(new java.awt.Dimension(210, 335));
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel3.setBackground(new java.awt.Color(181, 208, 249));
         jPanel3.setLayout(new java.awt.GridBagLayout());
+        jPanel3.setSize(400, 600);
 
         jLabel7.setText("CREA POSTER");
+        jLabel7.setFont(new java.awt.Font("Cambria", 0, 18));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -122,6 +128,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, gridBagConstraints);
 
         jLabel1.setText("*Nome");
+        jLabel1.setFont(new java.awt.Font("Cambria", 0, 18));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -130,6 +137,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel1, gridBagConstraints);
 
         jLabel3.setText("Descrizione");
+        jLabel3.setFont(new java.awt.Font("Cambria", 0, 18));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -147,6 +155,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
 //        jPanel1.add(notaLabel, gridBagConstraints);
 
         jLabel2.setText("*Classe");
+        jLabel2.setFont(new java.awt.Font("Cambria", 0, 18));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -166,6 +175,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(181, 208, 249));
         jPanel4.setLayout(new java.awt.GridBagLayout());
+        
 
         jTextField5.setColumns(2);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -175,6 +185,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
         jPanel4.add(jTextField5, gridBagConstraints);
 
         jLabel6.setText("Colonne");
+        jLabel6.setFont(new java.awt.Font("Cambria", 0, 18));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
@@ -189,6 +200,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
         jPanel4.add(jTextField3, gridBagConstraints);
 
         jLabel5.setText("Righe");
+        jLabel5.setFont(new java.awt.Font("Cambria", 0, 18));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -204,6 +216,8 @@ public class NewPosterFrame extends javax.swing.JFrame {
         jPanel2.add(jPanel4, gridBagConstraints);
 
         jLabel4.setText("*SELEZIONA TIPO POSTER");
+        jLabel4.setFont(new java.awt.Font("Cambria", 0, 18));
+        
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -215,6 +229,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
         grigliaRadioButton.setBackground(new java.awt.Color(181, 208, 249));
         buttonGroup1.add(grigliaRadioButton);
         grigliaRadioButton.setText("A griglia");
+        grigliaRadioButton.setFont(new java.awt.Font("Cambria", 0, 18));
         grigliaRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showTextField(evt);
@@ -230,6 +245,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
         liberoRadioButton.setBackground(new java.awt.Color(181, 208, 249));
         buttonGroup1.add(liberoRadioButton);
         liberoRadioButton.setText("Libero");
+        liberoRadioButton.setFont(new java.awt.Font("Cambria", 0, 18));
         liberoRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 notShowTextField(evt);
@@ -247,6 +263,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
         creaButton.setText("Crea poster");
+        creaButton.setFont(new java.awt.Font("Cambria", 0, 24));
         creaButton.setToolTipText("Crea Poster");
         creaButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent) {
@@ -265,6 +282,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
 //        jPanel5.add(jButton2, gridBagConstraints);
 
         annullaButton.setText("Annulla");
+        annullaButton.setFont(new java.awt.Font("Cambria", 0, 24));
         annullaButton.setToolTipText("Annulla");
         annullaButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent) {
@@ -294,6 +312,11 @@ public class NewPosterFrame extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new java.awt.GridBagConstraints());
 
         pack();
+        
+    	jPanel4.setEnabled(false);
+    	jTextField3.setEditable(false);
+    	jTextField5.setEditable(false);
+
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
         int screenHeight = screenSize.height;
@@ -309,13 +332,17 @@ public class NewPosterFrame extends javax.swing.JFrame {
     }
     
     private void showTextField(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showTextField
-    	jPanel4.setVisible(true);
+    	jPanel4.setEnabled(true);
+    	jTextField3.setEditable(true);
+    	jTextField5.setEditable(true);
 
 // TODO add your handling code here:
     }//GEN-LAST:event_showTextField
 
     private void notShowTextField(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notShowTextField
-    	jPanel4.setVisible(false);        // TODO add your handling code here:
+    	jPanel4.setEnabled(false);
+    	jTextField3.setEditable(false);
+    	jTextField5.setEditable(false);
     }//GEN-LAST:event_notShowTextField
 
 

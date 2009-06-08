@@ -32,6 +32,10 @@ public class AggiungiOra extends JFrame {
 		dispose();
 	}
 	
+	public static void main(String[] args) {
+		AggiungiOra agg = new AggiungiOra(null,null);
+	}
+	
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		// Generated using JFormDesigner Evaluation license - Giulio Presazzi
@@ -45,6 +49,7 @@ public class AggiungiOra extends JFrame {
 		setResizable(false);
 		setVisible(true);
 		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		setAlwaysOnTop(true);
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
 
@@ -53,20 +58,13 @@ public class AggiungiOra extends JFrame {
 			dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
 			dialogPane.setBackground(new Color(181, 208, 249));
 
-			// JFormDesigner evaluation mark
-			dialogPane.setBorder(new javax.swing.border.CompoundBorder(
-				new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-					"JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-					javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-					java.awt.Color.red), dialogPane.getBorder())); dialogPane.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
-
 			dialogPane.setLayout(new BorderLayout());
 
 			//---- textPane1 ----
 			textPane1.setText("Vuoi aggiungere ora i contenuti multimediali al tuo catellone?");
 			textPane1.setBackground(new Color(181, 208, 249));
 			textPane1.setBorder(null);
-			textPane1.setFont(new Font("Cambria", Font.BOLD, 18));
+			textPane1.setFont(new java.awt.Font("Cambria", 0, 24));
 			dialogPane.add(textPane1, BorderLayout.NORTH);
 
 			//======== buttonBar ========
@@ -78,6 +76,7 @@ public class AggiungiOra extends JFrame {
 
 				//---- okButton ----
 				okButton.setText("Aggiungi ora");
+				okButton.setFont(new java.awt.Font("Cambria", 0, 24));
 				okButton.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
 						aggiungiActionPerformed(evt);
@@ -89,6 +88,7 @@ public class AggiungiOra extends JFrame {
 
 				//---- cancelButton ----
 				cancelButton.setText("Aggiungi dopo");
+				cancelButton.setFont(new java.awt.Font("Cambria", 0, 24));
 		        cancelButton.addActionListener(new ActionListener(){
 		            public void actionPerformed(ActionEvent actionEvent) {
 		                annullaActionPerformed(actionEvent);

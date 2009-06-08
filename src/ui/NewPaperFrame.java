@@ -218,6 +218,7 @@ import manager.PosterTypeEx;
          setTitle("File");
          setBackground(new java.awt.Color(181, 208, 249));
          setResizable(false);
+         setAlwaysOnTop(true);
          jPanel2.setLayout(new java.awt.GridBagLayout());
 
          jPanel2.setBackground(new java.awt.Color(181, 208, 249));

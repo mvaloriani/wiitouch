@@ -75,11 +75,13 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		setBackground(new java.awt.Color(51, 51, 255));
 		setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 		getContentPane().setLayout(new java.awt.GridBagLayout());
+		
 
 		topPanel.setBackground(new java.awt.Color(181, 204, 249));
 		topPanel.setLayout(new java.awt.GridBagLayout());
 
 		caricaButton.setText("Carica Tabellone");
+		caricaButton.setFont(new java.awt.Font("Cambria", 0, 24));
 		caricaButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				caricaButtonActionPerformed(evt);
@@ -95,6 +97,7 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		topPanel.add(caricaButton, gridBagConstraints);
 
 		playButton.setText("Fai Parlare");
+		playButton.setFont(new java.awt.Font("Cambria", 0, 24));
 		playButton.setEnabled(false);
 		playButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +120,7 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		topPanel.add(jLabel1, gridBagConstraints);
 
 		modificaButton.setText("Modifica Tabellone");
+		modificaButton.setFont(new java.awt.Font("Cambria", 0, 24));
 		modificaButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				modificaButtonActionPerformed(evt);
@@ -132,6 +136,7 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		topPanel.add(modificaButton, gridBagConstraints);
 
 		creaButton.setText("Crea Tabellone");
+		creaButton.setFont(new java.awt.Font("Cambria", 0, 24));
 		creaButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				creaButtonActionPerformed(evt);
@@ -161,6 +166,7 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		downPanel.setLayout(new java.awt.GridBagLayout());
 
 		connettiButton.setText("Connetti WiiMote");
+		connettiButton.setFont(new java.awt.Font("Cambria", 0, 24));
 		connettiButton.setActionCommand("Connetti");
 		connettiButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,18 +179,20 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		downPanel.add(connettiButton, gridBagConstraints);
 
 		wiiPanel.setBackground(new java.awt.Color(255, 255, 255));
-		wiiPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informazioni WiiMote", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 11))); // NOI18N
+		wiiPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informazioni WiiMote", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 15))); // NOI18N
 		wiiPanel.setLayout(new java.awt.GridBagLayout());
 		wiiPanel.setVisible(false);
 
 		jLabel2.setBackground(new java.awt.Color(189, 204, 249));
 		jLabel2.setText("Batteria:");
+		jLabel2.setFont(new java.awt.Font("Cambria", 0, 24));
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
 		wiiPanel.add(jLabel2, gridBagConstraints);
 
 		jLabel3.setBackground(new java.awt.Color(189, 204, 249));
 		jLabel3.setText("Segnale:");
+		jLabel3.setFont(new java.awt.Font("Cambria", 0, 24));
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.gridx = 0;
 		gridBagConstraints.gridy = 1;
@@ -257,8 +265,14 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		ModificaFreePoster modLib=null;
 		if(manager.getIPoster() instanceof GridPoster)
 			 modifica = new ModificaGridPoster(manager);
-		else if(manager.getIPoster() instanceof FreePoster)
+		else if((manager.getIPoster() instanceof FreePoster)&&(manager.getIPoster().isCalibated()))
 			 modLib=new ModificaFreePoster(manager);
+		else{
+			CalibraOra nf = new CalibraOra(manager);
+		}
+			
+		
+			
 	}
 
 	private void connettiButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,8 +280,10 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 	}
 
 	private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if (manager.getIPoster().isCalibated())
+		if (manager.getIPoster().isCalibated()){
 			manager.play();
+			FaiParlare newframe = new FaiParlare(manager);
+		}
 		else{
 			CalibraOra calibraOra = new CalibraOra(manager);
 		}
