@@ -137,9 +137,11 @@ import manager.PosterTypeEx;
      
      private void navigaActionPerformed(){
          JFileChooser chooser=new JFileChooser();
+         
          chooser.setMultiSelectionEnabled(false);
          chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
          chooser.showOpenDialog(null);
+ 
          File file = chooser.getSelectedFile();
          try{
          fileTextField.setText(file.getAbsolutePath());
@@ -218,7 +220,7 @@ import manager.PosterTypeEx;
          setTitle("File");
          setBackground(new java.awt.Color(181, 208, 249));
          setResizable(false);
-         setAlwaysOnTop(true);
+         //setAlwaysOnTop(true);
          jPanel2.setLayout(new java.awt.GridBagLayout());
 
          jPanel2.setBackground(new java.awt.Color(181, 208, 249));

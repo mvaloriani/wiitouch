@@ -41,36 +41,6 @@ public class ModificaFreePoster extends javax.swing.JFrame {
         poster=manager.getIPoster();
     	initComponents();
     	
-//    	//////
-//    	ArrayList<Point2D> lista1,lista2,lista3=null;
-//    	lista1=new ArrayList<Point2D>();
-//    	lista2=new ArrayList<Point2D>();
-//    	lista3=new ArrayList<Point2D>();
-//    	
-//    	lista1.add(new Point(0,0));
-//    	lista1.add(new Point(640,0));
-//    	lista1.add(new Point(640,800));
-//    	lista1.add(new Point(0,800));
-//    	
-//    	lista2.add(new Point(640,0));
-//    	lista2.add(new P//oint(1280,0));
-//    	lista2.add(new Point(1280,300));
-//    	lista2.add(new Point(640,300));
-//    	
-//    	lista3.add(new Point(640,550));
-//    	lista3.add(new Point(1280,550));
-//    	lista3.add(new Point(1280,800));
-//    	lista3.add(new Point(640,800));
-//    	
-//    	try {
-//			manager.addGenericElementFP(lista1);
-//			manager.addGenericElementFP(lista2);
-//			manager.addGenericElementFP(lista3);
-//			
-//		} catch (PositionEX e) {
-//			
-//			e.printStackTrace();
-//		}
     }
 
     /** This method is called from within the constructor to
@@ -102,7 +72,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
-        setAlwaysOnTop(true);
+        //setAlwaysOnTop(true);
 
         cartellonePanel.setBackground(new java.awt.Color(255, 255, 255));
         //cartellonePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartellone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 14))); // NOI18N
