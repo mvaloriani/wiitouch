@@ -6,24 +6,16 @@ import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.EventListener;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.swing.event.ChangeListener;
-
 import Personal.EventoSelezionaPunto;
 import Personal.EventoSelezionaPuntoListener;
 import Personal.HW;
 import Personal.IWiiHw;
-import dataModel.Element;
 import dataModel.FreePoster;
 import dataModel.GridPoster;
 import dataModel.IPoster;
@@ -51,16 +43,19 @@ public class Manager implements IManager, EventListener{
 
 	private ArrayList<Point2D> pointsList;
 	
-	private vlcThread vlcThread;
+	private VlcThread vlcThread;
 
 	private boolean wiiConnected;
 	
 	private ArrayList<ActionListener> actionListenerList;
+
+	private VlcThread vlcThread2;
 	
 	public void endSystem()
 	{
 		System.out.println("Provo a chiudere vlc");
 		vlcThread.termina();
+		vlcThread2.termina();
 
 	}
 
@@ -116,8 +111,11 @@ public class Manager implements IManager, EventListener{
 
 
 		/*creazione del thread per vlc*/
-		vlcThread=new vlcThread("VlcThread");
+		vlcThread=new VlcThread("VlcThread");
 		vlcThread.start();
+
+//		vlcThread2=new VlcThread("SecondaryVlcThread");
+//		vlcThread.start();
 
 
 	}
@@ -322,83 +320,7 @@ public class Manager implements IManager, EventListener{
 			a.actionPerformed(new ActionEvent(this, 0, null));
 	}
 	
-	private static class vlcThread extends Thread {
-
-		private Process ls_proc;
-
-		public vlcThread(String str) {
-			super(str);
-		}
-		public void run() {
-
-			this.exec();
-			boolean error=false;
-			Integer count=0;
-			do{
-				System.out.println("aspetto");
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
-				InetAddress addr = null;
-				try {
-					addr = InetAddress.getByName("127.0.0.1");
-				} catch (UnknownHostException e) {
-					e.printStackTrace();
-				}
-				int port = 4212;
-				SocketAddress sockaddr = new InetSocketAddress(addr, port);
-
-				// Create an unbound socket
-				Socket sock = new Socket();
-
-				// This method will block no more than timeoutMs.
-				// If the timeout occurs, SocketTimeoutException is thrown.
-				// int timeoutMs = 2000; Ê // 2 seconds
-				try {
-					sock.connect(sockaddr);
-					System.out.println("connessione ok");
-					error=false;
-				} catch (IOException e1) {
-					System.err.println("Socket problem.");
-					error=true;
-					count=count+1;
-					ls_proc.destroy();
-					this.exec();
-				}
-			}while(error&&(count<10));
-
-
-		}
-		public void termina()
-		{
-			if(ls_proc!=null)
-				ls_proc.destroy();
-		}
-		private void exec(){
-			if(System.getProperty("os.name").toLowerCase().contains("mac os x")){
-
-				try {
-					ls_proc = Runtime.getRuntime().exec("./Vlc/VLC.app/Contents/MacOS/VLC --intf=telnet");
-				} catch (IOException e) {
-
-					log.info("Sistema operativo mac: apertura VLC: "+e.toString());
-				}
-			}else if(System.getProperty("os.name").toLowerCase().contains("win"))
-			{
-				try {
-					System.out.println("eseguo comando di apertura vlc");
-					ls_proc = Runtime.getRuntime().exec("./Vlc/vlcWin/vlc.exe --intf=telnet");
-				} catch (IOException e) {
-
-					log.info("Sistema operativo windows: apertura VLC: "+e.toString());
-				} 
-			}
-		}
-	}
-
+	
 
 
 
