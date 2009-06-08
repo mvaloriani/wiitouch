@@ -55,4 +55,7 @@ public interface IManager {
 	
 	//get vlcThred
 	public void endSystem();
+	public void setPosterName(String text);
+	public void setPosterClassroom(String text);
+	public void setPosterDescription(String text);
 }

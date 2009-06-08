@@ -1,6 +1,3 @@
-/*
- * Created by JFormDesigner on Tue May 26 16:58:07 CEST 2009
- */
 
 package ui;
 
@@ -45,8 +42,6 @@ public class CalibraOra extends JFrame {
 	}
 	
 	private void initComponents() {
-		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-		// Generated using JFormDesigner Evaluation license - Giulio Presazzi
 		dialogPane = new JPanel();
 		contentPanel = new JPanel();
 		testoTextPane = new JTextPane();
@@ -58,6 +53,7 @@ public class CalibraOra extends JFrame {
 		//======== this ========
 		setVisible(true);
 		setBackground(new Color(189, 204, 249));
+		setAlwaysOnTop(true);
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
@@ -67,13 +63,7 @@ public class CalibraOra extends JFrame {
 			dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
 			dialogPane.setBackground(new Color(189, 204, 249));
 
-			// JFormDesigner evaluation mark
-			dialogPane.setBorder(new javax.swing.border.CompoundBorder(
-				new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-					"JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-					javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-					java.awt.Color.red), dialogPane.getBorder())); dialogPane.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
-
+			
 			dialogPane.setLayout(new BorderLayout());
 
 			//======== contentPanel ========
@@ -136,7 +126,7 @@ public class CalibraOra extends JFrame {
 		contentPane.add(dialogPane, BorderLayout.CENTER);
 		pack();
 		setLocationRelativeTo(getOwner());
-		// JFormDesigner - End of component initialization  //GEN-END:initComponents
+
 	}
 
 

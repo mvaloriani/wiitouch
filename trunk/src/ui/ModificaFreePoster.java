@@ -102,6 +102,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
+        setAlwaysOnTop(true);
 
         cartellonePanel.setBackground(new java.awt.Color(255, 255, 255));
         //cartellonePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartellone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 14))); // NOI18N
@@ -192,6 +193,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 
         
         aggiungiAreaButton.setText("Aggiungi Area");
+        aggiungiButton.setToolTipText("Aggiungi un area in cui inserire un contenuto");
         aggiungiAreaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	aggiungiAreaButtonActionPerformed(evt);
@@ -200,45 +202,55 @@ public class ModificaFreePoster extends javax.swing.JFrame {
         
         operazioniPanel.add(aggiungiAreaButton);
         
-        aggiungiButton.setText("Aggiungi elemento");
+        aggiungiButton.setText("Aggiungi");
+        aggiungiButton.setToolTipText("Aggiungi un contenuto all'area selezionata");
         aggiungiButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aggiungiButtonActionPerformed(evt);
             }
         });
         operazioniPanel.add(aggiungiButton);
+        aggiungiButton.setEnabled(false);
 
-        rimuoviButton.setText("Rmuovi elemento");
+        rimuoviButton.setText("Rmuovi");
+        rimuoviButton.setToolTipText("Rimuovi contenuto dall'area selezionata");
         rimuoviButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rimuoviButtonActionPerformed(evt);
             }
         });
         operazioniPanel.add(rimuoviButton);
+        rimuoviButton.setEnabled(false);
 
-        modificaButton.setText("Modifica elemento");
+        modificaButton.setText("Modifica");
+        modificaButton.setToolTipText("Modifica file multimediale associato all'area selezionata");
         modificaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modificaButtonActionPerformed(evt);
             }
         });
         operazioniPanel.add(modificaButton);
+        modificaButton.setEnabled(false);
 
         anteprimaButton.setText("Anteprima");
+        anteprimaButton.setToolTipText("Simula l'utilizzo del tabellone");
         anteprimaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anteprimaButtonActionPerformed(evt);
             }
         });
         operazioniPanel.add(anteprimaButton);
+        anteprimaButton.setEnabled(false);
 
         salvaButton.setText("Salva tutto");
+        salvaButton.setToolTipText("Salva le modifiche");
         salvaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvaButtonActionPerformed(evt);
             }
         });
         operazioniPanel.add(salvaButton);
+        salvaButton.setEnabled(true);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -248,6 +260,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 7;
         gridBagConstraints.ipady = 2;
         getContentPane().add(operazioniPanel, gridBagConstraints);
+        
         
         setResizable(false);
         
@@ -340,6 +353,16 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     }
     
     private void salvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaButtonActionPerformed
+    	if(nomeTextField.getText().equalsIgnoreCase(poster.getName())==false)
+    		manager.setPosterName(nomeTextField.getText());
+    	
+    	if(classeTextField.getText().equals(poster.getClassroom())==false)
+    		manager.setPosterClassroom(classeTextField.getText());
+    		
+    	if(descrizioneTextArea.getText().equals(poster.getDescription())==false)
+    		manager.setPosterDescription(descrizioneTextArea.getText());	
+    	
+    	
     	try {
 			manager.storePoster("./temp/"+poster.getName()+"_"+poster.getClassroom()+".xml");
 		} catch (FileNotFoundException e) {

@@ -26,6 +26,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 
 import Personal.EventoSelezionaPunto;
 import Personal.EventoSelezionaPuntoListener;
@@ -91,6 +93,8 @@ public class ModificaGridPoster extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
+        setAlwaysOnTop(true);
+        setTitle("Modifica");
 
         cartellonePanel.setBackground(new java.awt.Color(255, 255, 255));
         //cartellonePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartellone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 14))); // NOI18N
@@ -118,6 +122,7 @@ public class ModificaGridPoster extends javax.swing.JFrame {
         descrizioneTextArea.setLineWrap(true);
         descrizioneTextArea.setRows(5);
         descrizioneTextArea.setText(manager.getIPoster().getDescription());
+
         jScrollPane1.setViewportView(descrizioneTextArea);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -180,7 +185,8 @@ public class ModificaGridPoster extends javax.swing.JFrame {
         operazioniPanel.setPreferredSize(new java.awt.Dimension(600, 80));
         operazioniPanel.setLayout(new java.awt.GridLayout(1, 0));
 
-        aggiungiButton.setText("Aggiungi elemento");
+        aggiungiButton.setText("Aggiungi");
+        aggiungiButton.setToolTipText("Aggiungi un contenuto all'area selezionata");
         aggiungiButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aggiungiButtonActionPerformed(evt);
@@ -188,7 +194,8 @@ public class ModificaGridPoster extends javax.swing.JFrame {
         });
         operazioniPanel.add(aggiungiButton);
 
-        rimuoviButton.setText("Rmuovi elemento");
+        rimuoviButton.setText("Rmuovi");
+        rimuoviButton.setToolTipText("Rimuovi contenuto dall'area selezionata");
         rimuoviButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rimuoviButtonActionPerformed(evt);
@@ -196,7 +203,8 @@ public class ModificaGridPoster extends javax.swing.JFrame {
         });
         operazioniPanel.add(rimuoviButton);
 
-        modificaButton.setText("Modifica contenuto");
+        modificaButton.setText("Modifica");
+        modificaButton.setToolTipText("Modifica file multimediale associato all'area selezionata");
         modificaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modificaButtonActionPerformed(evt);
@@ -205,6 +213,7 @@ public class ModificaGridPoster extends javax.swing.JFrame {
         operazioniPanel.add(modificaButton);
 
         anteprimaButton.setText("Anteprima");
+        anteprimaButton.setToolTipText("Simula l'utilizzo del tabellone");
         anteprimaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anteprimaButtonActionPerformed(evt);
@@ -213,6 +222,7 @@ public class ModificaGridPoster extends javax.swing.JFrame {
         operazioniPanel.add(anteprimaButton);
 
         salvaButton.setText("Salva tutto");
+        salvaButton.setToolTipText("Salva le modifiche");
         salvaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvaButtonActionPerformed(evt);
@@ -269,6 +279,15 @@ public class ModificaGridPoster extends javax.swing.JFrame {
 }//GEN-LAST:event_modificaButtonActionPerformed
 
     private void salvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaButtonActionPerformed
+    	if(nomeTextField.getText().equalsIgnoreCase(poster.getName())==false)
+    		manager.setPosterName(nomeTextField.getText());
+    	
+    	if(classeTextField.getText().equals(poster.getClassroom())==false)
+    		manager.setPosterClassroom(classeTextField.getText());
+    		
+    	if(descrizioneTextArea.getText().equals(poster.getDescription())==false)
+    		manager.setPosterDescription(descrizioneTextArea.getText());	
+    	
     	try {
 			manager.storePoster("./temp/"+poster.getName()+"_"+poster.getClassroom()+".xml");
 		} catch (FileNotFoundException e) {
@@ -291,8 +310,10 @@ public class ModificaGridPoster extends javax.swing.JFrame {
     private void changeButtons(java.awt.event.ActionEvent evt){
     	Point p = (Point) evt.getSource();
     	try {
-			if (((GridPoster)poster).getElement(p.x, p.y) instanceof Element)
+			if (((GridPoster)poster).getElement(p.x, p.y) instanceof Paper)
 				setEnableButtons(false, true, true, true);
+			else
+				setEnableButtons(false, false, true, true);
 			
 		} catch (PositionEX e) {
 			setEnableButtons(true, false, false, false);

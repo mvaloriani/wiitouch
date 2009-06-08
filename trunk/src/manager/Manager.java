@@ -319,6 +319,24 @@ public class Manager implements IManager, EventListener{
 		for(ActionListener a : actionListenerList)
 			a.actionPerformed(new ActionEvent(this, 0, null));
 	}
+
+	@Override
+	public void setPosterClassroom(String text) {
+		poster.setClassroom(text);
+		
+	}
+
+	@Override
+	public void setPosterDescription(String text) {
+		poster.setDescription(text);
+		
+	}
+
+	@Override
+	public void setPosterName(String text) {
+		poster.setName(text);
+		
+	}
 	
 	
 
