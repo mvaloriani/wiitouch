@@ -27,22 +27,15 @@ import javax.swing.SwingConstants;
 			private final Image CROSS_HAIR = new ImageIcon(FreePosterCalibration.class.getResource("resources/icons/francisco-crosshair.png")).getImage();
 			public final GraphicsDevice DEFAULT_SCREEN = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 			private ActionListener lis;
+			private HW rif;
+			private JPanel panelCal;
 			
+		
 			
-			private class PanelCalibration extends JPanel
+			public ActionListener getListenerCalibration()
 			{
-				public PanelCalibration()
-				{
-					super();
-				}
-				
-				public void paint(Graphics g)
-				{
-					
-				}
+				return this.lis;
 			}
-			
-			
 			private void addActionListener(ActionListener lis){
 				this.lis=lis;
 			}
@@ -51,9 +44,10 @@ import javax.swing.SwingConstants;
 			public FreePosterCalibration() {
 				//Toolkit.getDefaultToolkit().beep();///BEEEEEP
 //		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+			
 				setBackground(Color.WHITE);
-				PanelCalibration cal = new PanelCalibration();
-				this.add(cal);
+				panelCal = new JPanel();
+				this.add(panelCal);
 				//((JPanel)getContentPane()).setOpaque(true);
 				setLayout(null);
 				setUndecorated(true);
@@ -62,11 +56,11 @@ import javax.swing.SwingConstants;
 				Toolkit tk= Toolkit.getDefaultToolkit();
 				Dimension c=tk.getScreenSize();
 				this.setSize(c);
-				cal.setSize(c);
+				panelCal.setSize(c);
 				this.setVisible(true);
 				this.setMinimumSize(c);
 				this.setPreferredSize(c);
-				DEFAULT_SCREEN.setFullScreenWindow(this);
+				//DEFAULT_SCREEN.setFullScreenWindow(this);
 				
 				
 				addActionListener(new ActionListener() {
@@ -75,19 +69,25 @@ import javax.swing.SwingConstants;
 					}
 				});
 				//DEFAULT_SCREEN.
-		        pack();
+		        //pack();
 
 			}
 			
 			public  void setIcon(Point2D punto)
 			{
 				
-				this.add(statusLabel( VISIBLE,(int)punto.getX(),(int)punto.getY()));
+				this.panelCal.add(statusLabel( VISIBLE,(int)punto.getX(),(int)punto.getY()));
+				this.panelCal.repaint();
+				this.repaint();
+				this.pack();
+				
 			}
 			
 			private JLabel statusLabel(Icon icon,  int x, int y) {
 				JLabel l = new JLabel(icon, SwingConstants.LEFT);
 				//if (wiimotes.size() > 1) l.setText(String.valueOf(id));
+				l.setText("LABEL");
+				
 				int w = 100;
 				int h = icon.getIconHeight();
 				x = x - icon.getIconWidth()/2;

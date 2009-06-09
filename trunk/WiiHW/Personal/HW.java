@@ -25,6 +25,7 @@ public class HW implements IWiiHw{
  private WiimoteDataHandler dh;
  private ActionListener batteriaListener;
  private ActionListener remoteListener;
+ private ActionListener freePosterListener;
  private FreePosterCalibration cal;
  private double BatteryLevel;
  private ArrayList<Point2D> pointList;
@@ -38,9 +39,13 @@ public class HW implements IWiiHw{
 	public ArrayList<Point2D> createAreaFP(int nPoint)
 	{
 		this.IsCreaArea=true;
+		
 		cal = new FreePosterCalibration();
+		this.freePosterListener = cal.getListenerCalibration();
+		
 		this.pointList=new ArrayList();
 		this.nPunti= nPoint;
+		
 		while(this.pointList.size()<this.nPunti && this.IsCreaArea==true)
 		{
 			
@@ -50,8 +55,9 @@ public class HW implements IWiiHw{
 		{
 			return null;
 		}
-		
+	
 		this.IsCreaArea=false;
+		this.cal.dispose();
 		return this.pointList;
 	}
  
@@ -185,8 +191,10 @@ public void inputIRPen(Point p)
 			//JOptionPane.showMessageDialog(null, "Posizione Mouse x" + p.getX() + " Y " + p.getY());
 		if(this.IsCreaArea==true && this.pointList.size()<nPunti && enable==true)
 		{
+			
 			System.out.println("Punto " + this.pointList.size()+ " catturato alla posizione x" + p.getX() + " e Y " + p.getY());
 			this.pointList.add(p);
+			this.freePosterListener.actionPerformed(new ActionEvent(p,4,null));
 			enable=false;
 			timer = new Timer();
 			timer.schedule(new RemindTask(), 1000);
