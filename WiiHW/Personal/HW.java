@@ -2,11 +2,10 @@ package Personal;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import javax.swing.JOptionPane;
 
 import org.uweschmidt.wiimote.whiteboard.WiimoteDataHandler;
 import org.uweschmidt.wiimote.whiteboard.WiimoteWhiteboard;
@@ -20,19 +19,43 @@ public class HW implements IWiiHw{
  private int NumberAddedRemote;
  private boolean IsCalibrated;
  private boolean IsPlaying;
+ private boolean IsCreaArea;
  private WhiteBoardThread whiteBoard;
  private WiimoteCalibration calibration;
  private WiimoteDataHandler dh;
  private ActionListener batteriaListener;
  private ActionListener remoteListener;
+ private FreePosterCalibration cal;
  private double BatteryLevel;
+ private ArrayList<Point2D> pointList;
+ private int nPunti;
  public ArrayList<EventoSelezionaPuntoListener> EventoSelezionaPuntoListeners=new ArrayList();
- private int x;
  Point pprec=null;
 
  private boolean enable=true;
  Timer timer;
 
+	public ArrayList<Point2D> createAreaFP(int nPoint)
+	{
+		this.IsCreaArea=true;
+		cal = new FreePosterCalibration();
+		this.pointList=new ArrayList();
+		this.nPunti= nPoint;
+		while(this.pointList.size()<this.nPunti && this.IsCreaArea==true)
+		{
+			
+		}
+		
+		if(this.IsCreaArea==false)
+		{
+			return null;
+		}
+		
+		this.IsCreaArea=false;
+		return this.pointList;
+	}
+ 
+ 
  public void setCalibration(WiimoteCalibration cal)
   {
 	 this.calibration=cal;
@@ -88,7 +111,6 @@ public void stopPlay()
 	{
 	this.IsPlaying=false;
 	//this.removeEventoSelezionaPuntoListener(lis);
-	
 	}
 	
 
@@ -96,12 +118,12 @@ public WiimoteWhiteboard getWhiteboard(){
 		return Board;
 	}
 	
-
 public HW()
 	{
 		this.NumberAddedRemote=0;
 		this.IsCalibrated=false;
 		this.IsPlaying=false;
+		this.IsCreaArea=false;
 		this.BatteryLevel=0;
 		Events=new Evento();
 		Events.setInterfaccia(this);	
@@ -109,7 +131,7 @@ public HW()
 
 public void notifyError(String c)
 {
-	System.out.println("Errore nella Sincronizzazione! Spegnere e riaccendere il WiiMote!");
+	System.out.println("Errore nella Sincronizzazione! Spegnere e riaccendere il WiiMote! PS ra");
 }
 
 
@@ -134,7 +156,6 @@ public void setBatteryLevel(double d)
 		}
 	}
 
-
 public void remoteAdded(ActionListener pippo)
 {
 	this.remoteListener=pippo;
@@ -144,33 +165,35 @@ public void batteryLevel(ActionListener pippo)
 {
 	this.batteriaListener=pippo;
 }
-	
 
-
-
-
-
-
-/*connetto il wiimote all'applicazione*/
-	public void connect()
+public void connect()
 	{
-	
 		
 		this.whiteBoard= new WhiteBoardThread("whiteboard");
 		try{this.whiteBoard.run();}
 		catch( Exception e)
 		{
 		System.out.println("L'apertura del nuovo Thread whiteBoard non  andata a buon fine");
-		}
-			
+		}		
 	}
 			
 	
 	
 
-	public  void inputIRPen(Point p)
+public void inputIRPen(Point p)
 	{
 			//JOptionPane.showMessageDialog(null, "Posizione Mouse x" + p.getX() + " Y " + p.getY());
+		if(this.IsCreaArea==true && this.pointList.size()<nPunti && enable==true)
+		{
+			System.out.println("Punto " + this.pointList.size()+ " catturato alla posizione x" + p.getX() + " e Y " + p.getY());
+			this.pointList.add(p);
+			enable=false;
+			timer = new Timer();
+			timer.schedule(new RemindTask(), 1000);
+		
+		}
+		else
+		{
 		if((this.IsPlaying==true)&&enable==true){
 		
 			this.notifyEventoSelezionaPunto(p);	
@@ -180,7 +203,7 @@ public void batteryLevel(ActionListener pippo)
 			
 			
 		}
-		
+		}
 	}
 	 class RemindTask extends TimerTask {
 		    public void run() {
@@ -194,16 +217,12 @@ public void batteryLevel(ActionListener pippo)
 	 
 	 private  class WhiteBoardThread extends Thread {
 			
-			
 			 public WhiteBoardThread(String str) {
 				 super(str);
 			 }
 			 public void run() {
-				
 				Board= new WiimoteWhiteboard();
 				Board.main(null);
-			 
-			
 			 }
 			 
 		}
