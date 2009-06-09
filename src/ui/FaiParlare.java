@@ -11,10 +11,8 @@
 
 package ui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import manager.IManager;
+import manager.Manager;
 
 /**
  *
@@ -22,13 +20,12 @@ import manager.IManager;
  */
 public class FaiParlare extends javax.swing.JFrame {
 
-    private IManager manager;
-	/** Creates new form FaiParlare */
+    /** Creates new form FaiParlare */
+	
     public FaiParlare(IManager manager) {
-    	this.manager = manager;
-        initComponents();
-    }
-
+		this.manager=manager;
+		initComponents();
+	}
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -45,16 +42,16 @@ public class FaiParlare extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jTextArea1 = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fai Parlare");
+        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(181, 208, 249));
         getContentPane().setLayout(new java.awt.GridBagLayout());
-        setAlwaysOnTop(true);
-        setTitle("Fai parlare il cartellone");
-        
+
         jPanel1.setBackground(new java.awt.Color(181, 208, 249));
         jPanel1.setLayout(new java.awt.GridBagLayout());
-
-        jLabel1.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
+        
+        jLabel1.setFont(new java.awt.Font("Cambria", 0, 24));
         jLabel1.setText("Ora puoi far parlare il tuo tabellone!");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -62,16 +59,8 @@ public class FaiParlare extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 7;
         jPanel1.add(jLabel1, gridBagConstraints);
 
-        jButton1.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton1.setText("Stop");
-        jButton1.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				stopActionPerformed();
-			}
-        	
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -81,34 +70,18 @@ public class FaiParlare extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(181, 208, 249));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setName(""); // NOI18N
+        jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jTextArea1.setBackground(new java.awt.Color(181, 208, 249));
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
         jTextArea1.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
         jTextArea1.setRows(2);
-        jTextArea1.setText(" Premi stop per smettere di giocare");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 364, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 108, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 26, Short.MAX_VALUE)
-                    .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 26, Short.MAX_VALUE)))
-        );
+        jTextArea1.setText("  Premi stop per smettere di giocare");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(22, 0, 0, 0);
+        jPanel2.add(jTextArea1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -123,26 +96,14 @@ public class FaiParlare extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 130;
         gridBagConstraints.ipady = 76;
         getContentPane().add(jPanel1, gridBagConstraints);
-        this.setVisible(true);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    protected void stopActionPerformed() {
-		manager.stopPlay();
-		this.dispose();
-		
-	}
-
-	/**
+    /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FaiParlare(null).setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -151,5 +112,5 @@ public class FaiParlare extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
-
+	private IManager manager;
 }
