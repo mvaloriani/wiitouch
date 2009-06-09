@@ -345,7 +345,6 @@ public class NewPosterFrame extends javax.swing.JFrame {
     	jTextField5.setEditable(false);
     }//GEN-LAST:event_notShowTextField
 
-
     private void creaActionPerformed(ActionEvent actionEvent) {
     	if((nomeTextField.getText().equals("")==false)&&(classeTextField.getText().equals("")==false)&&
     		(liberoRadioButton.isSelected()||grigliaRadioButton.isSelected())){
