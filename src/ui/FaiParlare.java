@@ -11,6 +11,9 @@
 
 package ui;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import manager.IManager;
 import manager.Manager;
 
@@ -42,7 +45,7 @@ public class FaiParlare extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jTextArea1 = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Fai Parlare");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(181, 208, 249));
@@ -98,6 +101,13 @@ public class FaiParlare extends javax.swing.JFrame {
         getContentPane().add(jPanel1, gridBagConstraints);
 
         pack();
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension screenSize = tk.getScreenSize();
+        int screenHeight = screenSize.height;
+        int screenWidth = screenSize.width;
+        
+        setLocation((screenWidth-this.getSize().width) / 2, (screenHeight-this.getSize().height) / 2);
+        this.setVisible(true);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

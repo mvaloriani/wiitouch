@@ -167,6 +167,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
         aggiungiAreaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	aggiungiAreaButtonActionPerformed(evt);
+            	
             }
         });
         
@@ -247,7 +248,9 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aggiungiAreaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
+    	aggiungiAreaButton.setEnabled(false);
     	Polygon area=manager.createArea(4);
+    	
 		ArrayList<Point2D> points = new ArrayList<Point2D>();
 		for(int i=0; i< area.npoints;i++){
 			points.add(new Point(area.xpoints[i],area.ypoints[i]));
@@ -351,6 +354,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     }
     public void enableElementButton(int type)
     {
+    	this.aggiungiAreaButton.setEnabled(true);
     	if(type==0){
     		this.modificaButton.setEnabled(false);
     		this.aggiungiButton.setEnabled(true);
@@ -369,6 +373,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     }
 	public void disableElementButton()
     {
+		this.aggiungiAreaButton.setEnabled(true);
     	this.modificaButton.setEnabled(false);
     	this.rimuoviButton.setEnabled(false);
     	this.aggiungiButton.setEnabled(false);
