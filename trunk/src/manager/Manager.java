@@ -273,7 +273,7 @@ public class Manager implements IManager, EventListener{
 	}
 	
 	public ArrayList<Point2D> createArea(Integer numPoints){
-		return iWii.createAreaFP();
+		return iWii.createAreaFP(numPoints);
 	}
 
 	//private
