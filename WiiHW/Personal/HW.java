@@ -26,7 +26,7 @@ public class HW implements IWiiHw{
  private ActionListener batteriaListener;
  private ActionListener remoteListener;
  private ActionListener freePosterListener;
- private FreePosterCalibration cal;
+ private NewArea cal;
  private double BatteryLevel;
  private ArrayList<Point2D> pointList;
  private int nPunti;
@@ -38,12 +38,13 @@ public class HW implements IWiiHw{
 
 	public ArrayList<Point2D> createAreaFP(int nPoint)
 	{
-		this.IsCreaArea=true;
 		
-		cal = new FreePosterCalibration();
+		
+		cal = new NewArea();
 		this.freePosterListener = cal.getListenerCalibration();
 		
 		this.pointList=new ArrayList();
+		this.IsCreaArea=true;
 		this.nPunti= nPoint;
 		
 		while(this.pointList.size()<this.nPunti && this.IsCreaArea==true)
