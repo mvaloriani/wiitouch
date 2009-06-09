@@ -27,13 +27,11 @@ public class CalibraOra extends JFrame {
 	
 	protected void connettiActionPerformed(ActionEvent actionEvent) {
 		if(manager.wiiConnected()==false){
-			try {
-				manager.connect();
-				Thread.sleep(2000);
+			
+//				if(manager.isConnect=false)
+//					manager.connect();
+//				Thread.sleep(2000);
 				manager.calibra();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 		}
 		else 
 			manager.calibra();

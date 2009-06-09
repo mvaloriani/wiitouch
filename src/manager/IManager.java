@@ -46,7 +46,7 @@ public interface IManager {
 	
 	//Wii method
 	public void calibra();
-	public Polygon createArea(Integer numPoints);
+	public ArrayList<Point2D> createArea(Integer numPoints);
 	public void connect() throws ExceptionInInitializerError;
 	public void batteryLevel(ActionListener listener);
 	public void remoteAdded(ActionListener listener);
