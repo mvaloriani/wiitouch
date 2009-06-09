@@ -225,14 +225,12 @@ public class WiimoteCalibration {
 			y = y - wiimotes.size()*h/2;
 			l.setBounds(x, y + (id-1)*h, w, h);
 			return l;
-		}
+		} 
 		
 		public void finished(CalibrationState s) {
 			int x = s.getX(bounds) - bounds.x;
 			int y = s.getY(bounds) - bounds.y;
-			//////OSCAR
-			System.out.println("int :" + x + "int :" + y );
-			///////////////////////
+		
 			for (Wiimote wiimote : points.keySet()) {
 				add(statusLabel(points.get(wiimote).get(s) != null ? VISIBLE : NOT_VISIBLE, wiimote.getId(), x, y));
 			}
