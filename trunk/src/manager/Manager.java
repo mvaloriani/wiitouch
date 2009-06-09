@@ -209,8 +209,6 @@ public class Manager implements IManager, EventListener{
 		managerCreazione.removeElement(poster, id);		
 	}
 
-
-
 	public IPoster getIPoster() {
 		return ((IPoster)poster);
 	}
@@ -247,7 +245,7 @@ public class Manager implements IManager, EventListener{
 	}
 
 	public void stopPlay() {
-		// TODO Auto-generated method stub
+		iWii.stopPlay();
 
 	}
 
@@ -274,20 +272,8 @@ public class Manager implements IManager, EventListener{
 		actionListenerList.add(listener);
 	}
 	
-	public synchronized Polygon createArea(Integer numPoints){
-		pointsList= new ArrayList<Point2D>();
-		iWii.startPlay(new EventoSelezionaPuntoListener(){
-			public synchronized void OnEventoSelezionaPunto(EventoSelezionaPunto e) {
-				newArea(e);
-				
-			}		
-		});
-		while(pointsList.size()<numPoints){
-			
-		}
-		iWii.stopPlay();
-		//iWii.removeAllListeners();
-		return Utills.PolygonFromPoints(pointsList);
+	public ArrayList<Point2D> createArea(Integer numPoints){
+		return iWii.createAreaFP();
 	}
 
 	//private
