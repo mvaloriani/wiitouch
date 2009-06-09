@@ -250,11 +250,9 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     private void aggiungiAreaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
     	//Polygon area=manager.createArea(4);
     	ArrayList<Point2D> points = manager.createArea(4);
-    	if (area==null){
+    	if (points!=null){
     		
-    		for(int i=0; i< area.npoints;i++){
-    			points.add(new Point(area.xpoints[i],area.ypoints[i]));
-    		}
+  
     		try {
     			manager.addGenericElementFP(points);
     		} catch (PositionEX e) {
