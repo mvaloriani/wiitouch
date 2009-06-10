@@ -71,7 +71,7 @@ public class NewArea extends javax.swing.JFrame {
 				System.out.println("Entrato tasto keyPressed");
 				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 					System.out.println("Entrato tasto esc");
-				
+					escEvent( e);
 				}
 				
 			}
