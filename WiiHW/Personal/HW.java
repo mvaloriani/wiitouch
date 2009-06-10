@@ -26,7 +26,7 @@ public class HW implements IWiiHw{
 	private ActionListener batteriaListener;
 	private ActionListener remoteListener;
 	private ActionListener areaPosterListener;
-	private NewArea cal;
+	
 	private double BatteryLevel;
 	private ArrayList<Point2D> pointList;
 	private int nPunti;
@@ -36,20 +36,28 @@ public class HW implements IWiiHw{
 	private boolean enable=true;
 	Timer timer;
 
+	final private Object lock=new Object();
 	public ArrayList<Point2D> createAreaFP(int nPoint)
 	{
 
-
-		cal = new NewArea(this);
-
+		
+		ThreadArea frameArea =new ThreadArea("Thread Area",this,lock);
+		
 		this.pointList=new ArrayList<Point2D>();
 		this.IsCreaArea=true;
 		this.nPunti= nPoint;
 
-		while(this.pointList.size()<this.nPunti && this.IsCreaArea==true)
-		{
-
+		try {
+			lock.wait();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
+		//while(this.pointList.size()<this.nPunti && this.IsCreaArea==true)
+		//{
+				
+		//}
 
 		if(this.IsCreaArea==false)
 		{
@@ -57,10 +65,19 @@ public class HW implements IWiiHw{
 		}
 
 		this.IsCreaArea=false;
-		this.cal.dispose();
+		//this.cal.dispose();
 		return this.pointList;
 	}
-
+	
+	public boolean anotherPoint()
+	{
+		if(this.pointList.size()<this.nPunti)
+			return true;
+		else
+			return false;
+	}
+	
+	
 
 	public void setCalibration(WiimoteCalibration cal)
 	{
@@ -73,6 +90,10 @@ public class HW implements IWiiHw{
 		this.dh=dataH;
 	}
 
+	public void setIsCreaArea(boolean value)
+	{
+		this.IsCreaArea=value;
+	}
 
 	public void calibra(){
 		this.IsCalibrated=true;
@@ -236,7 +257,24 @@ public class HW implements IWiiHw{
 		}
 
 	}
+	private  class ThreadArea extends Thread {
+		private NewArea cal;
+		private HW hard;
+		private Object lock;
+		
+		public ThreadArea(String str,HW hw,Object lock) {
+			
+			super(str);
+			hard=hw;
+			this.lock=lock;
+		}
+		public void run() {
+			cal = new NewArea(hard,lock);
+		}
 
+	}
+	
+	
 }
 
 
