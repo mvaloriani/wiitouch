@@ -28,6 +28,7 @@ package org.uweschmidt.wiimote.whiteboard;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EventObject;
@@ -35,10 +36,14 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.Timer;
 import java.util.logging.Level;
 
+import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 
 import org.jdesktop.application.Application;
 import org.jdesktop.application.Application.ExitListener;
@@ -134,12 +139,12 @@ public class WiimoteDataHandler extends WiiRemoteAdapter implements ExitListener
 //				remote.setLEDIlluminated(3, true);
 //				remote.startVibrating();
 //				Thread.sleep(1000);
-//				remote.setSpeakerEnabled(true);
-//				AudioInputStream audio = AudioSystem.getAudioInputStream(new File("./imm/sample.au"));
-//				remote.playSound(audio,remote.SF_PCM8S);
-//				Thread.sleep(2000);
-				remote.setLEDIlluminated(1,false);
-				remote.setLEDIlluminated(2,false);
+				for(int i=0;i<4;i++){
+					Thread.sleep(400);
+					Toolkit.getDefaultToolkit().beep();
+				}	
+				remote.setLEDIlluminated(1,true);
+				remote.setLEDIlluminated(2,true);
 //				remote.stopVibrating();
 			}
 			
