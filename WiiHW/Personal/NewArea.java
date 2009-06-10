@@ -74,7 +74,7 @@ public class NewArea extends javax.swing.JFrame {
         cartellonePanel.setBackground(new java.awt.Color(255, 255, 255));
         //cartellonePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartellone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 14))); // NOI18N
         cartellonePanel.setMinimumSize(new java.awt.Dimension(450, 450));
-        //cartellonePanel.setPreferredSize(new java.awt.Dimension(450, 450));
+        cartellonePanel.setPreferredSize(new java.awt.Dimension(450, 450));
 
         cartellonePanel.setLayout(new java.awt.GridBagLayout());
         gridBagConstraints = new java.awt.GridBagConstraints();

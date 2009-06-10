@@ -26,6 +26,8 @@
 package org.uweschmidt.wiimote.whiteboard;
 
 import java.awt.Point;
+import java.awt.Toolkit;
+import java.io.File;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EventObject;
@@ -126,15 +128,19 @@ public class WiimoteDataHandler extends WiiRemoteAdapter implements ExitListener
 				
 				//OSCAR
 				Evento.getInterfaccia().notifyRemote(remotes.size());
-				remote.setLEDIlluminated(0, true);
-				remote.setLEDIlluminated(1, true);
-				remote.setLEDIlluminated(2, true);
-				remote.setLEDIlluminated(3, true);
-				remote.startVibrating();
-				Thread.sleep(1000);
+//				remote.setLEDIlluminated(0, true);
+//				remote.setLEDIlluminated(1, true);
+//				remote.setLEDIlluminated(2, true);
+//				remote.setLEDIlluminated(3, true);
+//				remote.startVibrating();
+//				Thread.sleep(1000);
+				remote.setSpeakerEnabled(true);
+				AudioInputStream audio = AudioSystem.getAudioInputStream(new File("./imm/sample.au"));
+				remote.playSound(audio,remote.SF_PCM8S);
+				Thread.sleep(2000);
 				remote.setLEDIlluminated(1,false);
 				remote.setLEDIlluminated(2,false);
-				remote.stopVibrating();
+//				remote.stopVibrating();
 			}
 			
 		} catch (Exception e) {
