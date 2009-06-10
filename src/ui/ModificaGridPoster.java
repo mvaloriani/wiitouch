@@ -364,10 +364,10 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 		this.manager=manager;
 		this.poster = manager.getIPoster();
 		Toolkit toolkit = getToolkit();
-		imgStop = toolkit.createImage("./stop.png");
-		imgPause = toolkit.createImage("./pause.png");
-		imgGen = toolkit.createImage("./gear.png");
-		imgPaper= toolkit.createImage("./txt.png");
+		imgStop = toolkit.createImage("./imm/stop.png");
+		imgPause = toolkit.createImage("./imm/pause.png");
+		imgGen = toolkit.createImage("./imm/gear.png");
+		imgPaper= toolkit.createImage("./imm/txt.png");
 	}
 
 	public synchronized void addActionListener(ActionListener actionListener) {
