@@ -105,11 +105,6 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 
         nomeTextField.setText(manager.getIPoster().getName());
         nomeTextField.setPreferredSize(new java.awt.Dimension(20, 20));
-        nomeTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeTextFieldActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -321,9 +316,6 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     	}
     }
 
-    private void nomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldActionPerformed
-        // TODO add your handling code here:
-    }
     
     private void salvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaButtonActionPerformed
     	if(nomeTextField.getText().equalsIgnoreCase(poster.getName())==false)
@@ -478,7 +470,9 @@ class CartellonePannelloClass extends JPanel implements MouseListener {
 	        			
 	        		}
 	        		((Graphics2D)g).fillPolygon(newArea);
-				}
+	        		g.setColor(new Color(0,0,0));
+	        		g.drawPolygon(newArea.xpoints, newArea.ypoints, newArea.npoints);
+	        		}
 				
 			} catch (PositionEX e) {
 				// TODO Auto-generated catch block

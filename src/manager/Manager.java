@@ -1,6 +1,7 @@
 package manager;
 
 import java.awt.Polygon;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
@@ -241,7 +242,7 @@ public class Manager implements IManager, EventListener{
 			}
 
 		});
-
+		Toolkit.getDefaultToolkit().beep();///BEEEEEP
 	}
 
 	public void stopPlay() {
