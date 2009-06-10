@@ -134,10 +134,10 @@ public class WiimoteDataHandler extends WiiRemoteAdapter implements ExitListener
 //				remote.setLEDIlluminated(3, true);
 //				remote.startVibrating();
 //				Thread.sleep(1000);
-				remote.setSpeakerEnabled(true);
-				AudioInputStream audio = AudioSystem.getAudioInputStream(new File("./imm/sample.au"));
-				remote.playSound(audio,remote.SF_PCM8S);
-				Thread.sleep(2000);
+//				remote.setSpeakerEnabled(true);
+//				AudioInputStream audio = AudioSystem.getAudioInputStream(new File("./imm/sample.au"));
+//				remote.playSound(audio,remote.SF_PCM8S);
+//				Thread.sleep(2000);
 				remote.setLEDIlluminated(1,false);
 				remote.setLEDIlluminated(2,false);
 //				remote.stopVibrating();
