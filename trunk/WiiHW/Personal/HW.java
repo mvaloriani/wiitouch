@@ -42,6 +42,7 @@ public class HW implements IWiiHw{
 
 		
 		ThreadArea frameArea =new ThreadArea("Thread Area",this,lock);
+		frameArea.start();
 		
 		this.pointList=new ArrayList<Point2D>();
 		this.IsCreaArea=true;
