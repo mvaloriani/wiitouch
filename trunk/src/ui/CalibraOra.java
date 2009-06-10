@@ -28,9 +28,6 @@ public class CalibraOra extends JFrame {
 	protected void connettiActionPerformed(ActionEvent actionEvent) {
 		if(manager.wiiConnected()==false){
 			
-//				if(manager.isConnect=false)
-//					manager.connect();
-//				Thread.sleep(2000);
 				manager.calibra();
 		}
 		else 
@@ -77,6 +74,7 @@ public class CalibraOra extends JFrame {
 				testoTextPane.setFont(new Font("Cambria", Font.PLAIN, 16));
 				testoTextPane.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
 				testoTextPane.setBackground(new Color(189, 204, 249));
+				testoTextPane.setEditable(false);
 				contentPanel.add(testoTextPane, BorderLayout.CENTER);
 
 				//---- Alert ----
