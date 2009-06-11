@@ -45,7 +45,7 @@ public interface IManager {
 	
 	
 	//Wii method
-	public void calibra();
+	public void calibra(ActionListener listener);
 	public ArrayList<Point2D> createArea(Integer numPoints);
 	public void connect() throws ExceptionInInitializerError;
 	public void batteryLevel(ActionListener listener);
