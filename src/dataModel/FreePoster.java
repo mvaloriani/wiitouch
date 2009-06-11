@@ -79,6 +79,7 @@ public class FreePoster extends Poster {
 
 	@Override
 	public void check(Manager manager) {
+		setIsCalibated(false);
 		for(Element e : elementsList.values())
 			if(e instanceof Control)
 				((Control) e).setManager(manager);
