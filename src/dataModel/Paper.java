@@ -72,7 +72,20 @@ public class Paper extends Element {
 	
 	public Paper(int id, ArrayList<String> filesList) {
 		super(id);
-		this.pathsFiles=filesList;	
+		this.pathsFiles=filesList;
+		String path=null;
+		if(pathsFiles!=null)
+		{
+			if(pathsFiles.get(0)!=null)
+			{
+				path=pathsFiles.get(0);
+				
+				if(path.toLowerCase().contains("mp3") || path.toLowerCase().contains("wma") || path.toLowerCase().contains("wav"))
+					this.setType(this.AUDIO_FILE);
+				else if(path.toLowerCase().contains("avi")  || path.toLowerCase().contains("mp4") || path.toLowerCase().contains("mpg") || path.toLowerCase().contains("ogg") || path.toLowerCase().contains("mov") || path.toLowerCase().contains("3gp") || path.toLowerCase().contains("mpeg") )
+					this.setType(this.VIDEO_FILE);
+			}
+		}
 	}
 
 	public Paper(int id, Polygon area) {
