@@ -16,24 +16,39 @@ import manager.Manager;
  */
 public class CalibraOra extends JFrame {
 
-	public CalibraOra(IManager manager) {
+	private ActionListener listener;
+	private String sessione;
+	
+	public CalibraOra(IManager manager, String sessione) {
+		this.sessione= sessione;
 		this.manager=manager;
+		
+		listener=new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				calibrationActionPerformed();	
+			}
+			
+		};
 		initComponents();
 	}
     
+	protected void calibrationActionPerformed() {
+		if(sessione.equalsIgnoreCase("ESEGUI")){
+			FaiParlare nf = new FaiParlare(manager);
+			dispose();
+		}
+		if(sessione.equalsIgnoreCase("MODIFICA")){
+			dispose();
+		}
+		
+	}
+
 	private void annullaActionPerformed(ActionEvent actionEvent) {
     	dispose();
     }
 	
 	protected void connettiActionPerformed(ActionEvent actionEvent) {
-		if(manager.wiiConnected()==false){
-			
-				manager.calibra();
-		}
-		else 
-			manager.calibra();
-		dispose();
-		
+			manager.calibra(listener);	
 	}
 	
 	private void initComponents() {
