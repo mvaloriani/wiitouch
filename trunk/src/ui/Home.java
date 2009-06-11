@@ -151,7 +151,7 @@ public class Home extends javax.swing.JFrame{
         topTopPanel.setBackground(new java.awt.Color(189, 204, 249));
         topTopPanel.setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Workspace\\WiiTouchProject\\imm\\Untitled.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("./imm/Untitled.png")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
