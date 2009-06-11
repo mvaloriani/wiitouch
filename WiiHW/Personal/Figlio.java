@@ -6,7 +6,7 @@ public class Figlio implements Runnable {
 	private boolean running = true;
 	public Figlio(Lock l){
 		lock=l;
-		t = new Thread(this);
+		t = new Thread(this,"Figlio");
 
 	}
 

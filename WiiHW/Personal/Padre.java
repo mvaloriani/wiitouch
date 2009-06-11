@@ -6,8 +6,8 @@ public class Padre implements Runnable {
 	private Figlio f;
 	private boolean running = true;
 	public Padre(){
-		lock = new Lock();;
-		t = new Thread(this);
+		lock = new Lock();
+		t = new Thread(this,"Padre");
 		System.out.println("creo il figlio");
 		f = new Figlio(lock);
 	}

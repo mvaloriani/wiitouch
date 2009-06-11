@@ -29,6 +29,7 @@ public class HW implements IWiiHw{
 	private ActionListener batteriaListener;
 	private ActionListener remoteListener;
 	private ActionListener areaPosterListener;
+	private ActionListener calibraListener;
 	private NewArea cal;
 	private double BatteryLevel;
 	private ArrayList<Point2D> pointList;
@@ -77,13 +78,18 @@ public class HW implements IWiiHw{
 	}
 
 
-	public void calibra(){
+	public void calibra(ActionListener listener){
+		this.calibraListener=listener;
 		this.IsCalibrated=true;
 		calibration.start(dh.getConnectedWiimotes());
-		Wiimote[] myAr = null;
-		dh.getConnectedWiimotes().toArray(myAr);
-		this.IsCalibrated=calibration.isCalibrated(myAr[0]);
+
+		this.IsCalibrated=calibration.isAnyCalibrated(dh.getConnectedWiimotes());
 		System.out.println("Calibrato:"+IsCalibrated);
+	}
+	
+	public void notifyCalibration(){
+		if (calibraListener!=null)
+			calibraListener.actionPerformed(null);
 	}
 
 
