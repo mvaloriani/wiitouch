@@ -30,32 +30,46 @@ import dataModel.FreePoster;
  */
 public class NewElementFrame extends javax.swing.JFrame {
     
+	
 	private IManager manager=null;
 	private Point position=null;
 	private Boolean grid=null;
 	private Integer elementID=null;
 	
-	/*set position and call initComponents*/
 	private void inizialize()
 	{
-		   initComponents();
-	        jComboBox1.setVisible(false);
-	        jRadioButton2.addActionListener(new ActionListener(){
-	            public void actionPerformed(ActionEvent actionEvent) {
-	                jComboBox1.setVisible(true);
-	                
-	            }
-	            
-	        });
-	        jRadioButton1.addActionListener(new ActionListener(){
-	            public void actionPerformed(ActionEvent actionEvent) {
-	                jComboBox1.setVisible(false);
-	                
-	            }
-	            
-	        });
+		 	initComponents();
+		 	//
 	        jButton2.addActionListener(new AnnullButton(this));
-	        
+	        //pausa
+	        jButton4.addActionListener(new ActionListener(){
+
+				public void actionPerformed(ActionEvent e) {
+					pausaEvent(e);
+				}
+
+	        });
+	        //stop
+	        jButton3.addActionListener(new ActionListener(){
+
+				public void actionPerformed(ActionEvent e) {
+					stopEvent(e);
+				}
+	        });
+	        //audio
+	        jButton5.addActionListener(new ActionListener(){
+
+				public void actionPerformed(ActionEvent e) {
+					audioEvent(e);
+				}
+	        });
+	        //video
+	        jButton6.addActionListener(new ActionListener(){
+
+				public void actionPerformed(ActionEvent e) {
+					videoEvent(e);
+				}
+	        });
 	        
 	         Toolkit tk = Toolkit.getDefaultToolkit();
 	        Dimension screenSize = tk.getScreenSize();
@@ -65,7 +79,16 @@ public class NewElementFrame extends javax.swing.JFrame {
 	        setLocation((screenWidth-this.getSize().width) / 2, (screenHeight-this.getSize().height) / 2);
 	        this.setVisible(true);
 	}
-	
+
+
+	/** Creates new form NewElementFrame */
+    public NewElementFrame(IManager manager, Integer id) {
+        //jPanel2.setVisible(false);
+    	this.manager=manager;
+    	grid=new Boolean(false);
+    	elementID=id;
+       inizialize();
+    }
     /** Creates new form NewElementFrame */
     public NewElementFrame(IManager manager,Point position) {
     	this.manager=manager;
@@ -76,14 +99,6 @@ public class NewElementFrame extends javax.swing.JFrame {
      
     }
     
-    public NewElementFrame(IManager manager, Integer id) {
-    	this.manager=manager;
-    	grid=new Boolean(false);
-    	elementID=id;
-    	inizialize();
-	}
-
-	/** This method is called from within the constructor to
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -95,155 +110,153 @@ public class NewElementFrame extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         jButton2 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aggiungi Elemento");
         setResizable(false);
-        setAlwaysOnTop(true);
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(181, 208, 249));
-        jButton1.setFont(new java.awt.Font("Cambria", 0, 24));
-        jButton1.setText("Aggiungi");
-        jButton1.addActionListener(new ActionListener(){
-
-			public void actionPerformed(ActionEvent e) {	
-				addButtonPerformed();
-			}
-        	
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
-        jPanel1.add(jButton1, gridBagConstraints);
-
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Cambria", 0, 24));
-        jRadioButton2.setText("Controllo");
-        jRadioButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jRadioButton2.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(10, 1, 10, 1);
-        jPanel1.add(jRadioButton2, gridBagConstraints);
-
         jButton2.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton2.setText("Annulla");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         jPanel1.add(jButton2, gridBagConstraints);
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Cambria", 0, 24));
-        jRadioButton1.setText("Audio/Video");
-        jRadioButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jRadioButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Cambria", 1, 24));
+        jLabel1.setText("Aggiungi Elemento al Cartellone");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.insets = new java.awt.Insets(14, 14, 14, 14);
+        jPanel1.add(jLabel1, gridBagConstraints);
+
+        jButton3.setFont(new java.awt.Font("Cambria", 0, 21));
+        jButton3.setText("Stop");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        jPanel1.add(jRadioButton1, gridBagConstraints);
+        gridBagConstraints.ipadx = 26;
+        jPanel1.add(jButton3, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Cambria", 1, 24));
-        jLabel1.setText("Aggiungi Elemento al Cartellone");
+        jButton4.setFont(new java.awt.Font("Cambria", 0, 21));
+        jButton4.setText("Play/Pausa");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.insets = new java.awt.Insets(14, 14, 14, 14);
-        jPanel1.add(jLabel1, gridBagConstraints);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(jButton4, gridBagConstraints);
 
-        jComboBox1.setBackground(new java.awt.Color(181, 208, 249));
-        jComboBox1.setFont(new java.awt.Font("Cambria", 0, 24));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Pause", "Stop" ,"Volume +","Volume -","Muto"}));
+        jButton5.setFont(new java.awt.Font("Cambria", 0, 21));
+        jButton5.setText("Audio");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        jPanel1.add(jComboBox1, gridBagConstraints);
+        jPanel1.add(jButton5, gridBagConstraints);
+
+        jButton6.setFont(new java.awt.Font("Cambria", 0, 21));
+        jButton6.setText("Video");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(jButton6, gridBagConstraints);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
-    }// </editor-fold>     
+    }// </editor-fold>                        
     
-    
-    public void addButtonPerformed() {
-		// Ho premuto il tasto di aggiunta di un elemento
-		if(jRadioButton1.isSelected())
-		{
-			//ho selezionato l'elemento foglio
-	
-			NewPaperFrame newPaper=null;
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new NewElementFrame(null,0).setVisible(true);
+            }
+        });
+    }
+    private void controlEvent(String control)
+    {
+    	try {
 			if(grid)
-				 newPaper=new NewPaperFrame(manager,position);
-			else
-				newPaper=new NewPaperFrame(manager,elementID);
-		}		
-		else if(jRadioButton2.isSelected())
-		{
-			//ho selezionato l'elemento controllo
-			
-			String control=new String();
-			if(jComboBox1.getSelectedItem().toString()=="Stop")
-				control=Control.STOP_CONTROL;
-			else if(jComboBox1.getSelectedItem().toString()=="Pause")
-				control=Control.PAUSE_CONTROL;
-			else if(jComboBox1.getSelectedItem().toString()=="Volume +")
-				control=Control.PLUSVOLUME_CONTROL;
-			else if(jComboBox1.getSelectedItem().toString()=="Volume -")
-				control=Control.MINUSVOLUME_CONTROL;
-			else if(jComboBox1.getSelectedItem().toString()=="Muto")
-				control=Control.MUTEVOLUME_CONTROL;
-			
-			try {
-				if(grid)
-					manager.addControlGP(position.x, position.y, control);
-				else{
-					Element oldElement=((FreePoster)(manager.getIPoster())).getElement(elementID);
-					ArrayList<Point2D> lista=new ArrayList<Point2D>();
+				manager.addControlGP(position.x, position.y, control);
+			else{
+				Element oldElement=((FreePoster)(manager.getIPoster())).getElement(elementID);
+				ArrayList<Point2D> lista=new ArrayList<Point2D>();
+				
+				for(int x=0;x<oldElement.getArea().xpoints.length;x++)
+				{
 					
-					for(int x=0;x<oldElement.getArea().xpoints.length;x++)
-					{
-						
-						lista.add(new Point(oldElement.getArea().xpoints[x],oldElement.getArea().ypoints[x]));
-					}
-					manager.addControlFP(lista, control);
-					manager.removeElement(elementID);
+					lista.add(new Point(oldElement.getArea().xpoints[x],oldElement.getArea().ypoints[x]));
 				}
-			} catch (PosterTypeEx e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (PositionEX e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (ElementTypeEX e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			};
-		}
+				manager.addControlFP(lista, control);
+				manager.removeElement(elementID);
+			}
+		} catch (PosterTypeEx e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (PositionEX e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ElementTypeEX e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		};
+    }
+    
+    //evento pausa
+    private void pausaEvent(ActionEvent e) {
+
+    	controlEvent(Control.PAUSE_CONTROL);
+    	this.dispose();
+	}
+	private void stopEvent(ActionEvent e) {
+
+		controlEvent(Control.STOP_CONTROL);
+		this.dispose();
+	} 
+	private void audioEvent(ActionEvent e) {
+		NewPaperFrame newPaper=null;
+		if(grid)
+			 newPaper=new NewPaperFrame(manager,position);
+		else
+			newPaper=new NewPaperFrame(manager,elementID);
+		
 		this.dispose();
 		
 	}
-
+	private void videoEvent(ActionEvent e) {
+		NewPaperFrame newPaper=null;
+		if(grid)
+			 newPaper=new NewPaperFrame(manager,position);
+		else
+			newPaper=new NewPaperFrame(manager,elementID);
+		
+		this.dispose();
+		
+	}
+    
     
     // Variables declaration - do not modify                     
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     // End of variables declaration                   
     class AnnullButton implements ActionListener{
      private JFrame f=null;
@@ -256,6 +269,7 @@ public class NewElementFrame extends javax.swing.JFrame {
     
          f.setVisible(false);  
     }
+
+	
  }
 }
-
