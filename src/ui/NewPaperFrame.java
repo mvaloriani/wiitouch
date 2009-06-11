@@ -58,8 +58,10 @@ import manager.PosterTypeEx;
      
          try {
  			IElement p = ((GridPoster)manager.getIPoster()).getElement(position.x, position.y);
- 			if(p instanceof Paper)
+ 			if(p instanceof Paper){
  				fileTextField.setText(((Paper)p).getPathsFiles().get(0));
+ 				
+ 			}
  		} catch (Exception e) {
  			System.out.println("elemento non ancora creato");
  		}
@@ -72,8 +74,10 @@ import manager.PosterTypeEx;
      	initComponents();
      	 try {
   			IElement p = ((FreePoster)manager.getIPoster()).getElement(elementId);
-  			if(p instanceof Paper)
+  			if(p instanceof Paper){
   				fileTextField.setText(((Paper)p).getPathsFiles().get(0));
+  				
+  			}
   		} catch (Exception e) {
   			System.out.println("elemento non ancora creato");
   		}
