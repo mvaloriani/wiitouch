@@ -78,7 +78,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
         annullaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Crea Poster");
+        setTitle("Crea Cartellone");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(181, 208, 249));
         setMinimumSize(new java.awt.Dimension(210, 335));
