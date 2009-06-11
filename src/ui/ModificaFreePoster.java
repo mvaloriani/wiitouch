@@ -274,7 +274,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 		}
 		else
 		{
-			JOptionPane.showMessageDialog(this, "Selezionare almeno un elemento sul poster", "Attenzione", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Selezionare almeno un elemento sul Cartellone", "Attenzione", JOptionPane.WARNING_MESSAGE);
 		}
 		cartellonePanel.repaint();
 
@@ -282,7 +282,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 
 	private void rimuoviButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rimuoviButtonActionPerformed
 		if(cartellonePanel.isElementSelected()){
-			int result=JOptionPane.showConfirmDialog(this, "Sei sicuro di volere cancellare questo elemento dal poster ?");
+			int result=JOptionPane.showConfirmDialog(this, "Sei sicuro di volere cancellare questo elemento dal Cartellone ?");
 			if(result==JOptionPane.YES_OPTION)
 			{
 				try {
