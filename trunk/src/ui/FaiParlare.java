@@ -68,7 +68,7 @@ public class FaiParlare extends javax.swing.JFrame {
         jButton1.setText("Stop");
         jButton1.addActionListener(new ActionListener(){
 
-			@Override
+			
 			public void actionPerformed(ActionEvent arg0) {
 				manager.stopPlay();
 				dispose();
