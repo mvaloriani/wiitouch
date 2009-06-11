@@ -13,6 +13,8 @@ package ui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import manager.IManager;
 import manager.Manager;
@@ -64,6 +66,16 @@ public class FaiParlare extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Cambria", 0, 24));
         jButton1.setText("Stop");
+        jButton1.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				manager.stopPlay();
+				dispose();
+				
+			}
+        	
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;

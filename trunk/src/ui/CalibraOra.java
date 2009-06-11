@@ -49,7 +49,7 @@ public class CalibraOra extends JFrame {
 		setVisible(true);
 		setBackground(new Color(189, 204, 249));
 		setAlwaysOnTop(true);
-		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
 
@@ -68,9 +68,9 @@ public class CalibraOra extends JFrame {
 
 				//---- testoTextPane ----
 				if (manager.wiiConnected()==false)
-					testoTextPane.setText("Prima di poter modificare o usare questo di cartellone \u00e8 necessario impostare l'area di lavoro.\nSe si desidera impostare ora l'area di lavoro accendere il WiiMote e premere i bottoni 1 e 2, poi cliccare ok.");
+					testoTextPane.setText("Prima di poter modificare o usare questo cartellone \u00e8 necessario impostare l'area di lavoro.\nSe si desidera impostare ora l'area di lavoro accendere il WiiMote e premere i bottoni 1 e 2, poi cliccare ok.");
 				else
-					testoTextPane.setText("Prima di poter modificare o usare questo di cartellone \u00e8 necessario impostare l'area di lavoro premere ok.");
+					testoTextPane.setText("Prima di poter modificare o usare questo cartellone \u00e8 necessario impostare l'area di lavoro premere ok.");
 				testoTextPane.setFont(new Font("Cambria", Font.PLAIN, 16));
 				testoTextPane.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
 				testoTextPane.setBackground(new Color(189, 204, 249));
