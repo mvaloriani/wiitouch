@@ -195,7 +195,7 @@ public class LoadPosterFrame extends javax.swing.JFrame{
 					FaiParlare newframe = new FaiParlare(manager);
 				}
 				else{
-					CalibraOra calibraOra = new CalibraOra(manager);
+					CalibraOra calibraOra = new CalibraOra(manager,"ESEGUI");
 				}
 			}
 			dispose();
@@ -210,19 +210,7 @@ public class LoadPosterFrame extends javax.swing.JFrame{
 
 		JFileChooser chooser = new JFileChooser();
 		chooser.setMultiSelectionEnabled(false);
-		/*FileFilter filter = new FileFilter() {
 
-            public boolean accept(File file) {
-            }
-
-            public String getDescription() {
-
-            }
-        };*/
-		//filter.addExtension("xml");
-
-		//filter.setDescription("Poster");
-		//chooser.setFileFilter(filter);
 		chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		chooser.setCurrentDirectory(new File("./temp/"));
 		if(chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
