@@ -113,7 +113,7 @@ public class Home extends javax.swing.JFrame{
         leftPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         leftPanel.setLayout(new java.awt.GridBagLayout());
 
-        modificaButton.setText("Modifica Tabellone");
+        modificaButton.setText("Modifica Cartellone");
         modificaButton.setFont(new java.awt.Font("Cambria", 0, 24));
         modificaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,7 +128,7 @@ public class Home extends javax.swing.JFrame{
         gridBagConstraints.insets = new java.awt.Insets(5, 4, 5, 4);
         leftPanel.add(modificaButton, gridBagConstraints);
 
-        creaButton.setText("Crea Tabellone");
+        creaButton.setText("Crea Cartellone");
         creaButton.setFont(new java.awt.Font("Cambria", 0, 24));
         creaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
