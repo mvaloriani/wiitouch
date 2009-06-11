@@ -117,7 +117,7 @@ public class NewElementFrame extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Aggiungi Elemento");
         setResizable(false);
         jPanel1.setLayout(new java.awt.GridBagLayout());
