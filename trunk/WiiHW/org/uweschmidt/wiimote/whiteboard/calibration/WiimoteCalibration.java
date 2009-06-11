@@ -66,6 +66,8 @@ import org.uweschmidt.wiimote.whiteboard.ds.IRDot;
 import org.uweschmidt.wiimote.whiteboard.ds.Wiimote;
 import org.uweschmidt.wiimote.whiteboard.util.Util;
 
+import Personal.Evento;
+
 public class WiimoteCalibration {
 	
 	/*
@@ -368,6 +370,10 @@ public class WiimoteCalibration {
 						if (screen.getFullScreenWindow() == calibrationFrame)
 							screen.setFullScreenWindow(null);
 						calibrationFrame.setVisible(false);
+						//OSCAR
+						System.out.println("Calibrato");
+						Evento.getInterfaccia().notifyCalibration();
+						
 						notifyListener(CalibrationEvent.FINISHED);
 						return true;
 					} else {
@@ -389,7 +395,7 @@ public class WiimoteCalibration {
 					}					
 				}).start();
 			}
-			
+
 			return true;
 		}
 		
