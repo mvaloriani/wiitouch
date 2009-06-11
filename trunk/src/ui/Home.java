@@ -322,7 +322,7 @@ public class Home extends javax.swing.JFrame{
 			{
 				this.primoAccesso=false;
 				manager.connect();
-				this.connettiButton.setText("Premi i tasti 1 e 2 del WiiMote");
+				this.connettiButton.setText("Premi insieme i tasti 1 e 2 del WiiMote");
 			}
 			
 		}
