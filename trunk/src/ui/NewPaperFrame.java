@@ -220,7 +220,7 @@ import manager.PosterTypeEx;
          salvaButton = new javax.swing.JButton();
          annullaButton = new javax.swing.JButton();
 
-         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
          setTitle("File");
          setBackground(new java.awt.Color(181, 208, 249));
          setResizable(false);
