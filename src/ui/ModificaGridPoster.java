@@ -247,7 +247,7 @@ public class ModificaGridPoster extends javax.swing.JFrame {
     
     private void aggiungiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
     	setEnableButtons(false, false, false, false);
-    	NewElementFrameOld newElement=new NewElementFrameOld(manager,cartellonePanel.getPosition());	
+    	NewElementFrame newElement=new NewElementFrame(manager,cartellonePanel.getPosition());	
     	cartellonePanel.repaint();
     }
     
@@ -358,6 +358,8 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 	private Image imgPause;
 	private Image imgGen;
 	private Image imgPaper;
+	private Image imgAudio;
+	private Image imgVideo;
 	private ArrayList<ActionListener> listeners=new ArrayList<ActionListener>();
 	public CartellonePanelClass(IManager manager)
 	{
@@ -368,6 +370,8 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 		imgPause = toolkit.createImage("./imm/pause.png");
 		imgGen = toolkit.createImage("./imm/gear.png");
 		imgPaper= toolkit.createImage("./imm/txt.png");
+		imgAudio= toolkit.createImage("./imm/audio.png");
+		imgVideo= toolkit.createImage("./imm/video.png");
 	}
 
 	public synchronized void addActionListener(ActionListener actionListener) {
@@ -432,14 +436,33 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 					}
 					else if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Paper)
 					{
-						isElement=true;
-						if(mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
-								mouseY>y*(this.getHeight()/row) && mouseY<(y+1)*(this.getHeight()/row)){
-							fillCell(g, new Color(255,0,0), imgPaper, x, y);
+						if(((Paper)((GridPoster)manager.getIPoster()).getElement(y, x)).getType()==Paper.AUDIO_FILE)
+						{
+							isElement=true;
+							if(mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
+									mouseY>y*(this.getHeight()/row) && mouseY<(y+1)*(this.getHeight()/row)){
+								fillCell(g, new Color(255,0,0), imgAudio, x, y);
+							}
+							else
+							fillCell(g, new Color(0,255,0), imgAudio, x, y);
+						}else if(((Paper)((GridPoster)manager.getIPoster()).getElement(y, x)).getType()==Paper.VIDEO_FILE)
+						{
+							isElement=true;
+							if(mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
+									mouseY>y*(this.getHeight()/row) && mouseY<(y+1)*(this.getHeight()/row)){
+								fillCell(g, new Color(255,0,0), imgVideo, x, y);
+							}
+							else
+							fillCell(g, new Color(0,255,0), imgVideo, x, y);
+						}else{
+							isElement=true;
+							if(mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
+									mouseY>y*(this.getHeight()/row) && mouseY<(y+1)*(this.getHeight()/row)){
+								fillCell(g, new Color(255,0,0), imgPaper, x, y);
+							}
+							else
+							fillCell(g, new Color(0,255,0), imgPaper, x, y);
 						}
-						else
-						fillCell(g, new Color(0,255,0), imgPaper, x, y);
-						
 					}
 
 
