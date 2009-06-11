@@ -13,10 +13,14 @@ import java.net.SocketAddress;
 import java.net.UnknownHostException;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 @XStreamAlias("Element")
 public class Element implements IElement{
-
+	@XStreamOmitField
+	public static final String AUDIO_FILE="AUDIO";
+	@XStreamOmitField
+	public static final String VIDEO_FILE="VIDEO";
 	/**
 	 * @uml.property  name="area"
 	 * @uml.associationEnd  inverse="element:dataModel.Area"
@@ -25,8 +29,18 @@ public class Element implements IElement{
 	@XStreamAlias("Area")
 	private Polygon area;
 	private int id;
+	private String type;
 	private String icon;
-
+	
+	public void setType(String newType)
+	{
+		this.type=newType;
+	}
+	public String getType()
+	{
+		return this.type;
+	}
+	
 	public String toString(){
 		return("ID:"+id+";");
 	}
