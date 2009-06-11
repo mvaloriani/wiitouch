@@ -260,10 +260,10 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     
     private void aggiungiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
     	if(cartellonePanel.isElementSelected()){
-    		NewElementFrame newElement=null;
+    		NewElementFrameOld newElement=null;
     		if(manager.getIPoster() instanceof FreePoster)
 				try {
-					newElement=new NewElementFrame(manager,cartellonePanel.getSelectedElement());
+					newElement=new NewElementFrameOld(manager,cartellonePanel.getSelectedElement());
 				} catch (PositionEX e) {
 					
 				}
