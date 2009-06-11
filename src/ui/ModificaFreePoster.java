@@ -52,7 +52,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
-        this.setTitle("Poster Libero");
+        this.setTitle("Modifica Cartellone");
         cartellonePanel = new CartellonePannelloClass(manager,this);
         descrizionePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -70,7 +70,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
         anteprimaButton = new javax.swing.JButton();
         salvaButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
         //setAlwaysOnTop(true);
 
@@ -208,8 +208,8 @@ public class ModificaFreePoster extends javax.swing.JFrame {
         operazioniPanel.add(anteprimaButton);
         anteprimaButton.setEnabled(false);
 
-        salvaButton.setText("Salva tutto");
-        salvaButton.setToolTipText("Salva le modifiche");
+        salvaButton.setText("Chiudi");
+        salvaButton.setToolTipText("Salva le modifiche e chiudi");
         salvaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvaButtonActionPerformed(evt);

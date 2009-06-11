@@ -29,7 +29,7 @@ import dataModel.GridPoster;
  *
  * @author Matteo
  */
-public class Home extends javax.swing.JFrame implements WindowListener{
+public class Home extends javax.swing.JFrame{
 
 
 	/** Creates new form Home */
@@ -41,7 +41,7 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 			e1.printStackTrace();
 		}
 		this.manager = manager;
-		addWindowListener(this);
+		
 		initComponents();
 
 	}
@@ -56,112 +56,131 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 	private void initComponents() {
 		java.awt.GridBagConstraints gridBagConstraints;
 
-		topPanel = new javax.swing.JPanel();
-		caricaButton = new javax.swing.JButton();
-		playButton = new javax.swing.JButton();
-		jLabel1 = new javax.swing.JLabel();
-		modificaButton = new javax.swing.JButton();
-		creaButton = new javax.swing.JButton();
-		downPanel = new javax.swing.JPanel();
-		connettiButton = new javax.swing.JButton();
-		wiiPanel = new javax.swing.JPanel();
-		jLabel2 = new javax.swing.JLabel();
-		jLabel3 = new javax.swing.JLabel();
-		jProgressBar1 = new javax.swing.JProgressBar();
-		jProgressBar2 = new javax.swing.JProgressBar();
-		jSeparator1 = new javax.swing.JSeparator();
+        topPanel = new javax.swing.JPanel();
+        rightPanel = new javax.swing.JPanel();
+        playButton = new javax.swing.JButton();
+        leftPanel = new javax.swing.JPanel();
+        modificaButton = new javax.swing.JButton();
+        creaButton = new javax.swing.JButton();
+        topTopPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        closeButton = new javax.swing.JButton();
+        downPanel = new javax.swing.JPanel();
+        connettiButton = new javax.swing.JButton();
+        wiiPanel = new javax.swing.JPanel();
+        bateriaLabel = new javax.swing.JLabel();
+        batteriaProgressBar = new javax.swing.JProgressBar();
 		
 		setTitle("Home");
 		setBackground(new java.awt.Color(51, 51, 255));
 		setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+		setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(new java.awt.GridBagLayout());
 		
 
-		topPanel.setBackground(new java.awt.Color(181, 204, 249));
-		topPanel.setLayout(new java.awt.GridBagLayout());
+        topPanel.setBackground(new java.awt.Color(189, 204, 249));
+        topPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        topPanel.setLayout(new java.awt.GridBagLayout());
 
-		caricaButton.setText("Carica Tabellone");
-		caricaButton.setFont(new java.awt.Font("Cambria", 0, 24));
-		caricaButton.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				caricaButtonActionPerformed(evt);
-			}
-		});
-		gridBagConstraints = new java.awt.GridBagConstraints();
-		gridBagConstraints.gridx = 0;
-		gridBagConstraints.gridy = 1;
-		gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-		gridBagConstraints.ipadx = 45;
-		gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-		gridBagConstraints.insets = new java.awt.Insets(5, 6, 5, 6);
-		topPanel.add(caricaButton, gridBagConstraints);
+        rightPanel.setBackground(new java.awt.Color(189, 204, 249));
+        rightPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        rightPanel.setLayout(new java.awt.GridBagLayout());
 
-		playButton.setText("Fai Parlare");
-		playButton.setFont(new java.awt.Font("Cambria", 0, 24));
-		playButton.setEnabled(false);
-		playButton.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				playButtonActionPerformed(evt);
-			}
-		});
-		gridBagConstraints = new java.awt.GridBagConstraints();
-		gridBagConstraints.gridx = 0;
-		gridBagConstraints.gridy = 3;
-		gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-		gridBagConstraints.ipadx = 45;
-		gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-		topPanel.add(playButton, gridBagConstraints);
+        playButton.setText("Fai Parlare");
+        playButton.setFont(new java.awt.Font("Cambria", 0, 24));
+        playButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 66;
+        gridBagConstraints.ipady = 13;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        rightPanel.add(playButton, gridBagConstraints);
 
-		jLabel1.setIcon(new javax.swing.ImageIcon(".\\imm\\Untitled.png")); // NOI18N
-		gridBagConstraints = new java.awt.GridBagConstraints();
-		gridBagConstraints.gridx = 0;
-		gridBagConstraints.gridy = 0;
-		gridBagConstraints.gridwidth = 2;
-		topPanel.add(jLabel1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 1, 5, 1);
+        topPanel.add(rightPanel, gridBagConstraints);
 
-		modificaButton.setText("Modifica Tabellone");
-		modificaButton.setFont(new java.awt.Font("Cambria", 0, 24));
-		modificaButton.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				modificaButtonActionPerformed(evt);
-			}
-		});
-		modificaButton.setEnabled(false);
-		gridBagConstraints = new java.awt.GridBagConstraints();
-		gridBagConstraints.gridx = 1;
-		gridBagConstraints.gridy = 3;
-		gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-		gridBagConstraints.ipadx = 45;
-		gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-		topPanel.add(modificaButton, gridBagConstraints);
+        leftPanel.setBackground(new java.awt.Color(189, 204, 249));
+        leftPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        leftPanel.setLayout(new java.awt.GridBagLayout());
 
-		creaButton.setText("Crea Tabellone");
-		creaButton.setFont(new java.awt.Font("Cambria", 0, 24));
-		creaButton.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				creaButtonActionPerformed(evt);
-			}
-		});
-		gridBagConstraints = new java.awt.GridBagConstraints();
-		gridBagConstraints.gridx = 1;
-		gridBagConstraints.gridy = 1;
-		gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-		gridBagConstraints.ipadx = 45;
-		gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-		topPanel.add(creaButton, gridBagConstraints);
+        modificaButton.setText("Modifica Tabellone");
+        modificaButton.setFont(new java.awt.Font("Cambria", 0, 24));
+        modificaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificaButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 45;
+        gridBagConstraints.insets = new java.awt.Insets(5, 4, 5, 4);
+        leftPanel.add(modificaButton, gridBagConstraints);
 
-		 gridBagConstraints = new java.awt.GridBagConstraints();
-	     gridBagConstraints.gridx = 0;
-	     gridBagConstraints.gridy = 2;
-	     gridBagConstraints.gridwidth = 2;
-	     gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-	     topPanel.add(jSeparator1, gridBagConstraints);
+        creaButton.setText("Crea Tabellone");
+        creaButton.setFont(new java.awt.Font("Cambria", 0, 24));
+        creaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creaButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 45;
+        gridBagConstraints.insets = new java.awt.Insets(4, 5, 4, 5);
+        leftPanel.add(creaButton, gridBagConstraints);
 
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
+        topPanel.add(leftPanel, gridBagConstraints);
+
+        topTopPanel.setBackground(new java.awt.Color(189, 204, 249));
+        topTopPanel.setLayout(new java.awt.GridBagLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Workspace\\WiiTouchProject\\imm\\Untitled.png")); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        topTopPanel.add(jLabel1, gridBagConstraints);
+
+        closeButton.setText("Esci");
+        closeButton.setFont(new java.awt.Font("Cambria", 0, 24));
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed();
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.ipadx = 17;
+        gridBagConstraints.ipady = 36;
+        gridBagConstraints.insets = new java.awt.Insets(0, 35, 0, 35);
+        topTopPanel.add(closeButton, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        topPanel.add(topTopPanel, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 39;
+        getContentPane().add(topPanel, gridBagConstraints);
 		
-		gridBagConstraints = new java.awt.GridBagConstraints();
-		gridBagConstraints.ipadx = 39;
-		getContentPane().add(topPanel, gridBagConstraints);
-
 		downPanel.setBackground(new java.awt.Color(181, 204, 249));
 		downPanel.setLayout(new java.awt.GridBagLayout());
 
@@ -183,35 +202,27 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 		wiiPanel.setLayout(new java.awt.GridBagLayout());
 		wiiPanel.setVisible(false);
 
-		jLabel2.setBackground(new java.awt.Color(189, 204, 249));
-		jLabel2.setText("Batteria:");
-		jLabel2.setFont(new java.awt.Font("Cambria", 0, 24));
+		bateriaLabel.setBackground(new java.awt.Color(189, 204, 249));
+		bateriaLabel.setText("Batteria:");
+		bateriaLabel.setFont(new java.awt.Font("Cambria", 0, 24));
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-		wiiPanel.add(jLabel2, gridBagConstraints);
+		wiiPanel.add(bateriaLabel, gridBagConstraints);
 
-		jLabel3.setBackground(new java.awt.Color(189, 204, 249));
-		jLabel3.setText("Segnale:");
-		jLabel3.setFont(new java.awt.Font("Cambria", 0, 24));
-		gridBagConstraints = new java.awt.GridBagConstraints();
-		gridBagConstraints.gridx = 0;
-		gridBagConstraints.gridy = 1;
-		gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-		wiiPanel.add(jLabel3, gridBagConstraints);
+
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-		wiiPanel.add(jProgressBar1, gridBagConstraints);
+		wiiPanel.add(batteriaProgressBar, gridBagConstraints);
 		
 		
-		this.getManager().batteryLevel(new ActionListener() {
+		manager.batteryLevel(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				batteryManager(evt);
 			}
 		});
 		
-		this.getManager().remoteAdded(new ActionListener() {
-			public void actionPerformed(ActionEvent evt)
-			{
+		manager.remoteAdded(new ActionListener() {
+			public void actionPerformed(ActionEvent evt){
 				remoteManager(evt);
 			}
 		});
@@ -223,11 +234,6 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 			}
 			
 		});
-		gridBagConstraints = new java.awt.GridBagConstraints();
-		gridBagConstraints.gridx = 1;
-		gridBagConstraints.gridy = 1;
-		gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-		wiiPanel.add(jProgressBar2, gridBagConstraints);
 
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.gridx = 1;
@@ -251,28 +257,22 @@ public class Home extends javax.swing.JFrame implements WindowListener{
         this.setVisible(true);
 	}// </editor-fold>//GEN-END:initComponents
 
+	private void closeButtonActionPerformed() {
+		this.dispose();
+		manager.endSystem();
+		
+	}
+
 	private void creaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creaButtonActionPerformed
 		NewPosterFrame newPosterFrame = new NewPosterFrame(this, manager);
 		newPosterFrame.setVisible(true);
 	}//GEN-LAST:event_creaButtonActionPerformed
 
-	private void caricaButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		LoadPosterFrame loadFrame = new LoadPosterFrame(this, manager);
-	}
-	
+
 	private void modificaButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		ModificaGridPoster modifica=null;
-		ModificaFreePoster modLib=null;
-		if(manager.getIPoster() instanceof GridPoster)
-			 modifica = new ModificaGridPoster(manager);
-		else if((manager.getIPoster() instanceof FreePoster)&&(manager.getIPoster().isCalibated()))
-			 modLib=new ModificaFreePoster(manager);
-		else{
-			CalibraOra nf = new CalibraOra(manager);
-		}
-			
 		
-			
+		LoadPosterFrame nf = new LoadPosterFrame(manager,"MODIFICA");	
+				
 	}
 
 	private void connettiButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,20 +280,14 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 	}
 
 	private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		if (manager.getIPoster().isCalibated()){
-			manager.play();
-			FaiParlare newframe = new FaiParlare(manager);
-		}
-		else{
-			CalibraOra calibraOra = new CalibraOra(manager);
-		}
+			LoadPosterFrame nf = new LoadPosterFrame(manager,"ESEGUI");
 	}
 	
 	private void batteryManager(ActionEvent e){
 		if (wiiPanel.isVisible()==true){
 			String s=e.getSource().toString();
-		    jProgressBar1.setValue(Integer.parseInt(s));
-			jProgressBar1.setString(e.getSource().toString()+"%");
+		    batteriaProgressBar.setValue(Integer.parseInt(s));
+			batteriaProgressBar.setString(e.getSource().toString()+"%");
 			
 		}
 	}
@@ -363,74 +357,28 @@ public class Home extends javax.swing.JFrame implements WindowListener{
 	private javax.swing.JButton caricaButton;
 	private javax.swing.JButton connettiButton;
 	private javax.swing.JButton creaButton;
+	private javax.swing.JButton	closeButton;
 	private javax.swing.JPanel downPanel;
+	private javax.swing.JPanel topTopPanel;
 	private javax.swing.JLabel jLabel1;
-	private javax.swing.JLabel jLabel2;
-	private javax.swing.JLabel jLabel3;
-	private javax.swing.JProgressBar jProgressBar1;
-	private javax.swing.JProgressBar jProgressBar2;
+	private javax.swing.JLabel bateriaLabel;
+	private javax.swing.JProgressBar batteriaProgressBar;
 	private javax.swing.JButton modificaButton;
 	private javax.swing.JButton playButton;
 	private javax.swing.JPanel topPanel;
+	private javax.swing.JPanel leftPanel;
+	private javax.swing.JPanel rightPanel;
 	private javax.swing.JPanel wiiPanel;
-	private javax.swing.JSeparator jSeparator1;
+
+
+	
 	// End of variables declaration//GEN-END:variables
 	private IManager manager;
-
-	/**
-	 * @return the manager
-	 */
-	public IManager getManager() {
-		return manager;
-	}
 
 	
 	public void enablePosterMethods(boolean b){
 			modificaButton.setEnabled(b);
 			playButton.setEnabled(b);
-	}
-	
-	public void windowActivated(WindowEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	
-	public void windowClosed(WindowEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	
-	public void windowClosing(WindowEvent e) {
-		e.getWindow().setVisible(false);
-		e.getWindow().dispose();
-		manager.endSystem();
-
-	}
-
-	
-	public void windowDeactivated(WindowEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	
-	public void windowDeiconified(WindowEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	
-	public void windowIconified(WindowEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	
-	public void windowOpened(WindowEvent arg0) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

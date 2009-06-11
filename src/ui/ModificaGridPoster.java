@@ -91,10 +91,10 @@ public class ModificaGridPoster extends javax.swing.JFrame {
         anteprimaButton = new javax.swing.JButton();
         salvaButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
         //setAlwaysOnTop(true);
-        setTitle("Modifica");
+        setTitle("Modifica Cartellone");
 
         cartellonePanel.setBackground(new java.awt.Color(255, 255, 255));
         //cartellonePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartellone", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cambria", 1, 14))); // NOI18N
@@ -221,8 +221,8 @@ public class ModificaGridPoster extends javax.swing.JFrame {
         });
         operazioniPanel.add(anteprimaButton);
 
-        salvaButton.setText("Salva tutto");
-        salvaButton.setToolTipText("Salva le modifiche");
+        salvaButton.setText("Chiudi");
+        salvaButton.setToolTipText("Salva le modifiche e chiudi");
         salvaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvaButtonActionPerformed(evt);
