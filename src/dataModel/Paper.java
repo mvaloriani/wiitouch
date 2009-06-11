@@ -26,7 +26,20 @@ public class Paper extends Element {
 	private ArrayList<String> pathsFiles;
 	@XStreamOmitField
 	private int actualFile;
-
+	@XStreamOmitField
+	public static final String AUDIO_FILE="AUDIO";
+	@XStreamOmitField
+	public static final String VIDEO_FILE="VIDEO";
+	private String type;
+	
+	public void setType(String newType)
+	{
+		this.type=newType;
+	}
+	public String getType()
+	{
+		return this.type;
+	}
 	
 	public String toString() {
 		String result = super.toString()+"\n Files:\n";
