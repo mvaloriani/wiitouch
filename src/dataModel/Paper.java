@@ -62,8 +62,9 @@ public class Paper extends Element {
 	 * @param pathsFiles  The pathsFiles to set.
 	 * @uml.property  name="pathsFiles"
 	 */
-	public void setPathsFiles(ArrayList<String> pathsFiles) {
+	public  void setPathsFiles(ArrayList<String> pathsFiles) {
 		this.pathsFiles = pathsFiles;
+		setFileType(pathsFiles);
 	}
 	
 	public void removeAllPathFiles(){
@@ -73,19 +74,8 @@ public class Paper extends Element {
 	public Paper(int id, ArrayList<String> filesList) {
 		super(id);
 		this.pathsFiles=filesList;
-		String path=null;
-		if(pathsFiles!=null)
-		{
-			if(pathsFiles.get(0)!=null)
-			{
-				path=pathsFiles.get(0);
-				
-				if(path.toLowerCase().contains("mp3") || path.toLowerCase().contains("wma") || path.toLowerCase().contains("wav"))
-					this.setType(this.AUDIO_FILE);
-				else if(path.toLowerCase().contains("avi")  || path.toLowerCase().contains("mp4") || path.toLowerCase().contains("mpg") || path.toLowerCase().contains("ogg") || path.toLowerCase().contains("mov") || path.toLowerCase().contains("3gp") || path.toLowerCase().contains("mpeg") )
-					this.setType(this.VIDEO_FILE);
-			}
-		}
+		setFileType(filesList);
+		
 	}
 
 	public Paper(int id, Polygon area) {
@@ -97,6 +87,27 @@ public class Paper extends Element {
 		pathsFiles=filesList;
 	}
 
+	private void setFileType(ArrayList<String> filesList)
+	{
+		String path=null;
+		if(pathsFiles!=null)
+		{
+			if(pathsFiles.size()>0){
+				if(pathsFiles.get(0)!=null)
+				{
+					path=pathsFiles.get(0);
+
+					if(path.toLowerCase().contains("mp3") || path.toLowerCase().contains("wma") || path.toLowerCase().contains("wav"))
+						this.setType(this.AUDIO_FILE);
+					else if(path.toLowerCase().contains("avi")  || path.toLowerCase().contains("mp4") || path.toLowerCase().contains("mpg") || path.toLowerCase().contains("ogg") || path.toLowerCase().contains("mov") || path.toLowerCase().contains("3gp") || path.toLowerCase().contains("mpeg") )
+						this.setType(this.VIDEO_FILE);
+					else
+						this.setType("");
+				}
+
+			}
+	}}
+	
 	public void exec() {
 		
 		PrintWriter out = null;
