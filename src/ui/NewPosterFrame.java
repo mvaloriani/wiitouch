@@ -90,7 +90,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
         jPanel3.setLayout(new java.awt.GridBagLayout());
         jPanel3.setSize(400, 600);
 
-        jLabel7.setText("CREA POSTER");
+        jLabel7.setText("CREA CARTELLONE");
         jLabel7.setFont(new java.awt.Font("Cambria", 0, 18));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
