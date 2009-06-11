@@ -31,6 +31,7 @@ public class GridPoster extends Poster {
 	
 	
 	public void check(Manager manager){
+		setIsCalibated(false);
 		idMap=new HashMap<Integer, Point>();
 		for (Point p : elementMap.keySet()){
 			Element e = elementMap.get(p);
