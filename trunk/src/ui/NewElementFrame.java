@@ -23,6 +23,7 @@ import manager.PosterTypeEx;
 import dataModel.Control;
 import dataModel.Element;
 import dataModel.FreePoster;
+import dataModel.Paper;
 
 /**
  *
@@ -228,6 +229,7 @@ public class NewElementFrame extends javax.swing.JFrame {
 	} 
 	private void audioEvent(ActionEvent e) {
 		NewPaperFrame newPaper=null;
+		
 		if(grid)
 			 newPaper=new NewPaperFrame(manager,position);
 		else
