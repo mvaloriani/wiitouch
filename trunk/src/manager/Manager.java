@@ -55,6 +55,7 @@ public class Manager implements IManager, EventListener{
 	{
 		System.out.println("Provo a chiudere vlc");
 		vlcThread.termina();
+		System.exit(0);
 
 	}
 
@@ -230,8 +231,8 @@ public class Manager implements IManager, EventListener{
 	}
 
 	// WiiMethods
-	public void calibra(){
-		iWii.calibra();
+	public void calibra(ActionListener listener){
+		iWii.calibra(listener);
 		poster.setIsCalibated(true);
 	}
 
