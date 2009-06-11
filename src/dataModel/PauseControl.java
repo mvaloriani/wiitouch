@@ -26,7 +26,7 @@ public class PauseControl extends Control {
 
 	public void exec() {
 		
-		
+		System.out.println("dovrei fare pausa");
 		PrintWriter out = null;
 		try {
 			out=super.openConnection();
