@@ -11,8 +11,10 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 
 import javax.obex.SessionNotifier;
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -29,6 +31,7 @@ public class LoadPosterFrame extends javax.swing.JFrame{
 
 
 	private String tipoSessione;
+
 	/** Creates new form NewJFrame 
 	 * @param home 
 	 * @param manager */
@@ -54,7 +57,7 @@ public class LoadPosterFrame extends javax.swing.JFrame{
 		jPanel2 = new javax.swing.JPanel();
 		okButton = new javax.swing.JButton();
 		annullaButton = new javax.swing.JButton();
-		cancellaButton = new javax.swing.JButton();
+		anteprimaButton = new javax.swing.JButton();
 		jPanel3 = new javax.swing.JPanel();
 		jLabel1 = new javax.swing.JLabel();
 		pathFileTextField = new javax.swing.JTextField();
@@ -95,7 +98,7 @@ public class LoadPosterFrame extends javax.swing.JFrame{
 		gridBagConstraints.gridx = 0;
 		gridBagConstraints.gridy = 3;
 		gridBagConstraints.gridwidth = 2;
-		gridBagConstraints.ipadx = 17;
+		//gridBagConstraints.ipadx = 8;
 		jPanel2.add(okButton, gridBagConstraints);
 
 		annullaButton.setFont(new java.awt.Font("Cambria", 0, 24));
@@ -111,11 +114,26 @@ public class LoadPosterFrame extends javax.swing.JFrame{
 		gridBagConstraints.gridwidth = 2;
 		jPanel2.add(annullaButton, gridBagConstraints);
 
+		
+		anteprimaButton.setFont(new java.awt.Font("Cambria", 0, 24));
+		anteprimaButton.setText("Anteprima");
+		anteprimaButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent actionEvent) {
+				anteprimaActionPerformed(actionEvent);
+			}
+		});
+		gridBagConstraints = new java.awt.GridBagConstraints();
+		gridBagConstraints.gridx = 5;
+		gridBagConstraints.gridy = 3;
+		gridBagConstraints.gridwidth = 2;
+		jPanel2.add(anteprimaButton, gridBagConstraints);
+
 
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.gridx = 1;
 		gridBagConstraints.gridy = 2;
-		gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHEAST;
+		gridBagConstraints.fill=gridBagConstraints.HORIZONTAL;
+		gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
 		jPanel1.add(jPanel2, gridBagConstraints);
 
 		jPanel3.setLayout(new java.awt.GridBagLayout());
@@ -178,6 +196,21 @@ public class LoadPosterFrame extends javax.swing.JFrame{
 		this.setVisible(true);
 	}// </editor-fold>                        
 
+	private void anteprimaActionPerformed(ActionEvent actionEvent) {
+		try {
+			manager.loadPoster(pathFileTextField.getText());
+			if (manager.getIPoster() instanceof FreePoster){
+				AnteprimaFreePoster nf = new AnteprimaFreePoster(manager);
+			}
+			else{
+				AnteprimaGridPoster nf = new AnteprimaGridPoster(manager);	
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 	private void okActionPerformed(ActionEvent actionEvent) {
 		try {
 			manager.loadPoster(pathFileTextField.getText());
@@ -229,7 +262,7 @@ public class LoadPosterFrame extends javax.swing.JFrame{
 	private javax.swing.JButton navigaButton;
 	private javax.swing.JButton okButton;
 	private javax.swing.JButton annullaButton;
-	private javax.swing.JButton cancellaButton;
+	private javax.swing.JButton anteprimaButton;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;
