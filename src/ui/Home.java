@@ -25,14 +25,21 @@ import manager.IManager;
 import dataModel.FreePoster;
 import dataModel.GridPoster;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class Home.
+ * 
  * @author Matteo
  */
 public class Home extends javax.swing.JFrame{
 
 
-	/** Creates new form Home */
+	/**
+	 * Creates new form Home.
+	 * 
+	 * @param manager
+	 *            the manager
+	 */
 	public Home(IManager manager) {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -76,6 +83,7 @@ public class Home extends javax.swing.JFrame{
 		setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 		setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(new java.awt.GridBagLayout());
+		setResizable(false);
 		
 
         topPanel.setBackground(new java.awt.Color(189, 204, 249));
@@ -131,6 +139,10 @@ public class Home extends javax.swing.JFrame{
         creaButton.setText("Crea Cartellone");
         creaButton.setFont(new java.awt.Font("Cambria", 0, 24));
         creaButton.addActionListener(new java.awt.event.ActionListener() {
+            
+            /* (non-Javadoc)
+             * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+             */
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 creaButtonActionPerformed(evt);
             }
@@ -215,25 +227,19 @@ public class Home extends javax.swing.JFrame{
 		wiiPanel.add(batteriaProgressBar, gridBagConstraints);
 		
 		
-		manager.batteryLevel(new ActionListener() {
+		manager.wiimoteBatteryLevelManager(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				batteryManager(evt);
 			}
 		});
 		
-		manager.remoteAdded(new ActionListener() {
+		manager.wiimoteConnectionManager(new ActionListener() {
 			public void actionPerformed(ActionEvent evt){
-				remoteManager(evt);
+				connectionManager(evt);
 			}
 		});
 		
-		manager.connectionManager(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				connectionManager();
-				
-			}
-			
-		});
+
 
 		gridBagConstraints = new java.awt.GridBagConstraints();
 		gridBagConstraints.gridx = 1;
@@ -255,7 +261,8 @@ public class Home extends javax.swing.JFrame{
         
         setLocation((screenWidth-this.getSize().width) / 2, (screenHeight-this.getSize().height) / 2);
         this.setVisible(true);
-	}// </editor-fold>//GEN-END:initComponents
+        
+	}
 
 	private void closeButtonActionPerformed() {
 		this.dispose();
@@ -263,10 +270,10 @@ public class Home extends javax.swing.JFrame{
 		
 	}
 
-	private void creaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creaButtonActionPerformed
+	private void creaButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		NewPosterFrame newPosterFrame = new NewPosterFrame(this, manager);
 		newPosterFrame.setVisible(true);
-	}//GEN-LAST:event_creaButtonActionPerformed
+	}
 
 
 	private void modificaButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,14 +282,18 @@ public class Home extends javax.swing.JFrame{
 				
 	}
 
-	private void connettiButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		connettiManager(evt);
-	}
+
 
 	private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {
 			LoadPosterFrame nf = new LoadPosterFrame(manager,"ESEGUI");
 	}
 	
+	/**
+	 * Battery manager.
+	 * 
+	 * @param e
+	 *            the e
+	 */
 	private void batteryManager(ActionEvent e){
 		if (wiiPanel.isVisible()==true){
 			String s=e.getSource().toString();
@@ -292,8 +303,8 @@ public class Home extends javax.swing.JFrame{
 		}
 	}
 	
-	private void remoteManager(ActionEvent e){
-		//System.out.println("AAAAAA");
+	private void connectionManager(ActionEvent e){
+
 		String s=e.getSource().toString();
 		if(Integer.parseInt(s)!=0)
 				{
@@ -311,7 +322,7 @@ public class Home extends javax.swing.JFrame{
 		}
 	}
 	
-	private void connettiManager(ActionEvent evt){
+	private void connettiButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		if(this.primoAccesso==true)
 		{
 			Object[] options = { "Ok", "Annulla" };
@@ -336,13 +347,13 @@ public class Home extends javax.swing.JFrame{
 		
 
 	}
-	private void connectionManager(){
-		//if (wiiPanel.isVisible()==false)
-		//	wiiPanel.setVisible(true);
-	}
+
 	
 	/**
-	 * @param args the command line a/rguments
+	 * The main method.
+	 * 
+	 * @param args
+	 *            the command line a/rguments
 	 */
 	public static void main(String args[]) {
 		java.awt.EventQueue.invokeLater(new Runnable() {
@@ -376,6 +387,12 @@ public class Home extends javax.swing.JFrame{
 	private IManager manager;
 
 	
+	/**
+	 * Enable poster methods.
+	 * 
+	 * @param b
+	 *            the b
+	 */
 	public void enablePosterMethods(boolean b){
 			modificaButton.setEnabled(b);
 			playButton.setEnabled(b);

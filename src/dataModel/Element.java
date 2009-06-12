@@ -78,7 +78,7 @@ public class Element implements IElement{
 	/**
 	 */
 	public void exec(){
-		System.out.print("");
+		System.out.print("sono vuoto");
 	}
 
 	protected PrintWriter openConnection() throws ConnectException {

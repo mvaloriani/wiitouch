@@ -1,5 +1,6 @@
 package manager;
 
+import java.io.IOException;
 import java.sql.Time;
 import java.util.ArrayList;
 
@@ -20,12 +21,13 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		//System.setProperty("bluecove.jsr82.psm_minimum_off", "true");
+
 		IManager system = new Manager();
 
 		try{
-			Thread.sleep(2*1000);
+			
 			Home home = new Home(system);
-			home.setVisible(true);
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 			System.err.println("AWT problems");

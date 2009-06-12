@@ -32,7 +32,7 @@ public class CalibraOra extends JFrame {
 		initComponents();
 	}
     
-	protected void calibrationActionPerformed() {
+	private void calibrationActionPerformed() {
 		if(sessione.equalsIgnoreCase("ESEGUI")){
 			FaiParlare nf = new FaiParlare(manager);
 			dispose();
@@ -47,7 +47,7 @@ public class CalibraOra extends JFrame {
     	dispose();
     }
 	
-	protected void connettiActionPerformed(ActionEvent actionEvent) {
+	private void connettiActionPerformed(ActionEvent actionEvent) {
 			manager.calibra(listener);	
 	}
 	

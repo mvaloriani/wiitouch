@@ -48,38 +48,11 @@ public class Manager implements IManager, EventListener{
 
 	private boolean wiiConnected;
 	
-	private ArrayList<ActionListener> actionListenerList;
+	private boolean firstCalibraion;
+		
+	private ArrayList<ActionListener> calibraActionListenerList;
 
 	
-	public void endSystem()
-	{
-		System.out.println("Provo a chiudere vlc");
-		vlcThread.termina();
-		System.exit(0);
-
-	}
-
-	public Paper getlastPaper()
-	{
-		return lastPaper;
-
-	}
-
-	public Poster getPoster() {
-		return poster;
-	}
-
-	public boolean wiiConnected(){
-		return wiiConnected;
-	}
-
-	/**
-	 * @return the managerCreazione
-	 */
-	public ManagerCreazione getManagerCreazione() {
-		return managerCreazione;
-	}
-
 	/**
 	 * @param managerDati
 	 * @param managerCreazione
@@ -91,10 +64,15 @@ public class Manager implements IManager, EventListener{
 		this.managerCreazione=null;
 		this.poster = null;
 		this.lastPaper = null;
-		this.actionListenerList= new ArrayList<ActionListener>();
+		
+
+		this.calibraActionListenerList= new ArrayList<ActionListener>();
 		this.iWii = new HW();
 		this.wiiConnected=false;
+		this.firstCalibraion=true;
+		
 
+		
 		// logger
 		FileHandler fh=null;
 		log=Logger.getLogger("WiiTouch.manager");
@@ -107,20 +85,34 @@ public class Manager implements IManager, EventListener{
 		}
 		log.addHandler(fh);
 		log.setLevel(Level.ALL);
-
-
-
+	
+	
+	
 		/*creazione del thread per vlc*/
 		vlcThread=new VlcThread("VlcThread");
 		vlcThread.start();
+	
+	
+	}
 
-//		vlcThread2=new VlcThread("SecondaryVlcThread");
-//		vlcThread.start();
-
+	public void endSystem()
+	{
+		System.out.println("Provo a chiudere vlc");
+		vlcThread.termina();
+		//System.exit(0);
 
 	}
 
-	//FreePoster methods
+	public Poster getPoster() {
+		return poster;
+	}
+
+	/**
+	 * @return the managerCreazione
+	 */
+	public ManagerCreazione getManagerCreazione() {
+		return managerCreazione;
+	}
 
 	public void createFreePoster(String name, String classe,
 			String description) {
@@ -203,6 +195,31 @@ public class Manager implements IManager, EventListener{
 
 	// Common methods
 
+	public void setPosterName(String text) {
+		poster.setName(text);
+		
+	}
+
+	public void setPosterDescription(String text) {
+		poster.setDescription(text);
+		
+	}
+
+	public void setPosterClassroom(String text) {
+		poster.setClassroom(text);
+		
+	}
+
+	public Paper getlastPaper()
+	{
+		return lastPaper;
+	
+	}
+
+	public IPoster getIPoster() {
+		return ((IPoster)poster);
+	}
+
 	public void setPaperFiles(Integer id, ArrayList<String> Files) throws PositionEX {
 		managerCreazione.setPaperFiles(poster, id, Files);
 	}
@@ -210,12 +227,6 @@ public class Manager implements IManager, EventListener{
 	public void removeElement(Integer id) throws PositionEX {
 		managerCreazione.removeElement(poster, id);		
 	}
-
-	public IPoster getIPoster() {
-		return ((IPoster)poster);
-	}
-
-	// Load&Store methods 
 
 	public void loadPoster(String urlFile) throws FileNotFoundException {
 		poster = managerDati.loadPoster(urlFile);
@@ -230,10 +241,29 @@ public class Manager implements IManager, EventListener{
 
 	}
 
+	public boolean wiiConnected(){
+		return wiiConnected;
+	}
+
 	// WiiMethods
 	public void calibra(ActionListener listener){
-		iWii.calibra(listener);
-		poster.setIsCalibated(true);
+		//al momento voglio gestire solo un listener per volta
+		calibraActionListenerList.clear();
+		calibraActionListenerList.add(listener);
+		if(firstCalibraion==true){
+			iWii.setCalibraListener(new ActionListener(){
+
+				public void actionPerformed(ActionEvent arg0) {
+					poster.setIsCalibated(true);
+					for(ActionListener a : calibraActionListenerList)
+						a.actionPerformed(arg0);
+				}
+
+			});
+			firstCalibraion=false;
+		}
+		iWii.calibra();
+
 	}
 
 	public void play() {
@@ -243,7 +273,7 @@ public class Manager implements IManager, EventListener{
 			}
 
 		});
-		Toolkit.getDefaultToolkit().beep();///BEEEEEP
+		
 	}
 
 	public void stopPlay() {
@@ -255,24 +285,23 @@ public class Manager implements IManager, EventListener{
 		try{
 			iWii.connect();
 			wiiConnected=true;
-			notifyConnection();
+			
 		}catch (Exception e) {
 			throw (new ExceptionInInitializerError());
 		}
 		
 	}
 
-	public void batteryLevel(ActionListener listener) {
+	public void wiimoteBatteryLevelManager(ActionListener listener) {
 		iWii.batteryLevel(listener);
 	}
 	
 
-	public void remoteAdded(ActionListener listener) {
-		iWii.remoteAdded(listener);
+	public void wiimoteConnectionManager(ActionListener listener) {
+		iWii.connectionManager(listener);
 	}
-	public void connectionManager(ActionListener listener) {
-		actionListenerList.add(listener);
-	}
+	
+
 	
 	public ArrayList<Point2D> createArea(Integer numPoints){
 		return iWii.createAreaFP(numPoints);
@@ -298,31 +327,11 @@ public class Manager implements IManager, EventListener{
 	
 	private void ricevutoPuntoActionPerformed(EventoSelezionaPunto e){
 		System.out.print("\npunto ricevuto x:"+ e.getPunto().x+ " y: "+e.getPunto().y);
+		Toolkit.getDefaultToolkit().beep();///BEEEEEP
 		play(e.getPunto());
 	}
 
-	private void notifyConnection(){
-		for(ActionListener a : actionListenerList)
-			a.actionPerformed(new ActionEvent(this, 0, null));
-	}
 
-	@Override
-	public void setPosterClassroom(String text) {
-		poster.setClassroom(text);
-		
-	}
-
-	@Override
-	public void setPosterDescription(String text) {
-		poster.setDescription(text);
-		
-	}
-
-	@Override
-	public void setPosterName(String text) {
-		poster.setName(text);
-		
-	}
 	
 	
 
