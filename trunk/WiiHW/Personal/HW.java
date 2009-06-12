@@ -78,9 +78,12 @@ public class HW implements IWiiHw{
 	}
 
 
-	public void calibra(ActionListener listener){
+	public void setCalibraListener(ActionListener listener){
 		this.calibraListener=listener;
-		this.IsCalibrated=true;
+	}
+	
+	public void calibra(){
+		
 		calibration.start(dh.getConnectedWiimotes());
 
 		this.IsCalibrated=calibration.isAnyCalibrated(dh.getConnectedWiimotes());
@@ -175,14 +178,14 @@ public class HW implements IWiiHw{
 		}
 	}
 
-	public void remoteAdded(ActionListener pippo)
+	public void connectionManager(ActionListener listener)
 	{
-		this.remoteListener=pippo;
+		this.remoteListener=listener;
 	}
 
-	public void batteryLevel(ActionListener pippo)
+	public void batteryLevel(ActionListener listener)
 	{
-		this.batteriaListener=pippo;
+		this.batteriaListener=listener;
 	}
 
 	public void connect()
