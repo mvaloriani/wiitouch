@@ -29,7 +29,9 @@ import manager.IManager;
  */
 public class LoadPosterFrame extends javax.swing.JFrame{
 
-
+	public static final String ESEGUI="ESEGUI";
+	public static final String MODIFICA="MODIFICA";
+	
 	private String tipoSessione;
 
 	/** Creates new form NewJFrame 
