@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import dataModel.GridPoster;
+
 import manager.IManager;
 
 /**
@@ -18,8 +20,7 @@ import manager.IManager;
  */
 public class AggiungiOra extends JFrame {
 
-	public AggiungiOra(Home home, IManager manager) {
-		this.home = home;
+	public AggiungiOra(IManager manager) {
 		this.manager = manager;
 		initComponents();
 	}
@@ -28,12 +29,17 @@ public class AggiungiOra extends JFrame {
 		dispose();
 	}
 	private void aggiungiActionPerformed(ActionEvent actionEvent) {
-		ModificaGridPoster modifica =new ModificaGridPoster(manager);
+		if(manager.getIPoster() instanceof GridPoster){
+			ModificaGridPoster modifica =new ModificaGridPoster(manager);
+			}
+		else{
+			ModificaFreePoster modifica = new ModificaFreePoster(manager);
+		}
 		dispose();
 	}
 	
 	public static void main(String[] args) {
-		AggiungiOra agg = new AggiungiOra(null,null);
+		AggiungiOra agg = new AggiungiOra(null);
 	}
 	
 	private void initComponents() {

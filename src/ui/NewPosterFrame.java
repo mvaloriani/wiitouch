@@ -34,10 +34,10 @@ public class NewPosterFrame extends javax.swing.JFrame {
 	/** Creates new form principale 
      * @param manager 
      * @param home */
-    public NewPosterFrame(Home home, IManager manager) {
+    public NewPosterFrame(IManager manager) {
         initComponents();
 
-        this.home = home;
+
         this.manager = manager;
 
     }
@@ -360,9 +360,8 @@ public class NewPosterFrame extends javax.swing.JFrame {
     			e.printStackTrace();
     		}
 		
-    			AggiungiOra aggiungiOra = new AggiungiOra(home, manager);
+    			AggiungiOra aggiungiOra = new AggiungiOra(manager);
     		
-    		home.enablePosterMethods(true);
     		dispose();
     	}
     }
@@ -374,7 +373,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewPosterFrame(null, null).setVisible(true);
+                new NewPosterFrame(null).setVisible(true);
             }
         });
     }
@@ -407,7 +406,7 @@ public class NewPosterFrame extends javax.swing.JFrame {
     private JLabel notaLabel;
     // End of variables declaration//GEN-END:variables
 
-    private Home home;
+
     private IManager manager;
 
 }

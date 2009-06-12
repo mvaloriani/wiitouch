@@ -19,6 +19,9 @@ public class CalibraOra extends JFrame {
 	private ActionListener listener;
 	private String sessione;
 	
+	public static final String ESEGUI="ESEGUI";
+	public static final String MODIFICA="MODIFICA";
+	
 	public CalibraOra(IManager manager, String sessione) {
 		this.sessione= sessione;
 		this.manager=manager;
@@ -48,7 +51,17 @@ public class CalibraOra extends JFrame {
     }
 	
 	private void connettiActionPerformed(ActionEvent actionEvent) {
-			manager.calibra(listener);	
+		if(manager.wiiConnected()==false){		
+			
+			manager.connect();
+			try {
+				Thread.sleep(3*1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		manager.calibra(listener);	
 	}
 	
 	private void initComponents() {

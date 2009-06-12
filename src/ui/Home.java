@@ -44,7 +44,6 @@ public class Home extends javax.swing.JFrame{
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		this.manager = manager;
@@ -271,21 +270,21 @@ public class Home extends javax.swing.JFrame{
 	}
 
 	private void creaButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		NewPosterFrame newPosterFrame = new NewPosterFrame(this, manager);
+		NewPosterFrame newPosterFrame = new NewPosterFrame(manager);
 		newPosterFrame.setVisible(true);
 	}
 
 
 	private void modificaButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		
-		LoadPosterFrame nf = new LoadPosterFrame(manager,"MODIFICA");	
+		LoadPosterFrame nf = new LoadPosterFrame(manager,LoadPosterFrame.MODIFICA);	
 				
 	}
 
 
 
 	private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {
-			LoadPosterFrame nf = new LoadPosterFrame(manager,"ESEGUI");
+			LoadPosterFrame nf = new LoadPosterFrame(manager,LoadPosterFrame.ESEGUI);
 	}
 	
 	/**
@@ -341,7 +340,7 @@ public class Home extends javax.swing.JFrame{
 		{
 		if(!wiiPanel.isVisible()){
 			manager.connect();
-			this.connettiButton.setText("Premi i tasti 1 e 2 del WiiMote");
+			this.connettiButton.setText("Premi insieme i tasti 1 e 2 del WiiMote");
 		}
 		}
 		
@@ -393,9 +392,5 @@ public class Home extends javax.swing.JFrame{
 	 * @param b
 	 *            the b
 	 */
-	public void enablePosterMethods(boolean b){
-			modificaButton.setEnabled(b);
-			playButton.setEnabled(b);
-	}
 
 }
