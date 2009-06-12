@@ -191,7 +191,7 @@ public class LoadPosterFrame extends javax.swing.JFrame{
 			}
 			if(tipoSessione.equalsIgnoreCase("ESEGUI")){
 				if (manager.getIPoster().isCalibated()){
-					manager.play();
+					
 					FaiParlare newframe = new FaiParlare(manager);
 				}
 				else{

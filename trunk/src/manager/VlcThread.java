@@ -13,6 +13,7 @@ public class VlcThread extends Thread {
 	private Process ls_proc;
 
 	public VlcThread(String str) {
+		
 		super(str);
 	}
 	public void run() {
@@ -57,7 +58,7 @@ public class VlcThread extends Thread {
 //			}
 //		}while(error&&(count<10));
 //		System.out.println("segnalo l'apertura");
-		
+//		
 
 	}
 	public void termina()
@@ -71,7 +72,7 @@ public class VlcThread extends Thread {
 			try {
 				ls_proc = Runtime.getRuntime().exec("./Vlc/VLC.app/Contents/MacOS/VLC --intf=telnet");
 			} catch (IOException e) {
-
+				e.printStackTrace();
 	//			log.info("Sistema operativo mac: apertura VLC: "+e.toString());
 			}
 		}else if(System.getProperty("os.name").toLowerCase().contains("win"))
@@ -80,7 +81,7 @@ public class VlcThread extends Thread {
 				System.out.println("eseguo comando di apertura vlc");
 				ls_proc = Runtime.getRuntime().exec("./Vlc/vlcWin/vlc.exe --intf=telnet");
 			} catch (IOException e) {
-
+				e.printStackTrace();
 		//		log.info("Sistema operativo windows: apertura VLC: "+e.toString());
 			} 
 		}

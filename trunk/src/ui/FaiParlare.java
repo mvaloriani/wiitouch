@@ -30,6 +30,7 @@ public class FaiParlare extends javax.swing.JFrame {
     public FaiParlare(IManager manager) {
 		this.manager=manager;
 		initComponents();
+		manager.play();
 	}
     /** This method is called from within the constructor to
      * initialize the form.

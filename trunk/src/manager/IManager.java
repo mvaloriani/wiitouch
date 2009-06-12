@@ -48,10 +48,10 @@ public interface IManager {
 	public void calibra(ActionListener listener);
 	public ArrayList<Point2D> createArea(Integer numPoints);
 	public void connect() throws ExceptionInInitializerError;
-	public void batteryLevel(ActionListener listener);
-	public void remoteAdded(ActionListener listener);
+	public void wiimoteBatteryLevelManager(ActionListener listener);
+	public void wiimoteConnectionManager(ActionListener listener);
 	public boolean wiiConnected();
-	public void connectionManager(ActionListener listener);
+
 	
 	//get vlcThred
 	public void endSystem();
