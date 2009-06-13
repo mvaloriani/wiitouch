@@ -22,7 +22,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -52,6 +61,7 @@ import dataModel.StopControl;
 public class AnteprimaGridPoster extends javax.swing.JFrame {
 	 private IManager manager;
 	 private IPoster poster;
+	private boolean anteprima=false;
 	/** Creates new form Modifica */
     public AnteprimaGridPoster(IManager manager) {
         this.manager = manager;
@@ -233,24 +243,72 @@ private void initComponents() {
     
     
     private void salvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaButtonActionPerformed
-		this.dispose();
+		if(anteprima)
+			stopAnteprima();
+    	this.dispose();
     }//GEN-LAST:event_salvaButtonActionPerformed
 
     private void anteprimaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteprimaButtonActionPerformed
         	try {
     			((GridPoster)manager.getIPoster()).getElement(cartellonePanel.getPosition().x, cartellonePanel.getPosition().y).exec();
-    		} catch (PositionEX e) {
-    			// TODO Auto-generated catch block
-    			e.printStackTrace();
+    			anteprima=true;
+        	} catch (PositionEX e) {
     		}
     }//GEN-LAST:event_anteprimaButtonActionPerformed
 
-   
+    private void stopAnteprima(){
+       	InetAddress addr = null;
+      	try {
+      		addr = InetAddress.getByName("127.0.0.1");
+      	} catch (UnknownHostException e1) {
+      		e1.printStackTrace();
+      	}
+      	int port = 4212;
+      	SocketAddress sockaddr = new InetSocketAddress(addr, port);
+
+      	// Create an unbound socket
+      	Socket sock = new Socket();
+
+      	// This method will block no more than timeoutMs.
+      	// If the timeout occurs, SocketTimeoutException is thrown.
+      	// int timeoutMs = 2000; Ê // 2 seconds
+      	try {
+      		sock.connect(sockaddr);
+      	} catch (IOException e1) {
+      		System.err.println("Socket problem.");
+      		return;
+      	}
+
+      	PrintWriter out = null;
+      	BufferedReader in = null;
+
+      	try {
+      		out = new PrintWriter(sock.getOutputStream(), true);
+      		in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+      	} catch (UnknownHostException e1) {
+      		System.err.println("Don't know about host: taranis.");
+      	} catch (IOException e1) {
+      		System.err.println("Couldn't get I/O for "
+      				+ "the connection to: taranis.");
+      	}
+
+      	BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+      	String userInput;
+
+		out.println("admin");
+		out.flush();
+		out.println("control myMedia stop");
+		out.flush();
+      }
+    
     private void changeButtons(java.awt.event.ActionEvent evt){
     	Point p = (Point) evt.getSource();
+    	
     	try {
-			if (((GridPoster)poster).getElement(p.x, p.y) instanceof Element)
+			if (((GridPoster)poster).getElement(p.x, p.y) instanceof Element){
 				anteprimaButton.setEnabled(true);
+				cartellonePanel.setToolTipText(((GridPoster)poster).getElement(p.x, p.y).toString());
+			}
     	}catch (Exception e) {
 			anteprimaButton.setEnabled(false);
 		}
@@ -429,12 +487,12 @@ class AnteprimaGridPanelClass extends JPanel implements MouseListener {
 	        	if(mouseX>=x*(this.getWidth()/col) && mouseX<=(x+1)*(this.getWidth()/col) &&
 	        			mouseY>=y*(this.getHeight()/row) && mouseY<=(y+1)*(this.getHeight()/row)){
 	        			position.setLocation(y, x);
-	        			
+	        			return position;
 	        			
 	        	}
 	        }
         }
-    	return position;
+    	return null;
     }
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub

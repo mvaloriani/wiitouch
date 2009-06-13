@@ -21,7 +21,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -44,6 +53,7 @@ import dataModel.StopControl;
 public class ModificaGridPoster extends javax.swing.JFrame {
 	 private IManager manager;
 	 private IPoster poster;
+	private boolean anteprima=false;
 	/** Creates new form Modifica */
     public ModificaGridPoster(IManager manager) {
         this.manager = manager;
@@ -295,13 +305,17 @@ public class ModificaGridPoster extends javax.swing.JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		if(anteprima)
+			stopAnteprima();
 		EseguiOra nf = new EseguiOra(manager);
 		this.dispose();
     }//GEN-LAST:event_salvaButtonActionPerformed
 
     private void anteprimaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteprimaButtonActionPerformed
-        	try {
+        	
+    		try {
     			((GridPoster)manager.getIPoster()).getElement(cartellonePanel.getPosition().x, cartellonePanel.getPosition().y).exec();
+    			anteprima=true;
     		} catch (PositionEX e) {
     			// TODO Auto-generated catch block
     			e.printStackTrace();
@@ -316,7 +330,7 @@ public class ModificaGridPoster extends javax.swing.JFrame {
 				setEnableButtons(false, true, true, true);
 			else
 				setEnableButtons(false, false, true, true);
-			
+			cartellonePanel.setToolTipText(((GridPoster)poster).getElement(p.x, p.y).toString());
 		} catch (PositionEX e) {
 			setEnableButtons(true, false, false, false);
 		}    	
@@ -328,6 +342,50 @@ public class ModificaGridPoster extends javax.swing.JFrame {
     	anteprimaButton.setEnabled(anteprima);	
     }
  
+    private void stopAnteprima(){
+       	InetAddress addr = null;
+      	try {
+      		addr = InetAddress.getByName("127.0.0.1");
+      	} catch (UnknownHostException e1) {
+      		e1.printStackTrace();
+      	}
+      	int port = 4212;
+      	SocketAddress sockaddr = new InetSocketAddress(addr, port);
+
+      	// Create an unbound socket
+      	Socket sock = new Socket();
+
+      	// This method will block no more than timeoutMs.
+      	// If the timeout occurs, SocketTimeoutException is thrown.
+      	// int timeoutMs = 2000; Ê // 2 seconds
+      	try {
+      		sock.connect(sockaddr);
+      	} catch (IOException e1) {
+      		System.err.println("Socket problem.");
+      		return;
+      	}
+
+      	PrintWriter out = null;
+      	BufferedReader in = null;
+
+      	try {
+      		out = new PrintWriter(sock.getOutputStream(), true);
+      		in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+      	} catch (UnknownHostException e1) {
+      		System.err.println("Don't know about host: taranis.");
+      	} catch (IOException e1) {
+      		System.err.println("Couldn't get I/O for "
+      				+ "the connection to: taranis.");
+      	}
+
+      	BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+      	String userInput;
+
+		out.println("admin");
+		out.flush();
+		out.println("control myMedia stop");
+		out.flush();
+      }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aggiungiButton;

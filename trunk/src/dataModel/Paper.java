@@ -42,7 +42,7 @@ public class Paper extends Element {
 	}
 	
 	public String toString() {
-		String result = super.toString()+"\n Files:\n";
+		String result = "\n Files:\n";
 		for(String s : pathsFiles)
 			result=result+s+";\n";
 		return result;

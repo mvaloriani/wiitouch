@@ -11,7 +11,16 @@ import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Point2D;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -24,6 +33,7 @@ import manager.PosterTypeEx;
 import dataModel.Control;
 import dataModel.Element;
 import dataModel.FreePoster;
+import dataModel.GridPoster;
 import dataModel.IPoster;
 import dataModel.Paper;
 
@@ -34,6 +44,7 @@ import dataModel.Paper;
 public class ModificaFreePoster extends javax.swing.JFrame {
 	private IManager manager;
 	private IPoster poster;
+	private boolean anteprima=false;
 	/** Creates new form Modifica */
 
 	public ModificaFreePoster(IManager manager) {
@@ -336,48 +347,84 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		if(anteprima)
+			stopAnteprima();
+		
 		EseguiOra e=new EseguiOra(manager);
 		
 		this.dispose();
 		
 	}
 
+    private void stopAnteprima(){
+       	InetAddress addr = null;
+      	try {
+      		addr = InetAddress.getByName("127.0.0.1");
+      	} catch (UnknownHostException e1) {
+      		e1.printStackTrace();
+      	}
+      	int port = 4212;
+      	SocketAddress sockaddr = new InetSocketAddress(addr, port);
+
+      	// Create an unbound socket
+      	Socket sock = new Socket();
+
+      	// This method will block no more than timeoutMs.
+      	// If the timeout occurs, SocketTimeoutException is thrown.
+      	// int timeoutMs = 2000; Ê // 2 seconds
+      	try {
+      		sock.connect(sockaddr);
+      	} catch (IOException e1) {
+      		System.err.println("Socket problem.");
+      		return;
+      	}
+
+      	PrintWriter out = null;
+      	BufferedReader in = null;
+
+      	try {
+      		out = new PrintWriter(sock.getOutputStream(), true);
+      		in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+      	} catch (UnknownHostException e1) {
+      		System.err.println("Don't know about host: taranis.");
+      	} catch (IOException e1) {
+      		System.err.println("Couldn't get I/O for "
+      				+ "the connection to: taranis.");
+      	}
+
+      	BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+      	String userInput;
+
+		out.println("admin");
+		out.flush();
+		out.println("control myMedia stop");
+		out.flush();
+      }
+	
 	private void anteprimaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteprimaButtonActionPerformed
 		try {
 			((FreePoster)manager.getIPoster()).getElement(cartellonePanel.getSelectedElement()).exec();
+			anteprima=true;
 		} catch (PositionEX e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	public void enableElementButton(int type)
+	public void enableElementButton(boolean aggiungiArea, boolean aggiungi, boolean modifica, boolean rimuovi, boolean anteprima)
 	{
-		this.aggiungiAreaButton.setEnabled(true);
-		if(type==0){
-			this.modificaButton.setEnabled(false);
-			this.aggiungiButton.setEnabled(true);
-		}
-		else if(type==1){
-			this.modificaButton.setEnabled(false);
-			this.aggiungiButton.setEnabled(false);
-		}
-		else if(type==2)
-		{
-			this.modificaButton.setEnabled(true);
-			this.aggiungiButton.setEnabled(false);
-		}
-		this.rimuoviButton.setEnabled(true);
-		this.anteprimaButton.setEnabled(true);
+		this.aggiungiAreaButton.setEnabled(aggiungiArea);
+		this.modificaButton.setEnabled(modifica);
+		this.aggiungiButton.setEnabled(aggiungi);
+		this.rimuoviButton.setEnabled(rimuovi);
+		this.anteprimaButton.setEnabled(anteprima);
+		if (anteprima){
+			try {
+				cartellonePanel.setToolTipText(((FreePoster)poster).getElement(cartellonePanel.getSelectedElement()).toString());
+			} catch (PositionEX e) {
+				e.printStackTrace();
+			}
 	}
-	public void disableElementButton()
-	{
-		this.aggiungiAreaButton.setEnabled(true);
-		this.modificaButton.setEnabled(false);
-		this.rimuoviButton.setEnabled(false);
-		this.aggiungiButton.setEnabled(false);
-		this.anteprimaButton.setEnabled(false);
 	}
-
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton aggiungiAreaButton;
@@ -522,23 +569,19 @@ class CartellonePannelloClass extends JPanel implements MouseListener {
 		// TODO Auto-generated method stub
 		mouseX=e.getX();
 		mouseY=e.getY();
-		if(isElementSelected())
-		{
+
 			try {
-				//type 0 per un generico element, 1 per un control e 2 per un paper
 
 				if(((FreePoster)(manager.getIPoster())).getElement(this.getSelectedElement()) instanceof Control)
-					posterMod.enableElementButton(1);
+					posterMod.enableElementButton(true, false, false, true, true);
 				else if(((FreePoster)(manager.getIPoster())).getElement(this.getSelectedElement()) instanceof Paper)
-					posterMod.enableElementButton(2);
-				else posterMod.enableElementButton(0);
+					posterMod.enableElementButton(true, false, true, true, true);
+				else 
+					posterMod.enableElementButton(true, true, false, true, false);
+				
 			} catch (PositionEX e1) {
-
+				posterMod.enableElementButton(true, false, false, false, false);
 			}
-		}else
-		{
-			posterMod.disableElementButton();
-		}
 
 		repaint();
 	}

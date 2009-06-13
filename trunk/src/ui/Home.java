@@ -264,8 +264,12 @@ public class Home extends javax.swing.JFrame{
 	}
 
 	private void closeButtonActionPerformed() {
-		this.dispose();
-		manager.endSystem();
+		if(manager.wiiConnected())
+			JOptionPane.showMessageDialog(this, "Spegnere lo WiiMote prima di uscire");
+		else{
+			manager.endSystem();
+			this.dispose();
+		}
 		
 	}
 

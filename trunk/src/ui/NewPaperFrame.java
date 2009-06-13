@@ -47,6 +47,7 @@ import manager.PosterTypeEx;
  	private Point position;
  	private Boolean grid;
 	private Integer elementId;
+	private boolean anteprima=false;
  	
      /** Creates new form NewPaperFrame */
      public NewPaperFrame(IManager manager,Point position) {
@@ -83,8 +84,9 @@ import manager.PosterTypeEx;
   		}
  	}
      
-     private void anteprimaActionPerformed(){
-     	InetAddress addr = null;
+     
+     private void startAnteprima(String file){
+      	InetAddress addr = null;
      	try {
      		addr = InetAddress.getByName("127.0.0.1");
      	} catch (UnknownHostException e1) {
@@ -128,15 +130,69 @@ import manager.PosterTypeEx;
      	out.flush();
      	out.println("new myMedia broadcast enabled");
      	out.flush();
-     	out.println("setup myMedia input " + fileTextField.getText());
+     	out.println("setup myMedia input " + file);
      	out.flush();
      	out.println("control myMedia play");
      	out.flush();
+     }
+     
+     private void stopAnteprima(){
+       	InetAddress addr = null;
+      	try {
+      		addr = InetAddress.getByName("127.0.0.1");
+      	} catch (UnknownHostException e1) {
+      		e1.printStackTrace();
+      	}
+      	int port = 4212;
+      	SocketAddress sockaddr = new InetSocketAddress(addr, port);
 
+      	// Create an unbound socket
+      	Socket sock = new Socket();
+
+      	// This method will block no more than timeoutMs.
+      	// If the timeout occurs, SocketTimeoutException is thrown.
+      	// int timeoutMs = 2000; Ê // 2 seconds
+      	try {
+      		sock.connect(sockaddr);
+      	} catch (IOException e1) {
+      		System.err.println("Socket problem.");
+      		return;
+      	}
+
+      	PrintWriter out = null;
+      	BufferedReader in = null;
+
+      	try {
+      		out = new PrintWriter(sock.getOutputStream(), true);
+      		in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+      	} catch (UnknownHostException e1) {
+      		System.err.println("Don't know about host: taranis.");
+      	} catch (IOException e1) {
+      		System.err.println("Couldn't get I/O for "
+      				+ "the connection to: taranis.");
+      	}
+
+      	BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+      	String userInput;
+
+		out.println("admin");
+		out.flush();
+		out.println("control myMedia stop");
+		out.flush();
+      }
+     
+     private void anteprimaActionPerformed(){
+     	if(anteprima)
+     		stopAnteprima();
+     	else
+    	 startAnteprima(fileTextField.getText());
+     	anteprima=!anteprima;
      }
      
      private void annullaButtonPerformed(){
-     	this.dispose();
+     	if(anteprima)
+     		stopAnteprima();
+    	 this.dispose();
      }
      
      private void navigaActionPerformed(){
@@ -148,12 +204,13 @@ import manager.PosterTypeEx;
  
          File file = chooser.getSelectedFile();
          try{
-         fileTextField.setText(file.getAbsolutePath());
+         fileTextField.setText("'"+file.getAbsolutePath()+"'");
          }catch (Exception e) {}
      }
      
      public void saveButtonPerformed() {
-     	
+      	if(anteprima)
+     		stopAnteprima();
  		if(fileTextField.getText()!=null && fileTextField.getText()!=""){
  			ArrayList<String> paths=new ArrayList<String>();
  			paths.add(fileTextField.getText());
