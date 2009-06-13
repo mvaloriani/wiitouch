@@ -40,6 +40,6 @@ public class PauseControl extends Control {
 		}
 	}
 	public String toString(){
-		return super.toString()+"/n"+"Pausa";
+		return "Pausa\n";
 		}
 }

@@ -5,8 +5,16 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.EventListener;
 import java.util.logging.FileHandler;
@@ -99,7 +107,7 @@ public class Manager implements IManager, EventListener{
 	{
 		System.out.println("Provo a chiudere vlc");
 		vlcThread.termina();
-		//System.exit(0);
+		System.exit(0);
 
 	}
 
@@ -241,9 +249,6 @@ public class Manager implements IManager, EventListener{
 
 	}
 
-	public boolean wiiConnected(){
-		return wiiConnected;
-	}
 
 	// WiiMethods
 	public void calibra(ActionListener listener){
@@ -301,8 +306,10 @@ public class Manager implements IManager, EventListener{
 		iWii.connectionManager(listener);
 	}
 	
+	public boolean wiiConnected(){
+		return iWii.isConnected();
+	}
 
-	
 	public ArrayList<Point2D> createArea(Integer numPoints){
 		return iWii.createAreaFP(numPoints);
 	}

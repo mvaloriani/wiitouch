@@ -37,6 +37,6 @@ public class StopControl extends Control {
 		}
 	}
 	public String toString(){
-		return super.toString()+"\nStop";
+		return "Stop\n";
 		}
 }

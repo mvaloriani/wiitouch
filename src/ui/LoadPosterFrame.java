@@ -209,6 +209,7 @@ public class LoadPosterFrame extends javax.swing.JFrame{
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, "File non corretto");
 		}
 		
 	}

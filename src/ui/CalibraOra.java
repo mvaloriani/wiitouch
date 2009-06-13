@@ -4,9 +4,12 @@ package ui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.*;
 import javax.swing.border.*;
+
 
 import manager.IManager;
 import manager.Manager;
@@ -54,14 +57,13 @@ public class CalibraOra extends JFrame {
 		if(manager.wiiConnected()==false){		
 			
 			manager.connect();
-			try {
-				Thread.sleep(3*1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			timer = new Timer();
+			count=0;
+			timer.schedule(new RemindTask(), 6000);
+			
 		}
-		manager.calibra(listener);	
+		else
+			manager.calibra(listener);
 	}
 	
 	private void initComponents() {
@@ -168,4 +170,21 @@ public class CalibraOra extends JFrame {
 	private JButton cancelButton;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 	private IManager manager;
+	private Integer count = 0;
+	private Timer timer;
+
+	class RemindTask extends TimerTask {
+		public void run() {
+			System.out.println("Time's up!");
+			if(manager.wiiConnected()&&(count<3)){
+				manager.calibra(listener);
+				}
+			else 
+			{
+				count++;
+				timer.schedule(new RemindTask(), 3000);
+			}
+		}
+	}
+
 }

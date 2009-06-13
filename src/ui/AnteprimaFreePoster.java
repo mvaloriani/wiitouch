@@ -11,7 +11,16 @@ import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Point2D;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -34,6 +43,7 @@ import dataModel.Paper;
 public class AnteprimaFreePoster extends javax.swing.JFrame {
 	private IManager manager;
 	private IPoster poster;
+	private boolean anteprima=false;
 	/** Creates new form Modifica */
 
 	public AnteprimaFreePoster(IManager manager) {
@@ -202,14 +212,61 @@ public class AnteprimaFreePoster extends javax.swing.JFrame {
 
 	}// </editor-fold>//GEN-END:initComponents
 
+    private void stopAnteprima(){
+       	InetAddress addr = null;
+      	try {
+      		addr = InetAddress.getByName("127.0.0.1");
+      	} catch (UnknownHostException e1) {
+      		e1.printStackTrace();
+      	}
+      	int port = 4212;
+      	SocketAddress sockaddr = new InetSocketAddress(addr, port);
+
+      	// Create an unbound socket
+      	Socket sock = new Socket();
+
+      	// This method will block no more than timeoutMs.
+      	// If the timeout occurs, SocketTimeoutException is thrown.
+      	// int timeoutMs = 2000; Ê // 2 seconds
+      	try {
+      		sock.connect(sockaddr);
+      	} catch (IOException e1) {
+      		System.err.println("Socket problem.");
+      		return;
+      	}
+
+      	PrintWriter out = null;
+      	BufferedReader in = null;
+
+      	try {
+      		out = new PrintWriter(sock.getOutputStream(), true);
+      		in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+      	} catch (UnknownHostException e1) {
+      		System.err.println("Don't know about host: taranis.");
+      	} catch (IOException e1) {
+      		System.err.println("Couldn't get I/O for "
+      				+ "the connection to: taranis.");
+      	}
+
+      	BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+      	String userInput;
+
+		out.println("admin");
+		out.flush();
+		out.println("control myMedia stop");
+		out.flush();
+      }
 
 	private void salvaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaButtonActionPerformed
+		if(anteprima)
+			stopAnteprima();
 		this.dispose();
 	}
 
 	private void anteprimaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteprimaButtonActionPerformed
 		try {
 			((FreePoster)manager.getIPoster()).getElement(cartellonePanel.getSelectedElement()).exec();
+			anteprima=true;
 		} catch (PositionEX e) {
 			e.printStackTrace();
 		}
@@ -235,9 +292,16 @@ public class AnteprimaFreePoster extends javax.swing.JFrame {
 	private javax.swing.JButton rimuoviButton;
 	private javax.swing.JButton salvaButton;
 	// End of variables declaration//GEN-END:variables
+	
 	public void enableAnteprima(boolean e) {
 		anteprimaButton.setEnabled(e);
-		
+		if(e){
+		try {
+			cartellonePanel.setToolTipText(((FreePoster)poster).getElement(cartellonePanel.getSelectedElement()).toString());
+		} catch (PositionEX e1) {
+			e1.printStackTrace();
+		}
+		}
 	}
 
 }
@@ -345,7 +409,6 @@ class AnteprimaPannelloClass extends JPanel implements MouseListener {
 			((FreePoster)(manager.getIPoster())).getElement(getRealPoint());
 			return true;
 		} catch (PositionEX e) {
-			// TODO Auto-generated catch block
 			return false;
 		}
 
@@ -361,7 +424,6 @@ class AnteprimaPannelloClass extends JPanel implements MouseListener {
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
 		mouseX=e.getX();
 		mouseY=e.getY();
 		if(isElementSelected())

@@ -34,6 +34,7 @@ public interface IManager {
 	public void removeElement(Integer id) throws PositionEX;
 	public IPoster getIPoster();
 	public Integer addGenericElementFP(ArrayList<Point2D> points) throws PositionEX;
+
 	
 	//Store&Load methods
 	public void loadPoster(String urlFile) throws FileNotFoundException;
