@@ -75,7 +75,7 @@ public class EseguiOra extends JFrame {
 				//---- testoTextPane ----
 				
 				testoTextPane.setText("Vuoi far parlare ora il tuo cartellone?");
-				testoTextPane.setFont(new Font("Cambria", Font.PLAIN, 16));
+				testoTextPane.setFont(new Font("Cambria", Font.PLAIN, 21));
 				testoTextPane.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
 				testoTextPane.setBackground(new Color(189, 204, 249));
 				testoTextPane.setEditable(false);
@@ -83,7 +83,7 @@ public class EseguiOra extends JFrame {
 
 				//---- Alert ----
 				Alert.setText("Questo \u00e8 un cartellone non \u00e8 ancora stato calibrato!");
-				Alert.setFont(new Font("Cambria", Font.BOLD, 16));
+				Alert.setFont(new Font("Cambria", Font.BOLD, 21));
 				contentPanel.add(Alert, BorderLayout.NORTH);
 			}
 			dialogPane.add(contentPanel, BorderLayout.CENTER);
@@ -98,6 +98,7 @@ public class EseguiOra extends JFrame {
 
 				//---- okButton ----
 				okButton.setText("OK");
+				okButton.setFont(new java.awt.Font("Cambria", 0, 24));
 				okButton.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent actionEvent) {
 					    eseguiActionPerformed();
@@ -111,6 +112,7 @@ public class EseguiOra extends JFrame {
 
 				//---- cancelButton ----
 				cancelButton.setText("Cancel");
+				cancelButton.setFont(new java.awt.Font("Cambria", 0, 24));
 				cancelButton.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent actionEvent) {
 					    annullaActionPerformed();					

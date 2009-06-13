@@ -294,6 +294,7 @@ public class ModificaGridPoster extends javax.swing.JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		EseguiOra nf = new EseguiOra(manager);
 		this.dispose();
     }//GEN-LAST:event_salvaButtonActionPerformed
 
@@ -436,8 +437,7 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 					}
 					else if(((GridPoster)manager.getIPoster()).getElement(y, x) instanceof Paper)
 					{
-						Paper a=((Paper)((GridPoster)manager.getIPoster()).getElement(y, x));
-						if(((Paper)((GridPoster)manager.getIPoster()).getElement(y, x)).getType().equals(Paper.AUDIO_FILE))
+						if(((Paper)((GridPoster)manager.getIPoster()).getElement(y, x)).getType()==Paper.AUDIO_FILE)
 						{
 							isElement=true;
 							if(mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
@@ -446,7 +446,7 @@ class CartellonePanelClass extends JPanel implements MouseListener {
 							}
 							else
 							fillCell(g, new Color(0,255,0), imgAudio, x, y);
-						}else if(((Paper)((GridPoster)manager.getIPoster()).getElement(y, x)).getType().equals(Paper.VIDEO_FILE))
+						}else if(((Paper)((GridPoster)manager.getIPoster()).getElement(y, x)).getType()==Paper.VIDEO_FILE)
 						{
 							isElement=true;
 							if(mouseX>x*(this.getWidth()/col) && mouseX<(x+1)*(this.getWidth()/col) &&
