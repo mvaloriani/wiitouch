@@ -336,7 +336,10 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		EseguiOra e=new EseguiOra(manager);
+		
 		this.dispose();
+		
 	}
 
 	private void anteprimaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteprimaButtonActionPerformed
