@@ -99,7 +99,7 @@ public class CalibraOra extends JFrame {
 					testoTextPane.setText("Prima di poter modificare o usare questo cartellone \u00e8 necessario impostare l'area di lavoro.\nSe si desidera impostare ora l'area di lavoro accendere il WiiMote e premere i bottoni 1 e 2, poi cliccare ok.");
 				else
 					testoTextPane.setText("Prima di poter modificare o usare questo cartellone \u00e8 necessario impostare l'area di lavoro premere ok.");
-				testoTextPane.setFont(new Font("Cambria", Font.PLAIN, 16));
+				testoTextPane.setFont(new Font("Cambria", Font.PLAIN, 21));
 				testoTextPane.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
 				testoTextPane.setBackground(new Color(189, 204, 249));
 				testoTextPane.setEditable(false);
@@ -107,7 +107,7 @@ public class CalibraOra extends JFrame {
 
 				//---- Alert ----
 				Alert.setText("Questo \u00e8 un cartellone non \u00e8 ancora stato calibrato!");
-				Alert.setFont(new Font("Cambria", Font.BOLD, 16));
+				Alert.setFont(new Font("Cambria", Font.BOLD, 21));
 				contentPanel.add(Alert, BorderLayout.NORTH);
 			}
 			dialogPane.add(contentPanel, BorderLayout.CENTER);
@@ -116,12 +116,14 @@ public class CalibraOra extends JFrame {
 			{
 				buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
 				buttonBar.setBackground(new Color(189, 204, 249));
+				
 				buttonBar.setLayout(new GridBagLayout());
 				((GridBagLayout)buttonBar.getLayout()).columnWidths = new int[] {0, 85, 80};
 				((GridBagLayout)buttonBar.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
 
 				//---- okButton ----
 				okButton.setText("OK");
+				okButton.setFont(new Font("Cambria", Font.PLAIN, 24));
 				okButton.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent actionEvent) {
 					    connettiActionPerformed(actionEvent);
@@ -135,6 +137,7 @@ public class CalibraOra extends JFrame {
 
 				//---- cancelButton ----
 				cancelButton.setText("Cancel");
+				cancelButton.setFont(new Font("Cambria", Font.PLAIN, 24));
 				cancelButton.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent actionEvent) {
 					    annullaActionPerformed(actionEvent);					
