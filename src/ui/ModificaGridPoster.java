@@ -12,8 +12,8 @@
 package ui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -24,20 +24,13 @@ import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.event.AncestorEvent;
-import javax.swing.event.AncestorListener;
-
-import Personal.EventoSelezionaPunto;
-import Personal.EventoSelezionaPuntoListener;
 
 import manager.IManager;
 import manager.PositionEX;
 import manager.PosterTypeEx;
 import dataModel.Control;
 import dataModel.Element;
-import dataModel.FreePoster;
 import dataModel.GridPoster;
 import dataModel.IPoster;
 import dataModel.Paper;
@@ -241,8 +234,16 @@ public class ModificaGridPoster extends javax.swing.JFrame {
         
         setEnableButtons(false, false, false, false);
         setResizable(false);
-        setVisible(true);
         pack();
+        Toolkit tk = Toolkit.getDefaultToolkit();
+		Dimension screenSize = tk.getScreenSize();
+		int screenHeight = screenSize.height;
+		int screenWidth = screenSize.width;
+
+		setLocation((screenWidth-this.getSize().width) / 2, (screenHeight-this.getSize().height) / 2);
+		this.setVisible(true);
+        
+     
     }// </editor-fold>//GEN-END:initComponents
     
     private void aggiungiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggiungiButtonActionPerformed
