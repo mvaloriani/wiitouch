@@ -51,14 +51,10 @@ public class HW implements IWiiHw{
 		this.nPunti= nPoint;
 
 		while(this.pointList.size()<this.nPunti && this.IsCreaArea==true)
-		{
-
-		}
+		{		}
 
 		if(this.IsCreaArea==false)
-		{
 			return null;
-		}
 
 		this.IsCreaArea=false;
 		this.cal.dispose();
@@ -236,7 +232,7 @@ public class HW implements IWiiHw{
 		public void run() {
 			System.out.println("Time's up!");
 			enable=true;
-			timer.cancel(); //Not necessary because we call System.exit
+			timer.cancel(); 
 		}
 	}
 	
@@ -252,6 +248,13 @@ public class HW implements IWiiHw{
 			Board.main(null);
 		}
 
+	}
+
+	@Override
+	public boolean isConnected() {
+		if (dh==null)
+			return false;
+		return dh.isConnected();
 	}
 
 }

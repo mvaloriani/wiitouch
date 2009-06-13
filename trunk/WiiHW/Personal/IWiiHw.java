@@ -14,6 +14,7 @@ public interface IWiiHw {
 	public void batteryLevel(ActionListener listener);
 	public void connectionManager(ActionListener listener);
 	public ArrayList<Point2D> createAreaFP(int nPoint);
+	public boolean isConnected();
 	
 
 }
