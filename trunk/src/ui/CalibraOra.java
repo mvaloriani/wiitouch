@@ -59,7 +59,7 @@ public class CalibraOra extends JFrame {
 			int valu= JOptionPane.showOptionDialog(null, "Assicurarsi che il Bluetooth sia attivo", "CONNESSIONE BLUETOOTH",
 					JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
 					null, options, options[0]);
-			if(valu!=0){
+			if(valu==0){
 			manager.connect();
 			timer = new Timer();
 			count=0;
