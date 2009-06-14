@@ -55,12 +55,16 @@ public class CalibraOra extends JFrame {
 	
 	private void connettiActionPerformed(ActionEvent actionEvent) {
 		if(manager.wiiConnected()==false){		
-			
+			Object[] options = { "Ok", "Annulla" };
+			int valu= JOptionPane.showOptionDialog(null, "Assicurarsi che il Bluetooth sia attivo", "CONNESSIONE BLUETOOTH",
+					JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+					null, options, options[0]);
+			if(valu!=0){
 			manager.connect();
 			timer = new Timer();
 			count=0;
 			timer.schedule(new RemindTask(), 6000);
-			
+			}
 		}
 		else
 			manager.calibra(listener);
@@ -175,14 +179,15 @@ public class CalibraOra extends JFrame {
 
 	class RemindTask extends TimerTask {
 		public void run() {
-			System.out.println("Time's up!");
-			if(manager.wiiConnected()&&(count<3)){
+			System.out.println("connec:Time's up! "+count);
+			if(manager.wiiConnected()){
 				manager.calibra(listener);
 				}
-			else 
+			else if(count<10)
 			{
-				count++;
+				
 				timer.schedule(new RemindTask(), 3000);
+				count++;
 			}
 		}
 	}
