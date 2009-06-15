@@ -189,7 +189,7 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 		operazioniPanel.add(aggiungiButton);
 		aggiungiButton.setEnabled(false);
 
-		rimuoviButton.setText("Rmuovi");
+		rimuoviButton.setText("Rimuovi");
 		rimuoviButton.setToolTipText("Rimuovi contenuto dall'area selezionata");
 		rimuoviButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
