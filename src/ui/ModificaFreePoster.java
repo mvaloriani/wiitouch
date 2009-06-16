@@ -519,7 +519,7 @@ class CartellonePannelloClass extends JPanel implements MouseListener {
 					}
 					else if(poster.getElement(id) instanceof Element)
 					{
-						g.setColor(new Color(0,0,0));
+						g.setColor(new Color(255,255,255));
 
 					}
 					((Graphics2D)g).fillPolygon(newArea);
