@@ -44,7 +44,7 @@ public class NewArea extends javax.swing.JFrame {
     public NewArea(HW iWii) {
     	lis = new ActionListener(){
 			public void actionPerformed(ActionEvent evt) {
-				System.out.println("Evento ricvuto");
+				//System.out.println("Evento ricvuto");
 				Toolkit.getDefaultToolkit().beep();///BEEEEEP
 				cartellonePanel.paint(cartellonePanel.getGraphics(),(Point2D)evt.getSource());
 				
@@ -130,7 +130,7 @@ class CartellonePannelloClass extends JPanel{
         scaleX=((double)this.getSize().getWidth())/((double)screenWidth);
         
         scaleY=((double)this.getSize().getHeight())/((double)screenHeight);
-        System.out.println("larg:"+ this.getSize().width+ "  larg2 : "+this.getWidth()+ "larg 3 :"+ this.getSize().getWidth());
+        //System.out.println("larg:"+ this.getSize().width+ "  larg2 : "+this.getWidth()+ "larg 3 :"+ this.getSize().getWidth());
 	}
 	
 	public void paint(Graphics g, Point2D p){
@@ -153,7 +153,7 @@ class CartellonePannelloClass extends JPanel{
 	
     public void paint(Graphics g) {
         super.paint(g);
-        System.out.println("sono in paint");
+        //System.out.println("sono in paint");
     }    
    
 
