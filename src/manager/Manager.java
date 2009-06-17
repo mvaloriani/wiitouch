@@ -82,17 +82,17 @@ public class Manager implements IManager, EventListener{
 
 		
 		// logger
-		FileHandler fh=null;
-		log=Logger.getLogger("WiiTouch.manager");
-		try {
-			fh=new FileHandler("./log.txt");
-		} catch (SecurityException e) {
-			System.out.println(e.toString());
-		} catch (IOException e) {
-			System.out.println(e.toString());
-		}
-		log.addHandler(fh);
-		log.setLevel(Level.ALL);
+//		FileHandler fh=null;
+//		log=Logger.getLogger("WiiTouch.manager");
+//		try {
+//			fh=new FileHandler("./log.txt");
+//		} catch (SecurityException e) {
+//			System.out.println(e.toString());
+//		} catch (IOException e) {
+//			System.out.println(e.toString());
+//		}
+//		log.addHandler(fh);
+//		log.setLevel(Level.ALL);
 	
 	
 	
@@ -105,7 +105,7 @@ public class Manager implements IManager, EventListener{
 
 	public void endSystem()
 	{
-		System.out.println("Provo a chiudere vlc");
+		//System.out.println("Provo a chiudere vlc");
 		vlcThread.termina();
 		System.exit(0);
 
