@@ -78,7 +78,7 @@ public class VlcThread extends Thread {
 		}else if(System.getProperty("os.name").toLowerCase().contains("win"))
 		{
 			try {
-				System.out.println("eseguo comando di apertura vlc");
+				//System.out.println("eseguo comando di apertura vlc");
 				ls_proc = Runtime.getRuntime().exec("./Vlc/vlcWin/vlc.exe --intf=telnet");
 			} catch (IOException e) {
 				e.printStackTrace();

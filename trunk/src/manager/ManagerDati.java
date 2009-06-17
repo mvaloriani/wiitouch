@@ -42,7 +42,7 @@ public class ManagerDati {
 	}
 
 	public Poster loadPoster(String urlFile) throws FileNotFoundException {
-		System.out.println(urlFile);
+		//System.out.println(urlFile);
 		FileInputStream fis = new FileInputStream(urlFile);
 		FileInputStream fis2 = new FileInputStream(urlFile);
 		InputStreamReader isr=new InputStreamReader(fis2);
