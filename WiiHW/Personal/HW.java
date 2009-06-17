@@ -83,7 +83,7 @@ public class HW implements IWiiHw{
 		calibration.start(dh.getConnectedWiimotes());
 
 		this.IsCalibrated=calibration.isAnyCalibrated(dh.getConnectedWiimotes());
-		System.out.println("Calibrato:"+IsCalibrated);
+		//System.out.println("Calibrato:"+IsCalibrated);
 	}
 	
 	public void notifyCalibration(){
@@ -160,12 +160,12 @@ public class HW implements IWiiHw{
 			ActionEvent evt =new ActionEvent(c,1,"");
 			this.remoteListener.actionPerformed(evt);
 		}
-		System.out.println("Ci Sono " + c+ " remote connessi");
+		//System.out.println("Ci Sono " + c+ " remote connessi");
 	}
 
 	public void setBatteryLevel(double d)
 	{
-		System.out.println("Batteria " + d);
+		//System.out.println("Batteria " + d);
 		if(this.batteriaListener!=null)
 		{
 			this.BatteryLevel=d *100;
@@ -191,7 +191,7 @@ public class HW implements IWiiHw{
 		try{this.whiteBoard.run();}
 		catch( Exception e)
 		{
-			System.out.println("L'apertura del nuovo Thread whiteBoard non e' andata a buon fine");
+			//System.out.println("L'apertura del nuovo Thread whiteBoard non e' andata a buon fine");
 		}		
 	}
 
@@ -206,7 +206,7 @@ public class HW implements IWiiHw{
 		if(this.IsCreaArea==true && this.pointList.size()<nPunti && enable==true)
 		{
 
-			System.out.println("Punto " + this.pointList.size()+ " catturato alla posizione x" + p.getX() + " e Y " + p.getY());
+			//System.out.println("Punto " + this.pointList.size()+ " catturato alla posizione x" + p.getX() + " e Y " + p.getY());
 			this.pointList.add(p);
 			this.areaPosterListener.actionPerformed(new ActionEvent(p,0,null));
 			enable=false;
@@ -230,7 +230,7 @@ public class HW implements IWiiHw{
 	
 	class RemindTask extends TimerTask {
 		public void run() {
-			System.out.println("Time's up!");
+			//System.out.println("Time's up!");
 			enable=true;
 			timer.cancel(); 
 		}
