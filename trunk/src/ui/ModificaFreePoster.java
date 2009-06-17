@@ -470,7 +470,7 @@ class CartellonePannelloClass extends JPanel implements MouseListener {
 		scaleX=((double)this.getSize().getWidth())/((double)screenWidth);
 
 		scaleY=((double)this.getSize().getHeight())/((double)screenHeight);
-		System.out.println("larg:"+ this.getSize().width+ "  larg2 : "+this.getWidth()+ "larg 3 :"+ this.getSize().getWidth());
+		//System.out.println("larg:"+ this.getSize().width+ "  larg2 : "+this.getWidth()+ "larg 3 :"+ this.getSize().getWidth());
 	}
 
 	public void paint(Graphics g) {
