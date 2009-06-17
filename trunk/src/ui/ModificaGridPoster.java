@@ -284,7 +284,7 @@ public class ModificaGridPoster extends javax.swing.JFrame {
 				
 			}
 		} catch (PositionEX e) {
-			System.out.println("nessun elemento selezionato");
+			//System.out.println("nessun elemento selezionato");
 			e.printStackTrace();
 		}
 }//GEN-LAST:event_modificaButtonActionPerformed

@@ -179,7 +179,7 @@ public class CalibraOra extends JFrame {
 
 	class RemindTask extends TimerTask {
 		public void run() {
-			System.out.println("connec:Time's up! "+count);
+			//System.out.println("connec:Time's up! "+count);
 			if(manager.wiiConnected()){
 				manager.calibra(listener);
 				}
