@@ -25,14 +25,24 @@ import dataModel.GridPoster;
 import dataModel.Paper;
 import dataModel.Poster;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestXml.
+ */
 public class TestXml {
 
 	/**
+	 * The main method.
+	 * 
 	 * @param args
-	 * @throws MalformedURLException 
-	 * @throws URISyntaxException 
-	 * @throws FileNotFoundException 
-	 * @throws PositionEX 
+	 *            the args
+	 * 
+	 * @throws MalformedURLException
+	 *             * @throws URISyntaxException the URI syntax exception
+	 * @throws FileNotFoundException
+	 *             the file not found exception
+	 * @throws PositionEX
+	 *             the position ex
 	 */
 	public static void main(String[] args) throws URISyntaxException, FileNotFoundException, PositionEX {
 		// TODO Auto-generated method stub

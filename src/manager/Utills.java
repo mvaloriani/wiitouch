@@ -12,7 +12,21 @@ import java.net.SocketAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * Contiene metodi di supporto utili per operazioni spesso ripetute in classi
+ * diverse.
+ */
 final class Utills {
+	
+	/**
+	 * Converte una lista di ponti in un poligono.
+	 * 
+	 * @param points
+	 *            Lista di punti.
+	 * 
+	 * @return Poligono che rappresenta la lista di punti.
+	 */
 	public static Polygon PolygonFromPoints(ArrayList<Point2D> points){
 		Polygon tempPolygon = new Polygon();
 		for(Point2D i : points){

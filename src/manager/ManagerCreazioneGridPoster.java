@@ -15,8 +15,13 @@ import dataModel.Poster;
 import dataModel.StopControl;
 import dataModel.VolumeControl;
 
-
-
+// TODO: Auto-generated Javadoc
+/**
+ * La classe ManagerCreazioneGridPoster implementa i metodi per la creazione e
+ * la gestione di un GridPoster.
+ * 
+ * @see GridPoster.
+ */
 public class ManagerCreazioneGridPoster extends ManagerCreazione {
 	
 	private void setElementArea(GridPoster poster, int row, int col) throws PositionEX{
@@ -45,28 +50,78 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		return element.getId();
 	}
 
+	/**
+	 * Inizializza un nuovo ManagerCreazioneGridPoster.
+	 * 
+	 * @param manager
+	 *            Il Manager che gestisce l'esecuzione corrente.
+	 */
 	public ManagerCreazioneGridPoster(Manager manager) {
 		super(manager);
 	}
 
 	
+	/**
+	 * Crea un FreePoster.
+	 * 
+	 * @param name
+	 *            Nome del FreePoster.
+	 * @param classe
+	 *            Nome della classe collegata al GridPoster.
+	 * @param description
+	 *            Descrizione del GridPoster.
+	 * @param row
+	 *            Numero di righe del GridPoster.
+	 * @param col
+	 *            Numero di colonne del GridPoster.
+	 * 
+	 * @return Una istanza di GridPoster.
+	 */
 	public GridPoster createGridPoster(String name, String classe, String description, int row, int col){
 		return new GridPoster(name, classe, description, row, col);
 	}
 
-	public void changeCellsNumerd(GridPoster poster, int row, int col) throws PositionEX{
-		poster.setCol(col);
-		poster.setRow(row);
-		for(int i=0;i<row;i++){
-			for(int j=0;j<col;j++){
-				if(poster.getElement(i, j)!=null)
-					setElementArea(poster, i, j);
+	/**
+	 * Modifica il numero di celle.
+	 * 
+	 * @param poster
+	 *            GridPoster su cui eseguire l'operazione.
+	 * @param rows
+	 *            Nuovo numero di righe.
+	 * @param cols
+	 *            Nuovo numero di colonne.
+	 */
+	public void changeCellsNumber(GridPoster poster, int rows, int cols) {
+		poster.setCol(cols);
+		poster.setRow(rows);
+		for(int i=0;i<rows;i++){
+			for(int j=0;j<cols;j++){
+				try {
+						setElementArea(poster, i, j);
+				} catch (PositionEX e) {}
 			}
 		}
 		
 	}
 	
 	
+	/**
+	 * Aggiunge un elemnto di tipo Paper al poster.
+	 * 
+	 * @param poster
+	 *            GridPoster su cui eseguire l'operazione.
+	 * @param files
+	 *            Lista di file multimediali da associare all'elemento.
+	 * @param row
+	 *            Numero di righa del GridPoster in cui insierire il Paper.
+	 * @param col
+	 *            Numero di colonna del GridPoster in cui insierire il Paper.
+	 * 
+	 * @return Id dell'elemento aggiunto al FreePoster.
+	 * 
+	 * @throws PositionEX
+	 *             Eccezione sollevata se le cooridnate sono fuori dallo schema.
+	 */
 	public Integer addPaper(GridPoster poster, int row, int col, ArrayList<String> files) throws PositionEX{
 		Element element=null;
 		try {
@@ -81,10 +136,28 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 		return element.getId();
 	}
 
+	/**
+	 * Aggiunge ad un elemnto di tipo Paper una lista di file.
+	 * 
+	 * @param poster
+	 *            GridPoster su cui eseguire l'operazione.
+	 * @param files
+	 *            Lista di file multimediali da associare all'elemento.
+	 * @param row
+	 *            Numero di righa del GridPoster del Paper.
+	 * @param col
+	 *            Numero di colonna del GridPoster del Paper.
+	 * 
+	 * @throws PositionEX
+	 *             Eccezione sollevata se le cooridnate sono fuori dallo schema.
+	 */
 	public void setPaperFiles(GridPoster poster, int row, int col, ArrayList<String> files) throws PositionEX {
 		setPaperFiles(poster, poster.getIdFromPoint(row, col),files);
 	}
 		
+	/* (non-Javadoc)
+	 * @see manager.ManagerCreazione#setPaperFiles(dataModel.Poster, int, java.util.ArrayList)
+	 */
 	@Override
 	public void setPaperFiles(Poster poster,int id, ArrayList<String> files) throws PositionEX {
 		Element e = poster.getElement(id);
@@ -95,6 +168,27 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 	}
 	
 	
+	/**
+	 * Aggiunge un elemento di controllo al GridPoster.
+	 * 
+	 * @param poster
+	 *            GridPoster su cui eseguire l'operazione.
+	 * @param type
+	 *            Tipo di elemento di controllo che si vuole aggiungere.
+	 * @param row
+	 *            the row
+	 * @param col
+	 *            the col
+	 * 
+	 * @return Id dell'elemento aggiunto.
+	 * 
+	 * @throws PositionEX
+	 *             Eccezione sollevata se le cooridnate sono fuori dallo schema.
+	 * @throws ElementTypeEX
+	 *             Eccezione sollevata se il tipo indicato non è supportato.
+	 * 
+	 * @see Control
+	 */
 	public Integer addControl(GridPoster poster,int row, int col, String type) throws PositionEX, ElementTypeEX{
 		Element element=super.newElement(poster, type);
 		poster.addElement(element, row, col);
@@ -103,11 +197,41 @@ public class ManagerCreazioneGridPoster extends ManagerCreazione {
 	}
 
 	
+	/**
+	 * Rimuove l'elemento della posizione indicata.
+	 * 
+	 * @param poster
+	 *            GridPoster su cui eseguire l'operazione.
+	 * @param row
+	 *            Numero di righa del GridPoster del elemento.
+	 * @param col
+	 *            Numero di colonna del GridPoster del elemento.
+	 * 
+	 * @throws PositionEX
+	 *             Eccezione sollevata se non ci sono elementi nella posizione
+	 *             indicata.
+	 */
 	public void removeElement(GridPoster poster, int row, int col) throws PositionEX {
 		poster.removeElement(row, col);
 		
 	}
 
+	/**
+	 * Data una posizione ritorna l'id dell'elemento corrispondente.
+	 * 
+	 * @param row
+	 *            Numero di righa del GridPoster del elemento.
+	 * @param col
+	 *            Numero di colonna del GridPoster del elemento.
+	 * @param gridPoster
+	 *            the grid poster
+	 * 
+	 * @return Id dell'elemento nella posizione indicata.
+	 * 
+	 * @throws PositionEX
+	 *             Eccezione sollevata se non ci sono elementi nella posizione
+	 *             indicata.
+	 */
 	public Integer getIdFromPoint(GridPoster gridPoster, int row, int col) throws PositionEX {
 		return gridPoster.getIdFromPoint(row, col);
 	}

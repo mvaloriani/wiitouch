@@ -32,8 +32,11 @@ import dataModel.Paper;
 import dataModel.Poster;
 
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @uml.dependency   supplier="manager.IManager"
+ * La classe Manager, implementa l'interfaccia IManager e costituisce la logica
+ * che gestisce la corretta esecuzione dell'applicazione.
  */
 public class Manager implements IManager, EventListener{
 
@@ -62,10 +65,7 @@ public class Manager implements IManager, EventListener{
 
 	
 	/**
-	 * @param managerDati
-	 * @param managerCreazione
-	 * @param poster
-	 * @param lastPaper
+	 * Il costruttore.
 	 */
 	public Manager() {
 		this.managerDati=new ManagerDati(this);
@@ -103,6 +103,9 @@ public class Manager implements IManager, EventListener{
 	
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#endSystem()
+	 */
 	public void endSystem()
 	{
 		//System.out.println("Provo a chiudere vlc");
@@ -111,17 +114,29 @@ public class Manager implements IManager, EventListener{
 
 	}
 
+	/**
+	 * Ritorna il poster corrente.
+	 * 
+	 * @return Poster attualmente in uso.
+	 */
 	public Poster getPoster() {
 		return poster;
 	}
 
 	/**
-	 * @return the managerCreazione
+	 * Restituisce il manager per la creazione e gestione del poster attualmente
+	 * in uso.
+	 * 
+	 * @return Manager per la creazione e gestione del poster attualmente in
+	 *         uso.
 	 */
 	public ManagerCreazione getManagerCreazione() {
 		return managerCreazione;
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#createFreePoster(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	public void createFreePoster(String name, String classe,
 			String description) {
 		managerCreazione = new ManagerCreazioneFreePoster(this);
@@ -129,6 +144,9 @@ public class Manager implements IManager, EventListener{
 				description);
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#addControlFP(java.util.ArrayList, java.lang.String)
+	 */
 	public Integer addControlFP(ArrayList<Point2D> points, String type) throws PosterTypeEx, ElementTypeEX {
 		if(poster instanceof FreePoster)
 			return ((ManagerCreazioneFreePoster)managerCreazione).addControll((FreePoster)poster, points,type);
@@ -136,6 +154,9 @@ public class Manager implements IManager, EventListener{
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#addPaperFP(java.util.ArrayList, java.util.ArrayList)
+	 */
 	public Integer addPaperFP(ArrayList<Point2D> points, ArrayList<String> files) throws PosterTypeEx, PositionEX {
 		if(poster instanceof FreePoster)
 			return ((ManagerCreazioneFreePoster)managerCreazione).addPaper((FreePoster)poster, points, files);
@@ -143,12 +164,18 @@ public class Manager implements IManager, EventListener{
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#addGenericElementFP(java.util.ArrayList)
+	 */
 	public Integer addGenericElementFP(ArrayList<Point2D> points){
 		return ((ManagerCreazioneFreePoster)managerCreazione).addElement((FreePoster)poster,points);
 	}
 
 	//GridPost methods
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#createGridPoster(java.lang.String, java.lang.String, java.lang.String, int, int)
+	 */
 	public void createGridPoster(String name, String classe,
 			String description, int row, int col) {
 		managerCreazione = new ManagerCreazioneGridPoster(this);
@@ -156,6 +183,9 @@ public class Manager implements IManager, EventListener{
 				description, row, col);
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#addControlGP(int, int, java.lang.String)
+	 */
 	public Integer addControlGP(int row, int col, String type) throws PosterTypeEx, PositionEX, ElementTypeEX{
 		if(poster instanceof GridPoster)
 			return ((ManagerCreazioneGridPoster)managerCreazione).addControl((GridPoster)poster, row, col, type);
@@ -163,6 +193,9 @@ public class Manager implements IManager, EventListener{
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#addPaperGP(int, int, java.util.ArrayList)
+	 */
 	public Integer addPaperGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX{
 		if(poster instanceof GridPoster)
 			return ((ManagerCreazioneGridPoster)managerCreazione).addPaper((GridPoster)poster,
@@ -171,6 +204,9 @@ public class Manager implements IManager, EventListener{
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#setPaperFilesGP(int, int, java.util.ArrayList)
+	 */
 	public void setPaperFilesGP(int row, int col, ArrayList<String> files) throws PosterTypeEx, PositionEX{
 		if(poster instanceof GridPoster)
 			((ManagerCreazioneGridPoster)managerCreazione).setPaperFiles((GridPoster)poster, row, col, files);
@@ -178,6 +214,9 @@ public class Manager implements IManager, EventListener{
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#removeElementGP(int, int)
+	 */
 	public void removeElementGP(int row, int col) throws PositionEX, PosterTypeEx {
 		if(poster instanceof GridPoster)
 			((ManagerCreazioneGridPoster)managerCreazione).removeElement((GridPoster)poster, row, col);
@@ -186,13 +225,19 @@ public class Manager implements IManager, EventListener{
 
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#changeCellsNumerdGP(int, int)
+	 */
 	public void changeCellsNumerdGP(int row, int col) throws PosterTypeEx, PositionEX {
 		if(poster instanceof GridPoster)
-			((ManagerCreazioneGridPoster)managerCreazione).changeCellsNumerd((GridPoster)poster, row, col);
+			((ManagerCreazioneGridPoster)managerCreazione).changeCellsNumber((GridPoster)poster, row, col);
 		else
 			throw new PosterTypeEx("Current poster isn't GridPoster");
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#getIdFromPointGP(int, int)
+	 */
 	public Integer getIdFromPointGP(int row, int col) throws PosterTypeEx, PositionEX{
 		if(poster instanceof GridPoster){
 			return ((ManagerCreazioneGridPoster)managerCreazione).getIdFromPoint((GridPoster)poster,row,col);
@@ -203,39 +248,67 @@ public class Manager implements IManager, EventListener{
 
 	// Common methods
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#setPosterName(java.lang.String)
+	 */
 	public void setPosterName(String text) {
 		poster.setName(text);
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#setPosterDescription(java.lang.String)
+	 */
 	public void setPosterDescription(String text) {
 		poster.setDescription(text);
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#setPosterClassroom(java.lang.String)
+	 */
 	public void setPosterClassroom(String text) {
 		poster.setClassroom(text);
 		
 	}
 
+	/**
+	 * Ritorna l'ultimo elemento di tipo Paper eseguito. Null se non è mai stato
+	 * eseguito un elemento di tipo Paper.
+	 * 
+	 * @return Ultimo elemento di tipo Paper eseguito. Null se non è mai stato
+	 *         eseguito un elemento di tipo Paper.
+	 */
 	public Paper getlastPaper()
 	{
 		return lastPaper;
 	
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#getIPoster()
+	 */
 	public IPoster getIPoster() {
 		return ((IPoster)poster);
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#setPaperFiles(java.lang.Integer, java.util.ArrayList)
+	 */
 	public void setPaperFiles(Integer id, ArrayList<String> Files) throws PositionEX {
 		managerCreazione.setPaperFiles(poster, id, Files);
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#removeElement(java.lang.Integer)
+	 */
 	public void removeElement(Integer id) throws PositionEX {
 		managerCreazione.removeElement(poster, id);		
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#loadPoster(java.lang.String)
+	 */
 	public void loadPoster(String urlFile) throws FileNotFoundException {
 		poster = managerDati.loadPoster(urlFile);
 		if(poster instanceof GridPoster)
@@ -244,6 +317,9 @@ public class Manager implements IManager, EventListener{
 			managerCreazione=new ManagerCreazioneFreePoster(this);
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#storePoster(java.lang.String)
+	 */
 	public void storePoster(String urlFile) throws FileNotFoundException {
 		managerDati.storePoster(poster, urlFile);
 
@@ -251,6 +327,9 @@ public class Manager implements IManager, EventListener{
 
 
 	// WiiMethods
+	/* (non-Javadoc)
+	 * @see manager.IManager#calibra(java.awt.event.ActionListener)
+	 */
 	public void calibra(ActionListener listener){
 		//al momento voglio gestire solo un listener per volta
 		calibraActionListenerList.clear();
@@ -271,6 +350,9 @@ public class Manager implements IManager, EventListener{
 
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#play()
+	 */
 	public void play() {
 		iWii.startPlay(new EventoSelezionaPuntoListener(){
 			public void OnEventoSelezionaPunto(EventoSelezionaPunto e) {
@@ -281,11 +363,17 @@ public class Manager implements IManager, EventListener{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#stopPlay()
+	 */
 	public void stopPlay() {
 		iWii.stopPlay();
 
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#connect()
+	 */
 	public void connect() throws ExceptionInInitializerError{
 		try{
 			iWii.connect();
@@ -297,19 +385,31 @@ public class Manager implements IManager, EventListener{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#wiimoteBatteryLevelManager(java.awt.event.ActionListener)
+	 */
 	public void wiimoteBatteryLevelManager(ActionListener listener) {
 		iWii.batteryLevel(listener);
 	}
 	
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#wiimoteConnectionManager(java.awt.event.ActionListener)
+	 */
 	public void wiimoteConnectionManager(ActionListener listener) {
 		iWii.connectionManager(listener);
 	}
 	
+	/* (non-Javadoc)
+	 * @see manager.IManager#wiiConnected()
+	 */
 	public boolean wiiConnected(){
 		return iWii.isConnected();
 	}
 
+	/* (non-Javadoc)
+	 * @see manager.IManager#createArea(java.lang.Integer)
+	 */
 	public ArrayList<Point2D> createArea(Integer numPoints){
 		return iWii.createAreaFP(numPoints);
 	}

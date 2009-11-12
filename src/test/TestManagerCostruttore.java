@@ -5,10 +5,17 @@ import java.awt.Toolkit;
 
 import ui.Home;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestManagerCostruttore.
+ */
 public class TestManagerCostruttore {
 
 	/**
+	 * The main method.
+	 * 
 	 * @param args
+	 *            the args
 	 */
 	public static void main(String[] args) {
 		

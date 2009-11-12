@@ -13,12 +13,20 @@ import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 import ui.Home;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Main.
+ */
 public class Main {
 
 	/**
+	 * The main method.
+	 * 
 	 * @param args
-	 * @throws PositionEX 
-	 * @throws PosterTypeEx 
+	 *            the args
+	 * 
+	 * @throws PositionEX
+	 *             * @throws PosterTypeEx
 	 */
 	public static void main(String[] args) {
 		//System.setProperty("bluecove.jsr82.psm_minimum_off", "true");
