@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package dataModel;
 
 import java.awt.Image;
@@ -19,6 +22,12 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * Classe che rappresenta un generico file multimediale.
+ * 
+ * @see Element
+ */
 @XStreamAlias("Paper")
 public class Paper extends Element {
 
@@ -26,21 +35,40 @@ public class Paper extends Element {
 	private ArrayList<String> pathsFiles;
 	@XStreamOmitField
 	private int actualFile;
+	
+	/** The Constant AUDIO_FILE. */
 	@XStreamOmitField
 	public static final String AUDIO_FILE="AUDIO";
+	
+	/** The Constant VIDEO_FILE. */
 	@XStreamOmitField
 	public static final String VIDEO_FILE="VIDEO";
 	private String type;
 	
+	/**
+	 * Setta il tipo del file multimediale.
+	 * 
+	 * @param newType
+	 *            Nuovo tipo di file multimediale.
+	 */
 	public void setType(String newType)
 	{
 		this.type=newType;
 	}
+	
+	/**
+	 * Ritorna il tipo del file multimediale.
+	 * 
+	 * @return the type
+	 */
 	public String getType()
 	{
 		return this.type;
 	}
 	
+	/* (non-Javadoc)
+	 * @see dataModel.Element#toString()
+	 */
 	public String toString() {
 		String result = "\n Files:\n";
 		for(String s : pathsFiles)
@@ -48,29 +76,47 @@ public class Paper extends Element {
 		return result;
 	}
 	
+
 	/**
-	 * Getter of the property <tt>pathsFiles</tt>
-	 * @return  Returns the pathsFiles.
-	 * @uml.property  name="pathsFiles"
+	 * Restituisce l'elenco dei file collegati all'oggetto. Questa funzione è
+	 * stata implementata per poter estire in futuro lo scorrimento tra più file
+	 * associati ad un sigolo elemento.
+	 * 
+	 * @return Lista di path dei file.
 	 */
 	public ArrayList<String> getPathsFiles() {
 		return pathsFiles;
 	}
 
+
 	/**
-	 * Setter of the property <tt>pathsFiles</tt>
-	 * @param pathsFiles  The pathsFiles to set.
-	 * @uml.property  name="pathsFiles"
+	 * Setta la lista dei path dei file collegati all'elemento.
+	 * 
+	 * @param pathsFiles
+	 *            Nuova lista dei file, in automatico riconosce l'estensione del
+	 *            file e assegna il tipo.
 	 */
 	public  void setPathsFiles(ArrayList<String> pathsFiles) {
 		this.pathsFiles = pathsFiles;
 		setFileType(pathsFiles);
 	}
 	
+	/**
+	 * Rimuove tutti i file.
+	 */
 	public void removeAllPathFiles(){
 		pathsFiles.clear();
 	}
 	
+
+	/**
+	 * Costruttore di un nuovo elemento Paper.
+	 * 
+	 * @param id
+	 *            Identificatore univoco dell'elemtno.
+	 * @param filesList
+	 *            Lista dei file associati all'elemento.
+	 */
 	public Paper(int id, ArrayList<String> filesList) {
 		super(id);
 		this.pathsFiles=filesList;
@@ -78,10 +124,28 @@ public class Paper extends Element {
 		
 	}
 
+	/**
+	 * Costruttore di un nuovo elemento Paper.
+	 * 
+	 * @param id
+	 *            Identificatore univoco dell'elemtno.
+	 * @param area
+	 *            Area associata all'elemento.
+	 */
 	public Paper(int id, Polygon area) {
 		super(id, area);
 	}
 	
+	/**
+	 * Costruttore di un nuovo elemento Paper.
+	 * 
+	 * @param id
+	 *            Identificatore univoco dell'elemtno.
+	 * @param area
+	 *            Area associata all'elemento.
+	 * @param filesList
+	 *            Lista dei file associati all'elemento.
+	 */
 	public Paper(int id, Polygon area, ArrayList<String> filesList) {
 		super(id, area);
 		pathsFiles=filesList;
@@ -108,6 +172,9 @@ public class Paper extends Element {
 			}
 	}}
 	
+	/* (non-Javadoc)
+	 * @see dataModel.Element#exec()
+	 */
 	public void exec() {
 		
 		PrintWriter out = null;

@@ -1,3 +1,4 @@
+
 package dataModel;
 
 import java.awt.Image;
@@ -15,38 +16,46 @@ import java.net.UnknownHostException;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
+
+// TODO: Auto-generated Javadoc
+/**
+ * Generico elemetno che può essere aggiunto a un poster.
+ */
+
 @XStreamAlias("Element")
 public class Element implements IElement{
 	
-	/**
-	 * @uml.property  name="area"
-	 * @uml.associationEnd  inverse="element:dataModel.Area"
-	 * @uml.association  name="hasPoint"
-	 */
+	
+
 	@XStreamAlias("Area")
 	private Polygon area;
 	private int id;
-	
 	private String icon;
 	
 	
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString(){
 		return("ID:"+id+";");
 	}
-	/**
-	 * Getter of the property <tt>area</tt>
-	 * @return  Returns the area.
-	 * @uml.property  name="area"
+	
+
+	/* (non-Javadoc)
+	 * @see dataModel.IElement#getArea()
 	 */
 	public Polygon getArea() {
 		return area;
 	}
 
+
 	/**
-	 * Setter of the property <tt>area</tt>
-	 * @param area  The area to set.
-	 * @uml.property  name="area"
+	 * Sostituisce l'area corrente dell'elemento con quella passata come
+	 * parametro.
+	 * 
+	 * @param area
+	 *            Nuova area dell'elemento.
 	 */
 	public void setArea(Polygon area) {
 		this.area = area;
@@ -54,7 +63,9 @@ public class Element implements IElement{
 
 	
 	/**
-	 * @return the id
+	 * Ritorna l'id univoco dell'elemento.
+	 * 
+	 * @return Id univoco dell'elemento.
 	 */
 	public int getId() {
 		return id;
@@ -62,25 +73,44 @@ public class Element implements IElement{
 
 
 	/**
-	 * Constructor of the object
-	 * @param area  The area of element.
+	 * Costruttore dell'elemento.
+	 * 
+	 * @param area
+	 *            Area dell'elemento.
+	 * @param id
+	 *            Id univoco assegnato all'elemento.
 	 */
 	public Element(int id, Polygon area){
 		this.id=id;
 		this.area=area;
 	}
 	
+	/**
+	 * Costruttore dell'elemento.
+	 * 
+	 * @param id
+	 *            Id univoco assegnato all'elemento.
+	 */
 	public Element(int id){
 		this.id=id;
 		area=null;
 	}
 	
 	/**
+	 * Esegue l'azione associato all'elemento.
 	 */
 	public void exec(){
 		System.out.print("sono vuoto");
 	}
 
+	/**
+	 * Apre la connessione verso VLC.
+	 * 
+	 * @return PrintWriter su cui inviare i comandi a VLC.
+	 * 
+	 * @throws ConnectException
+	 *             in caso di problemi di connessione a VLC.
+	 */
 	protected PrintWriter openConnection() throws ConnectException {
 		InetAddress addr=null;
 		int port = 4212;
