@@ -23,20 +23,30 @@ import dataModel.FreePoster;
 
 import manager.IManager;
 
+// TODO: Auto-generated Javadoc
 /**
- *
- * @author  giuliopresazzi
+ * The Class LoadPosterFrame.
+ * 
+ * @author giuliopresazzi
  */
 public class LoadPosterFrame extends javax.swing.JFrame{
 
+	/** The Constant ESEGUI. */
 	public static final String ESEGUI="ESEGUI";
+	
+	/** The Constant MODIFICA. */
 	public static final String MODIFICA="MODIFICA";
 	
 	private String tipoSessione;
 
-	/** Creates new form NewJFrame 
-	 * @param home 
-	 * @param manager */
+	/**
+	 * Creates new form NewJFrame.
+	 * 
+	 * @param manager
+	 *            the manager
+	 * @param tipoSessione
+	 *            the tipo sessione
+	 */
 	public LoadPosterFrame(IManager manager, String tipoSessione) {
 		initComponents();
 		this.tipoSessione=tipoSessione;
@@ -242,6 +252,12 @@ public class LoadPosterFrame extends javax.swing.JFrame{
 
 	}
 
+	/**
+	 * Naviga action performed.
+	 * 
+	 * @param actionEvent
+	 *            the action event
+	 */
 	public void navigaActionPerformed(ActionEvent actionEvent) {
 
 		JFileChooser chooser = new JFileChooser();
@@ -257,6 +273,12 @@ public class LoadPosterFrame extends javax.swing.JFrame{
 
 	}
 
+	/**
+	 * Annulla action performed.
+	 * 
+	 * @param actionEvent
+	 *            the action event
+	 */
 	public void annullaActionPerformed(ActionEvent actionEvent) {
 		dispose();
 	}

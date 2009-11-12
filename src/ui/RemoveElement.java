@@ -1,5 +1,6 @@
 package ui;
 
+// TODO: Auto-generated Javadoc
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -14,12 +15,15 @@ package ui;
 
 
 /**
- *
+ * The Class RemoveElement.
+ * 
  * @author luca
  */
 public class RemoveElement extends javax.swing.JFrame {
 
-    /** Creates new form Calibration */
+    /**
+	 * Creates new form Calibration.
+	 */
     public RemoveElement() {
         initComponents();
     }
@@ -89,8 +93,11 @@ public class RemoveElement extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-    * @param args the command line arguments
-    */
+	 * The main method.
+	 * 
+	 * @param args
+	 *            the command line arguments
+	 */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

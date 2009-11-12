@@ -37,15 +37,23 @@ import dataModel.GridPoster;
 import dataModel.IPoster;
 import dataModel.Paper;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class ModificaFreePoster.
+ * 
  * @author Matteo
  */
 public class ModificaFreePoster extends javax.swing.JFrame {
 	private IManager manager;
 	private IPoster poster;
 	private boolean anteprima=false;
-	/** Creates new form Modifica */
+	
+	/**
+	 * Creates new form Modifica.
+	 * 
+	 * @param manager
+	 *            the manager
+	 */
 
 	public ModificaFreePoster(IManager manager) {
 		this.manager = manager;
@@ -410,6 +418,21 @@ public class ModificaFreePoster extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Enable element button.
+	 * 
+	 * @param aggiungiArea
+	 *            the aggiungi area
+	 * @param aggiungi
+	 *            the aggiungi
+	 * @param modifica
+	 *            the modifica
+	 * @param rimuovi
+	 *            the rimuovi
+	 * @param anteprima
+	 *            the anteprima
+	 */
 	public void enableElementButton(boolean aggiungiArea, boolean aggiungi, boolean modifica, boolean rimuovi, boolean anteprima)
 	{
 		this.aggiungiAreaButton.setEnabled(aggiungiArea);
