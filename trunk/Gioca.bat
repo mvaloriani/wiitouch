@@ -1,2 +1,4 @@
 @ECHO OFF
-java -jar wii.jar >  file.txt
+Start Vlc\vlcWin\vlc.exe  --intf telnet
+java -jar wii.jar
+taskkill /F /IM vlc.exe
