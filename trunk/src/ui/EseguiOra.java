@@ -11,7 +11,10 @@ import javax.swing.border.*;
 import manager.IManager;
 import manager.Manager;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class EseguiOra.
+ * 
  * @author Giulio Presazzi
  */
 public class EseguiOra extends JFrame {
@@ -21,6 +24,12 @@ public class EseguiOra extends JFrame {
 	
 
 	
+	/**
+	 * Instantiates a new esegui ora.
+	 * 
+	 * @param manager
+	 *            the manager
+	 */
 	public EseguiOra(IManager manager) {
 		this.manager=manager;
 		initComponents();

@@ -14,7 +14,10 @@ import javax.swing.border.*;
 import manager.IManager;
 import manager.Manager;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CalibraOra.
+ * 
  * @author Giulio Presazzi
  */
 public class CalibraOra extends JFrame {
@@ -22,9 +25,20 @@ public class CalibraOra extends JFrame {
 	private ActionListener listener;
 	private String sessione;
 	
+	/** The Constant ESEGUI. */
 	public static final String ESEGUI="ESEGUI";
+	
+	/** The Constant MODIFICA. */
 	public static final String MODIFICA="MODIFICA";
 	
+	/**
+	 * Instantiates a new calibra ora.
+	 * 
+	 * @param manager
+	 *            the manager
+	 * @param sessione
+	 *            the sessione
+	 */
 	public CalibraOra(IManager manager, String sessione) {
 		this.sessione= sessione;
 		this.manager=manager;
@@ -177,7 +191,14 @@ public class CalibraOra extends JFrame {
 	private Integer count = 0;
 	private Timer timer;
 
+	/**
+	 * The Class RemindTask.
+	 */
 	class RemindTask extends TimerTask {
+		
+		/* (non-Javadoc)
+		 * @see java.util.TimerTask#run()
+		 */
 		public void run() {
 			//System.out.println("connec:Time's up! "+count);
 			if(manager.wiiConnected()){
