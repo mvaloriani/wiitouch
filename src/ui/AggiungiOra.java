@@ -15,11 +15,20 @@ import dataModel.GridPoster;
 
 import manager.IManager;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class AggiungiOra.
+ * 
  * @author Giulio Presazzi
  */
 public class AggiungiOra extends JFrame {
 
+	/**
+	 * Instantiates a new aggiungi ora.
+	 * 
+	 * @param manager
+	 *            the manager
+	 */
 	public AggiungiOra(IManager manager) {
 		this.manager = manager;
 		initComponents();
@@ -38,6 +47,12 @@ public class AggiungiOra extends JFrame {
 		dispose();
 	}
 	
+	/**
+	 * The main method.
+	 * 
+	 * @param args
+	 *            the arguments
+	 */
 	public static void main(String[] args) {
 		AggiungiOra agg = new AggiungiOra(null);
 	}
