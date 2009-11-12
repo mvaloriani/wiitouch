@@ -3,7 +3,13 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="WiiHW"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/wii"/>
-	<classpathentry kind="lib" path="C:/Program Files/Sun Microsystems/Java Advanced Imaging 1.1.3/lib/jai_core.jar"/>
+	<classpathentry kind="lib" path="lib/jai_core.jar"/>
+	<classpathentry kind="lib" path="lib/NetUtil.jar"/>
+	<classpathentry kind="lib" path="lib/WiiRemoteJ.jar"/>
+	<classpathentry kind="lib" path="lib/xstream-1.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/AppFramework.jar"/>
+	<classpathentry kind="lib" path="lib/miglayout15-swing.jar"/>
+	<classpathentry kind="lib" path="lib/swing-worker.jar"/>
+	<classpathentry kind="lib" path="lib/bluecove-2.0.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
