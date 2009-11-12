@@ -11,6 +11,14 @@ import dataModel.GridPoster;
 import dataModel.Paper;
 import dataModel.Poster;
 
+
+// TODO: Auto-generated Javadoc
+/**
+ * La classe ManagerCreazioneFreePoster implementa i metodi per la creazione e
+ * la gestione di un FreePoster.
+ * 
+ * @see FreePoster.
+ */
 public class ManagerCreazioneFreePoster extends ManagerCreazione {
 
 	private void setElementArea(Poster poster, int id, ArrayList<Point2D> points) throws PositionEX{
@@ -21,16 +29,46 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 		}
 	}
 
+	/**
+	 * Inizializza un nuovo ManagerCreazioneFreePoster.
+	 * 
+	 * @param manager
+	 *            Il Manager che gestisce l'esecuzione corrente.
+	 */
 	public ManagerCreazioneFreePoster(Manager manager) {
 		super(manager);
 	}
 		
 	
+	/**
+	 * Crea un FreePoster.
+	 * 
+	 * @param name
+	 *            Nome del FreePoster.
+	 * @param classe
+	 *            Nome della classe collegata al FreePoster.
+	 * @param description
+	 *            Descrizione del FreePoster
+	 * 
+	 * @return Una istanza di FreePoster.
+	 */
 	public Poster createFreePoster(String name, String classe, String description){
 		return new FreePoster(name, classe, description);
 	}
 
-	public Integer addPaper(FreePoster poster, ArrayList<Point2D> points, ArrayList<String> files) throws PositionEX{
+	/**
+	 * Aggiunge un elemnto di tipo Paper al poster.
+	 * 
+	 * @param poster
+	 *            FreePoster su cui eseguire l'operazione.
+	 * @param points
+	 *            Lista di punti che individuano gli angoli dell'elemento.
+	 * @param files
+	 *            Lista di file multimediali da associare all'elemento.
+	 * 
+	 * @return Id dell'elemento aggiunto al FreePoster.
+	 */
+	public Integer addPaper(FreePoster poster, ArrayList<Point2D> points, ArrayList<String> files) {
 		Element element=null;
 		try {
 			element = super.newElement(poster, "PAPER");
@@ -40,12 +78,26 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 		Polygon area = Utills.PolygonFromPoints(points);
 		element.setArea(area);
 		poster.addElement(element);
-		setPaperFiles(poster, element.getId(), files);
+		try {
+			setPaperFiles(poster, element.getId(), files);
+		} catch (PositionEX e) {
+			e.printStackTrace();
+		}
 		
 		return element.getId();
 
 	}
 	
+	/**
+	 * Aggiunge un generico elemento al FreePoster.
+	 * 
+	 * @param poster
+	 *            FreePoster su cui eseguire l'operazione.
+	 * @param points
+	 *            Lista di punti che individuano gli angoli dell'elemento.
+	 * 
+	 * @return Id dell'elemento aggiunto al FreePoster.
+	 */
 	public Integer addElement(FreePoster poster,ArrayList<Point2D> points)
 	{
 		Element element=null;
@@ -62,6 +114,9 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see manager.ManagerCreazione#setPaperFiles(dataModel.Poster, int, java.util.ArrayList)
+	 */
 	public void setPaperFiles(Poster poster,int id, ArrayList<String> files) throws PositionEX{
 		Element e = poster.getElement(id);
 		if (e instanceof Paper){
@@ -70,6 +125,23 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 	}
 
 	
+	/**
+	 * Aggiunge un elemento di controllo al FreePoster.
+	 * 
+	 * @param poster
+	 *            FreePoster su cui eseguire l'operazione.
+	 * @param points
+	 *            Lista di punti che individuano gli angoli dell'elemento.
+	 * @param type
+	 *            Tipo di elemento di controllo che si vuole aggiungere.
+	 * 
+	 * @return Id dell'elemento aggiunto al FreePoster.
+	 * 
+	 * @throws ElementTypeEX
+	 *             Eccezione sollevata se il tipo indicato non è supportato.
+	 * 
+	 * @see Control
+	 */
 	public Integer addControll(FreePoster poster, ArrayList<Point2D> points, String type) throws ElementTypeEX {
 		Polygon area = Utills.PolygonFromPoints(points);
 		Element element=super.newElement(poster, type);
@@ -77,10 +149,6 @@ public class ManagerCreazioneFreePoster extends ManagerCreazione {
 		poster.addElement(element);
 		return element.getId();
 	}
-	public void removeElement(GridPoster poster, int id) throws PositionEX {
-		poster.removeElement(id);
-		
-	}
-
+	
 
 }

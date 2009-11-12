@@ -20,15 +20,23 @@ import dataModel.Paper;
 import dataModel.Poster;
 
 
-
+// TODO: Auto-generated Javadoc
 /**
- * @uml.dependency   supplier="manager.IManager"
+ * La classe ManagerDati si occupa della fase di salvataggio dei dati su file
+ * xml e viceversa. Questa classe usa le librerie xstream per la conversione in
+ * xml, per maggiori dettagli si veda la guida sul sito del produttore.
  */
 public class ManagerDati {
 
 	private XStream xstream;
 	private Manager manager;
 
+	/**
+	 * IIstanzia un nuovo manager dati.
+	 * 
+	 * @param manager
+	 *            Il Manager che gestisce l'esecuzione corrente.
+	 */
 	public ManagerDati(Manager manager) {
 		this.manager =manager;
 		xstream=new XStream(new DomDriver());
@@ -41,6 +49,17 @@ public class ManagerDati {
 		xstream.aliasField("FilesURI", Paper.class, "pathsFiles");
 	}
 
+	/**
+	 * Carica dati di un Poster da un file passato come parametro.
+	 * 
+	 * @param urlFile
+	 *            L' URL del file XML in cui sono salvati i dati.
+	 * 
+	 * @return Il Poster correttamente generato a seconda del tipo.
+	 * 
+	 * @throws FileNotFoundException
+	 *             Eccezione sollevata in caso che l'URL sia sbagliato.
+	 */
 	public Poster loadPoster(String urlFile) throws FileNotFoundException {
 		//System.out.println(urlFile);
 		FileInputStream fis = new FileInputStream(urlFile);
@@ -64,6 +83,18 @@ public class ManagerDati {
 		return poster;
 	}
 
+	/**
+	 * Salva i dati di un Poster in un file XML.
+	 * 
+	 * @param poster
+	 *            Il Poster che deve essere salvato.
+	 * @param urlFile
+	 *            L'URL a cui salvare il file.
+	 * 
+	 * @throws FileNotFoundException
+	 *             Eccezione sollevata in caso di problemi con il percorso
+	 *             indicato.
+	 */
 	public void storePoster(Poster poster, String urlFile) throws FileNotFoundException {
 		PrintStream MyOutput = new PrintStream(new FileOutputStream(urlFile));
 		MyOutput.print(xstream.toXML(poster));

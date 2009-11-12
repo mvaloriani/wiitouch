@@ -7,15 +7,29 @@ import java.net.Socket;
 import java.net.SocketAddress;
 import java.net.UnknownHostException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * La classe si occupa di avviare e chiudere VLC.
+ */
 public class VlcThread extends Thread {
 
 
 	private Process ls_proc;
 
+	/**
+	 * Instantiates a new vlc thread.
+	 * 
+	 * @param str
+	 *            the str
+	 */
 	public VlcThread(String str) {
 		
 		super(str);
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Thread#run()
+	 */
 	public void run() {
 
 		this.exec();
@@ -61,6 +75,10 @@ public class VlcThread extends Thread {
 //		
 
 	}
+	
+	/**
+	 * Termina.
+	 */
 	public void termina()
 	{
 		if(ls_proc!=null)
