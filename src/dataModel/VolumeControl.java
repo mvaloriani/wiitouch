@@ -16,16 +16,38 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import manager.Manager;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * Classe che implementa la gestione del volume. Questa classe è stata definita
+ * ma ancora non è stata implementata.
+ */
 @XStreamAlias("VolumeControl")
 public class VolumeControl extends Control {
 
 	private String type;
 
+	/**
+	 * Instantiates a new volume control.
+	 * 
+	 * @param id
+	 *            Identificatore univoco dell'elemento.
+	 * @param manager
+	 *            Manager che controlla l'esecuzione.
+	 * @param type
+	 *            Il tipo definisce l'esecuzione, "+" se si vuole un elemento
+	 *            per aumentare il volume, "-" per diminuire, "X" per la
+	 *            funzione mute.
+	 */
 	public VolumeControl(int id, Manager manager,String type) {
 		super(id, manager);
 		this.type=type;
 	}
 
+	/**
+	 * Non ancora implementata.
+	 * 
+	 * @see dataModel.Control#exec()
+	 */
 	public void exec() {
 		
 		PrintWriter out = null;
@@ -34,11 +56,11 @@ public class VolumeControl extends Control {
 			out.println("admin");
 			out.flush();
 			if(type.equalsIgnoreCase("-"))
-				out.println("control myMedia pause");
+				out.println("");
 			else if(type.equalsIgnoreCase("+"))
-				out.println("control myMedia pause");
+				out.println("");
 			else if(type.equalsIgnoreCase("X"))
-				out.println("control myMedia pause");
+				out.println("");
 			out.flush();
 		} catch (ConnectException e) {
 			e.printStackTrace();
