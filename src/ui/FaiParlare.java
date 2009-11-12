@@ -19,13 +19,20 @@ import java.awt.event.ActionListener;
 import manager.IManager;
 import manager.Manager;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class FaiParlare.
+ * 
  * @author luca
  */
 public class FaiParlare extends javax.swing.JFrame {
 
-    /** Creates new form FaiParlare */
+    /**
+	 * Creates new form FaiParlare.
+	 * 
+	 * @param manager
+	 *            the manager
+	 */
 	
     public FaiParlare(IManager manager) {
 		this.manager=manager;
