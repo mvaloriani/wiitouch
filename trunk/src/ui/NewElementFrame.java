@@ -25,9 +25,11 @@ import dataModel.Element;
 import dataModel.FreePoster;
 import dataModel.Paper;
 
+// TODO: Auto-generated Javadoc
 /**
- *
- * @author  giuliopresazzi
+ * The Class NewElementFrame.
+ * 
+ * @author giuliopresazzi
  */
 public class NewElementFrame extends javax.swing.JFrame {
     
@@ -82,7 +84,14 @@ public class NewElementFrame extends javax.swing.JFrame {
 	}
 
 
-	/** Creates new form NewElementFrame */
+	/**
+	 * Creates new form NewElementFrame.
+	 * 
+	 * @param manager
+	 *            the manager
+	 * @param id
+	 *            the id
+	 */
     public NewElementFrame(IManager manager, Integer id) {
         //jPanel2.setVisible(false);
     	this.manager=manager;
@@ -90,7 +99,15 @@ public class NewElementFrame extends javax.swing.JFrame {
     	elementID=id;
        inizialize();
     }
-    /** Creates new form NewElementFrame */
+    
+    /**
+	 * Creates new form NewElementFrame.
+	 * 
+	 * @param manager
+	 *            the manager
+	 * @param position
+	 *            the position
+	 */
     public NewElementFrame(IManager manager,Point position) {
     	this.manager=manager;
     	this.position=position;
@@ -178,8 +195,11 @@ public class NewElementFrame extends javax.swing.JFrame {
     }// </editor-fold>                        
     
     /**
-     * @param args the command line arguments
-     */
+	 * The main method.
+	 * 
+	 * @param args
+	 *            the command line arguments
+	 */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -260,13 +280,27 @@ public class NewElementFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration                   
+    /**
+	 * The Class AnnullButton.
+	 */
     class AnnullButton implements ActionListener{
      private JFrame f=null;
+     
+     /**
+		 * Instantiates a new annull button.
+		 * 
+		 * @param ff
+		 *            the ff
+		 */
      public AnnullButton(JFrame ff)
      {
          f=ff;
          
      }
+    
+    /* (non-Javadoc)
+     * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+     */
     public void actionPerformed(ActionEvent actionEvent) {
     
          f.setVisible(false);  

@@ -37,10 +37,12 @@ import dataModel.FreePoster;
  import manager.PositionEX;
 import manager.PosterTypeEx;
 
- /**
-  *
-  * @author  giuliopresazzi
-  */
+ // TODO: Auto-generated Javadoc
+/**
+	 * The Class NewPaperFrame.
+	 * 
+	 * @author giuliopresazzi
+	 */
  public class NewPaperFrame extends javax.swing.JFrame {
      
  	private IManager manager;
@@ -49,7 +51,14 @@ import manager.PosterTypeEx;
 	private Integer elementId;
 	private boolean anteprima=false;
  	
-     /** Creates new form NewPaperFrame */
+     /**
+		 * Creates new form NewPaperFrame.
+		 * 
+		 * @param manager
+		 *            the manager
+		 * @param position
+		 *            the position
+		 */
      public NewPaperFrame(IManager manager,Point position) {
       	this.manager=manager;
      	this.position=position;
@@ -68,6 +77,14 @@ import manager.PosterTypeEx;
  		}
      }
      
+     /**
+		 * Instantiates a new new paper frame.
+		 * 
+		 * @param manager
+		 *            the manager
+		 * @param elementId
+		 *            the element id
+		 */
      public NewPaperFrame(IManager manager, Integer elementId) {
      	this.manager=manager;
      	this.elementId=elementId;
@@ -208,6 +225,9 @@ import manager.PosterTypeEx;
          }catch (Exception e) {}
      }
      
+     /**
+		 * Save button performed.
+		 */
      public void saveButtonPerformed() {
       	if(anteprima)
      		stopAnteprima();

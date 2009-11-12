@@ -46,15 +46,23 @@ import dataModel.Paper;
 import dataModel.PauseControl;
 import dataModel.StopControl;
 
+// TODO: Auto-generated Javadoc
 /**
- *
+ * The Class ModificaGridPoster.
+ * 
  * @author Matteo
  */
 public class ModificaGridPoster extends javax.swing.JFrame {
 	 private IManager manager;
 	 private IPoster poster;
 	private boolean anteprima=false;
-	/** Creates new form Modifica */
+	
+	/**
+	 * Creates new form Modifica.
+	 * 
+	 * @param manager
+	 *            the manager
+	 */
     public ModificaGridPoster(IManager manager) {
         this.manager = manager;
        

@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 
 import manager.IManager;
 
+// TODO: Auto-generated Javadoc
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -24,16 +25,20 @@ import manager.IManager;
 
 
 /**
- *
+ * The Class NewPosterFrame.
+ * 
  * @author luca
  */
 public class NewPosterFrame extends javax.swing.JFrame {
 
 
 
-	/** Creates new form principale 
-     * @param manager 
-     * @param home */
+	/**
+	 * Creates new form principale.
+	 * 
+	 * @param manager
+	 *            the manager
+	 */
     public NewPosterFrame(IManager manager) {
         initComponents();
 
@@ -368,8 +373,11 @@ public class NewPosterFrame extends javax.swing.JFrame {
 
     
     /**
-    * @param args the command line arguments
-    */
+	 * The main method.
+	 * 
+	 * @param args
+	 *            the command line arguments
+	 */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
